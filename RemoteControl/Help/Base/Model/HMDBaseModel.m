@@ -7,7 +7,11 @@
 //
 
 #import "HMDBaseModel.h"
-#import "NSObject+YYModel.h"
+#import "MJExtension.h"
 @implementation HMDBaseModel
++(instancetype)hmd_modelWithDictionary:(NSDictionary *)dic{
+    Class curClass = [self class];
+    return [curClass mj_objectWithKeyValues:dic];
+}
 
 @end

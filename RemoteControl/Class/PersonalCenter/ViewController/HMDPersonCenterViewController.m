@@ -49,7 +49,6 @@
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [backButton sizeToFit];
-//    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     //扫描按钮
     UIButton *searchQRButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,8 +56,7 @@
     [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
     [searchQRButton addTarget:self action:@selector(searchQRCode) forControlEvents:UIControlEventTouchUpInside];
     [searchQRButton sizeToFit];
-    // 注意:一定要在按钮内容有尺寸的时候,设置才有效果
-//    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+
     // 设置返回按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchQRButton];
 }

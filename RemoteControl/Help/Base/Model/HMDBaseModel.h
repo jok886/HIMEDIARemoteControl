@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HMDBaseModel : NSObject
+/**
+字典转模型
+ */
++(instancetype)hmd_modelWithDictionary:(NSDictionary *)dic;
 
 @end

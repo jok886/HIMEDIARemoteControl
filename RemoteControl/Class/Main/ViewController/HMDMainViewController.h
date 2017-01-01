@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDMainViewController : UIViewController
-
+-(void)connectDeviceWithIP:(NSString *)deviceIP;
 @end

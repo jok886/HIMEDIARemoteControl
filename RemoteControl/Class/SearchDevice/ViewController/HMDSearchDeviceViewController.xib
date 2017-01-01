@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMDSearchDeviceViewController">
+            <connections>
+                <outlet property="curDLANLab" destination="vKG-l9-28x" id="r0Y-4e-0wX"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kl-Tw-wln">
+                    <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前网络:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKG-l9-28x">
+                            <rect key="frame" x="20" y="164" width="74" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="vKG-l9-28x" secondAttribute="bottom" constant="15" id="5JW-h8-Tpr"/>
+                        <constraint firstItem="vKG-l9-28x" firstAttribute="leading" secondItem="6Kl-Tw-wln" secondAttribute="leading" constant="20" id="Bmw-rg-xIc"/>
+                        <constraint firstAttribute="height" constant="200" id="nzE-UK-oYm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6Kl-Tw-wln" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1kj-v4-iHA"/>
+                <constraint firstAttribute="trailing" secondItem="6Kl-Tw-wln" secondAttribute="trailing" id="aoR-iX-aBN"/>
+                <constraint firstItem="6Kl-Tw-wln" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="k1P-U0-fYO"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

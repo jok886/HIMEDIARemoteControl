@@ -7,7 +7,8 @@ pod 'AFNetworking'
 pod 'YYCache'
 pod 'Masonry'
 pod 'pop'
-pod 'YYModel'
+pod 'MJExtension'
+pod 'CocoaAsyncSocket'
 use_frameworks!
 
 end

@@ -13,6 +13,9 @@
 #import "HMDScrollContentView.h"
 
 #import "HMDPersonCenterViewController.h"
+#import "HMDSearchDeviceViewController.h"
+
+#import "HMDDeviceLinkDao.h"
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
 HMDScrollContentViewDelegate>
@@ -23,6 +26,7 @@ HMDScrollContentViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *linkStateLabel;                               //状态文字
 @property (weak, nonatomic) IBOutlet UIButton *linkBtn;                                     //链接按钮
 
+@property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                                     //链接设备
 @end
 
 @implementation HMDMainViewController
@@ -83,7 +87,7 @@ HMDScrollContentViewDelegate>
     //跳转个人中心
     HMDPersonCenterViewController *personCenterVC = [[HMDPersonCenterViewController alloc]init];
     HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:personCenterVC];
-//    nav.navigationBar.translucent = YES;
+
     [self presentViewController:nav animated:YES completion:^{
         
     }];
@@ -91,11 +95,25 @@ HMDScrollContentViewDelegate>
 }
 //点击搜索按钮
 - (IBAction)searchBtnClick:(UIButton *)sender {
-    
+    HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
+    HMDWeakSelf(self)
+    searchVC.selectedFinishBlock = ^(NSString *ip, NSInteger port) {
+        [weakSelf connectDeviceWithIP:ip onPort:port];
+    } ;
+        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 //点击链接
 - (IBAction)linkBtnClick:(UIButton *)sender {
     
+}
+
+#pragma mark - API
+-(void)connectDeviceWithIP:(NSString *)deviceIP onPort:(NSInteger)port{
+    if (self.linkDao == nil) {
+        self.linkDao = [[HMDDeviceLinkDao alloc]init];
+    }
+    [self.linkDao connectWithDeviceIP:deviceIP onPort:port];
 }
 #pragma mark -其他
 -(void)switchLinkState:(BOOL)link{
