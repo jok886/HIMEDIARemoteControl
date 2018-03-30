@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "HMDMainViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    //初始化根控制器
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[HMDMainViewController alloc] init];
+    [self.window makeKeyAndVisible];
+    
+    // 监控网络状态
+//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    
     return YES;
 }
 

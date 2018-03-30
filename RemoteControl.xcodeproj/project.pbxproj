@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E03EEE3206E114D004DBB36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E03EEE2206E114D004DBB36 /* AppDelegate.m */; };
 		3E03EEE6206E114D004DBB36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E03EEE5206E114D004DBB36 /* ViewController.m */; };
 		3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E03EEE7206E114D004DBB36 /* Main.storyboard */; };
 		3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E03EEEA206E114D004DBB36 /* Assets.xcassets */; };
 		3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E03EEEC206E114D004DBB36 /* LaunchScreen.storyboard */; };
-		3E03EEF1206E114D004DBB36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E03EEF0206E114D004DBB36 /* main.m */; };
 		3E03EEFB206E114D004DBB36 /* RemoteControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E03EEFA206E114D004DBB36 /* RemoteControlTests.m */; };
 		3E03EF06206E114E004DBB36 /* RemoteControlUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E03EF05206E114E004DBB36 /* RemoteControlUITests.m */; };
+		3EDAD09A206E1E5C007406FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD098206E1E5C007406FB /* main.m */; };
+		3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD099206E1E5C007406FB /* AppDelegate.m */; };
+		3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD09E206E2142007406FB /* HMD_RC_introductory_page_4@2x.png */; };
+		3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD09F206E2142007406FB /* HMD_RC_introductory_page_4@3x.png */; };
+		3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A0206E2142007406FB /* HMD_RC_introductory_page_2@2x.png */; };
+		3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A1206E2142007406FB /* HMD_RC_introductory_page_2@3x.png */; };
+		3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A2206E2142007406FB /* HMD_RC_introductory_page_3@2x.png */; };
+		3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A3206E2142007406FB /* HMD_RC_introductory_page_1@3x.png */; };
+		3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */; };
+		3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */; };
+		3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */; };
+		3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,21 +46,35 @@
 
 /* Begin PBXFileReference section */
 		3E03EEDE206E114D004DBB36 /* RemoteControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E03EEE1206E114D004DBB36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3E03EEE2206E114D004DBB36 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3E03EEE4206E114D004DBB36 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3E03EEE5206E114D004DBB36 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3E03EEE8206E114D004DBB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E03EEEA206E114D004DBB36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E03EEED206E114D004DBB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E03EEEF206E114D004DBB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E03EEF0206E114D004DBB36 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3E03EEF6206E114D004DBB36 /* RemoteControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E03EEFA206E114D004DBB36 /* RemoteControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControlTests.m; sourceTree = "<group>"; };
 		3E03EEFC206E114E004DBB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E03EF01206E114E004DBB36 /* RemoteControlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteControlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E03EF05206E114E004DBB36 /* RemoteControlUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemoteControlUITests.m; sourceTree = "<group>"; };
 		3E03EF07206E114E004DBB36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EDAD097206E1E5C007406FB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3EDAD098206E1E5C007406FB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3EDAD099206E1E5C007406FB /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3EDAD09E206E2142007406FB /* HMD_RC_introductory_page_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_4@2x.png"; sourceTree = "<group>"; };
+		3EDAD09F206E2142007406FB /* HMD_RC_introductory_page_4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_4@3x.png"; sourceTree = "<group>"; };
+		3EDAD0A0206E2142007406FB /* HMD_RC_introductory_page_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_2@2x.png"; sourceTree = "<group>"; };
+		3EDAD0A1206E2142007406FB /* HMD_RC_introductory_page_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_2@3x.png"; sourceTree = "<group>"; };
+		3EDAD0A2206E2142007406FB /* HMD_RC_introductory_page_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_3@2x.png"; sourceTree = "<group>"; };
+		3EDAD0A3206E2142007406FB /* HMD_RC_introductory_page_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_1@3x.png"; sourceTree = "<group>"; };
+		3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_1@2x.png"; sourceTree = "<group>"; };
+		3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_3@3x.png"; sourceTree = "<group>"; };
+		3EDAD0AF206E223C007406FB /* HMDRemoteControlPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRemoteControlPrefixHeader.pch; sourceTree = "<group>"; };
+		3EDAD0B2206E232E007406FB /* AppMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
+		3EDAD0B3206E2860007406FB /* NETMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NETMacro.h; sourceTree = "<group>"; };
+		3EDAD0BC206E2C75007406FB /* HMDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMainViewController.h; sourceTree = "<group>"; };
+		3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainViewController.m; sourceTree = "<group>"; };
+		3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,15 +125,14 @@
 		3E03EEE0206E114D004DBB36 /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
-				3E03EEE1206E114D004DBB36 /* AppDelegate.h */,
-				3E03EEE2206E114D004DBB36 /* AppDelegate.m */,
+				3EDAD0B0206E22EA007406FB /* Macro */,
+				3EDAD095206E1E5C007406FB /* Class */,
 				3E03EEE4206E114D004DBB36 /* ViewController.h */,
 				3E03EEE5206E114D004DBB36 /* ViewController.m */,
 				3E03EEE7206E114D004DBB36 /* Main.storyboard */,
 				3E03EEEA206E114D004DBB36 /* Assets.xcassets */,
 				3E03EEEC206E114D004DBB36 /* LaunchScreen.storyboard */,
 				3E03EEEF206E114D004DBB36 /* Info.plist */,
-				3E03EEF0206E114D004DBB36 /* main.m */,
 			);
 			path = RemoteControl;
 			sourceTree = "<group>";
@@ -130,6 +153,133 @@
 				3E03EF07206E114E004DBB36 /* Info.plist */,
 			);
 			path = RemoteControlUITests;
+			sourceTree = "<group>";
+		};
+		3EDAD095206E1E5C007406FB /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0B4206E2BF5007406FB /* Main */,
+				3EDAD096206E1E5C007406FB /* Other */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		3EDAD096206E1E5C007406FB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0AE206E21C5007406FB /* supportingFiles */,
+				3EDAD09C206E2108007406FB /* Image */,
+				3EDAD098206E1E5C007406FB /* main.m */,
+				3EDAD097206E1E5C007406FB /* AppDelegate.h */,
+				3EDAD099206E1E5C007406FB /* AppDelegate.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		3EDAD09C206E2108007406FB /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD09D206E2142007406FB /* IntroductoryPage */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		3EDAD09D206E2142007406FB /* IntroductoryPage */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD09E206E2142007406FB /* HMD_RC_introductory_page_4@2x.png */,
+				3EDAD09F206E2142007406FB /* HMD_RC_introductory_page_4@3x.png */,
+				3EDAD0A0206E2142007406FB /* HMD_RC_introductory_page_2@2x.png */,
+				3EDAD0A1206E2142007406FB /* HMD_RC_introductory_page_2@3x.png */,
+				3EDAD0A2206E2142007406FB /* HMD_RC_introductory_page_3@2x.png */,
+				3EDAD0A3206E2142007406FB /* HMD_RC_introductory_page_1@3x.png */,
+				3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */,
+				3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */,
+			);
+			path = IntroductoryPage;
+			sourceTree = "<group>";
+		};
+		3EDAD0AE206E21C5007406FB /* supportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0C1206E2DF5007406FB /* Base */,
+				3EDAD0AF206E223C007406FB /* HMDRemoteControlPrefixHeader.pch */,
+			);
+			path = supportingFiles;
+			sourceTree = "<group>";
+		};
+		3EDAD0B0206E22EA007406FB /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0B2206E232E007406FB /* AppMacro.h */,
+				3EDAD0B3206E2860007406FB /* NETMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		3EDAD0B4206E2BF5007406FB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0B5206E2BF5007406FB /* Model */,
+				3EDAD0B6206E2BF5007406FB /* View */,
+				3EDAD0B7206E2BF5007406FB /* ViewController */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		3EDAD0B5206E2BF5007406FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EDAD0B6206E2BF5007406FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EDAD0B7206E2BF5007406FB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0BC206E2C75007406FB /* HMDMainViewController.h */,
+				3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */,
+				3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3EDAD0C1206E2DF5007406FB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3EDAD0C2206E2DF5007406FB /* Controller */,
+				3EDAD0C3206E2DF5007406FB /* Model */,
+				3EDAD0C4206E2DF5007406FB /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3EDAD0C2206E2DF5007406FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3EDAD0C3206E2DF5007406FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EDAD0C4206E2DF5007406FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,9 +388,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */,
+				3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */,
 				3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */,
+				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
+				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
+				3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */,
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
+				3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */,
+				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
+				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
+				3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,9 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
 				3E03EEE6206E114D004DBB36 /* ViewController.m in Sources */,
-				3E03EEF1206E114D004DBB36 /* main.m in Sources */,
-				3E03EEE3206E114D004DBB36 /* AppDelegate.m in Sources */,
+				3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */,
+				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +593,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
 				INFOPLIST_FILE = RemoteControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.himedia.www.RemoteControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
 				INFOPLIST_FILE = RemoteControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.himedia.www.RemoteControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
