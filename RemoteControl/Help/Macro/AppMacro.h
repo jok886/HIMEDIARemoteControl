@@ -29,7 +29,12 @@
 #define HMDScreenH [UIScreen mainScreen].bounds.size.height
 #define HMDScreenW [UIScreen mainScreen].bounds.size.width
 #define HMDColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
-#define HMDRandomColor HMDColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+//ox....
+#define HMDColorFromValue(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define HMDRandomColor HMDColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255),1.0)
 #define HMDGlobeColor HMDColor(215, 215, 215)
 
 //强弱引用
@@ -49,4 +54,5 @@
 #else // 发布
 
 #define HMDLog(...)
+#endif 
 #endif /* AppMacro_h */

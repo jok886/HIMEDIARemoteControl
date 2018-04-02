@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,8 +18,64 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3V2-xD-TlU">
+                    <rect key="frame" x="315" y="25" width="55" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="n0B-WJ-mSy"/>
+                        <constraint firstAttribute="height" constant="55" id="n3f-td-jlK"/>
+                    </constraints>
+                    <state key="normal" image="search-gray"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备已链接" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9G-68-sJD">
+                    <rect key="frame" x="60" y="629.5" width="66.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1c-d2-1O6">
+                    <rect key="frame" x="10" y="622" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="faM-Te-Rov"/>
+                        <constraint firstAttribute="height" constant="30" id="hJB-oI-hD8"/>
+                    </constraints>
+                    <state key="normal" image="link-off"/>
+                    <state key="selected" image="link-on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHr-49-2c0">
+                    <rect key="frame" x="5" y="25" width="55" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="LP5-Nn-DQk"/>
+                        <constraint firstAttribute="height" constant="55" id="RvU-yT-Vt3"/>
+                    </constraints>
+                    <state key="normal" image="user_default"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xc-5l-hOo">
+                    <rect key="frame" x="306" y="623" width="54" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="链接设备"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <constraints>
+                <constraint firstItem="uHr-49-2c0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="0pU-al-q3U"/>
+                <constraint firstAttribute="trailing" secondItem="3V2-xD-TlU" secondAttribute="trailing" constant="5" id="9Ez-ci-lf9"/>
+                <constraint firstItem="g9G-68-sJD" firstAttribute="centerY" secondItem="J1c-d2-1O6" secondAttribute="centerY" id="Kmi-1v-DHv"/>
+                <constraint firstAttribute="bottom" secondItem="J1c-d2-1O6" secondAttribute="bottom" constant="15" id="Phk-NQ-CKP"/>
+                <constraint firstItem="3V2-xD-TlU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="cAG-Vm-ayo"/>
+                <constraint firstItem="uHr-49-2c0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="dha-yX-vhG"/>
+                <constraint firstItem="g9G-68-sJD" firstAttribute="leading" secondItem="J1c-d2-1O6" secondAttribute="trailing" constant="20" id="kOB-XZ-Kjx"/>
+                <constraint firstAttribute="trailing" secondItem="0Xc-5l-hOo" secondAttribute="trailing" constant="15" id="oGu-Nf-de3"/>
+                <constraint firstItem="0Xc-5l-hOo" firstAttribute="centerY" secondItem="g9G-68-sJD" secondAttribute="centerY" id="vvJ-73-e1P"/>
+                <constraint firstItem="J1c-d2-1O6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="zuV-h0-AOB"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="link-off" width="45" height="45"/>
+        <image name="link-on" width="45" height="45"/>
+        <image name="search-gray" width="12" height="12"/>
+        <image name="user_default" width="90" height="90"/>
+    </resources>
 </document>
