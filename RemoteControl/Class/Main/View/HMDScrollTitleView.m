@@ -1,44 +1,23 @@
 //
-//  HMDScrollTitleViewController.m
+//  HMDScrollTitleView.m
 //  RemoteControl
 //
-//  Created by 林鸿键 on 2018/4/2.
+//  Created by 林鸿键 on 2018/4/3.
 //  Copyright © 2018年 HIMEDIA. All rights reserved.
 //
 
-#import "HMDScrollTitleViewController.h"
+#import "HMDScrollTitleView.h"
 #import "HMDTitleBaseLine.h"
 
-@interface HMDScrollTitleViewController ()<UIScrollViewDelegate>
+@interface HMDScrollTitleView()
+@property (nonatomic,strong) NSMutableArray *titleArray;                //标题栏
 @property (nonatomic,weak) UIScrollView *titleScrollView;               //标题背景
 @property (nonatomic,weak) HMDTitleBaseLine *bottomLine;                //标题下划线
-@property (nonatomic,assign) BOOL isInitial;                            //是否初始化
 @property (nonatomic,strong) NSMutableArray *titleBtnArray;             //按钮合集
 @property (nonatomic,strong) UIButton *curSelectBtn;                    //当前选中的按钮
+@property (nonatomic,assign) BOOL isInitial;                            //是否初始化
 @end
-
-@implementation HMDScrollTitleViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupConst];
-    [self setupUI];
-    
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.view.frame = self.viewFrame;
-    if (_isInitial == NO) {
-        [self setupAllTitleButton];
-        _isInitial = YES;
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+@implementation HMDScrollTitleView
 
 #pragma mark -初始化
 //基本参数
@@ -49,15 +28,14 @@
     if (self.selectColor == nil) {
         self.selectColor = HMDColorFromValue(0xFFA500);
     }
-    self.view.frame = self.viewFrame;
 }
 //基本UI
 -(void)setupUI{
     if (self.titleArray.count>0) {
         if (self.titleScrollView == nil) {
             UIScrollView *titleScrollView = [[UIScrollView alloc] init];
-            titleScrollView.frame = self.view.bounds;
-            [self.view addSubview:titleScrollView];
+            titleScrollView.frame = self.bounds;
+            [self addSubview:titleScrollView];
             self.titleScrollView = titleScrollView;
             self.titleScrollView.showsHorizontalScrollIndicator = NO;
             self.titleScrollView.bounces = NO;
@@ -68,11 +46,13 @@
 -(void)setupAllTitleButton{
     //如果之前初始化过一次,需要清空
     if (self.isInitial) {
-        for (UIView *subView in self.view.subviews) {
+        for (UIView *subView in self.subviews) {
             if ([subView isKindOfClass:[UIButton class]]) {
                 [subView removeFromSuperview];
             }
         }
+    }else{
+        self.isInitial = YES;
     }
     //初始化按键
     
@@ -84,9 +64,9 @@
     CGFloat btnH = self.btnH;
     if (self.autoLayoutBtn) {
         btnW = 100;
-        btnH = self.view.bounds.size.height;
+        btnH = self.bounds.size.height;
     }
-        
+    
     for (int i = 0; i < count; i++) {
         // 创建按钮
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -100,7 +80,7 @@
         [btn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.titleScrollView addSubview:btn];
         if (self.autoLayoutBtn) {
-//            CGRect frame = btn.frame;
+            //            CGRect frame = btn.frame;
             [btn sizeToFit];
             CGRect newFrame = btn.frame;
             CGFloat newBtnW = newFrame.size.width + 15;
@@ -117,17 +97,17 @@
         
     }
     //下划线
-    CGFloat y = CGRectGetHeight(self.view.frame);
+    CGFloat y = CGRectGetHeight(self.frame);
     HMDTitleBaseLine *bottomLine = [[HMDTitleBaseLine alloc]initWithFrame:CGRectMake(0, y-1, 100, 1)];
     [self.titleScrollView addSubview:bottomLine];
     self.bottomLine = bottomLine;
     //当总宽度小于一个视图宽度的时候平铺布局
-    CGFloat viewW = CGRectGetWidth(self.view.frame);
+    CGFloat viewW = CGRectGetWidth(self.frame);
     if (btnX <viewW) {
         [self resetBtnFrame];
     }
     // 设置titleScrollView滚动范围
-
+    
     self.titleScrollView.contentSize = CGSizeMake(btnX, 0);
     // 清空水平指示条
     self.titleScrollView.showsHorizontalScrollIndicator = NO;
@@ -135,7 +115,7 @@
 }
 
 -(void)resetBtnFrame{
-    CGFloat viewW = CGRectGetWidth(self.view.frame);
+    CGFloat viewW = CGRectGetWidth(self.frame);
     CGFloat btnW = (CGFloat)(viewW/self.titleBtnArray.count);
     CGFloat x = 0;
     CGFloat btnH = 0;
@@ -154,11 +134,11 @@
         lineFrame.origin.x = CGRectGetMinX(self.curSelectBtn.frame)+10;
         self.bottomLine.frame = lineFrame;
     }
-
+    
 }
 #pragma mark -点击事件
 -(void)titleClick:(UIButton *)sender{
-
+    
     // 选中按钮
     [self selectButton:sender];
     
@@ -175,12 +155,12 @@
     // 恢复上一个按钮选中标题
     if (_curSelectBtn) {
         [_curSelectBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        _curSelectBtn.transform = CGAffineTransformIdentity;
+        //        _curSelectBtn.transform = CGAffineTransformIdentity;
         
     }
     [sender setTitleColor:self.selectColor forState:UIControlStateNormal];
     // 标题居中显示:本质就是设置偏移量
-    CGFloat viewW = CGRectGetWidth(self.view.frame);
+    CGFloat viewW = CGRectGetWidth(self.frame);
     CGFloat offsetX = sender.center.x - viewW * 0.5;
     // 处理最大偏移量
     CGFloat maxOffsetX = self.titleScrollView.contentSize.width - viewW;
@@ -194,10 +174,10 @@
         }
         [self.titleScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     }
-
+    
     
     // 标题缩放 -> 如何让标题缩放 改形变
-//    sender.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    //    sender.transform = CGAffineTransformMakeScale(1.3, 1.3);
     
     self.curSelectBtn = sender;
     //下划线
@@ -211,6 +191,7 @@
 //初始化界面
 -(void)setupUIWithTitleArray:(NSArray *)titleArray{
     self.titleArray = [NSMutableArray arrayWithArray:titleArray];
+    [self setupConst];
     [self setupUI];
     [self setupAllTitleButton];
 }
@@ -227,4 +208,5 @@
     }
     return _titleBtnArray;
 }
+
 @end

@@ -27,12 +27,14 @@
 		3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */; };
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
 		B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F91F2071CBE50037E746 /* HMDBaseModel.m */; };
-		B2F6F92C2071DB460037E746 /* HMDScrollTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F92B2071DB460037E746 /* HMDScrollTitleViewController.m */; };
 		B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F92E2071DD6D0037E746 /* HMDBaseView.m */; };
-		B2F6F9322071DDC60037E746 /* HMDTitleBaseLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F9312071DDC60037E746 /* HMDTitleBaseLine.m */; };
-		B2F6F93E207202440037E746 /* HMDScrollContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F93D207202440037E746 /* HMDScrollContentViewController.m */; };
 		B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F941207207870037E746 /* HMDNavigationController.m */; };
 		B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F943207207870037E746 /* HMDBaseViewController.m */; };
+		B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */; };
+		B2F6F95020722A0B0037E746 /* HMDPersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */; };
+		B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F952207315240037E746 /* HMDScrollTitleView.m */; };
+		B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F955207318040037E746 /* HMDTitleBaseLine.m */; };
+		B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F9582073181E0037E746 /* HMDScrollContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,18 +88,21 @@
 		B2F6F90F2071C9C40037E746 /* AppMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
 		B2F6F91E2071CBE50037E746 /* HMDBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseModel.h; sourceTree = "<group>"; };
 		B2F6F91F2071CBE50037E746 /* HMDBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDBaseModel.m; sourceTree = "<group>"; };
-		B2F6F92A2071DB460037E746 /* HMDScrollTitleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollTitleViewController.h; sourceTree = "<group>"; };
-		B2F6F92B2071DB460037E746 /* HMDScrollTitleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollTitleViewController.m; sourceTree = "<group>"; };
 		B2F6F92D2071DD6D0037E746 /* HMDBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseView.h; sourceTree = "<group>"; };
 		B2F6F92E2071DD6D0037E746 /* HMDBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDBaseView.m; sourceTree = "<group>"; };
-		B2F6F9302071DDC60037E746 /* HMDTitleBaseLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTitleBaseLine.h; sourceTree = "<group>"; };
-		B2F6F9312071DDC60037E746 /* HMDTitleBaseLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTitleBaseLine.m; sourceTree = "<group>"; };
-		B2F6F93C207202440037E746 /* HMDScrollContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollContentViewController.h; sourceTree = "<group>"; };
-		B2F6F93D207202440037E746 /* HMDScrollContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollContentViewController.m; sourceTree = "<group>"; };
 		B2F6F940207207870037E746 /* HMDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDNavigationController.h; sourceTree = "<group>"; };
 		B2F6F941207207870037E746 /* HMDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDNavigationController.m; sourceTree = "<group>"; };
 		B2F6F943207207870037E746 /* HMDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDBaseViewController.m; sourceTree = "<group>"; };
 		B2F6F944207207870037E746 /* HMDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDBaseViewController.h; sourceTree = "<group>"; };
+		B2F6F94C20722A0B0037E746 /* HMDPersonCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDPersonCenterViewController.h; sourceTree = "<group>"; };
+		B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDPersonCenterViewController.m; sourceTree = "<group>"; };
+		B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDPersonCenterViewController.xib; sourceTree = "<group>"; };
+		B2F6F951207315240037E746 /* HMDScrollTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollTitleView.h; sourceTree = "<group>"; };
+		B2F6F952207315240037E746 /* HMDScrollTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollTitleView.m; sourceTree = "<group>"; };
+		B2F6F954207318040037E746 /* HMDTitleBaseLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTitleBaseLine.h; sourceTree = "<group>"; };
+		B2F6F955207318040037E746 /* HMDTitleBaseLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTitleBaseLine.m; sourceTree = "<group>"; };
+		B2F6F9572073181E0037E746 /* HMDScrollContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollContentView.h; sourceTree = "<group>"; };
+		B2F6F9582073181E0037E746 /* HMDScrollContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollContentView.m; sourceTree = "<group>"; };
 		E39280B65B3DFBF617055C3C /* Pods-RemoteControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.debug.xcconfig"; sourceTree = "<group>"; };
 		FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemoteControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +199,7 @@
 		3EDAD095206E1E5C007406FB /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B2F6F948207228EB0037E746 /* PersonalCenter */,
 				3EDAD0B4206E2BF5007406FB /* Main */,
 				3EDAD096206E1E5C007406FB /* Other */,
 			);
@@ -263,6 +269,12 @@
 		3EDAD0B6206E2BF5007406FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B2F6F954207318040037E746 /* HMDTitleBaseLine.h */,
+				B2F6F955207318040037E746 /* HMDTitleBaseLine.m */,
+				B2F6F951207315240037E746 /* HMDScrollTitleView.h */,
+				B2F6F952207315240037E746 /* HMDScrollTitleView.m */,
+				B2F6F9572073181E0037E746 /* HMDScrollContentView.h */,
+				B2F6F9582073181E0037E746 /* HMDScrollContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,45 +349,8 @@
 		B2F6F9212071D61C0037E746 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
-				B2F6F9382072007A0037E746 /* ScrollContent */,
-				B2F6F9222071D68C0037E746 /* ScrollTitle */,
 			);
 			path = Assembly;
-			sourceTree = "<group>";
-		};
-		B2F6F9222071D68C0037E746 /* ScrollTitle */ = {
-			isa = PBXGroup;
-			children = (
-				B2F6F9232071D68C0037E746 /* Model */,
-				B2F6F9242071D68C0037E746 /* View */,
-				B2F6F9252071D68C0037E746 /* ViewController */,
-			);
-			path = ScrollTitle;
-			sourceTree = "<group>";
-		};
-		B2F6F9232071D68C0037E746 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B2F6F9242071D68C0037E746 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				B2F6F9302071DDC60037E746 /* HMDTitleBaseLine.h */,
-				B2F6F9312071DDC60037E746 /* HMDTitleBaseLine.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B2F6F9252071D68C0037E746 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B2F6F92A2071DB460037E746 /* HMDScrollTitleViewController.h */,
-				B2F6F92B2071DB460037E746 /* HMDScrollTitleViewController.m */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		B2F6F9262071D7610037E746 /* ViewController */ = {
@@ -394,39 +369,6 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		B2F6F9382072007A0037E746 /* ScrollContent */ = {
-			isa = PBXGroup;
-			children = (
-				B2F6F9392072007A0037E746 /* Model */,
-				B2F6F93A2072007A0037E746 /* View */,
-				B2F6F93B2072007A0037E746 /* ViewController */,
-			);
-			path = ScrollContent;
-			sourceTree = "<group>";
-		};
-		B2F6F9392072007A0037E746 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		B2F6F93A2072007A0037E746 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		B2F6F93B2072007A0037E746 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B2F6F93C207202440037E746 /* HMDScrollContentViewController.h */,
-				B2F6F93D207202440037E746 /* HMDScrollContentViewController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		B2F6F93F207207870037E746 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +385,40 @@
 				B2F6F944207207870037E746 /* HMDBaseViewController.h */,
 			);
 			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		B2F6F948207228EB0037E746 /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B2F6F949207228EB0037E746 /* Model */,
+				B2F6F94A207228EB0037E746 /* View */,
+				B2F6F94B207228EB0037E746 /* ViewController */,
+			);
+			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		B2F6F949207228EB0037E746 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2F6F94A207228EB0037E746 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2F6F94B207228EB0037E746 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B2F6F94C20722A0B0037E746 /* HMDPersonCenterViewController.h */,
+				B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */,
+				B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,6 +539,7 @@
 				3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */,
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
 				3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */,
+				B2F6F95020722A0B0037E746 /* HMDPersonCenterViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
 				3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */,
@@ -652,17 +629,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2F6F92C2071DB460037E746 /* HMDScrollTitleViewController.m in Sources */,
 				B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */,
-				B2F6F93E207202440037E746 /* HMDScrollContentViewController.m in Sources */,
+				B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
+				B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */,
 				B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */,
+				B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */,
 				3E03EEE6206E114D004DBB36 /* ViewController.m in Sources */,
 				3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */,
-				B2F6F9322071DDC60037E746 /* HMDTitleBaseLine.m in Sources */,
 				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
+				B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

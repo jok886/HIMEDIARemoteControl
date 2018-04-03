@@ -1,53 +1,34 @@
 //
-//  HMDScrollContentViewController.m
+//  HMDScrollContentView.m
 //  RemoteControl
 //
-//  Created by 林鸿键 on 2018/4/2.
+//  Created by 林鸿键 on 2018/4/3.
 //  Copyright © 2018年 HIMEDIA. All rights reserved.
 //
 
-#import "HMDScrollContentViewController.h"
-
-@interface HMDScrollContentViewController ()<UIScrollViewDelegate>
-@property (nonatomic,weak) UIScrollView *contentScrollView;               //标题背景
+#import "HMDScrollContentView.h"
+@interface HMDScrollContentView()<UIScrollViewDelegate>
+@property (nonatomic,weak) UIScrollView *contentScrollView;                 //标题背景
+@property (nonatomic,strong) NSArray *childVCArray;                         //子栏目
 @end
 
-@implementation HMDScrollContentViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setupConst];
-    [self setupUI];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.view.frame = self.viewFrame;
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+@implementation HMDScrollContentView
 
 #pragma mark -初始化
-//基本参数
--(void)setupConst{
-    self.view.frame = self.viewFrame;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
+
 //UI
 -(void)setupUI{
     UIScrollView *contentScrollView = [[UIScrollView alloc] init];
     
-    contentScrollView.frame = self.view.bounds;
+    contentScrollView.frame = self.bounds;
     
-    [self.view addSubview:contentScrollView];
+    [self addSubview:contentScrollView];
     
     self.contentScrollView = contentScrollView;
     
     // 设置代理
     contentScrollView.delegate = self;
-    self.contentScrollView.contentSize = CGSizeMake(self.childVCArray.count * self.view.bounds.size.width, 0);
+    self.contentScrollView.contentSize = CGSizeMake(self.childVCArray.count * self.bounds.size.width, 0);
     self.contentScrollView.pagingEnabled = YES;
     self.contentScrollView.showsHorizontalScrollIndicator = NO;
     self.contentScrollView.bounces = NO;
@@ -59,8 +40,8 @@
     
     // 判断下有没有父控件
     if (childVC.view.superview) return;
-    CGFloat viewW = CGRectGetWidth(self.view.frame);
-    CGFloat viewH = CGRectGetHeight(self.view.frame);
+    CGFloat viewW = CGRectGetWidth(self.frame);
+    CGFloat viewH = CGRectGetHeight(self.frame);
     CGFloat x = index * viewW;
     // 设置vc的view的位置
     childVC.view.frame = CGRectMake(x, 0, viewW,viewH);
@@ -70,9 +51,9 @@
 // 监听scrollView滚动完成
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-
+    
     // 获取角标
-    CGFloat viewW = CGRectGetWidth(self.view.frame);
+    CGFloat viewW = CGRectGetWidth(self.frame);
     NSInteger i = scrollView.contentOffset.x / viewW;
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollContentViewDidEndDecelerating:atIndex:)]) {
         [self.delegate scrollContentViewDidEndDecelerating:scrollView atIndex:i];
@@ -82,17 +63,15 @@
 }
 
 #pragma mark -API
+-(void)setupUIWithchildViewController:(NSArray *)childVCArray{
+    self.childVCArray = [NSArray arrayWithArray:childVCArray];
+    [self setupUI];
+}
 -(void)showViewAtIndex:(NSInteger)index{
     [self setupChildViewControllerAtIndex:index];
     // 让scrollView滚动对应位置
-    CGFloat x = index * self.viewFrame.size.width;
+    CGFloat x = index * self.frame.size.width;
     self.contentScrollView.contentOffset = CGPointMake(x, 0);
 }
-#pragma mark -懒加载
--(NSMutableArray *)childVCArray{
-    if (_childVCArray == nil) {
-        _childVCArray = [NSMutableArray array];
-    }
-    return _childVCArray;
-}
+
 @end
