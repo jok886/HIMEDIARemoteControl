@@ -2,8 +2,8 @@
 //  UIImage+Extend.m
 //  demo
 //
-//  Created by gaofu on 2017/3/10.
-//  Copyright © 2017年 siruijk. All rights reserved.
+//  Created by 林鸿键 on 2018/4/2.
+//  Copyright © 2018年 HIMEDIA. All rights reserved.
 //
 
 #import "UIImage+Extend.h"

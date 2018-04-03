@@ -7,7 +7,7 @@
 //
 
 #import "HMDNavigationController.h"
-
+#import "UIImage+Color.h"
 @interface HMDNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
@@ -31,7 +31,13 @@
     navBar.titleTextAttributes = attr;
     
     // 设置导航条背景图片
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+//    [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+    
+    [navBar
+     setBackgroundImage:[UIImage imageFromContextWithColor:[UIColor colorWithRed:38/255.0 green:137/255.0 blue:247/255.0 alpha:0]] forBarMetrics:UIBarMetricsDefault];
+    [navBar
+     setShadowImage:[UIImage new]];
+    navBar.translucent = YES;
 }
 
 - (void)viewDidLoad {
@@ -76,7 +82,7 @@
         [backButton sizeToFit];
         
         // 注意:一定要在按钮内容有尺寸的时候,设置才有效果
-        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+//        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
         
         // 设置返回按钮
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];

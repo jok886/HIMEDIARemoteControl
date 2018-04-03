@@ -37,7 +37,12 @@ const static CGFloat animationTime = 2.5f;//扫描时长
     [self initScanCode];
     [self initScanLine];
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsCompact];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {

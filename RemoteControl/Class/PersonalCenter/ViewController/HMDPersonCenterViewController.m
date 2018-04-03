@@ -21,13 +21,17 @@
     [self setupUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 #pragma mark -初始化
 -(void)setupUI{
-    
+    [self setupNavigation];
     //判断是否安装了微信
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"wechat://"]]) {
         [self.signInBtn setTitle:@"  微信登录" forState:UIControlStateNormal];
@@ -36,7 +40,28 @@
     }
 }
 
-
+-(void)setupNavigation{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsCompact];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    //返回按钮
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
+    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton sizeToFit];
+//    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    //扫描按钮
+    UIButton *searchQRButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
+    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
+    [searchQRButton addTarget:self action:@selector(searchQRCode) forControlEvents:UIControlEventTouchUpInside];
+    [searchQRButton sizeToFit];
+    // 注意:一定要在按钮内容有尺寸的时候,设置才有效果
+//    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
+    // 设置返回按钮
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchQRButton];
+}
 #pragma mark -点击
 
 //返回
@@ -47,9 +72,8 @@
 //扫描
 -(IBAction)searchQRCode{
     HMDQRCodeScanViewController *QRCodeVC = [[HMDQRCodeScanViewController alloc]init];
-//    self.navigationController.navigationBar.hidden = NO;
-    [self presentViewController:QRCodeVC animated:YES completion:nil];
-//    [self.navigationController pushViewController:QRCodeVC animated:YES];
+    [self.navigationController pushViewController:QRCodeVC animated:YES];
+//    [self presentViewController:QRCodeVC animated:YES completion:nil];
     
 }
 

@@ -25,7 +25,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)dealloc{
-    HMDFunc;
+    HMDLog(@"-[%@ dealloc]",[self class]);
 }
 
 @end
