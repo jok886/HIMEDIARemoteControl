@@ -43,7 +43,29 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define HMDStrongSelf(o) __strong typeof(o) strongSelf = weakSelf;
 #define HMDWeakSelf(o) __weak typeof(o) weakSelf = o;
+#define single_interface(class)  + (class *)shared##class;
 
+
+// 单利
+#define single_implementation(class) \
+static class *_instance; \
+\
++ (class *)shared##class \
+{ \
+if (_instance == nil) { \
+_instance = [[self alloc] init]; \
+} \
+return _instance; \
+} \
+\
++ (id)allocWithZone:(NSZone *)zone \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instance = [super allocWithZone:zone]; \
+}); \
+return _instance; \
+}
 //调试打印
 #define HMDFunc HMDLog(@"%s",__func__)
 

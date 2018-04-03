@@ -67,11 +67,11 @@
         // 非根控制器才需要设置返回按钮
         // 设置返回按钮
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backButton setTitle:@"返回" forState:UIControlStateNormal];
-        [backButton setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-        [backButton setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
-        [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+//        [backButton setTitle:@"返回" forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
+        [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
+//        [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
         [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         [backButton sizeToFit];
         

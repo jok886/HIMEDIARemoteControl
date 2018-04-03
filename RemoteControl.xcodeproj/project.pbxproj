@@ -26,6 +26,10 @@
 		3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */; };
 		3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */; };
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
+		B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */; };
+		B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */; };
+		B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DC20736D7F004629BE /* NSString+QRCode.m */; };
+		B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DE20736D7F004629BE /* UIImage+Extend.m */; };
 		B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F91F2071CBE50037E746 /* HMDBaseModel.m */; };
 		B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F92E2071DD6D0037E746 /* HMDBaseView.m */; };
 		B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F941207207870037E746 /* HMDNavigationController.m */; };
@@ -84,6 +88,13 @@
 		3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainViewController.m; sourceTree = "<group>"; };
 		3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMainViewController.xib; sourceTree = "<group>"; };
 		46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.release.xcconfig"; sourceTree = "<group>"; };
+		B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDQRCodeScanViewController.h; sourceTree = "<group>"; };
+		B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
+		B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
+		B2E175DB20736D7F004629BE /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
+		B2E175DC20736D7F004629BE /* NSString+QRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QRCode.m"; sourceTree = "<group>"; };
+		B2E175DD20736D7F004629BE /* NSString+QRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QRCode.h"; sourceTree = "<group>"; };
+		B2E175DE20736D7F004629BE /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
 		B2F6F90E2071C9C40037E746 /* NETMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NETMacro.h; sourceTree = "<group>"; };
 		B2F6F90F2071C9C40037E746 /* AppMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
 		B2F6F91E2071CBE50037E746 /* HMDBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseModel.h; sourceTree = "<group>"; };
@@ -199,6 +210,7 @@
 		3EDAD095206E1E5C007406FB /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B2E175E120737B4A004629BE /* TVRemote */,
 				B2F6F948207228EB0037E746 /* PersonalCenter */,
 				3EDAD0B4206E2BF5007406FB /* Main */,
 				3EDAD096206E1E5C007406FB /* Other */,
@@ -298,9 +310,60 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B2E175CE20732B78004629BE /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				B2E175CF20732B78004629BE /* QRCode */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		B2E175CF20732B78004629BE /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B2E175DD20736D7F004629BE /* NSString+QRCode.h */,
+				B2E175DC20736D7F004629BE /* NSString+QRCode.m */,
+				B2E175DB20736D7F004629BE /* UIImage+Extend.h */,
+				B2E175DE20736D7F004629BE /* UIImage+Extend.m */,
+			);
+			path = QRCode;
+			sourceTree = "<group>";
+		};
+		B2E175E120737B4A004629BE /* TVRemote */ = {
+			isa = PBXGroup;
+			children = (
+				B2E175E220737B4A004629BE /* Model */,
+				B2E175E320737B4A004629BE /* View */,
+				B2E175E420737B4A004629BE /* ViewController */,
+			);
+			path = TVRemote;
+			sourceTree = "<group>";
+		};
+		B2E175E220737B4A004629BE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2E175E320737B4A004629BE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2E175E420737B4A004629BE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B2F6F90C2071C9C40037E746 /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				B2E175CE20732B78004629BE /* Tool */,
 				B2F6F9332071F9830037E746 /* Category */,
 				B2F6F9212071D61C0037E746 /* Assembly */,
 				B2F6F91A2071CBCD0037E746 /* Base */,
@@ -417,6 +480,9 @@
 				B2F6F94C20722A0B0037E746 /* HMDPersonCenterViewController.h */,
 				B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */,
 				B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */,
+				B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */,
+				B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */,
+				B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -533,6 +599,7 @@
 				3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */,
 				3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */,
 				3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */,
+				B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */,
 				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
 				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
@@ -633,6 +700,8 @@
 				B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
+				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
+				B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */,
 				B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */,
 				B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */,
 				B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */,
@@ -641,6 +710,7 @@
 				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
 				B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */,
+				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

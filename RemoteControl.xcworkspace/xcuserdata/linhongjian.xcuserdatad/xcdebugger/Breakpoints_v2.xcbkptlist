@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/Main/ViewController/HMDMainViewController.m"
-            timestampString = "544416448.5036449"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-scrollViewDidSelectItemAtIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RemoteControl/Help/Assembly/ScrollContent/ViewController/HMDScrollContentViewController.m"
             timestampString = "544416448.503865"
             startingColumnNumber = "9223372036854775807"
@@ -41,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/Main/ViewController/HMDMainViewController.m"
-            timestampString = "544416448.503965"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-scrollContentViewDidEndDecelerating:atIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/PersonalCenter/ViewController/HMDPersonCenterViewController.m"
-            timestampString = "544416448.504105"
+            filePath = "RemoteControl/Help/Tool/QRCode/HMDQRCodeTool.m"
+            timestampString = "544434708.6841609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "-setupUI"
+            landmarkName = "-beginScanInView:result:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -82,6 +82,7 @@ HMDScrollContentViewDelegate>
 - (IBAction)avatarBtnClick:(UIButton *)sender {
     //跳转个人中心
     HMDPersonCenterViewController *personCenterVC = [[HMDPersonCenterViewController alloc]init];
+//    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:personCenterVC];
     [self presentViewController:personCenterVC animated:YES completion:^{
         
     }];
