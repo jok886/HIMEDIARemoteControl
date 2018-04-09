@@ -25,6 +25,8 @@
 		3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */; };
 		3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */; };
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
+		B20EBD03207B3E6500A2D74F /* HMDTVRemoteDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */; };
+		B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
 		B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */; };
 		B29E8F3020738DC500F5E35C /* HMDTVRemoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */; };
@@ -100,6 +102,11 @@
 		3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainViewController.m; sourceTree = "<group>"; };
 		3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMainViewController.xib; sourceTree = "<group>"; };
 		46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.release.xcconfig"; sourceTree = "<group>"; };
+		B20EBD00207B343800A2D74F /* KeyCodeMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodeMacro.h; sourceTree = "<group>"; };
+		B20EBD01207B3E6500A2D74F /* HMDTVRemoteDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteDao.h; sourceTree = "<group>"; };
+		B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteDao.m; sourceTree = "<group>"; };
+		B20EBD09207B6F3900A2D74F /* HMDLinkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLinkView.h; sourceTree = "<group>"; };
+		B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLinkView.m; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		B29E8F2C20738DC500F5E35C /* HMDTVRemoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteViewController.h; sourceTree = "<group>"; };
@@ -327,6 +334,8 @@
 				B2F6F952207315240037E746 /* HMDScrollTitleView.m */,
 				B2F6F9572073181E0037E746 /* HMDScrollContentView.h */,
 				B2F6F9582073181E0037E746 /* HMDScrollContentView.m */,
+				B20EBD09207B6F3900A2D74F /* HMDLinkView.h */,
+				B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -455,6 +464,8 @@
 		B2E175E220737B4A004629BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B20EBD01207B3E6500A2D74F /* HMDTVRemoteDao.h */,
+				B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +504,7 @@
 			children = (
 				B2F6F90E2071C9C40037E746 /* NETMacro.h */,
 				B2F6F90F2071C9C40037E746 /* AppMacro.h */,
+				B20EBD00207B343800A2D74F /* KeyCodeMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -830,12 +842,14 @@
 				B29E8F3C2074654D00F5E35C /* HMDSearchDeviceViewController.m in Sources */,
 				B29E8F432079BADB00F5E35C /* HMDBaseDao.m in Sources */,
 				B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */,
+				B20EBD03207B3E6500A2D74F /* HMDTVRemoteDao.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
 				B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
+				B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */,
 				B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */,
 				B29E8F462079BAF700F5E35C /* HMDSearchDeviceDao.m in Sources */,
 				B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */,

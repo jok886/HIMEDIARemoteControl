@@ -7,7 +7,8 @@
 //
 
 #import "HMDBaseViewController.h"
-
+typedef void(^HMDTVRemotePowerOffBlock)(void);
 @interface HMDTVRemoteViewController : HMDBaseViewController
+@property (nonatomic,copy) HMDTVRemotePowerOffBlock powerOffBlock;
 
 @end

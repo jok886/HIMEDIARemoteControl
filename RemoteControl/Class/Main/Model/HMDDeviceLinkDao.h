@@ -7,8 +7,11 @@
 //
 
 #import "HMDBaseDao.h"
-
+typedef void(^HMDDeviceLinkFinishBlock)(BOOL success);
 @interface HMDDeviceLinkDao : HMDBaseDao
+@property (nonatomic,copy) HMDDeviceLinkFinishBlock finishBlock;
 
--(void)connectWithDeviceIP:(NSString *)deviceIP onPort:(NSInteger)port;
+//链接
+-(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock;
+
 @end

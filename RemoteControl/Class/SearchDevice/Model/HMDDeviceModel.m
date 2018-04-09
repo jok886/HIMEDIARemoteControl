@@ -61,7 +61,7 @@
     }
     if ([self.curElement isEqualToString:@"deviceType"]) {
         self.deviceType = string;
-        NSLog(@"deviceType:%@",string);
+//        NSLog(@"deviceType:%@",string);
     }
 //    [self.xmlDict setObject:string forKey:self.curElement];
     

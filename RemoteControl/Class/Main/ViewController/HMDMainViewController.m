@@ -11,22 +11,25 @@
 
 #import "HMDScrollTitleView.h"
 #import "HMDScrollContentView.h"
+#import "HMDLinkView.h"
 
 #import "HMDPersonCenterViewController.h"
-#import "HMDSearchDeviceViewController.h"
 
 #import "HMDDeviceLinkDao.h"
+#import "HMDSearchDeviceViewController.h"
+#import "HMDTVRemoteViewController.h"
+
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
-HMDScrollContentViewDelegate>
+HMDScrollContentViewDelegate,
+HMDLinkViewDelegate>
 @property (nonatomic,weak) HMDScrollTitleView *titleView;               //标题
 @property (nonatomic,weak) HMDScrollContentView *contentView;           //内容
+@property (nonatomic,strong) HMDLinkView *linkView;                       //内容
+@property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                 //链接设备
+@property (nonatomic,assign) BOOL changeToKeyWindow;                 //链接设备
 @property (weak, nonatomic) IBOutlet UIButton *avatarBtn;                                   //用户头像
-@property (weak, nonatomic) IBOutlet UIImageView *linkStateImageView;                       //链接状态
-@property (weak, nonatomic) IBOutlet UILabel *linkStateLabel;                               //状态文字
-@property (weak, nonatomic) IBOutlet UIButton *linkBtn;                                     //链接按钮
 
-@property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                                     //链接设备
 @end
 
 @implementation HMDMainViewController
@@ -35,8 +38,15 @@ HMDScrollContentViewDelegate>
     [super viewDidLoad];
     //是否第一次登陆,第一次需要初始化引导界面
     [self setupUI];
+    [self getDLanLink];
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if (!self.changeToKeyWindow) {
+        self.changeToKeyWindow = YES;
+        [[UIApplication sharedApplication].keyWindow addSubview:self.linkView];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -45,6 +55,7 @@ HMDScrollContentViewDelegate>
 -(void)setupUI{
     [self setupContentViewController];
     [self setupTitleViewController];
+    [self setupLinkView];
 }
 
 //标题
@@ -81,6 +92,23 @@ HMDScrollContentViewDelegate>
     self.contentView = contentView;
     
 }
+
+-(void)setupLinkView{
+    self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-60, HMDScreenW, 60)];
+    self.linkView.delegate = self;
+    [self.view addSubview:self.linkView];
+}
+
+-(void)getDLanLink{
+    NSString *ip = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLINKIP];
+    if (ip.length >1) {
+        HMDWeakSelf(self)
+        [self.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
+            [weakSelf.linkView switchLinkState:success ip:ip];
+//            [weakSelf switchLinkState:success ip:ip];
+        }];
+    }
+}
 #pragma mark -点击
 //点击用户头像
 - (IBAction)avatarBtnClick:(UIButton *)sender {
@@ -95,38 +123,12 @@ HMDScrollContentViewDelegate>
 }
 //点击搜索按钮
 - (IBAction)searchBtnClick:(UIButton *)sender {
-    HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
-    HMDWeakSelf(self)
-    searchVC.selectedFinishBlock = ^(NSString *ip, NSInteger port) {
-        [weakSelf connectDeviceWithIP:ip onPort:port];
-    } ;
-        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
-    [self presentViewController:nav animated:YES completion:nil];
-}
-//点击链接
-- (IBAction)linkBtnClick:(UIButton *)sender {
-    
+
 }
 
-#pragma mark - API
--(void)connectDeviceWithIP:(NSString *)deviceIP onPort:(NSInteger)port{
-    if (self.linkDao == nil) {
-        self.linkDao = [[HMDDeviceLinkDao alloc]init];
-    }
-    [self.linkDao connectWithDeviceIP:deviceIP onPort:port];
-}
-#pragma mark -其他
--(void)switchLinkState:(BOOL)link{
-    NSString *imageName = @"link-off";
-    NSString *linkText = @"设备未链接";
-    if (link) {
-        imageName = @"link-on";
-        linkText = @"设备已链接";
-        
-    }
-    [self.linkStateImageView setImage:[UIImage imageNamed:imageName]];
-    self.linkStateLabel.text = linkText;
-}
+
+
+
 #pragma mark -代理
 //对应的标题被点击
 -(void)scrollViewDidSelectItemAtIndex:(NSInteger)index{
@@ -135,5 +137,44 @@ HMDScrollContentViewDelegate>
 //滚动
 -(void)scrollContentViewDidEndDecelerating:(UIScrollView *)scrollView atIndex:(NSInteger)index{
     [self.titleView btnClickAtIndex:index];
+}
+
+-(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(BOOL)link withViewController:(UIViewController *)viewController{
+    if (link) {
+        HMDWeakSelf(self)
+        //进入遥控器
+        HMDTVRemoteViewController *tvRemoteVC = [[HMDTVRemoteViewController alloc]init];
+        tvRemoteVC.powerOffBlock = ^{
+            [weakSelf.linkView switchLinkState:NO ip:nil];
+        };
+        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:tvRemoteVC];
+        [viewController presentViewController:nav animated:YES completion:nil];
+    }else{
+        //进入搜索设备
+        HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
+        HMDWeakSelf(self)
+        HMDWeakObj(searchVC)
+        searchVC.selectedFinishBlock = ^(NSString *ip) {
+            
+            [weakSelf.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
+                [weakSelf.linkView switchLinkState:success ip:ip];
+                [weaksearchVC backAction:nil];
+            }];
+        } ;
+        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
+        [viewController presentViewController:nav animated:YES completion:nil];
+    }
+}
+
+-(void)LinkView:(HMDLinkView *)linkView linkOffBtnClickWithViewController:(UIViewController *)viewController{
+    [self.linkView switchLinkState:NO ip:nil];
+}
+
+#pragma mark - 懒加载
+-(HMDDeviceLinkDao *)linkDao{
+    if (_linkDao == nil) {
+        _linkDao = [[HMDDeviceLinkDao alloc] init];
+    }
+    return _linkDao;
 }
 @end

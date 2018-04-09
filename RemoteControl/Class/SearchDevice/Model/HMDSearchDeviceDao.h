@@ -24,7 +24,7 @@ typedef void(^HMDSearchDeviceDaoGetMoreInfoFinishBlock)(BOOL success,HMDDeviceMo
 //搜索设备
 -(void)searchDevices;
 //在原有基础上搜索设备
--(void)searchDevicesExcludeDevices:(NSArray *)devices;
+//-(void)searchDevicesExcludeDevices:(NSArray *)devices;
 //按UUID获取设备详情
 -(void)getMoreInfoFromDevice:(HMDDeviceModel *)deviceModel finishBlock:(HMDSearchDeviceDaoGetMoreInfoFinishBlock) finishBlock;
 @end

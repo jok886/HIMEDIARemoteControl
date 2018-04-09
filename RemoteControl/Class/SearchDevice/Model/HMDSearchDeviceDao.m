@@ -43,15 +43,18 @@
 
 -(void)completeSearch{
     [self.udpSocket close];
-    NSLog(@"搜索结束,发现%lu个设备\n%@",(unsigned long)[self.deviceDict allKeys].count,[self.deviceDict allValues]);
+    NSLog(@"搜索结束,发现%lu个设备",(unsigned long)[self.deviceDict allKeys].count);
 
 }
 
 #pragma mark - GCDAsyncUdpSocketDelegate
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(nullable id)filterContext{
     NSString *receiveData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    //    NSLog(@"%@",receiveData);
-    NSDictionary *deviceDict = [HMDLANNetTool getDeviceInfoForDataString:receiveData];
+    NSString *ip = [GCDAsyncUdpSocket hostFromAddress:address];
+    uint16_t port = [GCDAsyncUdpSocket portFromAddress:address];
+    NSMutableDictionary *deviceDict = [HMDLANNetTool getDeviceInfoForDataString:receiveData];
+    [deviceDict setObject:ip forKey:@"IP"];
+    [deviceDict setObject:[NSString stringWithFormat:@"%d",port] forKey:@"port"];
     if ([[deviceDict allKeys] containsObject:@"UUID"]) {
         NSString *UUID = [deviceDict objectForKey:@"UUID"];
         if (![[self.deviceDict allKeys]containsObject:UUID]) {
@@ -107,9 +110,15 @@
 //        NSLog(@"downloadProgress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [deviceModelBlock upInfoWithXMLData:responseObject finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
-            if (weakSelf.finishBlock) {
-                weakSelf.finishBlock(success, newDeviceModel);
+            //设备类型过滤
+            if ([newDeviceModel.deviceType containsString:@"MediaRenderer"]) {
+                if (weakSelf.finishBlock) {
+                    weakSelf.finishBlock(success, newDeviceModel);
+                }
+            }else{
+//                NSLog(@"过滤了一个设备%@",newDeviceModel.ip);
             }
+
         }];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -28,6 +28,9 @@
                         <constraint firstAttribute="width" constant="60" id="JPR-gr-ZEA"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVPowerBtnClick:" destination="-1" eventType="touchUpInside" id="dbs-VI-rbV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlB-Ln-BFs">
                     <rect key="frame" x="40" y="443" width="60" height="72"/>
@@ -36,6 +39,9 @@
                         <constraint firstAttribute="width" constant="60" id="kgY-Q2-Ns3"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVMenuBtnClick:" destination="-1" eventType="touchUpInside" id="ZmC-Fv-VqD"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq0-cP-O9J">
                     <rect key="frame" x="157.5" y="555" width="60" height="72"/>
@@ -44,6 +50,9 @@
                         <constraint firstAttribute="height" constant="72" id="Lhr-Vm-6fP"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVScreenShotBtnClick:" destination="-1" eventType="touchUpInside" id="wrt-K6-wb0"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeU-qY-gHP">
                     <rect key="frame" x="275" y="443" width="60" height="72"/>
@@ -52,6 +61,9 @@
                         <constraint firstAttribute="height" constant="72" id="lKg-4Y-XcU"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVBackBtnClick:" destination="-1" eventType="touchUpInside" id="Q7S-Y9-4B8"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnW-Ze-FbK">
                     <rect key="frame" x="40" y="555" width="60" height="72"/>
@@ -60,6 +72,9 @@
                         <constraint firstAttribute="width" constant="60" id="fRu-aF-6Am"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVVolumeAddBtnClick:" destination="-1" eventType="touchUpInside" id="sde-kq-9kC"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYS-72-QUp">
                     <rect key="frame" x="275" y="555" width="60" height="72"/>
@@ -68,6 +83,9 @@
                         <constraint firstAttribute="width" constant="60" id="aOq-Ux-oOQ"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVVolumeMinusBtnClick:" destination="-1" eventType="touchUpInside" id="Igc-sm-0Bf"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrK-hG-JCA">
                     <rect key="frame" x="275" y="60" width="60" height="72"/>
@@ -76,6 +94,9 @@
                         <constraint firstAttribute="width" constant="60" id="OyG-uf-fCJ"/>
                     </constraints>
                     <state key="normal" image="scancode_photo"/>
+                    <connections>
+                        <action selector="TVHomeBtnClick:" destination="-1" eventType="touchUpInside" id="KHX-AS-mcT"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVX-Ai-J49">
                     <rect key="frame" x="87.5" y="192" width="200" height="200"/>
@@ -98,6 +119,9 @@
                         <constraint firstAttribute="width" constant="50" id="sVD-a3-u3Z"/>
                     </constraints>
                     <state key="normal" title="↓"/>
+                    <connections>
+                        <action selector="TVDownBtnClick:" destination="-1" eventType="touchUpInside" id="piv-AJ-2mA"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMA-3X-Pai">
                     <rect key="frame" x="112.5" y="267" width="50" height="50"/>
@@ -106,6 +130,9 @@
                         <constraint firstAttribute="height" constant="50" id="lcC-RW-eeo"/>
                     </constraints>
                     <state key="normal" title="←"/>
+                    <connections>
+                        <action selector="TVLeftBtnClick:" destination="-1" eventType="touchUpInside" id="PDy-Ik-AjL"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-ya-uSt">
                     <rect key="frame" x="212.5" y="267" width="50" height="50"/>
@@ -114,6 +141,9 @@
                         <constraint firstAttribute="height" constant="50" id="wPd-i1-S6J"/>
                     </constraints>
                     <state key="normal" title="→"/>
+                    <connections>
+                        <action selector="TVRightBtnClick:" destination="-1" eventType="touchUpInside" id="KEV-4a-Fce"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-sL-pVA">
                     <rect key="frame" x="162.5" y="267" width="50" height="50"/>
@@ -123,6 +153,9 @@
                         <constraint firstAttribute="height" constant="50" id="HRR-Ee-lMR"/>
                     </constraints>
                     <state key="normal" title="OK"/>
+                    <connections>
+                        <action selector="TVOKBtnClick:" destination="-1" eventType="touchUpInside" id="4qc-fu-JCi"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjU-el-IhU">
                     <rect key="frame" x="162" y="217" width="50" height="50"/>
@@ -131,6 +164,9 @@
                         <constraint firstAttribute="height" constant="50" id="V4O-Oh-tvY"/>
                     </constraints>
                     <state key="normal" title="↑"/>
+                    <connections>
+                        <action selector="TVUPBtnClick:" destination="-1" eventType="touchUpInside" id="LzG-on-xta"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

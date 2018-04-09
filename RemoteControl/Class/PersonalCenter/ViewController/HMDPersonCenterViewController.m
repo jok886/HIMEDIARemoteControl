@@ -63,12 +63,12 @@
 #pragma mark -点击
 
 //返回
--(IBAction)backAction:(id)sender{
+-(void)backAction:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //扫描
--(IBAction)searchQRCode{
+-(void)searchQRCode{
     HMDQRCodeScanViewController *QRCodeVC = [[HMDQRCodeScanViewController alloc]init];
     [self.navigationController pushViewController:QRCodeVC animated:YES];
 //    [self presentViewController:QRCodeVC animated:YES completion:nil];

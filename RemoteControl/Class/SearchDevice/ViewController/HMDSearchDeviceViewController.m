@@ -99,7 +99,6 @@
     [self.searchDao getMoreInfoFromDevice:newDeviceModel finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
         if (success) {
             [weakSelf.deviceArray replaceObjectAtIndex:curIndex withObject:newDeviceModel];
-            NSLog(@"");
             [weakSelf upTableViewData];
             
         }
@@ -109,7 +108,7 @@
 -(void)didSelectRowAtIndexPath:(NSInteger)index deviceModel:(HMDDeviceModel *)deviceModel{
     //链接
     if (self.selectedFinishBlock) {
-        self.selectedFinishBlock(deviceModel.ip,[deviceModel.port integerValue]);
+        self.selectedFinishBlock(deviceModel.ip);
     }
 }
 #pragma mark - 其他

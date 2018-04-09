@@ -25,5 +25,5 @@
 /** 广播地址、子网掩码、端口等，组装成一个字典。 */
 + (NSMutableDictionary *)getLocalInfoForCurrentWiFi;
 /** 获取本地设备的相关信息 */
-+(NSDictionary *)getDeviceInfoForDataString:(NSString *)dataStr;
++(NSMutableDictionary *)getDeviceInfoForDataString:(NSString *)dataStr;
 @end

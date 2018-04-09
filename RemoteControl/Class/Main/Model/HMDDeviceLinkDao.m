@@ -7,75 +7,45 @@
 //
 
 #import "HMDDeviceLinkDao.h"
-#import "GCDAsyncSocket.h"
-#import "HMDDeviceModel.h"
 
-@interface HMDDeviceLinkDao()<GCDAsyncSocketDelegate>
+#import "AFNetworking.h"
 
-@property (nonatomic,strong) GCDAsyncSocket *linkSocket;
+@interface HMDDeviceLinkDao()
+
 
 @end
 @implementation HMDDeviceLinkDao
 
--(void)connectWithDeviceIP:(NSString *)deviceIP onPort:(NSInteger)port{
-
-    NSError * error = nil;
-    if (self.linkSocket == nil) {
-        self.linkSocket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-
+-(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock{
+    if (finishBlock) {
+        self.finishBlock = finishBlock;
     }
-    NSError *connectError = nil;
-    [self.linkSocket connectToHost:deviceIP onPort:port viaInterface:nil withTimeout:-1 error:&connectError];
-    NSLog(@"connectError:%@",connectError);
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    //超时时间
+    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    session.requestSerializer.timeoutInterval = 2.f;
+    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    session.responseSerializer=[AFHTTPResponseSerializer serializer];
+    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil];
+
+    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_INFO,deviceIP];
+    HMDWeakSelf(self)
+    [session GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (weakSelf.finishBlock) {
+            weakSelf.finishBlock(YES);
+        }
+        NSLog(@"success");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (weakSelf.finishBlock) {
+            weakSelf.finishBlock(NO);
+        }
+        NSLog(@"failure");
+    }];
 }
 
-
-#pragma mark - GCDAsyncSocketDelegate
-//- (nullable dispatch_queue_t)newSocketQueueForConnectionFromAddress:(NSData *)address onSocket:(GCDAsyncSocket *)sock{
-//
-//}
-- (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didConnectToUrl:(NSURL *)url{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didReadPartialDataOfLength:(NSUInteger)partialLength tag:(long)tag{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didWritePartialDataOfLength:(NSUInteger)partialLength tag:(long)tag{
-    
-}
-//- (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag
-//                 elapsed:(NSTimeInterval)elapsed
-//               bytesDone:(NSUInteger)length{
-//    
-//}
-//- (NSTimeInterval)socket:(GCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag
-//                 elapsed:(NSTimeInterval)elapsed
-//               bytesDone:(NSUInteger)length{
-//    
-//}
-- (void)socketDidCloseReadStream:(GCDAsyncSocket *)sock{
-    
-}
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err{
-    
-}
-- (void)socketDidSecure:(GCDAsyncSocket *)sock{
-    
-}
-- (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust
-completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler{
-    
-}
 @end

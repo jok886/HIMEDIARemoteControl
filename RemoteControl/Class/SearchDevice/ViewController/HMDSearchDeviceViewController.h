@@ -7,7 +7,8 @@
 //
 
 #import "HMDBaseViewController.h"
-typedef void(^HMDSearchDeviceVCSelectedFinishBlock)(NSString *ip,NSInteger port);               //链接
+typedef void(^HMDSearchDeviceVCSelectedFinishBlock)(NSString *ip);               //链接
 @interface HMDSearchDeviceViewController : HMDBaseViewController
 @property (nonatomic,copy) HMDSearchDeviceVCSelectedFinishBlock selectedFinishBlock;
+- (void)backAction:(id)sender;
 @end

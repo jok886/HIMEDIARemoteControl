@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "HMDMainViewController.h"
+#import "HMDLinkViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -19,9 +21,14 @@
 
     //初始化根控制器
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[HMDMainViewController alloc] init];
+    HMDMainViewController *mainVC = [[HMDMainViewController alloc] init];
+    self.window.rootViewController = mainVC;
     [self.window makeKeyAndVisible];
-    
+//    self.linkViewController = [[HMDLinkViewController alloc]init];
+//    self.linkViewController.viewFrame = CGRectMake(0, HMDScreenH-60, HMDScreenW, 60);
+////    [mainVC addChildViewController:self.linkViewController];
+//    [self.window addSubview:self.linkViewController.view];
+
     // 监控网络状态
 //    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
