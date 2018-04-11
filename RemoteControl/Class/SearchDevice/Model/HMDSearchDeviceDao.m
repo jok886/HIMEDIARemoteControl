@@ -26,9 +26,11 @@
 -(void)searchDevices{
     uint16_t port = 0;
     NSError * error = nil;
+    [self.deviceDict removeAllObjects];
     self.udpSocket = [[GCDAsyncUdpSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     [self.udpSocket enableBroadcast:YES error:&error];
     [self.udpSocket bindToPort:port error:&error];
+
     NSError *joinError = nil;
     [self.udpSocket joinMulticastGroup:HMD_HOST_SSDP error:&joinError];
     NSString *str = HMD_NET_SEARCHDEVICE;
@@ -43,6 +45,9 @@
 
 -(void)completeSearch{
     [self.udpSocket close];
+    if (self.searchFinishBlock) {
+        self.searchFinishBlock();
+    }
     NSLog(@"搜索结束,发现%lu个设备",(unsigned long)[self.deviceDict allKeys].count);
 
 }
@@ -52,20 +57,19 @@
     NSString *receiveData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSString *ip = [GCDAsyncUdpSocket hostFromAddress:address];
     uint16_t port = [GCDAsyncUdpSocket portFromAddress:address];
+    if (ip == nil) {
+        return;
+    }
     NSMutableDictionary *deviceDict = [HMDLANNetTool getDeviceInfoForDataString:receiveData];
     [deviceDict setObject:ip forKey:@"IP"];
     [deviceDict setObject:[NSString stringWithFormat:@"%d",port] forKey:@"port"];
-    if ([[deviceDict allKeys] containsObject:@"UUID"]) {
-        NSString *UUID = [deviceDict objectForKey:@"UUID"];
-        if (![[self.deviceDict allKeys]containsObject:UUID]) {
-            //新发现的设备
-            [self.deviceDict setObject:deviceDict forKey:UUID];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(SearchNewDevice:)]) {
-                HMDDeviceModel *newDeviceModel = [HMDDeviceModel hmd_modelWithDictionary:deviceDict];
-                [self.delegate SearchNewDevice:newDeviceModel];
-            }
+    if (![[self.deviceDict allKeys]containsObject:ip]) {
+        //新发现的设备
+        [self.deviceDict setObject:deviceDict forKey:ip];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(SearchNewDevice:)]) {
+            HMDDeviceModel *newDeviceModel = [HMDDeviceModel hmd_modelWithDictionary:deviceDict];
+            [self.delegate SearchNewDevice:newDeviceModel];
         }
-        
     }
 }
 
@@ -116,13 +120,13 @@
                     weakSelf.finishBlock(success, newDeviceModel);
                 }
             }else{
-//                NSLog(@"过滤了一个设备%@",newDeviceModel.ip);
+                NSLog(@"过滤了一个设备%@   deviceType:%@",newDeviceModel.ip,newDeviceModel.deviceType);
             }
 
         }];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"failure");
+        NSLog(@"获取设备信息failure");
     }];
 }
 #pragma mark -懒加载

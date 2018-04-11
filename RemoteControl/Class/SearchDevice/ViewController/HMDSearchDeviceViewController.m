@@ -84,6 +84,11 @@
     if (self.lanNetSSID) {
         self.searchDao = [[HMDSearchDeviceDao alloc]init];
         self.searchDao.delegate = self;
+        HMDWeakSelf(self)
+        self.searchDao.searchFinishBlock = ^{
+            weakSelf.deviceListTableView.sectionFooterHeight = 44;
+            [weakSelf.deviceListTableView reloadData];
+        };
         [self.searchDao searchDevices];
     }
 }
@@ -111,6 +116,14 @@
         self.selectedFinishBlock(deviceModel.ip);
     }
 }
+
+-(void)researchMoreDevices{
+    [self.deviceArray removeAllObjects];
+    self.deviceListTableView.sectionFooterHeight = 0;
+    [self.deviceListTableView reloadData];
+   [self.searchDao searchDevices];
+    
+}
 #pragma mark - 其他
 -(void)upTableViewData{
     [self.deviceListTableView reloadDeviceData:self.deviceArray];
@@ -118,6 +131,7 @@
 #pragma mark -点击
 //返回
 - (void)backAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //搜索

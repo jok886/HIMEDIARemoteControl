@@ -9,26 +9,20 @@
 #import "HMDTVRemoteDao.h"
 #import "AFNetworking.h"
 @interface HMDTVRemoteDao()
-@property (nonatomic,strong) NSString *ip;
+
 @end
 @implementation HMDTVRemoteDao
 
--(instancetype)init{
-    if (self = [super init]) {
-        NSString *ip = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLINKIP];
-        self.ip = ip;
-    }
-    return self;
-}
 
 -(void)remoteTVWithKey:(NSInteger)key finishBlock:(HMDTVRemoteFinishBlock)finishBlock{
     if (finishBlock) {
         self.finishBlock = finishBlock;
     }
+
     HMDWeakSelf(self)
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     session.requestSerializer=[AFJSONRequestSerializer serializer];
-    
+
     //超时时间
     [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     session.requestSerializer.timeoutInterval = 2.f;
@@ -38,7 +32,7 @@
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [NSString stringWithFormat:@"%ld",(long)key],@"key",
                                 nil];
-    NSString *url = [NSString stringWithFormat:HMD_NET_KEYSTOKE_EVENT,self.ip];
+    NSString *url = [NSString stringWithFormat:HMD_NET_KEYSTOKE_EVENT,HMDCURLINKDEVICEIP];
     [session GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -50,6 +44,92 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (weakSelf.finishBlock) {
             weakSelf.finishBlock(NO);
+        }
+        NSLog(@"failure");
+    }];
+}
+
+-(void)getCaptureFinishBlock:(HMDTVDownLoadImageFinishBlock)finishBlock{
+
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    //超时时间
+    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    session.requestSerializer.timeoutInterval = 30.f;
+    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    session.responseSerializer=[AFHTTPResponseSerializer serializer];
+    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/xml",@"text/plain",nil];
+    NSString *ip = HMDCURLINKDEVICEIP;
+    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_GETCAPTURE,ip];
+    [session GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *filePath = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        [self downLoadImageFromFilepath:filePath ip:ip Finish:finishBlock];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO,nil);
+        }
+        NSLog(@"failure");
+    }];
+}
+
+-(void)getAllAPK{
+    HMDWeakSelf(self)
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    //超时时间
+    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    session.requestSerializer.timeoutInterval = 10.f;
+    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    session.responseSerializer=[AFHTTPResponseSerializer serializer];
+    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/xml",@"text/plain",nil];
+    
+    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_GETALLAPK,HMDCURLINKDEVICEIP];
+    [session GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"success");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (weakSelf.finishBlock) {
+            weakSelf.finishBlock(NO);
+        }
+        NSLog(@"failure");
+    }];
+}
+
+-(void)downLoadImageFromFilepath:(NSString *)filePath ip:(NSString *)ip Finish:(HMDTVDownLoadImageFinishBlock)finishBlock{
+    NSLog(@"下载");
+    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+    session.requestSerializer=[AFJSONRequestSerializer serializer];
+    
+    //超时时间
+    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    session.requestSerializer.timeoutInterval = 30.f;
+    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    session.responseSerializer=[AFHTTPResponseSerializer serializer];
+    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/xml",@"text/plain",nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                filePath,@"posterPicString",
+                                nil];
+    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_DOWNLOADICON,ip];
+    [session POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"----");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *encodedImageStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSData *decodedImageData = [[NSData alloc] initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        if (finishBlock) {
+            finishBlock(YES, decodedImageData);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO, nil);
         }
         NSLog(@"failure");
     }];

@@ -39,12 +39,22 @@
                             <constraint firstAttribute="width" constant="50" id="rM8-3I-Zwu"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-SY-JB5">
+                        <rect key="frame" x="0.0" y="94.5" width="423" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hNo-DL-Sm0"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Boa-SY-JB5" secondAttribute="trailing" id="06G-K4-Swf"/>
                     <constraint firstItem="vKN-o2-F6V" firstAttribute="leading" secondItem="8iI-Ve-OOn" secondAttribute="leading" id="8l2-j4-tSz"/>
+                    <constraint firstAttribute="bottom" secondItem="Boa-SY-JB5" secondAttribute="bottom" id="Cbn-FS-nek"/>
                     <constraint firstItem="8iI-Ve-OOn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="LHi-EY-Acp"/>
                     <constraint firstItem="vKN-o2-F6V" firstAttribute="top" secondItem="8iI-Ve-OOn" secondAttribute="bottom" constant="10" id="MoC-hx-kvs"/>
                     <constraint firstItem="bVa-tq-dla" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VXW-da-UJs"/>
+                    <constraint firstItem="Boa-SY-JB5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YGK-bk-6Tk"/>
                     <constraint firstItem="8iI-Ve-OOn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="dHy-We-O5k"/>
                     <constraint firstItem="bVa-tq-dla" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="20" id="dN3-zd-blO"/>
                 </constraints>

@@ -9,6 +9,7 @@ pod 'Masonry'
 pod 'pop'
 pod 'MJExtension'
 pod 'CocoaAsyncSocket'
+pod 'WechatOpenSDK_NoPay'
 use_frameworks!
 
 end

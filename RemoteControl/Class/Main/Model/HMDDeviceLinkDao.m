@@ -44,7 +44,7 @@
         if (weakSelf.finishBlock) {
             weakSelf.finishBlock(NO);
         }
-        NSLog(@"failure");
+        NSLog(@"Linkfailure:%@",error);
     }];
 }
 

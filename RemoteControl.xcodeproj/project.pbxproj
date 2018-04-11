@@ -27,6 +27,11 @@
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
 		B20EBD03207B3E6500A2D74F /* HMDTVRemoteDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */; };
 		B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */; };
+		B20EBD10207C88E400A2D74F /* HMDRemoteSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */; };
+		B20EBD11207C88E400A2D74F /* HMDRemoteSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */; };
+		B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD12207C9DD500A2D74F /* AVFoundation.framework */; };
+		B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */; };
+		B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD17207CC34B00A2D74F /* NSString+Hash.m */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
 		B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */; };
 		B29E8F3020738DC500F5E35C /* HMDTVRemoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */; };
@@ -107,6 +112,14 @@
 		B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteDao.m; sourceTree = "<group>"; };
 		B20EBD09207B6F3900A2D74F /* HMDLinkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLinkView.h; sourceTree = "<group>"; };
 		B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLinkView.m; sourceTree = "<group>"; };
+		B20EBD0C207C573F00A2D74F /* NotificationMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
+		B20EBD0D207C88E400A2D74F /* HMDRemoteSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRemoteSettingViewController.h; sourceTree = "<group>"; };
+		B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDRemoteSettingViewController.m; sourceTree = "<group>"; };
+		B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDRemoteSettingViewController.xib; sourceTree = "<group>"; };
+		B20EBD12207C9DD500A2D74F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		B20EBD17207CC34B00A2D74F /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		B20EBD18207CC34B00A2D74F /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		B29E8F2C20738DC500F5E35C /* HMDTVRemoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteViewController.h; sourceTree = "<group>"; };
@@ -169,6 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */,
+				B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */,
 				73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +208,8 @@
 		0854F29F8F828C602E43A11D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */,
+				B20EBD12207C9DD500A2D74F /* AVFoundation.framework */,
 				FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */,
 			);
 			name = Frameworks;
@@ -359,6 +376,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B20EBD16207CC34B00A2D74F /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				B20EBD18207CC34B00A2D74F /* NSString+Hash.h */,
+				B20EBD17207CC34B00A2D74F /* NSString+Hash.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
 		B29E8F2820738B4C00F5E35C /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +509,9 @@
 				B29E8F2C20738DC500F5E35C /* HMDTVRemoteViewController.h */,
 				B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */,
 				B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */,
+				B20EBD0D207C88E400A2D74F /* HMDRemoteSettingViewController.h */,
+				B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */,
+				B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -505,6 +534,7 @@
 				B2F6F90E2071C9C40037E746 /* NETMacro.h */,
 				B2F6F90F2071C9C40037E746 /* AppMacro.h */,
 				B20EBD00207B343800A2D74F /* KeyCodeMacro.h */,
+				B20EBD0C207C573F00A2D74F /* NotificationMacro.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -558,6 +588,7 @@
 		B2F6F9332071F9830037E746 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B20EBD16207CC34B00A2D74F /* NSString */,
 				B29E8F55207A11A300F5E35C /* UIView */,
 				B29E8F2820738B4C00F5E35C /* UIImage */,
 			);
@@ -744,6 +775,7 @@
 				B2F6F95020722A0B0037E746 /* HMDPersonCenterViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
+				B20EBD11207C88E400A2D74F /* HMDRemoteSettingViewController.xib in Resources */,
 				3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */,
 				B29E8F3020738DC500F5E35C /* HMDTVRemoteViewController.xib in Resources */,
 			);
@@ -847,6 +879,7 @@
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
+				B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */,
 				B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
 				B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */,
@@ -860,6 +893,7 @@
 				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
 				B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
+				B20EBD10207C88E400A2D74F /* HMDRemoteSettingViewController.m in Sources */,
 				B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 			);
@@ -1026,7 +1060,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3C88W5LYG3;
+				DEVELOPMENT_TEAM = 8FXFAY595D;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = RemoteControl/Class/Other/supportingFiles/HMDRemoteControlPrefixHeader.pch;
 				INFOPLIST_FILE = RemoteControl/Info.plist;
@@ -1044,7 +1078,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3C88W5LYG3;
+				DEVELOPMENT_TEAM = 8FXFAY595D;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = RemoteControl/Class/Other/supportingFiles/HMDRemoteControlPrefixHeader.pch;
 				INFOPLIST_FILE = RemoteControl/Info.plist;

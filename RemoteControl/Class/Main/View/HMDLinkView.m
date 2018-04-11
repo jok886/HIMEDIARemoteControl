@@ -37,10 +37,14 @@
     linkBtn.frame = CGRectMake(HMDScreenW-45, 15, 30, 60);
     [linkBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [linkBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [linkBtn setTitle:@"设备未链接" forState:UIControlStateNormal];
+    [linkBtn setTitle:@"搜索设备" forState:UIControlStateNormal];
     [linkBtn setTitle:@"进入遥控器" forState:UIControlStateSelected];
     [linkBtn addTarget:self action:@selector(linkBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
+    [linkBtn sizeToFit];
+    CGRect linkBtnFrame = linkBtn.frame;
+    CGPoint center = CGPointMake(30, 30);
+    center.x = HMDScreenW - CGRectGetWidth(linkBtnFrame)*0.5-20;
+    linkBtn.center = center;
     self.linkBtn = linkBtn;
     [self addSubview:linkBtn];
     
@@ -49,10 +53,10 @@
     linkStateLab.text = @"设备未链接";
     linkStateLab.font = [UIFont systemFontOfSize:14];
     [linkStateLab sizeToFit];
-    CGRect frame = linkStateLab.frame;
-    CGPoint center = self.center;
-    center.x = 60 + CGRectGetWidth(frame)*0.5;
+    CGRect linkStateLabFrame = linkStateLab.frame;
+    center.x = 60 + CGRectGetWidth(linkStateLabFrame)*0.5;
     linkStateLab.center = center;
+    self.linkStateLab = linkStateLab;
     [self addSubview:linkStateLab];
     
 }
@@ -82,6 +86,18 @@
     }
     self.linkStateBtn.selected = link;
     self.linkStateLab.text = linkText;
+    
+    [self.linkBtn sizeToFit];
+    CGRect linkBtnFrame = self.linkBtn.frame;
+    CGPoint center = CGPointMake(30, 30);
+    center.x = HMDScreenW - CGRectGetWidth(linkBtnFrame)*0.5-20;
+    self.linkBtn.center = center;
+    
+    [self.linkStateLab sizeToFit];
+    CGRect linkStateLabFrame = self.linkStateLab.frame;
+    center.x = 60 + CGRectGetWidth(linkStateLabFrame)*0.5;
+    self.linkStateLab.center = center;
+
 }
 
 - (UIViewController*)currentViewController{

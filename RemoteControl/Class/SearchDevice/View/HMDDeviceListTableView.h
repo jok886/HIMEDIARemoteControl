@@ -12,6 +12,7 @@
 
 @optional
 - (void)didSelectRowAtIndexPath:(NSInteger )index deviceModel:(HMDDeviceModel *)deviceModel;
+- (void)researchMoreDevices;
 @end
 @interface HMDDeviceListTableView : UITableView
 @property (nonatomic,strong) NSMutableArray *deviceArray;

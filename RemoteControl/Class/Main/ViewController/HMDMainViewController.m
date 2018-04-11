@@ -39,6 +39,7 @@ HMDLinkViewDelegate>
     //是否第一次登陆,第一次需要初始化引导界面
     [self setupUI];
     [self getDLanLink];
+    [self addNotificationCenter];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -47,6 +48,11 @@ HMDLinkViewDelegate>
         [[UIApplication sharedApplication].keyWindow addSubview:self.linkView];
     }
 }
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -109,6 +115,11 @@ HMDLinkViewDelegate>
         }];
     }
 }
+
+-(void)addNotificationCenter{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillShow) name:HMDLinkViewWillShow object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillHide) name:HMDLinkViewWillHide object:nil];
+}
 #pragma mark -点击
 //点击用户头像
 - (IBAction)avatarBtnClick:(UIButton *)sender {
@@ -126,9 +137,13 @@ HMDLinkViewDelegate>
 
 }
 
-
-
-
+#pragma mark - NSNotificationCenter
+-(void)linkViewWillShow{
+    self.linkView.hidden = NO;
+}
+-(void)linkViewWillHide{
+    self.linkView.hidden = YES;
+}
 #pragma mark -代理
 //对应的标题被点击
 -(void)scrollViewDidSelectItemAtIndex:(NSInteger)index{
@@ -140,6 +155,7 @@ HMDLinkViewDelegate>
 }
 
 -(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(BOOL)link withViewController:(UIViewController *)viewController{
+    self.linkView.hidden = YES;
     if (link) {
         HMDWeakSelf(self)
         //进入遥控器

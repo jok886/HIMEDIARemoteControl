@@ -8,7 +8,13 @@
 
 #ifndef AppMacro_h
 #define AppMacro_h
-
+//普通常量
+//上次链接的IP
+#define DLANLINKIP    @"DlanLinkIP"
+//侧键控制开关
+#define OPENSIDEKEY    @"OpenSideKey"
+//震动开关
+#define OPENSHOCK    @"OpenShock"
 //机型判断
 #define IPAD     [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
 

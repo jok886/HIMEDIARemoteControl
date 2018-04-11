@@ -10,6 +10,7 @@
 #import "HMDDeviceModel.h"
 
 typedef void(^HMDSearchDeviceDaoGetMoreInfoFinishBlock)(BOOL success,HMDDeviceModel *newDeviceModel);               //数据更新结束
+typedef void(^HMDSearchDeviceDaoSearchFinishBlock)(void);               //停止搜索
 
 @protocol  HMDSearchDeviceDaoDelegate<NSObject>
 
@@ -18,9 +19,9 @@ typedef void(^HMDSearchDeviceDaoGetMoreInfoFinishBlock)(BOOL success,HMDDeviceMo
 @end
 @interface HMDSearchDeviceDao : HMDBaseDao
 @property (nonatomic,assign) CGFloat clostTime;                                 //默认2s
-
 @property (nonatomic,weak) id<HMDSearchDeviceDaoDelegate> delegate;   //点击代理
 @property (nonatomic,copy) HMDSearchDeviceDaoGetMoreInfoFinishBlock finishBlock;     //解析结束
+@property (nonatomic,copy) HMDSearchDeviceDaoSearchFinishBlock searchFinishBlock;     //解析结束
 //搜索设备
 -(void)searchDevices;
 //在原有基础上搜索设备
