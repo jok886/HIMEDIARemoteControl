@@ -11,12 +11,17 @@
 #import "AFNetworking.h"
 
 @interface HMDDeviceLinkDao()
-
-
+@property (nonatomic,assign) NSInteger linkTime;            //链接次数,自动重连3次
+@property (nonatomic,strong) NSString *deviceIP;            //链接次数,自动重连3次
 @end
 @implementation HMDDeviceLinkDao
 
 -(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock{
+    if (![self.deviceIP isEqualToString:deviceIP]) {
+        self.linkTime = 0;
+        self.deviceIP = deviceIP;
+    }
+
     if (finishBlock) {
         self.finishBlock = finishBlock;
     }
@@ -41,10 +46,18 @@
         NSLog(@"success");
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (weakSelf.finishBlock) {
-            weakSelf.finishBlock(NO);
-        }
         NSLog(@"Linkfailure:%@",error);
+        weakSelf.linkTime++;
+        if (weakSelf.linkTime>=3) {
+            if (weakSelf.finishBlock) {
+                weakSelf.finishBlock(NO);
+            }
+        }else{
+            //自动重连
+            [weakSelf getDeviceInfo:weakSelf.deviceIP finishBlock:weakSelf.finishBlock];
+            NSLog(@"自动重连%ld",(long)weakSelf.linkTime);
+        }
+        
     }];
 }
 

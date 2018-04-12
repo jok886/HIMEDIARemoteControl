@@ -13,5 +13,6 @@
 #import "AppMacro.h"
 #import "NETMacro.h"
 #import "NotificationMacro.h"
+#import "UIView+Additions.h"
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

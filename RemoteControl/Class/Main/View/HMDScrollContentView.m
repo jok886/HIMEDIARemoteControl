@@ -7,6 +7,7 @@
 //
 
 #import "HMDScrollContentView.h"
+#import "HMDBaseViewController.h"
 @interface HMDScrollContentView()<UIScrollViewDelegate>
 @property (nonatomic,weak) UIScrollView *contentScrollView;                 //标题背景
 @property (nonatomic,strong) NSArray *childVCArray;                         //子栏目
@@ -44,7 +45,12 @@
     CGFloat viewH = CGRectGetHeight(self.frame);
     CGFloat x = index * viewW;
     // 设置vc的view的位置
-    childVC.view.frame = CGRectMake(x, 0, viewW,viewH);
+    CGRect frame = CGRectMake(x, 0, viewW,viewH);
+    childVC.view.frame = frame;
+    if ([childVC isKindOfClass:[HMDBaseViewController class]]) {
+        HMDBaseViewController *baseChildVC =(HMDBaseViewController *)childVC;
+        baseChildVC.viewControllerFrame = frame;
+    }
     [self.contentScrollView addSubview:childVC.view];
 }
 #pragma mark -UIScrollViewDelegate

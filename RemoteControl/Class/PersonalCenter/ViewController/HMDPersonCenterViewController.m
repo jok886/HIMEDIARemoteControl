@@ -8,7 +8,7 @@
 
 #import "HMDPersonCenterViewController.h"
 #import "HMDQRCodeScanViewController.h"
-
+#import "WXApi.h"
 @interface HMDPersonCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 
@@ -33,7 +33,12 @@
 -(void)setupUI{
     [self setupNavigation];
     //判断是否安装了微信
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"wechat://"]]) {
+//    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"wechat://"]]) {
+//        [self.signInBtn setTitle:@"  微信登录" forState:UIControlStateNormal];
+//    }else{
+//        [self.signInBtn setTitle:@"  手机登录" forState:UIControlStateNormal];
+//    }
+    if ([WXApi isWXAppInstalled]) {
         [self.signInBtn setTitle:@"  微信登录" forState:UIControlStateNormal];
     }else{
         [self.signInBtn setTitle:@"  手机登录" forState:UIControlStateNormal];

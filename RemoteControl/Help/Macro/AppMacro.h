@@ -15,6 +15,8 @@
 #define OPENSIDEKEY    @"OpenSideKey"
 //震动开关
 #define OPENSHOCK    @"OpenShock"
+#define LINKVIEHIGHT    50
+#define HMDSTATUSBARMAXY CGRectGetMaxY([[UIApplication sharedApplication] statusBarFrame])
 //机型判断
 #define IPAD     [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
 

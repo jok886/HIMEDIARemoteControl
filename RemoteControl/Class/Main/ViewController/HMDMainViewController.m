@@ -14,10 +14,14 @@
 #import "HMDLinkView.h"
 
 #import "HMDPersonCenterViewController.h"
-
-#import "HMDDeviceLinkDao.h"
+#import "HMDSearchTVViewController.h"
 #import "HMDSearchDeviceViewController.h"
 #import "HMDTVRemoteViewController.h"
+
+#import "HMDTreasureChestViewController.h"
+
+#import "HMDDeviceLinkDao.h"
+
 
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
@@ -85,12 +89,28 @@ HMDLinkViewDelegate>
     HMDScrollContentView *contentView = [[HMDScrollContentView alloc]init];
     NSMutableArray *childVCArray = [NSMutableArray array];
     for (int i = 0; i<3; i++) {
-        UIViewController *childVC = [[UIViewController alloc]init];
-        childVC.view.backgroundColor = HMDRandomColor;
-        [childVCArray addObject:childVC];
+        switch (i) {
+            case 0:
+                {
+                    HMDTreasureChestViewController *childVC = [[HMDTreasureChestViewController alloc]init];
+                    childVC.activeViewController = self;
+                    childVC.view.backgroundColor = HMDRandomColor;
+                    [childVCArray addObject:childVC];
+                }
+                break;
+                
+            default:
+            {
+                UIViewController *childVC = [[UIViewController alloc]init];
+                childVC.view.backgroundColor = HMDRandomColor;
+                [childVCArray addObject:childVC];
+            }
+                break;
+        }
+
     }
     CGFloat viewW = HMDScreenW;
-    CGFloat viewH = HMDScreenH - 85-45;
+    CGFloat viewH = HMDScreenH - 85-LINKVIEHIGHT;
     contentView.frame = CGRectMake(0, 85, viewW, viewH);
     contentView.delegate = self;
     [contentView setupUIWithchildViewController:childVCArray];
@@ -100,7 +120,7 @@ HMDLinkViewDelegate>
 }
 
 -(void)setupLinkView{
-    self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-60, HMDScreenW, 60)];
+    self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT)];
     self.linkView.delegate = self;
     [self.view addSubview:self.linkView];
 }
@@ -134,7 +154,9 @@ HMDLinkViewDelegate>
 }
 //点击搜索按钮
 - (IBAction)searchBtnClick:(UIButton *)sender {
-
+    HMDSearchTVViewController *searchTVVC = [[HMDSearchTVViewController alloc]init];
+    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchTVVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - NSNotificationCenter
