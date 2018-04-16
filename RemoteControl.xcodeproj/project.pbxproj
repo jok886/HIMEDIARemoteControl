@@ -47,7 +47,7 @@
 		B22878CD207F0399009CAF83 /* HMDTreasureChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878CC207F0399009CAF83 /* HMDTreasureChestViewController.m */; };
 		B22878D1207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878CF207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m */; };
 		B22878D2207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878D0207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib */; };
-		B22878D5207F2361009CAF83 /* HMDTreasureChestDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878D4207F2361009CAF83 /* HMDTreasureChestDao.m */; };
+		B22878D5207F2361009CAF83 /* HMDTreasureChestDao.mm in Sources */ = {isa = PBXBuildFile; fileRef = B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */; };
 		B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
 		B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */; };
@@ -70,6 +70,11 @@
 		B2D73905208483B600B64E36 /* Neptune.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2D73907208483B900B64E36 /* Platinum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; };
 		B2D73908208483B900B64E36 /* Platinum.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2D73AC120848FBE00B64E36 /* HMDDHRCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AC020848FBE00B64E36 /* HMDDHRCenter.mm */; };
+		B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AC32084908A00B64E36 /* HMDDMRControl.mm */; };
+		B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73ACD208491F600B64E36 /* HMDDeviceInfoModel.m */; };
+		B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AD02084933700B64E36 /* HMDEventParamsResponse.m */; };
+		B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AD32084943300B64E36 /* PltMicroMediaController.mm */; };
 		B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */; };
 		B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */; };
 		B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DC20736D7F004629BE /* NSString+QRCode.m */; };
@@ -184,7 +189,7 @@
 		B22878CF207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestCollectionViewCell.m; sourceTree = "<group>"; };
 		B22878D0207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDTreasureChestCollectionViewCell.xib; sourceTree = "<group>"; };
 		B22878D3207F2361009CAF83 /* HMDTreasureChestDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestDao.h; sourceTree = "<group>"; };
-		B22878D4207F2361009CAF83 /* HMDTreasureChestDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestDao.m; sourceTree = "<group>"; };
+		B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HMDTreasureChestDao.mm; sourceTree = "<group>"; };
 		B22878D6207F248E009CAF83 /* HMDTVBaseFunctionDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVBaseFunctionDao.h; sourceTree = "<group>"; };
 		B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVBaseFunctionDao.m; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -216,6 +221,16 @@
 		B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceLinkDao.m; sourceTree = "<group>"; };
 		B2D73900208483A100B64E36 /* Platinum.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Platinum.framework; sourceTree = "<group>"; };
 		B2D73901208483A100B64E36 /* Neptune.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Neptune.framework; sourceTree = "<group>"; };
+		B2D73ABF20848FBE00B64E36 /* HMDDHRCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDHRCenter.h; sourceTree = "<group>"; };
+		B2D73AC020848FBE00B64E36 /* HMDDHRCenter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HMDDHRCenter.mm; sourceTree = "<group>"; };
+		B2D73AC22084908A00B64E36 /* HMDDMRControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDMRControl.h; sourceTree = "<group>"; };
+		B2D73AC32084908A00B64E36 /* HMDDMRControl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HMDDMRControl.mm; sourceTree = "<group>"; };
+		B2D73ACC208491F600B64E36 /* HMDDeviceInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceInfoModel.h; sourceTree = "<group>"; };
+		B2D73ACD208491F600B64E36 /* HMDDeviceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceInfoModel.m; sourceTree = "<group>"; };
+		B2D73ACF2084933700B64E36 /* HMDEventParamsResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDEventParamsResponse.h; sourceTree = "<group>"; };
+		B2D73AD02084933700B64E36 /* HMDEventParamsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDEventParamsResponse.m; sourceTree = "<group>"; };
+		B2D73AD22084943300B64E36 /* PltMicroMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PltMicroMediaController.h; sourceTree = "<group>"; };
+		B2D73AD32084943300B64E36 /* PltMicroMediaController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PltMicroMediaController.mm; sourceTree = "<group>"; };
 		B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDQRCodeScanViewController.h; sourceTree = "<group>"; };
 		B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
 		B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
@@ -415,7 +430,7 @@
 				B29E8F59207A153700F5E35C /* HMDDeviceLinkDao.h */,
 				B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */,
 				B22878D3207F2361009CAF83 /* HMDTreasureChestDao.h */,
-				B22878D4207F2361009CAF83 /* HMDTreasureChestDao.m */,
+				B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,9 +606,35 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		B2D73ABE20848DA700B64E36 /* DMR */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73AC52084917000B64E36 /* Model */,
+				B2D73ABF20848FBE00B64E36 /* HMDDHRCenter.h */,
+				B2D73AC020848FBE00B64E36 /* HMDDHRCenter.mm */,
+				B2D73AC22084908A00B64E36 /* HMDDMRControl.h */,
+				B2D73AC32084908A00B64E36 /* HMDDMRControl.mm */,
+			);
+			path = DMR;
+			sourceTree = "<group>";
+		};
+		B2D73AC52084917000B64E36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73AD22084943300B64E36 /* PltMicroMediaController.h */,
+				B2D73AD32084943300B64E36 /* PltMicroMediaController.mm */,
+				B2D73ACF2084933700B64E36 /* HMDEventParamsResponse.h */,
+				B2D73AD02084933700B64E36 /* HMDEventParamsResponse.m */,
+				B2D73ACC208491F600B64E36 /* HMDDeviceInfoModel.h */,
+				B2D73ACD208491F600B64E36 /* HMDDeviceInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B2E175CE20732B78004629BE /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B2D73ABE20848DA700B64E36 /* DMR */,
 				B29E8F31207463EA00F5E35C /* NETTool */,
 				B2E175CF20732B78004629BE /* QRCode */,
 			);
@@ -1010,6 +1051,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D73AC120848FBE00B64E36 /* HMDDHRCenter.mm in Sources */,
 				B29E8F492079E3DA00F5E35C /* HMDDeviceListTableView.m in Sources */,
 				B29E8F502079E6A400F5E35C /* HMDDeviceListTableViewCell.m in Sources */,
 				B22878BD207E0EEE009CAF83 /* HMDSearchTipHeadView.m in Sources */,
@@ -1025,6 +1067,7 @@
 				B22878A8207DE277009CAF83 /* HMDSearchTVViewController.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
+				B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */,
 				B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */,
 				B22878B4207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
@@ -1034,21 +1077,24 @@
 				B22878C3207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
 				B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */,
-				B22878D5207F2361009CAF83 /* HMDTreasureChestDao.m in Sources */,
+				B22878D5207F2361009CAF83 /* HMDTreasureChestDao.mm in Sources */,
 				B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */,
 				B22878BA207DFD0B009CAF83 /* HMDWaterflowLayout.m in Sources */,
 				B29E8F462079BAF700F5E35C /* HMDSearchDeviceDao.m in Sources */,
 				B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */,
 				B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */,
+				B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */,
 				B22878B7207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m in Sources */,
 				B22878CA207EFEF3009CAF83 /* HMDSearchTVDao.m in Sources */,
 				B29E8F5B207A153700F5E35C /* HMDDeviceLinkDao.m in Sources */,
+				B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */,
 				B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */,
 				3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */,
 				B22878D1207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m in Sources */,
 				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
 				B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
+				B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */,
 				B20EBD10207C88E400A2D74F /* HMDRemoteSettingViewController.m in Sources */,
 				B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,

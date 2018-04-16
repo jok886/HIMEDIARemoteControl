@@ -7,7 +7,7 @@
 //
 
 #import "HMDTreasureChestDao.h"
-
+#import <Platinum/Platinum.h>
 @implementation HMDTreasureChestDao
 
 @end

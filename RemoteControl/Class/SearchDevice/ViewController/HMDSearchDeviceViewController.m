@@ -11,7 +11,7 @@
 #import "HMDLANNetTool.h"
 
 #import "HMDDeviceListTableView.h"
-#import <Platinum/Platinum.h>
+
 @interface HMDSearchDeviceViewController ()<HMDSearchDeviceDaoDelegate,HMDDeviceListTableViewDelegate>
 @property (nonatomic,strong) NSString *lanNetSSID;
 @property (nonatomic,strong) HMDSearchDeviceDao *searchDao;
