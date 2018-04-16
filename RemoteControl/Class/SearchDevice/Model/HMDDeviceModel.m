@@ -7,11 +7,49 @@
 //
 
 #import "HMDDeviceModel.h"
-@interface HMDDeviceModel()<NSXMLParserDelegate>
-@property (nonatomic,strong) NSMutableDictionary *xmlDict;
-@property (nonatomic,strong) NSString *curElement;                  //当前的标签
+#import "GDataXMLNode.h"
+
+@implementation HMDDeviceServiceModel
+- (void)setArray:(NSArray *)array{
+    for (int m = 0; m < array.count; m++) {
+        GDataXMLElement *needEle = [array objectAtIndex:m];
+        if ([needEle.name isEqualToString:@"serviceType"]) {
+            self.serviceType = [needEle stringValue];
+        }
+        if ([needEle.name isEqualToString:@"serviceId"]) {
+            self.serviceId = [needEle stringValue];
+        }
+        if ([needEle.name isEqualToString:@"controlURL"]) {
+            self.controlURL = [needEle stringValue];
+        }
+        if ([needEle.name isEqualToString:@"eventSubURL"]) {
+            self.eventSubURL = [needEle stringValue];
+        }
+        if ([needEle.name isEqualToString:@"SCPDURL"]) {
+            self.SCPDURL = [needEle stringValue];
+        }
+    }
+}
+
 @end
+
+//@interface HMDDeviceModel()<NSXMLParserDelegate>
+//@property (nonatomic,strong) NSMutableDictionary *xmlDict;
+//@property (nonatomic,strong) NSString *curElement;                  //当前的标签
+//@end
 @implementation HMDDeviceModel
+static NSString *serviceAVTransport         = @"urn:schemas-upnp-org:service:AVTransport:1";
+static NSString *serviceRenderControl       = @"urn:schemas-upnp-org:service:RenderingControl:1";
+
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.AVTransportServiceModel = [[HMDDeviceServiceModel alloc] init];
+        self.RenderControlServiceModel = [[HMDDeviceServiceModel alloc] init];
+    }
+    return self;
+}
+
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{
              @"uuid":@"UUID",
@@ -21,70 +59,51 @@
              };
 }
 
--(void)upInfoWithXMLData:(NSData *)xmlData finishBlock:(HMDDeviceModelParserfinishBlock)finishBlock{
-    if (finishBlock) {
-        self.finishBlock = finishBlock;
-    }
-    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:xmlData];
-    xmlParser.delegate = self;
-    [xmlParser parse];//开始解析
-}
+-(void)upInfoWithXMLData:(NSData *)xmlData{
 
-
-// 文档开始的时候触发
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-    // 此方法只在解析开始时触发一次，因此可在这个方法中初始化解析过程中用到的一些成员变量
-    //    _notes = [NSMutableArray new];
-}
-
-// 文档出错的时候触发
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSLog(@"%@", parseError);
-    if (self.finishBlock) {
-        self.finishBlock(NO,self);
-    }
-}
-
-// 遇到一个开始标签的时候触发
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-    self.curElement = elementName;
-}
-
-// 遇到字符串时候触发，该方法是解析元素文本内容主要场所
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    // 剔除回车和空格
-    if ([string isEqualToString:@""]||[string isEqualToString:@"\r"]||[string isEqualToString:@"\n"]) {
-        return;
-    }
-    if ([self.curElement isEqualToString:@"friendlyName"]) {
-        self.friendlyName = string;
-    }
-    if ([self.curElement isEqualToString:@"deviceType"]) {
-        self.deviceType = string;
-//        NSLog(@"deviceType:%@",string);
-    }
-//    [self.xmlDict setObject:string forKey:self.curElement];
+    NSString *dataStr = [[NSString alloc] initWithData:xmlData encoding:NSUTF8StringEncoding];
+    GDataXMLDocument *xmlDoc = [[GDataXMLDocument alloc] initWithXMLString:dataStr options:0 error:nil];
+    GDataXMLElement *xmlEle = [xmlDoc rootElement];
+    NSArray *xmlArray = [xmlEle children];
     
-    
-}
-
-// 遇到结束标签时触发，在该方法中主要是清理刚刚解析完成的元素产生的影响，以便于不影响接下来的解析
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    
-}
-
-// 遇到文档结束时触发
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-    if (self.finishBlock) {
-        self.finishBlock(YES,self);
+    for (int i = 0; i < [xmlArray count]; i++) {
+        GDataXMLElement *element = [xmlArray objectAtIndex:i];
+        if ([[element name] isEqualToString:@"device"]) {
+            [self updataWithArray:[element children]];
+            continue;
+        }
     }
-    
+
 }
 
--(NSMutableDictionary *)xmlDict{
-    if (_xmlDict == nil) {
-        _xmlDict = [NSMutableDictionary dictionary];
+-(void)updataWithArray:(NSArray *)newDataArray{
+    for (int j = 0; j < [newDataArray count]; j++) {
+        GDataXMLElement *ele = [newDataArray objectAtIndex:j];
+        if ([ele.name isEqualToString:@"friendlyName"]) {
+            self.friendlyName = [ele stringValue];
+        }
+        if ([ele.name isEqualToString:@"modelName"]) {
+            self.modelName = [ele stringValue];
+        }
+        if ([ele.name isEqualToString:@"deviceType"]) {
+            self.deviceType = [ele stringValue];
+        }
+
+        if ([ele.name isEqualToString:@"serviceList"]) {
+            NSArray *serviceListArray = [ele children];
+            for (int k = 0; k < [serviceListArray count]; k++) {
+                GDataXMLElement *listEle = [serviceListArray objectAtIndex:k];
+                if ([listEle.name isEqualToString:@"service"]) {
+                    if ([[listEle stringValue] rangeOfString:serviceAVTransport].location != NSNotFound) {
+                        [self.AVTransportServiceModel setArray:[listEle children]];
+                    }else if ([[listEle stringValue] rangeOfString:serviceRenderControl].location != NSNotFound){
+                        [self.RenderControlServiceModel setArray:[listEle children]];
+                    }
+                }
+            }
+            continue;
+        }
     }
-    return _xmlDict;
 }
+
 @end

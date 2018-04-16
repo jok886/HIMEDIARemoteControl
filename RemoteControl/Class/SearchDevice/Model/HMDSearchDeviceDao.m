@@ -17,7 +17,9 @@
 
 @interface HMDSearchDeviceDao()<GCDAsyncUdpSocketDelegate>
 @property (nonatomic,strong) GCDAsyncUdpSocket *udpSocket;
-@property (nonatomic,strong) NSMutableDictionary *deviceDict;                   //设备字典UUID为Key
+@property (nonatomic,strong) NSMutableDictionary *deviceDict;               //设备字典location为Key
+@property (nonatomic,strong) NSMutableArray *deviceIPArray;                 //已经加过的设备IP
+@property (nonatomic,strong) NSLock *lock;                                  //已经加过的设备IP
 @end
 
 @implementation HMDSearchDeviceDao
@@ -27,6 +29,8 @@
     uint16_t port = 0;
     NSError * error = nil;
     [self.deviceDict removeAllObjects];
+    [self.deviceIPArray removeAllObjects];
+
     self.udpSocket = [[GCDAsyncUdpSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     [self.udpSocket enableBroadcast:YES error:&error];
     [self.udpSocket bindToPort:port error:&error];
@@ -63,14 +67,20 @@
     NSMutableDictionary *deviceDict = [HMDLANNetTool getDeviceInfoForDataString:receiveData];
     [deviceDict setObject:ip forKey:@"IP"];
     [deviceDict setObject:[NSString stringWithFormat:@"%d",port] forKey:@"port"];
-    if (![[self.deviceDict allKeys]containsObject:ip]) {
-        //新发现的设备
-        [self.deviceDict setObject:deviceDict forKey:ip];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(SearchNewDevice:)]) {
-            HMDDeviceModel *newDeviceModel = [HMDDeviceModel hmd_modelWithDictionary:deviceDict];
-            [self.delegate SearchNewDevice:newDeviceModel];
+
+    if ([[deviceDict allKeys]containsObject:@"LOCATION"]) {
+//        NSLog(@"LOCATION:%@",deviceDict[@"LOCATION"]);
+        NSString *location = deviceDict[@"LOCATION"];
+        if (![[self.deviceDict allKeys]containsObject:location]) {
+            //新发现的设备
+            [self.deviceDict setObject:deviceDict forKey:location];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(SearchNewDevice:)]) {
+                HMDDeviceModel *newDeviceModel = [HMDDeviceModel hmd_modelWithDictionary:deviceDict];
+                [self.delegate SearchNewDevice:newDeviceModel];
+            }
         }
     }
+
 }
 
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didConnectToAddress:(NSData *)address{
@@ -97,6 +107,7 @@
         self.finishBlock = finishBlock;
     }
     NSString *str = deviceModel.location;
+    NSString *ip = deviceModel.ip;
     NSCharacterSet *encodeUrlSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *encodeUrl = [str stringByAddingPercentEncodingWithAllowedCharacters:encodeUrlSet];
     HMDWeakSelf(self)
@@ -113,18 +124,23 @@
     [session GET:encodeUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 //        NSLog(@"downloadProgress");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [deviceModelBlock upInfoWithXMLData:responseObject finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
-            //设备类型过滤
-            if ([newDeviceModel.deviceType containsString:@"MediaRenderer"]) {
-                if (weakSelf.finishBlock) {
-                    weakSelf.finishBlock(success, newDeviceModel);
+        @synchronized(self){
+            [deviceModelBlock upInfoWithXMLData:responseObject];
+            if (![weakSelf.deviceIPArray containsObject:ip]) {
+                
+                if ([deviceModelBlock.deviceType containsString:@"MediaRenderer"] || [deviceModelBlock.deviceType containsString:@"AVTransport"]) {
+                    NSLog(@"增加IP:%@",deviceModelBlock.ip);
+                    [weakSelf.deviceIPArray addObject:ip];
+                    if (weakSelf.finishBlock) {
+                        weakSelf.finishBlock(YES, deviceModelBlock);
+                    }
+                }else{
+                    NSLog(@"过滤了一个设备%@   deviceType:%@",deviceModelBlock.ip,deviceModelBlock.deviceType);
                 }
             }else{
-                NSLog(@"过滤了一个设备%@   deviceType:%@",newDeviceModel.ip,newDeviceModel.deviceType);
+                NSLog(@"过滤了一个设备IP:%@",deviceModelBlock.ip);
             }
-
-        }];
-
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"获取设备信息failure");
     }];
@@ -135,5 +151,19 @@
         _deviceDict = [NSMutableDictionary dictionary];
     }
     return _deviceDict;
+}
+
+-(NSMutableArray *)deviceIPArray{
+    if (_deviceIPArray == nil) {
+        _deviceIPArray = [NSMutableArray array];
+    }
+    return _deviceIPArray;
+}
+
+-(NSLock *)lock{
+    if (_lock) {
+        _lock = [[NSLock alloc]init];
+    }
+    return _lock;
 }
 @end

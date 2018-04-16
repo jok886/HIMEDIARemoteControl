@@ -10,6 +10,7 @@ pod 'pop'
 pod 'MJExtension'
 pod 'CocoaAsyncSocket'
 pod 'WechatOpenSDK_NoPay'
+pod 'GDataXMLNode2'
 use_frameworks!
 
 end

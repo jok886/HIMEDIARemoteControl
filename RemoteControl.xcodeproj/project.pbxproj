@@ -64,6 +64,12 @@
 		B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */; };
 		B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F57207A122900F5E35C /* UIView+Additions.m */; };
 		B29E8F5B207A153700F5E35C /* HMDDeviceLinkDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */; };
+		B2D73902208483A100B64E36 /* Platinum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; };
+		B2D73903208483A100B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
+		B2D73904208483B600B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
+		B2D73905208483B600B64E36 /* Neptune.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B2D73907208483B900B64E36 /* Platinum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; };
+		B2D73908208483B900B64E36 /* Platinum.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */; };
 		B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */; };
 		B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DC20736D7F004629BE /* NSString+QRCode.m */; };
@@ -95,6 +101,21 @@
 			remoteInfo = RemoteControl;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2D73906208483B600B64E36 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B2D73908208483B900B64E36 /* Platinum.framework in Embed Frameworks */,
+				B2D73905208483B600B64E36 /* Neptune.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3E03EEDE206E114D004DBB36 /* RemoteControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +214,8 @@
 		B29E8F57207A122900F5E35C /* UIView+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
 		B29E8F59207A153700F5E35C /* HMDDeviceLinkDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceLinkDao.h; sourceTree = "<group>"; };
 		B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceLinkDao.m; sourceTree = "<group>"; };
+		B2D73900208483A100B64E36 /* Platinum.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Platinum.framework; sourceTree = "<group>"; };
+		B2D73901208483A100B64E36 /* Neptune.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Neptune.framework; sourceTree = "<group>"; };
 		B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDQRCodeScanViewController.h; sourceTree = "<group>"; };
 		B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
 		B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
@@ -228,7 +251,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D73904208483B600B64E36 /* Neptune.framework in Frameworks */,
+				B2D73907208483B900B64E36 /* Platinum.framework in Frameworks */,
+				B2D73902208483A100B64E36 /* Platinum.framework in Frameworks */,
 				B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */,
+				B2D73903208483A100B64E36 /* Neptune.framework in Frameworks */,
 				B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */,
 				73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */,
 			);
@@ -254,6 +281,8 @@
 		0854F29F8F828C602E43A11D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2D73901208483A100B64E36 /* Neptune.framework */,
+				B2D73900208483A100B64E36 /* Platinum.framework */,
 				B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */,
 				B20EBD12207C9DD500A2D74F /* AVFoundation.framework */,
 				FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */,
@@ -770,6 +799,7 @@
 				3E03EEDC206E114D004DBB36 /* Resources */,
 				17743DA0F8C8179ED5009A8B /* [CP] Embed Pods Frameworks */,
 				F899FBDA05341DF3D6120D0B /* [CP] Copy Pods Resources */,
+				B2D73906208483B600B64E36 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -919,6 +949,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/GDataXMLNode2/GDataXMLNode2.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
@@ -928,6 +959,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDataXMLNode2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
@@ -1078,6 +1110,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1133,6 +1166,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1183,8 +1217,14 @@
 			baseConfigurationReference = E39280B65B3DFBF617055C3C /* Pods-RemoteControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/RemoteControl/Help/DLANFramework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = RemoteControl/Class/Other/supportingFiles/HMDRemoteControlPrefixHeader.pch;
 				INFOPLIST_FILE = RemoteControl/Info.plist;
@@ -1201,8 +1241,14 @@
 			baseConfigurationReference = 46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/RemoteControl/Help/DLANFramework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = RemoteControl/Class/Other/supportingFiles/HMDRemoteControlPrefixHeader.pch;
 				INFOPLIST_FILE = RemoteControl/Info.plist;

@@ -11,7 +11,7 @@
 #import "HMDLANNetTool.h"
 
 #import "HMDDeviceListTableView.h"
-
+#import <Platinum/Platinum.h>
 @interface HMDSearchDeviceViewController ()<HMDSearchDeviceDaoDelegate,HMDDeviceListTableViewDelegate>
 @property (nonatomic,strong) NSString *lanNetSSID;
 @property (nonatomic,strong) HMDSearchDeviceDao *searchDao;
@@ -99,11 +99,11 @@
     //请求设备详情
 //    NSLog(@"设备UUID:%@\n详情地址:%@",newDeviceModel.uuid,newDeviceModel.location);
     HMDWeakSelf(self)
-    [self.deviceArray addObject:newDeviceModel];
-    NSInteger curIndex = [self.deviceArray indexOfObject:newDeviceModel];
+//    [self.deviceArray addObject:newDeviceModel];
+//    NSInteger curIndex = [self.deviceArray indexOfObject:newDeviceModel];
     [self.searchDao getMoreInfoFromDevice:newDeviceModel finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
         if (success) {
-            [weakSelf.deviceArray replaceObjectAtIndex:curIndex withObject:newDeviceModel];
+            [weakSelf.deviceArray addObject:newDeviceModel];
             [weakSelf upTableViewData];
             
         }

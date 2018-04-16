@@ -7,7 +7,6 @@
 //
 
 #import "HMDBaseDao.h"
-
 @implementation HMDBaseDao
 
 @end
