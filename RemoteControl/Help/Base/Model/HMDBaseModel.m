@@ -14,4 +14,16 @@
     return [curClass mj_objectWithKeyValues:dic];
 }
 
++(instancetype)hmd_modelWithJSONString:(NSString *)jsonStr{
+    Class curClass = [self class];
+    return [curClass mj_objectWithKeyValues:jsonStr];
+}
++(instancetype)hmd_modelWithJSONData:(NSData *)jsonData{
+    Class curClass = [self class];
+    return [curClass mj_objectWithKeyValues:jsonData];
+}
++(NSArray *)hmd_modelArrayWithKeyValuesArray:(NSArray *)dictArray{
+    Class curClass = [self class];
+    return [curClass mj_objectArrayWithKeyValuesArray:dictArray];
+}
 @end

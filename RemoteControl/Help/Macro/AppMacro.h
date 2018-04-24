@@ -9,7 +9,13 @@
 #ifndef AppMacro_h
 #define AppMacro_h
 //普通常量
+//解密的key
+#define HMDEncryptKey    @"564f5335f01448fea293929e418c75dd"
+//微信登录
+#define WXLoginRefreshToken    @"WXLoginRefreshToken"
 //上次链接的IP
+#define DLANLastTimeLinkIP    @"DLANLastTimeLinkIP"
+//当前链接的IP
 #define DLANLINKIP    @"DlanLinkIP"
 //侧键控制开关
 #define OPENSIDEKEY    @"OpenSideKey"

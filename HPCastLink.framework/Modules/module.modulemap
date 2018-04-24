@@ -1,0 +1,6 @@
+framework module HPCastLink {
+  umbrella header "HPCastLink.h"
+
+  export *
+  module * { export * }
+}

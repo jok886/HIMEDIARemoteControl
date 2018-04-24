@@ -13,5 +13,13 @@
 字典转模型
  */
 +(instancetype)hmd_modelWithDictionary:(NSDictionary *)dic;
-
+/**
+ JSON转模型
+ */
++(instancetype)hmd_modelWithJSONString:(NSString *)jsonStr;
++(instancetype)hmd_modelWithJSONData:(NSData *)jsonData;
+/**
+ JSON转模型
+ */
++(NSArray *)hmd_modelArrayWithKeyValuesArray:(NSArray *)dictArray;
 @end

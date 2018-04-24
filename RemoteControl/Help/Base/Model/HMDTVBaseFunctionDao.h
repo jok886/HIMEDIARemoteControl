@@ -12,6 +12,9 @@ typedef void(^HMDTVDownLoadImageFinishBlock)(BOOL success,NSData *imageData);   
 @interface HMDTVBaseFunctionDao : HMDBaseDao
 //截屏
 -(void)getCaptureFinishBlock:(HMDTVDownLoadImageFinishBlock)finishBlock;
+
+//截屏
+-(void)getImageCaptureFinishBlock:(HMDTVGetCaptureFinishBlock)finishBlock;
 //下载图片
 -(void)downLoadImageFromFilepath:(NSString *)filePath ip:(NSString *)ip Finish:(HMDTVDownLoadImageFinishBlock)finishBlock;
 @end

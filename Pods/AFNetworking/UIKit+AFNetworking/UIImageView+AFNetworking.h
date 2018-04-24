@@ -96,6 +96,10 @@ NS_ASSUME_NONNULL_BEGIN
               placeholderImage:(nullable UIImage *)placeholderImage
                        success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, UIImage *image))success
                        failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error))failure;
+- (void)setBase64ImageWithURLRequest:(NSURLRequest *)urlRequest
+              placeholderImage:(nullable UIImage *)placeholderImage
+                       success:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, UIImage *image))success
+                       failure:(nullable void (^)(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error))failure;
 
 /**
  Cancels any executing image operation for the receiver, if one exists.

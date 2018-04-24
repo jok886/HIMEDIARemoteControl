@@ -14,5 +14,6 @@
 #import "NETMacro.h"
 #import "NotificationMacro.h"
 #import "UIView+Additions.h"
+#import "MJExtension.h"
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

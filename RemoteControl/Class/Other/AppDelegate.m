@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 #import "HMDMainViewController.h"
-
-
-@interface AppDelegate ()
+#import <HPCastLink/HPCastLink.h>
+#import <WXApi.h>
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -18,24 +18,39 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DLANLINKIP];
+    //微信登录
+    [WXApi registerApp:@"wxed8c151bb3208370"];
+//乐播SDK
+    if ([[HPCastLink sharedCastLink] appkeyVerify:@"29b77f20395691d76cc69fa9bd8e7971"]) {
+         NSLog(@"appkeyVerify_enableDLNA");
+//        [HPCastLink sharedCastLink].enableDLNA = YES;
+    }else{
+        NSLog(@"appkeyVerify");
+    }
     //初始化根控制器
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     HMDMainViewController *mainVC = [[HMDMainViewController alloc] init];
     self.window.rootViewController = mainVC;
     [self.window makeKeyAndVisible];
-//    self.linkViewController = [[HMDLinkViewController alloc]init];
-//    self.linkViewController.viewFrame = CGRectMake(0, HMDScreenH-60, HMDScreenW, 60);
-////    [mainVC addChildViewController:self.linkViewController];
-//    [self.window addSubview:self.linkViewController.view];
-
-    // 监控网络状态
-//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     return YES;
 }
 
+//微信登录
+-(void)onResp:(BaseResp *)resp{
+    //登录后的回调
+    if ([resp isKindOfClass:[SendAuthResp class]]) {//登录
+        [[NSNotificationCenter defaultCenter] postNotificationName:HMDWECHATLOGIN object:resp];
+    }
+}
 
+-(void)onReq:(BaseReq *)req{
+    NSLog(@"");
+}
+-(BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    return [WXApi handleOpenURL:url delegate:self];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   leboconfig.plist
+   aiqiyiPlayButton
+
+   Created by Moss1on on 2017/9/8.
+   Copyright (c) 2017年 Mossion. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>Type</key>
+        <string>1</string>
+        <key>Channel</key>
+        <string>huashu</string>
+        <key>Version</key>
+        <string>2.4</string>
+        <key>Raop_port</key>
+        <string>52244</string>
+        <key>Airplay_port</key>
+        <string>52233</string>
+        <key>Mirror_port</key>
+        <string>7020</string>
+        <key>Lelink_port</key>
+        <string>52266</string>
+        <key>Dlna_port</key>
+        <string>52255</string>
+        <key>Googlecast_port</key>
+        <string>8009</string>
+        <key>Port_type</key>
+        <string>1</string>
+        <key>Switch_path</key>
+        <string> </string>
+        <key>Report_path</key>
+        <string></string>
+        <key>Upload_path</key>
+        <string></string>
+        <key>Sdk_feature</key>
+        <string>0x0000000000000000</string>
+        <key>Channel_feature</key>
+        <string>11671304</string>
+        <key>Extend_feature</key>
+        <string>0</string>
+    </dict>
+</plist>

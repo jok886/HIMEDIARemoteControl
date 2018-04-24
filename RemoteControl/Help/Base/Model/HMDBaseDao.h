@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "AFNetworking.h"
 @interface HMDBaseDao : NSObject
-
+-(AFHTTPSessionManager *)getAFHTTPSessionManager;
 @end

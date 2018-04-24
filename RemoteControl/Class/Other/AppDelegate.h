@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-//@class HMDLinkViewController;
+#import "HMDUserModel.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-//@property (strong, nonatomic) HMDLinkViewController *linkViewController;
-
+@property (strong, nonatomic) HMDUserModel *userModel;
+@property (assign, nonatomic,getter=isLogin) BOOL loginState;
 @end
 

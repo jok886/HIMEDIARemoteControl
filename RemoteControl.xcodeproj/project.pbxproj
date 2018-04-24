@@ -22,48 +22,25 @@
 		3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A3206E2142007406FB /* HMD_RC_introductory_page_1@3x.png */; };
 		3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */; };
 		3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */; };
-		3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */; };
-		3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */; };
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
-		B20EBD03207B3E6500A2D74F /* HMDTVRemoteDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */; };
-		B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */; };
-		B20EBD10207C88E400A2D74F /* HMDRemoteSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */; };
-		B20EBD11207C88E400A2D74F /* HMDRemoteSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */; };
 		B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD12207C9DD500A2D74F /* AVFoundation.framework */; };
 		B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */; };
 		B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD17207CC34B00A2D74F /* NSString+Hash.m */; };
-		B22878A8207DE277009CAF83 /* HMDSearchTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878A6207DE277009CAF83 /* HMDSearchTVViewController.m */; };
-		B22878A9207DE277009CAF83 /* HMDSearchTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878A7207DE277009CAF83 /* HMDSearchTVViewController.xib */; };
-		B22878AC207DEAFF009CAF83 /* HMDSearchHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878AB207DEAFF009CAF83 /* HMDSearchHeadView.m */; };
-		B22878AE207DEB0E009CAF83 /* HMDSearchHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878AD207DEB0E009CAF83 /* HMDSearchHeadView.xib */; };
-		B22878B4207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878B3207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m */; };
-		B22878B7207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878B6207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m */; };
-		B22878BA207DFD0B009CAF83 /* HMDWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878B9207DFD0A009CAF83 /* HMDWaterflowLayout.m */; };
-		B22878BD207E0EEE009CAF83 /* HMDSearchTipHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878BC207E0EEE009CAF83 /* HMDSearchTipHeadView.m */; };
-		B22878BF207E0F0C009CAF83 /* HMDSearchTipHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878BE207E0F0C009CAF83 /* HMDSearchTipHeadView.xib */; };
-		B22878C3207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878C1207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m */; };
-		B22878C4207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878C2207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.xib */; };
-		B22878CA207EFEF3009CAF83 /* HMDSearchTVDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878C9207EFEF3009CAF83 /* HMDSearchTVDao.m */; };
-		B22878CD207F0399009CAF83 /* HMDTreasureChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878CC207F0399009CAF83 /* HMDTreasureChestViewController.m */; };
-		B22878D1207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878CF207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m */; };
-		B22878D2207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22878D0207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib */; };
-		B22878D5207F2361009CAF83 /* HMDTreasureChestDao.mm in Sources */ = {isa = PBXBuildFile; fileRef = B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */; };
 		B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */; };
+		B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A51208984FD00B5227B /* EncryptionTools.m */; };
+		B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A89208DB33400B5227B /* NSString+Hash.m */; };
+		B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A8D208DCDA800B5227B /* HMDApplistViewController.m */; };
+		B24C6A93208DD08600B5227B /* HMDAPPListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A91208DD08600B5227B /* HMDAPPListTableViewCell.m */; };
+		B24C6A94208DD08600B5227B /* HMDAPPListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B24C6A92208DD08600B5227B /* HMDAPPListTableViewCell.xib */; };
+		B24C6AA0208DDF8100B5227B /* HMDUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A99208DDF8000B5227B /* HMDUserModel.m */; };
+		B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A9C208DDF8000B5227B /* HMDLoginDao.m */; };
+		B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */; };
+		B24C6AA8208DDFAA00B5227B /* HMDAPKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
-		B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */; };
-		B29E8F3020738DC500F5E35C /* HMDTVRemoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */; };
 		B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F332074640E00F5E35C /* HMDLANNetTool.m */; };
-		B29E8F3C2074654D00F5E35C /* HMDSearchDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F3A2074654D00F5E35C /* HMDSearchDeviceViewController.m */; };
-		B29E8F3D2074654D00F5E35C /* HMDSearchDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29E8F3B2074654D00F5E35C /* HMDSearchDeviceViewController.xib */; };
-		B29E8F402079B9DA00F5E35C /* HMDDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F3F2079B9DA00F5E35C /* HMDDeviceModel.m */; };
 		B29E8F432079BADB00F5E35C /* HMDBaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F422079BADB00F5E35C /* HMDBaseDao.m */; };
-		B29E8F462079BAF700F5E35C /* HMDSearchDeviceDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F452079BAF700F5E35C /* HMDSearchDeviceDao.m */; };
-		B29E8F492079E3DA00F5E35C /* HMDDeviceListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F482079E3DA00F5E35C /* HMDDeviceListTableView.m */; };
-		B29E8F502079E6A400F5E35C /* HMDDeviceListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F4E2079E6A400F5E35C /* HMDDeviceListTableViewCell.m */; };
-		B29E8F512079E6A400F5E35C /* HMDDeviceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29E8F4F2079E6A400F5E35C /* HMDDeviceListTableViewCell.xib */; };
 		B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */; };
 		B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F57207A122900F5E35C /* UIView+Additions.m */; };
-		B29E8F5B207A153700F5E35C /* HMDDeviceLinkDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */; };
 		B2D73902208483A100B64E36 /* Platinum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; };
 		B2D73903208483A100B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
 		B2D73904208483B600B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
@@ -75,19 +52,67 @@
 		B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73ACD208491F600B64E36 /* HMDDeviceInfoModel.m */; };
 		B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AD02084933700B64E36 /* HMDEventParamsResponse.m */; };
 		B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AD32084943300B64E36 /* PltMicroMediaController.mm */; };
-		B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */; };
-		B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */; };
+		B2D73AD72084A80400B64E36 /* HPCastLink.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B2D73AD52084A80300B64E36 /* HPCastLink.bundle */; };
+		B2D73AD82084A80400B64E36 /* HPCastLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AD62084A80400B64E36 /* HPCastLink.framework */; };
+		B2D73ADA2084A83100B64E36 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AD92084A83100B64E36 /* libc++.tbd */; };
+		B2D73ADC2084A85000B64E36 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73ADB2084A85000B64E36 /* libsqlite3.tbd */; };
+		B2D73ADE2084A85E00B64E36 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73ADD2084A85D00B64E36 /* SystemConfiguration.framework */; };
+		B2D73AE02084A86700B64E36 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73ADF2084A86700B64E36 /* CoreTelephony.framework */; };
+		B2D73AE22084A87900B64E36 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AE12084A87900B64E36 /* libz.tbd */; };
+		B2D73AE42084A88100B64E36 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AE32084A88100B64E36 /* Security.framework */; };
+		B2D73B022086EE9100B64E36 /* HMDTitleBaseLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AF62086EE9100B64E36 /* HMDTitleBaseLine.m */; };
+		B2D73B032086EE9100B64E36 /* HMDLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AF72086EE9100B64E36 /* HMDLinkView.m */; };
+		B2D73B042086EE9100B64E36 /* HMDScrollTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AF92086EE9100B64E36 /* HMDScrollTitleView.m */; };
+		B2D73B052086EE9100B64E36 /* HMDScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AFB2086EE9100B64E36 /* HMDScrollContentView.m */; };
+		B2D73B062086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73AFF2086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.m */; };
+		B2D73B072086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B012086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.xib */; };
+		B2D73B122086EEE600B64E36 /* HMDMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B092086EEE600B64E36 /* HMDMainViewController.xib */; };
+		B2D73B132086EEE600B64E36 /* HMDMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B0A2086EEE600B64E36 /* HMDMainViewController.m */; };
+		B2D73B152086EEE600B64E36 /* HMDTreasureChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B102086EEE600B64E36 /* HMDTreasureChestViewController.m */; };
+		B2D73B1C2086EF1000B64E36 /* HMDTreasureChestDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B182086EF0F00B64E36 /* HMDTreasureChestDao.m */; };
+		B2D73B1D2086EF1000B64E36 /* HMDDeviceLinkDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B1B2086EF1000B64E36 /* HMDDeviceLinkDao.m */; };
+		B2D73B262086EF4E00B64E36 /* HMDPersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */; };
+		B2D73B272086EF4E00B64E36 /* HMDPersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */; };
+		B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B232086EF4E00B64E36 /* HMDQRCodeScanViewController.xib */; };
+		B2D73B292086EF4E00B64E36 /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B242086EF4E00B64E36 /* HMDQRCodeScanViewController.m */; };
+		B2D73B322086EFA800B64E36 /* HMDRemoteSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B2B2086EFA800B64E36 /* HMDRemoteSettingViewController.xib */; };
+		B2D73B332086EFA800B64E36 /* HMDRemoteSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B2C2086EFA800B64E36 /* HMDRemoteSettingViewController.m */; };
+		B2D73B342086EFA800B64E36 /* HMDTVRemoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B302086EFA800B64E36 /* HMDTVRemoteViewController.xib */; };
+		B2D73B352086EFA800B64E36 /* HMDTVRemoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B312086EFA800B64E36 /* HMDTVRemoteViewController.m */; };
+		B2D73B392086EFB000B64E36 /* HMDTVRemoteDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B372086EFB000B64E36 /* HMDTVRemoteDao.m */; };
+		B2D73B3F2086EFF500B64E36 /* HMDSearchDeviceDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B3B2086EFF500B64E36 /* HMDSearchDeviceDao.m */; };
+		B2D73B402086EFF500B64E36 /* HMDDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B3C2086EFF500B64E36 /* HMDDeviceModel.m */; };
+		B2D73B472086F00400B64E36 /* HMDDeviceListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B422086F00400B64E36 /* HMDDeviceListTableView.m */; };
+		B2D73B482086F00400B64E36 /* HMDDeviceListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B432086F00400B64E36 /* HMDDeviceListTableViewCell.xib */; };
+		B2D73B492086F00400B64E36 /* HMDDeviceListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B462086F00400B64E36 /* HMDDeviceListTableViewCell.m */; };
+		B2D73B4E2086F00E00B64E36 /* HMDSearchDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B4B2086F00E00B64E36 /* HMDSearchDeviceViewController.xib */; };
+		B2D73B4F2086F00E00B64E36 /* HMDSearchDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B4C2086F00E00B64E36 /* HMDSearchDeviceViewController.m */; };
+		B2D73B532086F02900B64E36 /* HMDSearchTVDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B512086F02900B64E36 /* HMDSearchTVDao.m */; };
+		B2D73B582086F05600B64E36 /* HMDSearchTVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B552086F05600B64E36 /* HMDSearchTVViewController.xib */; };
+		B2D73B592086F05600B64E36 /* HMDSearchTVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B562086F05600B64E36 /* HMDSearchTVViewController.m */; };
+		B2D73B6B2086F09400B64E36 /* HMDSearchHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B5D2086F09400B64E36 /* HMDSearchHeadView.xib */; };
+		B2D73B702086F09400B64E36 /* HMDSearchHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B622086F09400B64E36 /* HMDSearchHeadView.m */; };
+		B2D73B722086F09400B64E36 /* HMDWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B682086F09400B64E36 /* HMDWaterflowLayout.m */; };
+		B2D73B7D2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B752086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib */; };
+		B2D73B7E2086F1D400B64E36 /* HMDSearchTipHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B772086F1D400B64E36 /* HMDSearchTipHeadView.xib */; };
+		B2D73B7F2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B782086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m */; };
+		B2D73B802086F1D400B64E36 /* HMDSearchTipHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B792086F1D400B64E36 /* HMDSearchTipHeadView.m */; };
+		B2D73B812086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B7A2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m */; };
+		B2D73B852086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B832086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m */; };
+		B2D73B882086F23000B64E36 /* HMDLineFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B872086F23000B64E36 /* HMDLineFlowLayout.m */; };
+		B2D73B8E2086F39100B64E36 /* HMDMainVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B8C2086F39100B64E36 /* HMDMainVideoViewController.m */; };
+		B2D73B8F2086F39100B64E36 /* HMDMainVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B8D2086F39100B64E36 /* HMDMainVideoViewController.xib */; };
+		B2D73B932087127700B64E36 /* HMDVideoShowCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B912087127700B64E36 /* HMDVideoShowCollectionViewCell.m */; };
+		B2D73B942087127700B64E36 /* HMDVideoShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B922087127700B64E36 /* HMDVideoShowCollectionViewCell.xib */; };
+		B2D73B98208718E700B64E36 /* HMDVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B97208718E700B64E36 /* HMDVideoModel.m */; };
+		B2D73B9B20871B3C00B64E36 /* HMDVideoDataDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B9A20871B3C00B64E36 /* HMDVideoDataDao.m */; };
+		B2D73B9E20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B9D20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m */; };
 		B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DC20736D7F004629BE /* NSString+QRCode.m */; };
 		B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E175DE20736D7F004629BE /* UIImage+Extend.m */; };
 		B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F91F2071CBE50037E746 /* HMDBaseModel.m */; };
 		B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F92E2071DD6D0037E746 /* HMDBaseView.m */; };
 		B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F941207207870037E746 /* HMDNavigationController.m */; };
 		B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F943207207870037E746 /* HMDBaseViewController.m */; };
-		B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */; };
-		B2F6F95020722A0B0037E746 /* HMDPersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */; };
-		B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F952207315240037E746 /* HMDScrollTitleView.m */; };
-		B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F955207318040037E746 /* HMDTitleBaseLine.m */; };
-		B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2F6F9582073181E0037E746 /* HMDScrollContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,79 +171,42 @@
 		3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_1@2x.png"; sourceTree = "<group>"; };
 		3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_3@3x.png"; sourceTree = "<group>"; };
 		3EDAD0AF206E223C007406FB /* HMDRemoteControlPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRemoteControlPrefixHeader.pch; sourceTree = "<group>"; };
-		3EDAD0BC206E2C75007406FB /* HMDMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMainViewController.h; sourceTree = "<group>"; };
-		3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainViewController.m; sourceTree = "<group>"; };
-		3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMainViewController.xib; sourceTree = "<group>"; };
 		46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.release.xcconfig"; sourceTree = "<group>"; };
 		B20EBD00207B343800A2D74F /* KeyCodeMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodeMacro.h; sourceTree = "<group>"; };
-		B20EBD01207B3E6500A2D74F /* HMDTVRemoteDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteDao.h; sourceTree = "<group>"; };
-		B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteDao.m; sourceTree = "<group>"; };
-		B20EBD09207B6F3900A2D74F /* HMDLinkView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLinkView.h; sourceTree = "<group>"; };
-		B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLinkView.m; sourceTree = "<group>"; };
 		B20EBD0C207C573F00A2D74F /* NotificationMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
-		B20EBD0D207C88E400A2D74F /* HMDRemoteSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRemoteSettingViewController.h; sourceTree = "<group>"; };
-		B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDRemoteSettingViewController.m; sourceTree = "<group>"; };
-		B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDRemoteSettingViewController.xib; sourceTree = "<group>"; };
 		B20EBD12207C9DD500A2D74F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		B20EBD17207CC34B00A2D74F /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
 		B20EBD18207CC34B00A2D74F /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
-		B22878A5207DE277009CAF83 /* HMDSearchTVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVViewController.h; sourceTree = "<group>"; };
-		B22878A6207DE277009CAF83 /* HMDSearchTVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVViewController.m; sourceTree = "<group>"; };
-		B22878A7207DE277009CAF83 /* HMDSearchTVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchTVViewController.xib; sourceTree = "<group>"; };
-		B22878AA207DEAFF009CAF83 /* HMDSearchHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchHeadView.h; sourceTree = "<group>"; };
-		B22878AB207DEAFF009CAF83 /* HMDSearchHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchHeadView.m; sourceTree = "<group>"; };
-		B22878AD207DEB0E009CAF83 /* HMDSearchHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchHeadView.xib; sourceTree = "<group>"; };
-		B22878B2207DFA78009CAF83 /* HMDSearchTVResultCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVResultCollectionView.h; sourceTree = "<group>"; };
-		B22878B3207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVResultCollectionView.m; sourceTree = "<group>"; };
-		B22878B5207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVTipsCollectionView.h; sourceTree = "<group>"; };
-		B22878B6207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVTipsCollectionView.m; sourceTree = "<group>"; };
-		B22878B8207DFD0A009CAF83 /* HMDWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDWaterflowLayout.h; sourceTree = "<group>"; };
-		B22878B9207DFD0A009CAF83 /* HMDWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDWaterflowLayout.m; sourceTree = "<group>"; };
-		B22878BB207E0EEE009CAF83 /* HMDSearchTipHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTipHeadView.h; sourceTree = "<group>"; };
-		B22878BC207E0EEE009CAF83 /* HMDSearchTipHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTipHeadView.m; sourceTree = "<group>"; };
-		B22878BE207E0F0C009CAF83 /* HMDSearchTipHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchTipHeadView.xib; sourceTree = "<group>"; };
-		B22878C0207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTipCollectionViewCell.h; sourceTree = "<group>"; };
-		B22878C1207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTipCollectionViewCell.m; sourceTree = "<group>"; };
-		B22878C2207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchTipCollectionViewCell.xib; sourceTree = "<group>"; };
-		B22878C8207EFEF3009CAF83 /* HMDSearchTVDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVDao.h; sourceTree = "<group>"; };
-		B22878C9207EFEF3009CAF83 /* HMDSearchTVDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVDao.m; sourceTree = "<group>"; };
-		B22878CB207F0399009CAF83 /* HMDTreasureChestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestViewController.h; sourceTree = "<group>"; };
-		B22878CC207F0399009CAF83 /* HMDTreasureChestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestViewController.m; sourceTree = "<group>"; };
-		B22878CE207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestCollectionViewCell.h; sourceTree = "<group>"; };
-		B22878CF207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestCollectionViewCell.m; sourceTree = "<group>"; };
-		B22878D0207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDTreasureChestCollectionViewCell.xib; sourceTree = "<group>"; };
-		B22878D3207F2361009CAF83 /* HMDTreasureChestDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestDao.h; sourceTree = "<group>"; };
-		B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HMDTreasureChestDao.mm; sourceTree = "<group>"; };
 		B22878D6207F248E009CAF83 /* HMDTVBaseFunctionDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVBaseFunctionDao.h; sourceTree = "<group>"; };
 		B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVBaseFunctionDao.m; sourceTree = "<group>"; };
+		B24C6A50208984FD00B5227B /* EncryptionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptionTools.h; sourceTree = "<group>"; };
+		B24C6A51208984FD00B5227B /* EncryptionTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptionTools.m; sourceTree = "<group>"; };
+		B24C6A88208DB33400B5227B /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		B24C6A89208DB33400B5227B /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		B24C6A8C208DCDA800B5227B /* HMDApplistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDApplistViewController.h; sourceTree = "<group>"; };
+		B24C6A8D208DCDA800B5227B /* HMDApplistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDApplistViewController.m; sourceTree = "<group>"; };
+		B24C6A90208DD08600B5227B /* HMDAPPListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDAPPListTableViewCell.h; sourceTree = "<group>"; };
+		B24C6A91208DD08600B5227B /* HMDAPPListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDAPPListTableViewCell.m; sourceTree = "<group>"; };
+		B24C6A92208DD08600B5227B /* HMDAPPListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDAPPListTableViewCell.xib; sourceTree = "<group>"; };
+		B24C6A99208DDF8000B5227B /* HMDUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDUserModel.m; sourceTree = "<group>"; };
+		B24C6A9A208DDF8000B5227B /* HMDLoginDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDLoginDao.h; sourceTree = "<group>"; };
+		B24C6A9B208DDF8000B5227B /* HMDUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDUserModel.h; sourceTree = "<group>"; };
+		B24C6A9C208DDF8000B5227B /* HMDLoginDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDLoginDao.m; sourceTree = "<group>"; };
+		B24C6A9E208DDF8000B5227B /* HMDAppListDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDAppListDao.h; sourceTree = "<group>"; };
+		B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDAppListDao.m; sourceTree = "<group>"; };
+		B24C6AA6208DDFAA00B5227B /* HMDAPKModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDAPKModel.h; sourceTree = "<group>"; };
+		B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDAPKModel.m; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
-		B29E8F2C20738DC500F5E35C /* HMDTVRemoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteViewController.h; sourceTree = "<group>"; };
-		B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteViewController.m; sourceTree = "<group>"; };
-		B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDTVRemoteViewController.xib; sourceTree = "<group>"; };
 		B29E8F322074640E00F5E35C /* HMDLANNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLANNetTool.h; sourceTree = "<group>"; };
 		B29E8F332074640E00F5E35C /* HMDLANNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLANNetTool.m; sourceTree = "<group>"; };
-		B29E8F392074654D00F5E35C /* HMDSearchDeviceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchDeviceViewController.h; sourceTree = "<group>"; };
-		B29E8F3A2074654D00F5E35C /* HMDSearchDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchDeviceViewController.m; sourceTree = "<group>"; };
-		B29E8F3B2074654D00F5E35C /* HMDSearchDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchDeviceViewController.xib; sourceTree = "<group>"; };
-		B29E8F3E2079B9DA00F5E35C /* HMDDeviceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceModel.h; sourceTree = "<group>"; };
-		B29E8F3F2079B9DA00F5E35C /* HMDDeviceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceModel.m; sourceTree = "<group>"; };
 		B29E8F412079BADB00F5E35C /* HMDBaseDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseDao.h; sourceTree = "<group>"; };
 		B29E8F422079BADB00F5E35C /* HMDBaseDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDBaseDao.m; sourceTree = "<group>"; };
-		B29E8F442079BAF700F5E35C /* HMDSearchDeviceDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchDeviceDao.h; sourceTree = "<group>"; };
-		B29E8F452079BAF700F5E35C /* HMDSearchDeviceDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchDeviceDao.m; sourceTree = "<group>"; };
-		B29E8F472079E3DA00F5E35C /* HMDDeviceListTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceListTableView.h; sourceTree = "<group>"; };
-		B29E8F482079E3DA00F5E35C /* HMDDeviceListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceListTableView.m; sourceTree = "<group>"; };
-		B29E8F4D2079E6A400F5E35C /* HMDDeviceListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceListTableViewCell.h; sourceTree = "<group>"; };
-		B29E8F4E2079E6A400F5E35C /* HMDDeviceListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceListTableViewCell.m; sourceTree = "<group>"; };
-		B29E8F4F2079E6A400F5E35C /* HMDDeviceListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDDeviceListTableViewCell.xib; sourceTree = "<group>"; };
 		B29E8F522079F65500F5E35C /* HMDXMLParserTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDXMLParserTool.h; sourceTree = "<group>"; };
 		B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDXMLParserTool.m; sourceTree = "<group>"; };
 		B29E8F56207A122900F5E35C /* UIView+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
 		B29E8F57207A122900F5E35C /* UIView+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
-		B29E8F59207A153700F5E35C /* HMDDeviceLinkDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDeviceLinkDao.h; sourceTree = "<group>"; };
-		B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceLinkDao.m; sourceTree = "<group>"; };
 		B2D73900208483A100B64E36 /* Platinum.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Platinum.framework; sourceTree = "<group>"; };
 		B2D73901208483A100B64E36 /* Neptune.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Neptune.framework; sourceTree = "<group>"; };
 		B2D73ABF20848FBE00B64E36 /* HMDDHRCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDHRCenter.h; sourceTree = "<group>"; };
@@ -231,9 +219,95 @@
 		B2D73AD02084933700B64E36 /* HMDEventParamsResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDEventParamsResponse.m; sourceTree = "<group>"; };
 		B2D73AD22084943300B64E36 /* PltMicroMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PltMicroMediaController.h; sourceTree = "<group>"; };
 		B2D73AD32084943300B64E36 /* PltMicroMediaController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PltMicroMediaController.mm; sourceTree = "<group>"; };
-		B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDQRCodeScanViewController.h; sourceTree = "<group>"; };
-		B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
-		B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
+		B2D73AD52084A80300B64E36 /* HPCastLink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HPCastLink.bundle; sourceTree = "<group>"; };
+		B2D73AD62084A80400B64E36 /* HPCastLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HPCastLink.framework; sourceTree = "<group>"; };
+		B2D73AD92084A83100B64E36 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B2D73ADB2084A85000B64E36 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B2D73ADD2084A85D00B64E36 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B2D73ADF2084A86700B64E36 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B2D73AE12084A87900B64E36 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B2D73AE32084A88100B64E36 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B2D73AE52084A90800B64E36 /* HPCastLink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HPCastLink.bundle; sourceTree = "<group>"; };
+		B2D73AF62086EE9100B64E36 /* HMDTitleBaseLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTitleBaseLine.m; sourceTree = "<group>"; };
+		B2D73AF72086EE9100B64E36 /* HMDLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDLinkView.m; sourceTree = "<group>"; };
+		B2D73AF82086EE9100B64E36 /* HMDScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDScrollContentView.h; sourceTree = "<group>"; };
+		B2D73AF92086EE9100B64E36 /* HMDScrollTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDScrollTitleView.m; sourceTree = "<group>"; };
+		B2D73AFA2086EE9100B64E36 /* HMDTitleBaseLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTitleBaseLine.h; sourceTree = "<group>"; };
+		B2D73AFB2086EE9100B64E36 /* HMDScrollContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDScrollContentView.m; sourceTree = "<group>"; };
+		B2D73AFC2086EE9100B64E36 /* HMDLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDLinkView.h; sourceTree = "<group>"; };
+		B2D73AFD2086EE9100B64E36 /* HMDScrollTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDScrollTitleView.h; sourceTree = "<group>"; };
+		B2D73AFF2086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestCollectionViewCell.m; sourceTree = "<group>"; };
+		B2D73B002086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestCollectionViewCell.h; sourceTree = "<group>"; };
+		B2D73B012086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDTreasureChestCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2D73B092086EEE600B64E36 /* HMDMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDMainViewController.xib; sourceTree = "<group>"; };
+		B2D73B0A2086EEE600B64E36 /* HMDMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDMainViewController.m; sourceTree = "<group>"; };
+		B2D73B0B2086EEE600B64E36 /* HMDMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDMainViewController.h; sourceTree = "<group>"; };
+		B2D73B102086EEE600B64E36 /* HMDTreasureChestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestViewController.m; sourceTree = "<group>"; };
+		B2D73B112086EEE600B64E36 /* HMDTreasureChestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestViewController.h; sourceTree = "<group>"; };
+		B2D73B172086EF0F00B64E36 /* HMDTreasureChestDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestDao.h; sourceTree = "<group>"; };
+		B2D73B182086EF0F00B64E36 /* HMDTreasureChestDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestDao.m; sourceTree = "<group>"; };
+		B2D73B1A2086EF1000B64E36 /* HMDDeviceLinkDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDDeviceLinkDao.h; sourceTree = "<group>"; };
+		B2D73B1B2086EF1000B64E36 /* HMDDeviceLinkDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceLinkDao.m; sourceTree = "<group>"; };
+		B2D73B1F2086EF4E00B64E36 /* HMDPersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDPersonCenterViewController.h; sourceTree = "<group>"; };
+		B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDPersonCenterViewController.xib; sourceTree = "<group>"; };
+		B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDPersonCenterViewController.m; sourceTree = "<group>"; };
+		B2D73B232086EF4E00B64E36 /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
+		B2D73B242086EF4E00B64E36 /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
+		B2D73B252086EF4E00B64E36 /* HMDQRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDQRCodeScanViewController.h; sourceTree = "<group>"; };
+		B2D73B2B2086EFA800B64E36 /* HMDRemoteSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDRemoteSettingViewController.xib; sourceTree = "<group>"; };
+		B2D73B2C2086EFA800B64E36 /* HMDRemoteSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDRemoteSettingViewController.m; sourceTree = "<group>"; };
+		B2D73B2D2086EFA800B64E36 /* HMDRemoteSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDRemoteSettingViewController.h; sourceTree = "<group>"; };
+		B2D73B2F2086EFA800B64E36 /* HMDTVRemoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteViewController.h; sourceTree = "<group>"; };
+		B2D73B302086EFA800B64E36 /* HMDTVRemoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDTVRemoteViewController.xib; sourceTree = "<group>"; };
+		B2D73B312086EFA800B64E36 /* HMDTVRemoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteViewController.m; sourceTree = "<group>"; };
+		B2D73B372086EFB000B64E36 /* HMDTVRemoteDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTVRemoteDao.m; sourceTree = "<group>"; };
+		B2D73B382086EFB000B64E36 /* HMDTVRemoteDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTVRemoteDao.h; sourceTree = "<group>"; };
+		B2D73B3B2086EFF500B64E36 /* HMDSearchDeviceDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchDeviceDao.m; sourceTree = "<group>"; };
+		B2D73B3C2086EFF500B64E36 /* HMDDeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceModel.m; sourceTree = "<group>"; };
+		B2D73B3D2086EFF500B64E36 /* HMDSearchDeviceDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchDeviceDao.h; sourceTree = "<group>"; };
+		B2D73B3E2086EFF500B64E36 /* HMDDeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDDeviceModel.h; sourceTree = "<group>"; };
+		B2D73B422086F00400B64E36 /* HMDDeviceListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceListTableView.m; sourceTree = "<group>"; };
+		B2D73B432086F00400B64E36 /* HMDDeviceListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDDeviceListTableViewCell.xib; sourceTree = "<group>"; };
+		B2D73B442086F00400B64E36 /* HMDDeviceListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDDeviceListTableViewCell.h; sourceTree = "<group>"; };
+		B2D73B452086F00400B64E36 /* HMDDeviceListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDDeviceListTableView.h; sourceTree = "<group>"; };
+		B2D73B462086F00400B64E36 /* HMDDeviceListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDDeviceListTableViewCell.m; sourceTree = "<group>"; };
+		B2D73B4B2086F00E00B64E36 /* HMDSearchDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDSearchDeviceViewController.xib; sourceTree = "<group>"; };
+		B2D73B4C2086F00E00B64E36 /* HMDSearchDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchDeviceViewController.m; sourceTree = "<group>"; };
+		B2D73B4D2086F00E00B64E36 /* HMDSearchDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchDeviceViewController.h; sourceTree = "<group>"; };
+		B2D73B512086F02900B64E36 /* HMDSearchTVDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVDao.m; sourceTree = "<group>"; };
+		B2D73B522086F02900B64E36 /* HMDSearchTVDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVDao.h; sourceTree = "<group>"; };
+		B2D73B552086F05600B64E36 /* HMDSearchTVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDSearchTVViewController.xib; sourceTree = "<group>"; };
+		B2D73B562086F05600B64E36 /* HMDSearchTVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVViewController.m; sourceTree = "<group>"; };
+		B2D73B572086F05600B64E36 /* HMDSearchTVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVViewController.h; sourceTree = "<group>"; };
+		B2D73B5D2086F09400B64E36 /* HMDSearchHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDSearchHeadView.xib; sourceTree = "<group>"; };
+		B2D73B622086F09400B64E36 /* HMDSearchHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchHeadView.m; sourceTree = "<group>"; };
+		B2D73B632086F09400B64E36 /* HMDWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDWaterflowLayout.h; sourceTree = "<group>"; };
+		B2D73B682086F09400B64E36 /* HMDWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDWaterflowLayout.m; sourceTree = "<group>"; };
+		B2D73B692086F09400B64E36 /* HMDSearchHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchHeadView.h; sourceTree = "<group>"; };
+		B2D73B752086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDSearchTipCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2D73B762086F1D400B64E36 /* HMDSearchTipCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTipCollectionViewCell.h; sourceTree = "<group>"; };
+		B2D73B772086F1D400B64E36 /* HMDSearchTipHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDSearchTipHeadView.xib; sourceTree = "<group>"; };
+		B2D73B782086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVTipsCollectionView.m; sourceTree = "<group>"; };
+		B2D73B792086F1D400B64E36 /* HMDSearchTipHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTipHeadView.m; sourceTree = "<group>"; };
+		B2D73B7A2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTipCollectionViewCell.m; sourceTree = "<group>"; };
+		B2D73B7B2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVTipsCollectionView.h; sourceTree = "<group>"; };
+		B2D73B7C2086F1D400B64E36 /* HMDSearchTipHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTipHeadView.h; sourceTree = "<group>"; };
+		B2D73B832086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDSearchTVResultCollectionView.m; sourceTree = "<group>"; };
+		B2D73B842086F1DB00B64E36 /* HMDSearchTVResultCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDSearchTVResultCollectionView.h; sourceTree = "<group>"; };
+		B2D73B862086F23000B64E36 /* HMDLineFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLineFlowLayout.h; sourceTree = "<group>"; };
+		B2D73B872086F23000B64E36 /* HMDLineFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLineFlowLayout.m; sourceTree = "<group>"; };
+		B2D73B8B2086F39100B64E36 /* HMDMainVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMainVideoViewController.h; sourceTree = "<group>"; };
+		B2D73B8C2086F39100B64E36 /* HMDMainVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainVideoViewController.m; sourceTree = "<group>"; };
+		B2D73B8D2086F39100B64E36 /* HMDMainVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMainVideoViewController.xib; sourceTree = "<group>"; };
+		B2D73B902087127700B64E36 /* HMDVideoShowCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoShowCollectionViewCell.h; sourceTree = "<group>"; };
+		B2D73B912087127700B64E36 /* HMDVideoShowCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoShowCollectionViewCell.m; sourceTree = "<group>"; };
+		B2D73B922087127700B64E36 /* HMDVideoShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDVideoShowCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2D73B96208718E700B64E36 /* HMDVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoModel.h; sourceTree = "<group>"; };
+		B2D73B97208718E700B64E36 /* HMDVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoModel.m; sourceTree = "<group>"; };
+		B2D73B9920871B3C00B64E36 /* HMDVideoDataDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoDataDao.h; sourceTree = "<group>"; };
+		B2D73B9A20871B3C00B64E36 /* HMDVideoDataDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoDataDao.m; sourceTree = "<group>"; };
+		B2D73B9C20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HMDDLANLoadImage.h"; sourceTree = "<group>"; };
+		B2D73B9D20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HMDDLANLoadImage.m"; sourceTree = "<group>"; };
 		B2E175DB20736D7F004629BE /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
 		B2E175DC20736D7F004629BE /* NSString+QRCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QRCode.m"; sourceTree = "<group>"; };
 		B2E175DD20736D7F004629BE /* NSString+QRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QRCode.h"; sourceTree = "<group>"; };
@@ -248,15 +322,6 @@
 		B2F6F941207207870037E746 /* HMDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDNavigationController.m; sourceTree = "<group>"; };
 		B2F6F943207207870037E746 /* HMDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDBaseViewController.m; sourceTree = "<group>"; };
 		B2F6F944207207870037E746 /* HMDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDBaseViewController.h; sourceTree = "<group>"; };
-		B2F6F94C20722A0B0037E746 /* HMDPersonCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDPersonCenterViewController.h; sourceTree = "<group>"; };
-		B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDPersonCenterViewController.m; sourceTree = "<group>"; };
-		B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDPersonCenterViewController.xib; sourceTree = "<group>"; };
-		B2F6F951207315240037E746 /* HMDScrollTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollTitleView.h; sourceTree = "<group>"; };
-		B2F6F952207315240037E746 /* HMDScrollTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollTitleView.m; sourceTree = "<group>"; };
-		B2F6F954207318040037E746 /* HMDTitleBaseLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTitleBaseLine.h; sourceTree = "<group>"; };
-		B2F6F955207318040037E746 /* HMDTitleBaseLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTitleBaseLine.m; sourceTree = "<group>"; };
-		B2F6F9572073181E0037E746 /* HMDScrollContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScrollContentView.h; sourceTree = "<group>"; };
-		B2F6F9582073181E0037E746 /* HMDScrollContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScrollContentView.m; sourceTree = "<group>"; };
 		E39280B65B3DFBF617055C3C /* Pods-RemoteControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.debug.xcconfig"; sourceTree = "<group>"; };
 		FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RemoteControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -266,7 +331,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D73AE42084A88100B64E36 /* Security.framework in Frameworks */,
+				B2D73AE22084A87900B64E36 /* libz.tbd in Frameworks */,
+				B2D73AE02084A86700B64E36 /* CoreTelephony.framework in Frameworks */,
+				B2D73ADE2084A85E00B64E36 /* SystemConfiguration.framework in Frameworks */,
+				B2D73ADC2084A85000B64E36 /* libsqlite3.tbd in Frameworks */,
+				B2D73ADA2084A83100B64E36 /* libc++.tbd in Frameworks */,
 				B2D73904208483B600B64E36 /* Neptune.framework in Frameworks */,
+				B2D73AD82084A80400B64E36 /* HPCastLink.framework in Frameworks */,
 				B2D73907208483B900B64E36 /* Platinum.framework in Frameworks */,
 				B2D73902208483A100B64E36 /* Platinum.framework in Frameworks */,
 				B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */,
@@ -296,6 +368,14 @@
 		0854F29F8F828C602E43A11D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2D73AE32084A88100B64E36 /* Security.framework */,
+				B2D73AE12084A87900B64E36 /* libz.tbd */,
+				B2D73ADF2084A86700B64E36 /* CoreTelephony.framework */,
+				B2D73ADD2084A85D00B64E36 /* SystemConfiguration.framework */,
+				B2D73ADB2084A85000B64E36 /* libsqlite3.tbd */,
+				B2D73AD92084A83100B64E36 /* libc++.tbd */,
+				B2D73AD52084A80300B64E36 /* HPCastLink.bundle */,
+				B2D73AD62084A80400B64E36 /* HPCastLink.framework */,
 				B2D73901208483A100B64E36 /* Neptune.framework */,
 				B2D73900208483A100B64E36 /* Platinum.framework */,
 				B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */,
@@ -308,6 +388,7 @@
 		3E03EED5206E114D004DBB36 = {
 			isa = PBXGroup;
 			children = (
+				B2D73AE52084A90800B64E36 /* HPCastLink.bundle */,
 				3E03EEE0206E114D004DBB36 /* RemoteControl */,
 				3E03EEF9206E114D004DBB36 /* RemoteControlTests */,
 				3E03EF04206E114E004DBB36 /* RemoteControlUITests */,
@@ -427,10 +508,9 @@
 		3EDAD0B5206E2BF5007406FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F59207A153700F5E35C /* HMDDeviceLinkDao.h */,
-				B29E8F5A207A153700F5E35C /* HMDDeviceLinkDao.m */,
-				B22878D3207F2361009CAF83 /* HMDTreasureChestDao.h */,
-				B22878D4207F2361009CAF83 /* HMDTreasureChestDao.mm */,
+				B2D73B95208718D300B64E36 /* mainVideo */,
+				B2D73B192086EF1000B64E36 /* main */,
+				B2D73B162086EF0F00B64E36 /* TreasureChest */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,17 +518,9 @@
 		3EDAD0B6206E2BF5007406FB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B2F6F954207318040037E746 /* HMDTitleBaseLine.h */,
-				B2F6F955207318040037E746 /* HMDTitleBaseLine.m */,
-				B2F6F951207315240037E746 /* HMDScrollTitleView.h */,
-				B2F6F952207315240037E746 /* HMDScrollTitleView.m */,
-				B2F6F9572073181E0037E746 /* HMDScrollContentView.h */,
-				B2F6F9582073181E0037E746 /* HMDScrollContentView.m */,
-				B20EBD09207B6F3900A2D74F /* HMDLinkView.h */,
-				B20EBD0A207B6F3900A2D74F /* HMDLinkView.m */,
-				B22878CE207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.h */,
-				B22878CF207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m */,
-				B22878D0207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib */,
+				B2D73B732086F10400B64E36 /* MainVideo */,
+				B2D73AFE2086EE9100B64E36 /* TreasureChest */,
+				B2D73AF52086EE9100B64E36 /* main */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,11 +528,9 @@
 		3EDAD0B7206E2BF5007406FB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3EDAD0BC206E2C75007406FB /* HMDMainViewController.h */,
-				3EDAD0BD206E2C75007406FB /* HMDMainViewController.m */,
-				3EDAD0BE206E2C75007406FB /* HMDMainViewController.xib */,
-				B22878CB207F0399009CAF83 /* HMDTreasureChestViewController.h */,
-				B22878CC207F0399009CAF83 /* HMDTreasureChestViewController.m */,
+				B2D73B082086EEE600B64E36 /* main */,
+				B2D73B0C2086EEE600B64E36 /* MainVideo */,
+				B2D73B0F2086EEE600B64E36 /* TreasureChest */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -496,8 +566,7 @@
 		B22878A2207DE155009CAF83 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B22878C8207EFEF3009CAF83 /* HMDSearchTVDao.h */,
-				B22878C9207EFEF3009CAF83 /* HMDSearchTVDao.m */,
+				B2D73B502086F02900B64E36 /* SearchTV */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,21 +574,9 @@
 		B22878A3207DE155009CAF83 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B22878B8207DFD0A009CAF83 /* HMDWaterflowLayout.h */,
-				B22878B9207DFD0A009CAF83 /* HMDWaterflowLayout.m */,
-				B22878AA207DEAFF009CAF83 /* HMDSearchHeadView.h */,
-				B22878AB207DEAFF009CAF83 /* HMDSearchHeadView.m */,
-				B22878AD207DEB0E009CAF83 /* HMDSearchHeadView.xib */,
-				B22878B2207DFA78009CAF83 /* HMDSearchTVResultCollectionView.h */,
-				B22878B3207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m */,
-				B22878B5207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.h */,
-				B22878B6207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m */,
-				B22878BB207E0EEE009CAF83 /* HMDSearchTipHeadView.h */,
-				B22878BC207E0EEE009CAF83 /* HMDSearchTipHeadView.m */,
-				B22878BE207E0F0C009CAF83 /* HMDSearchTipHeadView.xib */,
-				B22878C0207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.h */,
-				B22878C1207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m */,
-				B22878C2207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.xib */,
+				B2D73B822086F1DB00B64E36 /* SearchTVResult */,
+				B2D73B742086F1D400B64E36 /* SearchTip */,
+				B2D73B5A2086F09400B64E36 /* SearchTV */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,11 +584,61 @@
 		B22878A4207DE155009CAF83 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B22878A5207DE277009CAF83 /* HMDSearchTVViewController.h */,
-				B22878A6207DE277009CAF83 /* HMDSearchTVViewController.m */,
-				B22878A7207DE277009CAF83 /* HMDSearchTVViewController.xib */,
+				B2D73B542086F05600B64E36 /* SearchTV */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B24C6A4F208984FD00B5227B /* Cryptor */ = {
+			isa = PBXGroup;
+			children = (
+				B24C6A50208984FD00B5227B /* EncryptionTools.h */,
+				B24C6A51208984FD00B5227B /* EncryptionTools.m */,
+				B24C6A88208DB33400B5227B /* NSString+Hash.h */,
+				B24C6A89208DB33400B5227B /* NSString+Hash.m */,
+			);
+			path = Cryptor;
+			sourceTree = "<group>";
+		};
+		B24C6A8B208DCC8E00B5227B /* APPlist */ = {
+			isa = PBXGroup;
+			children = (
+				B24C6A8C208DCDA800B5227B /* HMDApplistViewController.h */,
+				B24C6A8D208DCDA800B5227B /* HMDApplistViewController.m */,
+			);
+			path = APPlist;
+			sourceTree = "<group>";
+		};
+		B24C6A8F208DCDCB00B5227B /* APPlist */ = {
+			isa = PBXGroup;
+			children = (
+				B24C6A90208DD08600B5227B /* HMDAPPListTableViewCell.h */,
+				B24C6A91208DD08600B5227B /* HMDAPPListTableViewCell.m */,
+				B24C6A92208DD08600B5227B /* HMDAPPListTableViewCell.xib */,
+			);
+			path = APPlist;
+			sourceTree = "<group>";
+		};
+		B24C6A98208DDF8000B5227B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B24C6A99208DDF8000B5227B /* HMDUserModel.m */,
+				B24C6A9A208DDF8000B5227B /* HMDLoginDao.h */,
+				B24C6A9B208DDF8000B5227B /* HMDUserModel.h */,
+				B24C6A9C208DDF8000B5227B /* HMDLoginDao.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B24C6A9D208DDF8000B5227B /* APPList */ = {
+			isa = PBXGroup;
+			children = (
+				B24C6A9E208DDF8000B5227B /* HMDAppListDao.h */,
+				B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */,
+				B24C6AA6208DDFAA00B5227B /* HMDAPKModel.h */,
+				B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */,
+			);
+			path = APPList;
 			sourceTree = "<group>";
 		};
 		B29E8F2820738B4C00F5E35C /* UIImage */ = {
@@ -539,6 +646,8 @@
 			children = (
 				B29E8F2920738B4C00F5E35C /* UIImage+Color.h */,
 				B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */,
+				B2D73B9C20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.h */,
+				B2D73B9D20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -567,10 +676,7 @@
 		B29E8F362074652700F5E35C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F3E2079B9DA00F5E35C /* HMDDeviceModel.h */,
-				B29E8F3F2079B9DA00F5E35C /* HMDDeviceModel.m */,
-				B29E8F442079BAF700F5E35C /* HMDSearchDeviceDao.h */,
-				B29E8F452079BAF700F5E35C /* HMDSearchDeviceDao.m */,
+				B2D73B3A2086EFF500B64E36 /* SearchDevice */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -578,11 +684,7 @@
 		B29E8F372074652700F5E35C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F472079E3DA00F5E35C /* HMDDeviceListTableView.h */,
-				B29E8F482079E3DA00F5E35C /* HMDDeviceListTableView.m */,
-				B29E8F4D2079E6A400F5E35C /* HMDDeviceListTableViewCell.h */,
-				B29E8F4E2079E6A400F5E35C /* HMDDeviceListTableViewCell.m */,
-				B29E8F4F2079E6A400F5E35C /* HMDDeviceListTableViewCell.xib */,
+				B2D73B412086F00400B64E36 /* SearchDevice */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -590,9 +692,7 @@
 		B29E8F382074652700F5E35C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F392074654D00F5E35C /* HMDSearchDeviceViewController.h */,
-				B29E8F3A2074654D00F5E35C /* HMDSearchDeviceViewController.m */,
-				B29E8F3B2074654D00F5E35C /* HMDSearchDeviceViewController.xib */,
+				B2D73B4A2086F00E00B64E36 /* SearchDevice */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -631,9 +731,242 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B2D73AF52086EE9100B64E36 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73AFC2086EE9100B64E36 /* HMDLinkView.h */,
+				B2D73AF72086EE9100B64E36 /* HMDLinkView.m */,
+				B2D73AF82086EE9100B64E36 /* HMDScrollContentView.h */,
+				B2D73AFB2086EE9100B64E36 /* HMDScrollContentView.m */,
+				B2D73AFA2086EE9100B64E36 /* HMDTitleBaseLine.h */,
+				B2D73AF62086EE9100B64E36 /* HMDTitleBaseLine.m */,
+				B2D73AFD2086EE9100B64E36 /* HMDScrollTitleView.h */,
+				B2D73AF92086EE9100B64E36 /* HMDScrollTitleView.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		B2D73AFE2086EE9100B64E36 /* TreasureChest */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73AFF2086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.m */,
+				B2D73B002086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.h */,
+				B2D73B012086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.xib */,
+			);
+			path = TreasureChest;
+			sourceTree = "<group>";
+		};
+		B2D73B082086EEE600B64E36 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B0B2086EEE600B64E36 /* HMDMainViewController.h */,
+				B2D73B0A2086EEE600B64E36 /* HMDMainViewController.m */,
+				B2D73B092086EEE600B64E36 /* HMDMainViewController.xib */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		B2D73B0C2086EEE600B64E36 /* MainVideo */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B8B2086F39100B64E36 /* HMDMainVideoViewController.h */,
+				B2D73B8C2086F39100B64E36 /* HMDMainVideoViewController.m */,
+				B2D73B8D2086F39100B64E36 /* HMDMainVideoViewController.xib */,
+			);
+			path = MainVideo;
+			sourceTree = "<group>";
+		};
+		B2D73B0F2086EEE600B64E36 /* TreasureChest */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B112086EEE600B64E36 /* HMDTreasureChestViewController.h */,
+				B2D73B102086EEE600B64E36 /* HMDTreasureChestViewController.m */,
+			);
+			path = TreasureChest;
+			sourceTree = "<group>";
+		};
+		B2D73B162086EF0F00B64E36 /* TreasureChest */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B172086EF0F00B64E36 /* HMDTreasureChestDao.h */,
+				B2D73B182086EF0F00B64E36 /* HMDTreasureChestDao.m */,
+			);
+			path = TreasureChest;
+			sourceTree = "<group>";
+		};
+		B2D73B192086EF1000B64E36 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B1A2086EF1000B64E36 /* HMDDeviceLinkDao.h */,
+				B2D73B1B2086EF1000B64E36 /* HMDDeviceLinkDao.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		B2D73B1E2086EF4E00B64E36 /* PersonCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B1F2086EF4E00B64E36 /* HMDPersonCenterViewController.h */,
+				B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */,
+				B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */,
+			);
+			path = PersonCenter;
+			sourceTree = "<group>";
+		};
+		B2D73B222086EF4E00B64E36 /* QRCodeScan */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B252086EF4E00B64E36 /* HMDQRCodeScanViewController.h */,
+				B2D73B242086EF4E00B64E36 /* HMDQRCodeScanViewController.m */,
+				B2D73B232086EF4E00B64E36 /* HMDQRCodeScanViewController.xib */,
+			);
+			path = QRCodeScan;
+			sourceTree = "<group>";
+		};
+		B2D73B2A2086EFA800B64E36 /* RemoteSetting */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B2B2086EFA800B64E36 /* HMDRemoteSettingViewController.xib */,
+				B2D73B2C2086EFA800B64E36 /* HMDRemoteSettingViewController.m */,
+				B2D73B2D2086EFA800B64E36 /* HMDRemoteSettingViewController.h */,
+			);
+			path = RemoteSetting;
+			sourceTree = "<group>";
+		};
+		B2D73B2E2086EFA800B64E36 /* TVRemote */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B2F2086EFA800B64E36 /* HMDTVRemoteViewController.h */,
+				B2D73B302086EFA800B64E36 /* HMDTVRemoteViewController.xib */,
+				B2D73B312086EFA800B64E36 /* HMDTVRemoteViewController.m */,
+			);
+			path = TVRemote;
+			sourceTree = "<group>";
+		};
+		B2D73B362086EFB000B64E36 /* TVRemote */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B382086EFB000B64E36 /* HMDTVRemoteDao.h */,
+				B2D73B372086EFB000B64E36 /* HMDTVRemoteDao.m */,
+			);
+			path = TVRemote;
+			sourceTree = "<group>";
+		};
+		B2D73B3A2086EFF500B64E36 /* SearchDevice */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B3D2086EFF500B64E36 /* HMDSearchDeviceDao.h */,
+				B2D73B3B2086EFF500B64E36 /* HMDSearchDeviceDao.m */,
+				B2D73B3E2086EFF500B64E36 /* HMDDeviceModel.h */,
+				B2D73B3C2086EFF500B64E36 /* HMDDeviceModel.m */,
+			);
+			path = SearchDevice;
+			sourceTree = "<group>";
+		};
+		B2D73B412086F00400B64E36 /* SearchDevice */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B422086F00400B64E36 /* HMDDeviceListTableView.m */,
+				B2D73B432086F00400B64E36 /* HMDDeviceListTableViewCell.xib */,
+				B2D73B442086F00400B64E36 /* HMDDeviceListTableViewCell.h */,
+				B2D73B452086F00400B64E36 /* HMDDeviceListTableView.h */,
+				B2D73B462086F00400B64E36 /* HMDDeviceListTableViewCell.m */,
+			);
+			path = SearchDevice;
+			sourceTree = "<group>";
+		};
+		B2D73B4A2086F00E00B64E36 /* SearchDevice */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B4B2086F00E00B64E36 /* HMDSearchDeviceViewController.xib */,
+				B2D73B4D2086F00E00B64E36 /* HMDSearchDeviceViewController.h */,
+				B2D73B4C2086F00E00B64E36 /* HMDSearchDeviceViewController.m */,
+			);
+			path = SearchDevice;
+			sourceTree = "<group>";
+		};
+		B2D73B502086F02900B64E36 /* SearchTV */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B522086F02900B64E36 /* HMDSearchTVDao.h */,
+				B2D73B512086F02900B64E36 /* HMDSearchTVDao.m */,
+			);
+			path = SearchTV;
+			sourceTree = "<group>";
+		};
+		B2D73B542086F05600B64E36 /* SearchTV */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B572086F05600B64E36 /* HMDSearchTVViewController.h */,
+				B2D73B562086F05600B64E36 /* HMDSearchTVViewController.m */,
+				B2D73B552086F05600B64E36 /* HMDSearchTVViewController.xib */,
+			);
+			path = SearchTV;
+			sourceTree = "<group>";
+		};
+		B2D73B5A2086F09400B64E36 /* SearchTV */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B5D2086F09400B64E36 /* HMDSearchHeadView.xib */,
+				B2D73B622086F09400B64E36 /* HMDSearchHeadView.m */,
+				B2D73B632086F09400B64E36 /* HMDWaterflowLayout.h */,
+				B2D73B682086F09400B64E36 /* HMDWaterflowLayout.m */,
+				B2D73B692086F09400B64E36 /* HMDSearchHeadView.h */,
+			);
+			path = SearchTV;
+			sourceTree = "<group>";
+		};
+		B2D73B732086F10400B64E36 /* MainVideo */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B862086F23000B64E36 /* HMDLineFlowLayout.h */,
+				B2D73B872086F23000B64E36 /* HMDLineFlowLayout.m */,
+				B2D73B902087127700B64E36 /* HMDVideoShowCollectionViewCell.h */,
+				B2D73B912087127700B64E36 /* HMDVideoShowCollectionViewCell.m */,
+				B2D73B922087127700B64E36 /* HMDVideoShowCollectionViewCell.xib */,
+			);
+			path = MainVideo;
+			sourceTree = "<group>";
+		};
+		B2D73B742086F1D400B64E36 /* SearchTip */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B762086F1D400B64E36 /* HMDSearchTipCollectionViewCell.h */,
+				B2D73B7A2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m */,
+				B2D73B752086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib */,
+				B2D73B7C2086F1D400B64E36 /* HMDSearchTipHeadView.h */,
+				B2D73B792086F1D400B64E36 /* HMDSearchTipHeadView.m */,
+				B2D73B772086F1D400B64E36 /* HMDSearchTipHeadView.xib */,
+				B2D73B7B2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.h */,
+				B2D73B782086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m */,
+			);
+			path = SearchTip;
+			sourceTree = "<group>";
+		};
+		B2D73B822086F1DB00B64E36 /* SearchTVResult */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B842086F1DB00B64E36 /* HMDSearchTVResultCollectionView.h */,
+				B2D73B832086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m */,
+			);
+			path = SearchTVResult;
+			sourceTree = "<group>";
+		};
+		B2D73B95208718D300B64E36 /* mainVideo */ = {
+			isa = PBXGroup;
+			children = (
+				B2D73B96208718E700B64E36 /* HMDVideoModel.h */,
+				B2D73B97208718E700B64E36 /* HMDVideoModel.m */,
+				B2D73B9920871B3C00B64E36 /* HMDVideoDataDao.h */,
+				B2D73B9A20871B3C00B64E36 /* HMDVideoDataDao.m */,
+			);
+			path = mainVideo;
+			sourceTree = "<group>";
+		};
 		B2E175CE20732B78004629BE /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B24C6A4F208984FD00B5227B /* Cryptor */,
 				B2D73ABE20848DA700B64E36 /* DMR */,
 				B29E8F31207463EA00F5E35C /* NETTool */,
 				B2E175CF20732B78004629BE /* QRCode */,
@@ -665,8 +998,7 @@
 		B2E175E220737B4A004629BE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B20EBD01207B3E6500A2D74F /* HMDTVRemoteDao.h */,
-				B20EBD02207B3E6500A2D74F /* HMDTVRemoteDao.m */,
+				B2D73B362086EFB000B64E36 /* TVRemote */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -681,12 +1013,8 @@
 		B2E175E420737B4A004629BE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F2C20738DC500F5E35C /* HMDTVRemoteViewController.h */,
-				B29E8F2D20738DC500F5E35C /* HMDTVRemoteViewController.m */,
-				B29E8F2E20738DC500F5E35C /* HMDTVRemoteViewController.xib */,
-				B20EBD0D207C88E400A2D74F /* HMDRemoteSettingViewController.h */,
-				B20EBD0E207C88E400A2D74F /* HMDRemoteSettingViewController.m */,
-				B20EBD0F207C88E400A2D74F /* HMDRemoteSettingViewController.xib */,
+				B2D73B2A2086EFA800B64E36 /* RemoteSetting */,
+				B2D73B2E2086EFA800B64E36 /* TVRemote */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -803,6 +1131,8 @@
 		B2F6F949207228EB0037E746 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B24C6A9D208DDF8000B5227B /* APPList */,
+				B24C6A98208DDF8000B5227B /* Login */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -810,6 +1140,7 @@
 		B2F6F94A207228EB0037E746 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B24C6A8F208DCDCB00B5227B /* APPlist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -817,12 +1148,9 @@
 		B2F6F94B207228EB0037E746 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B2F6F94C20722A0B0037E746 /* HMDPersonCenterViewController.h */,
-				B2F6F94D20722A0B0037E746 /* HMDPersonCenterViewController.m */,
-				B2F6F94E20722A0B0037E746 /* HMDPersonCenterViewController.xib */,
-				B2E175D620732D4D004629BE /* HMDQRCodeScanViewController.h */,
-				B2E175D720732D4D004629BE /* HMDQRCodeScanViewController.m */,
-				B2E175D820732D4D004629BE /* HMDQRCodeScanViewController.xib */,
+				B24C6A8B208DCC8E00B5227B /* APPlist */,
+				B2D73B1E2086EF4E00B64E36 /* PersonCenter */,
+				B2D73B222086EF4E00B64E36 /* QRCodeScan */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -938,29 +1266,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29E8F3D2074654D00F5E35C /* HMDSearchDeviceViewController.xib in Resources */,
+				B2D73B7D2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib in Resources */,
+				B2D73AD72084A80400B64E36 /* HPCastLink.bundle in Resources */,
+				B2D73B7E2086F1D400B64E36 /* HMDSearchTipHeadView.xib in Resources */,
+				B2D73B942087127700B64E36 /* HMDVideoShowCollectionViewCell.xib in Resources */,
+				B2D73B072086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.xib in Resources */,
+				B2D73B6B2086F09400B64E36 /* HMDSearchHeadView.xib in Resources */,
 				3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */,
-				B22878AE207DEB0E009CAF83 /* HMDSearchHeadView.xib in Resources */,
+				B2D73B482086F00400B64E36 /* HMDDeviceListTableViewCell.xib in Resources */,
+				B2D73B582086F05600B64E36 /* HMDSearchTVViewController.xib in Resources */,
 				3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */,
-				B29E8F512079E6A400F5E35C /* HMDDeviceListTableViewCell.xib in Resources */,
 				3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */,
-				B2E175DA20732D4D004629BE /* HMDQRCodeScanViewController.xib in Resources */,
 				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
 				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
-				B22878C4207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.xib in Resources */,
+				B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */,
+				B2D73B8F2086F39100B64E36 /* HMDMainVideoViewController.xib in Resources */,
 				3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */,
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
 				3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */,
-				B2F6F95020722A0B0037E746 /* HMDPersonCenterViewController.xib in Resources */,
+				B2D73B322086EFA800B64E36 /* HMDRemoteSettingViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
-				B22878A9207DE277009CAF83 /* HMDSearchTVViewController.xib in Resources */,
-				B20EBD11207C88E400A2D74F /* HMDRemoteSettingViewController.xib in Resources */,
-				3EDAD0C0206E2C75007406FB /* HMDMainViewController.xib in Resources */,
-				B29E8F3020738DC500F5E35C /* HMDTVRemoteViewController.xib in Resources */,
-				B22878D2207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.xib in Resources */,
-				B22878BF207E0F0C009CAF83 /* HMDSearchTipHeadView.xib in Resources */,
+				B2D73B4E2086F00E00B64E36 /* HMDSearchDeviceViewController.xib in Resources */,
+				B2D73B342086EFA800B64E36 /* HMDTVRemoteViewController.xib in Resources */,
+				B24C6A94208DD08600B5227B /* HMDAPPListTableViewCell.xib in Resources */,
+				B2D73B262086EF4E00B64E36 /* HMDPersonCenterViewController.xib in Resources */,
+				B2D73B122086EEE600B64E36 /* HMDMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,9 +1322,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/GDataXMLNode2/GDataXMLNode2.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
@@ -1000,9 +1334,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDataXMLNode2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
@@ -1051,53 +1387,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D73B472086F00400B64E36 /* HMDDeviceListTableView.m in Sources */,
+				B2D73B98208718E700B64E36 /* HMDVideoModel.m in Sources */,
 				B2D73AC120848FBE00B64E36 /* HMDDHRCenter.mm in Sources */,
-				B29E8F492079E3DA00F5E35C /* HMDDeviceListTableView.m in Sources */,
-				B29E8F502079E6A400F5E35C /* HMDDeviceListTableViewCell.m in Sources */,
-				B22878BD207E0EEE009CAF83 /* HMDSearchTipHeadView.m in Sources */,
+				B2D73B292086EF4E00B64E36 /* HMDQRCodeScanViewController.m in Sources */,
+				B2D73B3F2086EFF500B64E36 /* HMDSearchDeviceDao.m in Sources */,
+				B2D73B492086F00400B64E36 /* HMDDeviceListTableViewCell.m in Sources */,
 				B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */,
-				B29E8F402079B9DA00F5E35C /* HMDDeviceModel.m in Sources */,
+				B24C6AA8208DDFAA00B5227B /* HMDAPKModel.m in Sources */,
+				B2D73B402086EFF500B64E36 /* HMDDeviceModel.m in Sources */,
 				B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */,
-				B29E8F3C2074654D00F5E35C /* HMDSearchDeviceViewController.m in Sources */,
+				B2D73B9E20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m in Sources */,
 				B29E8F432079BADB00F5E35C /* HMDBaseDao.m in Sources */,
-				B2F6F953207315240037E746 /* HMDScrollTitleView.m in Sources */,
-				B20EBD03207B3E6500A2D74F /* HMDTVRemoteDao.m in Sources */,
+				B2D73B152086EEE600B64E36 /* HMDTreasureChestViewController.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
-				B22878AC207DEAFF009CAF83 /* HMDSearchHeadView.m in Sources */,
-				B22878A8207DE277009CAF83 /* HMDSearchTVViewController.m in Sources */,
+				B2D73B7F2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m in Sources */,
+				B2D73B052086EE9100B64E36 /* HMDScrollContentView.m in Sources */,
+				B2D73B802086F1D400B64E36 /* HMDSearchTipHeadView.m in Sources */,
+				B2D73B532086F02900B64E36 /* HMDSearchTVDao.m in Sources */,
+				B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */,
+				B2D73B812086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m in Sources */,
+				B24C6AA0208DDF8100B5227B /* HMDUserModel.m in Sources */,
+				B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */,
+				B2D73B932087127700B64E36 /* HMDVideoShowCollectionViewCell.m in Sources */,
+				B2D73B9B20871B3C00B64E36 /* HMDVideoDataDao.m in Sources */,
+				B2D73B852086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
+				B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
+				B2D73B882086F23000B64E36 /* HMDLineFlowLayout.m in Sources */,
 				B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */,
+				B2D73B352086EFA800B64E36 /* HMDTVRemoteViewController.m in Sources */,
 				B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */,
-				B22878B4207DFA78009CAF83 /* HMDSearchTVResultCollectionView.m in Sources */,
+				B2D73B722086F09400B64E36 /* HMDWaterflowLayout.m in Sources */,
+				B2D73B332086EFA800B64E36 /* HMDRemoteSettingViewController.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
 				B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */,
-				B2E175D920732D4D004629BE /* HMDQRCodeScanViewController.m in Sources */,
-				B22878CD207F0399009CAF83 /* HMDTreasureChestViewController.m in Sources */,
-				B22878C3207E1B37009CAF83 /* HMDSearchTipCollectionViewCell.m in Sources */,
+				B24C6A93208DD08600B5227B /* HMDAPPListTableViewCell.m in Sources */,
+				B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */,
+				B2D73B8E2086F39100B64E36 /* HMDMainVideoViewController.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
-				B20EBD0B207B6F3900A2D74F /* HMDLinkView.m in Sources */,
-				B22878D5207F2361009CAF83 /* HMDTreasureChestDao.mm in Sources */,
+				B2D73B592086F05600B64E36 /* HMDSearchTVViewController.m in Sources */,
 				B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */,
-				B22878BA207DFD0B009CAF83 /* HMDWaterflowLayout.m in Sources */,
-				B29E8F462079BAF700F5E35C /* HMDSearchDeviceDao.m in Sources */,
-				B2F6F9592073181E0037E746 /* HMDScrollContentView.m in Sources */,
+				B2D73B392086EFB000B64E36 /* HMDTVRemoteDao.m in Sources */,
 				B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */,
+				B2D73B272086EF4E00B64E36 /* HMDPersonCenterViewController.m in Sources */,
 				B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */,
-				B22878B7207DFAFF009CAF83 /* HMDSearchTVTipsCollectionView.m in Sources */,
-				B22878CA207EFEF3009CAF83 /* HMDSearchTVDao.m in Sources */,
-				B29E8F5B207A153700F5E35C /* HMDDeviceLinkDao.m in Sources */,
+				B2D73B4F2086F00E00B64E36 /* HMDSearchDeviceViewController.m in Sources */,
+				B2D73B132086EEE600B64E36 /* HMDMainViewController.m in Sources */,
+				B2D73B062086EE9100B64E36 /* HMDTreasureChestCollectionViewCell.m in Sources */,
+				B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */,
+				B2D73B042086EE9100B64E36 /* HMDScrollTitleView.m in Sources */,
 				B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */,
-				B2F6F94F20722A0B0037E746 /* HMDPersonCenterViewController.m in Sources */,
+				B2D73B032086EE9100B64E36 /* HMDLinkView.m in Sources */,
+				B2D73B702086F09400B64E36 /* HMDSearchHeadView.m in Sources */,
 				3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */,
-				B22878D1207F0801009CAF83 /* HMDTreasureChestCollectionViewCell.m in Sources */,
-				3EDAD0BF206E2C75007406FB /* HMDMainViewController.m in Sources */,
-				B29E8F2F20738DC500F5E35C /* HMDTVRemoteViewController.m in Sources */,
+				B2D73B1D2086EF1000B64E36 /* HMDDeviceLinkDao.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
 				B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */,
-				B20EBD10207C88E400A2D74F /* HMDRemoteSettingViewController.m in Sources */,
-				B2F6F956207318040037E746 /* HMDTitleBaseLine.m in Sources */,
+				B2D73B1C2086EF1000B64E36 /* HMDTreasureChestDao.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
+				B2D73B022086EE9100B64E36 /* HMDTitleBaseLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,7 +1613,7 @@
 			baseConfigurationReference = E39280B65B3DFBF617055C3C /* Pods-RemoteControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1287,7 +1637,7 @@
 			baseConfigurationReference = 46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
 				FRAMEWORK_SEARCH_PATHS = (

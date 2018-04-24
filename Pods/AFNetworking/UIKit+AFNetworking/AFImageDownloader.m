@@ -246,7 +246,6 @@
         NSUUID *mergedTaskIdentifier = [NSUUID UUID];
         NSURLSessionDataTask *createdTask;
         __weak __typeof__(self) weakSelf = self;
-
         createdTask = [self.sessionManager
                        dataTaskWithRequest:request
                        uploadProgress:nil
@@ -311,6 +310,130 @@
         return nil;
     }
 }
+//base64的图片
+-(AFImageDownloadReceipt *)downloadBASE64ImageForURLRequest:(NSURLRequest *)request withReceiptID:(NSUUID *)receiptID success:(void (^)(NSURLRequest * _Nonnull, NSHTTPURLResponse * _Nullable, UIImage * _Nonnull))success failure:(void (^)(NSURLRequest * _Nonnull, NSHTTPURLResponse * _Nullable, NSError * _Nonnull))failure{
+    __block NSURLSessionDataTask *task = nil;
+    dispatch_sync(self.synchronizationQueue, ^{
+        NSString *URLIdentifier = request.URL.absoluteString;
+        if (request.HTTPBody) {
+            NSString *addIndentifier = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
+            URLIdentifier = [URLIdentifier stringByAppendingString:addIndentifier];
+        }
+        if (URLIdentifier == nil) {
+            if (failure) {
+                NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorBadURL userInfo:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(request, nil, error);
+                });
+            }
+            return;
+        }
+        
+        // 1) Append the success and failure blocks to a pre-existing request if it already exists
+        AFImageDownloaderMergedTask *existingMergedTask = self.mergedTasks[URLIdentifier];
+        if (existingMergedTask != nil) {
+            AFImageDownloaderResponseHandler *handler = [[AFImageDownloaderResponseHandler alloc] initWithUUID:receiptID success:success failure:failure];
+            [existingMergedTask addResponseHandler:handler];
+            task = existingMergedTask.task;
+            return;
+        }
+        
+        // 2) Attempt to load the image from the image cache if the cache policy allows it
+        switch (request.cachePolicy) {
+            case NSURLRequestUseProtocolCachePolicy:
+            case NSURLRequestReturnCacheDataElseLoad:
+            case NSURLRequestReturnCacheDataDontLoad: {
+                UIImage *cachedImage = [self.imageCache imageforRequest:request withAdditionalIdentifier:nil];
+                if (cachedImage != nil) {
+                    if (success) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            success(request, nil, cachedImage);
+                        });
+                    }
+                    return;
+                }
+                break;
+            }
+            default:
+                break;
+        }
+        
+        // 3) Create the request and set up authentication, validation and response serialization
+        NSUUID *mergedTaskIdentifier = [NSUUID UUID];
+        NSURLSessionDataTask *createdTask;
+        __weak __typeof__(self) weakSelf = self;
+        AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+        sessionManager.responseSerializer=[AFHTTPResponseSerializer serializer];
+        sessionManager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"text/plain",nil];
+        createdTask = [sessionManager
+                       dataTaskWithRequest:request
+                       uploadProgress:nil
+                       downloadProgress:nil
+                       completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                           dispatch_async(self.responseQueue, ^{
+//                               NSLog(@"AFN:%@",[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
+                               __strong __typeof__(weakSelf) strongSelf = weakSelf;
+                               NSString *encodedImageStr = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+                               NSData *decodedImageData = [[NSData alloc] initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+                               UIImage *responseImage = [UIImage imageWithData:decodedImageData];
+                               AFImageDownloaderMergedTask *mergedTask = strongSelf.mergedTasks[URLIdentifier];
+                               if ([mergedTask.identifier isEqual:mergedTaskIdentifier]) {
+                                   mergedTask = [strongSelf safelyRemoveMergedTaskWithURLIdentifier:URLIdentifier];
+                                   if (error) {
+                                       for (AFImageDownloaderResponseHandler *handler in mergedTask.responseHandlers) {
+                                           if (handler.failureBlock) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   handler.failureBlock(request, (NSHTTPURLResponse*)response, error);
+                                               });
+                                           }
+                                       }
+                                   } else {
+                                       if ([strongSelf.imageCache shouldCacheImage:responseImage forRequest:request withAdditionalIdentifier:nil]) {
+                                           [strongSelf.imageCache addImage:responseImage forRequest:request withAdditionalIdentifier:nil];
+                                       }
+                                       
+                                       for (AFImageDownloaderResponseHandler *handler in mergedTask.responseHandlers) {
+                                           if (handler.successBlock) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   handler.successBlock(request, (NSHTTPURLResponse*)response, responseImage);
+                                               });
+                                           }
+                                       }
+                                       
+                                   }
+                               }
+                               [strongSelf safelyDecrementActiveTaskCount];
+                               [strongSelf safelyStartNextTaskIfNecessary];
+                           });
+                       }];
+        
+        // 4) Store the response handler for use when the request completes
+        AFImageDownloaderResponseHandler *handler = [[AFImageDownloaderResponseHandler alloc] initWithUUID:receiptID
+                                                                                                   success:success
+                                                                                                   failure:failure];
+        AFImageDownloaderMergedTask *mergedTask = [[AFImageDownloaderMergedTask alloc]
+                                                   initWithURLIdentifier:URLIdentifier
+                                                   identifier:mergedTaskIdentifier
+                                                   task:createdTask];
+        [mergedTask addResponseHandler:handler];
+        self.mergedTasks[URLIdentifier] = mergedTask;
+        
+        // 5) Either start the request or enqueue it depending on the current active request count
+        if ([self isActiveRequestCountBelowMaximumLimit]) {
+            [self startMergedTask:mergedTask];
+        } else {
+            [self enqueueMergedTask:mergedTask];
+        }
+        
+        task = mergedTask.task;
+    });
+    if (task) {
+        return [[AFImageDownloadReceipt alloc] initWithReceiptID:receiptID task:task];
+    } else {
+        return nil;
+    }
+}
+
 
 - (void)cancelTaskForImageDownloadReceipt:(AFImageDownloadReceipt *)imageDownloadReceipt {
     dispatch_sync(self.synchronizationQueue, ^{

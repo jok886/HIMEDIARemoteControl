@@ -7,22 +7,32 @@
 //  一些通用的功能
 
 #import "HMDTVBaseFunctionDao.h"
-#import "AFNetworking.h"
-
+#import "UIImageView+HMDDLANLoadImage.h"
 @implementation HMDTVBaseFunctionDao
+-(void)getImageCaptureFinishBlock:(HMDTVGetCaptureFinishBlock)finishBlock{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSString *ip = HMDCURLINKDEVICEIP;
+    NSString *url = [NSString stringWithFormat:HMD_DLAN_DEVICE_GETCAPTURE,ip];
+    [session GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *filePath = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        if (finishBlock) {
+            finishBlock(YES,filePath,ip);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO,nil,nil);
+        }
+        NSLog(@"failure");
+    }];
+}
 -(void)getCaptureFinishBlock:(HMDTVDownLoadImageFinishBlock)finishBlock{
     
-    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    session.requestSerializer=[AFJSONRequestSerializer serializer];
-    
-    //超时时间
-    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    session.requestSerializer.timeoutInterval = 30.f;
-    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    session.responseSerializer=[AFHTTPResponseSerializer serializer];
-    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/xml",@"text/plain",nil];
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *ip = HMDCURLINKDEVICEIP;
-    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_GETCAPTURE,ip];
+    NSString *url = [NSString stringWithFormat:HMD_DLAN_DEVICE_GETCAPTURE,ip];
     [session GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -39,19 +49,11 @@
 
 -(void)downLoadImageFromFilepath:(NSString *)filePath ip:(NSString *)ip Finish:(HMDTVDownLoadImageFinishBlock)finishBlock{
     NSLog(@"下载");
-    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    session.requestSerializer=[AFJSONRequestSerializer serializer];
-    
-    //超时时间
-    [session.requestSerializer willChangeValueForKey:@"timeoutInterval"];
-    session.requestSerializer.timeoutInterval = 30.f;
-    [session.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    session.responseSerializer=[AFHTTPResponseSerializer serializer];
-    session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/xml",@"text/plain",nil];
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 filePath,@"posterPicString",
                                 nil];
-    NSString *url = [NSString stringWithFormat:HMD_NET_DEVICE_DOWNLOADICON,ip];
+    NSString *url = [NSString stringWithFormat:HMD_DLAN_DEVICE_DOWNLOADICON,ip];
     [session POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"----");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

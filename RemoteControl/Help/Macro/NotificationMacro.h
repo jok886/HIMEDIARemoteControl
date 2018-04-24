@@ -11,4 +11,6 @@
 
 #define HMDLinkViewWillShow @"HMDLinkViewWillShow"
 #define HMDLinkViewWillHide @"HMDLinkViewWillHide"
+#define HMDWECHATLOGIN @"HMDWECHATLOGIN"
+#define HMDNewDeviceIP @"HMDNewDeviceIP"
 #endif /* NotificationMacro_h */

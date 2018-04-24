@@ -11,6 +11,8 @@ pod 'MJExtension'
 pod 'CocoaAsyncSocket'
 pod 'WechatOpenSDK_NoPay'
 pod 'GDataXMLNode2'
+pod 'GCDWebServer'
+pod 'SDWebImage'
 use_frameworks!
 
 end

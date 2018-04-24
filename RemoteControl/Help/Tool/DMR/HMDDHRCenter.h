@@ -10,6 +10,6 @@
 #import "HMDDMRControl.h"
 
 @interface HMDDHRCenter : NSObject
-@property (nonatomic, strong)HMDDMRControl * DMRControl;
+@property (nonatomic, strong)HMDDMRControl *DMRControl;
 +(HMDDHRCenter *)sharedInstance;
 @end
