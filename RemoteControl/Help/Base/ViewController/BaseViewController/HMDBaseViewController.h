@@ -10,4 +10,6 @@
 
 @interface HMDBaseViewController : UIViewController
 
+-(void)setupFirstNavBar;
+-(void)dismissAction:(UIButton *)sender;
 @end

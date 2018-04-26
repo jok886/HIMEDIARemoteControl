@@ -34,6 +34,7 @@
         case HMDSearchTipRecord:
         {
             self.headTitleLab.text = @"搜索记录";
+            self.clearBtn.hidden = NO;
         }
             break;
         case HMDSearchTipHot:

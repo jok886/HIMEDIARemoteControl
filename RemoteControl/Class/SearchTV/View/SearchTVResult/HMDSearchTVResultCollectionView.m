@@ -7,15 +7,54 @@
 //
 
 #import "HMDSearchTVResultCollectionView.h"
+#import "HMDSearchTVResultCell.h"
 
+@interface HMDSearchTVResultCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+
+@end
 @implementation HMDSearchTVResultCollectionView
+static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
++(instancetype)searchTVResultCollectionViewWithFrame:(CGRect)frame{
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.itemSize = CGSizeMake(frame.size.width, 100);
+    flowLayout.minimumLineSpacing = 1;
+    flowLayout.minimumInteritemSpacing = 10;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    HMDSearchTVResultCollectionView *resultCollectionView = [[HMDSearchTVResultCollectionView alloc]initWithFrame:frame collectionViewLayout:flowLayout];
+    resultCollectionView.delegate = resultCollectionView;
+    resultCollectionView.dataSource = resultCollectionView;
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+    //注册Item
+    [resultCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTVResultCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+    
+    return resultCollectionView;
 }
-*/
 
+
+#pragma mark - UICollectionViewDelegate/UICollectionViewDataSource
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.tvModelArray.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    HMDSearchTVResultCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    HMDVideoModel *tvModel = self.tvModelArray[indexPath.row];
+    [cell setupCellWithVideoModel:tvModel];
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.searchDelegate && [self.searchDelegate respondsToSelector:@selector(searchTVResultCollectionView:didSelectItemWithModel:)]){
+        HMDVideoModel *tvModel = self.tvModelArray[indexPath.row];
+        [self.searchDelegate searchTVResultCollectionView:self didSelectItemWithModel:tvModel];
+    }
+}
+
+#pragma mark - 懒加载
+-(NSArray *)tvModelArray{
+    if (_tvModelArray == nil) {
+        _tvModelArray = [NSArray array];
+    }
+    return _tvModelArray;
+}
 @end

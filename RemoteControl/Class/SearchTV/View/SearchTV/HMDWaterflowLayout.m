@@ -131,6 +131,19 @@ static const UIEdgeInsets HMDDefaultEdgeInset = {10, 10, 10, 10};
         for (NSInteger i = 0; i < self.rowCount; i++) {
             [self.rowWidths addObject:@(self.edgeInsets.left)];
         }
+    }else if (self.flowLayoutStyle == HMDVHWaterFlow){
+        //清除以前计算的所有高度
+        self.maxColumnHeight = 0;
+        [self.columnHeights removeAllObjects];
+        for (NSInteger i = 0; i < self.columnCount; i++) {
+            [self.columnHeights addObject:@(self.edgeInsets.top)];
+        }
+        //清除以前计算的所有宽度
+        self.maxRowWidth = 0;
+        [self.rowWidths removeAllObjects];
+        for (NSInteger i = 0; i < self.rowCount; i++) {
+            [self.rowWidths addObject:@(self.edgeInsets.left)];
+        }
     }
     
     //清除之前数组

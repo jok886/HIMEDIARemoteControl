@@ -10,5 +10,5 @@
 typedef void(^HMDTVRemotePowerOffBlock)(void);
 @interface HMDTVRemoteViewController : HMDBaseViewController
 @property (nonatomic,copy) HMDTVRemotePowerOffBlock powerOffBlock;
-
+@property (nonatomic,assign,getter=isPushVC) BOOL  pushVC;                    //push进来的
 @end

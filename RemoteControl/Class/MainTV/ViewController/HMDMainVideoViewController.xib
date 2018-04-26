@@ -23,14 +23,20 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-v6-RrG">
                     <rect key="frame" x="0.0" y="40" width="125" height="30"/>
                     <state key="normal" title="历史"/>
+                    <connections>
+                        <action selector="historyBtnClick:" destination="-1" eventType="touchUpInside" id="TDB-iJ-pVG"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-b1-dKN">
                     <rect key="frame" x="125" y="40" width="125" height="30"/>
-                    <state key="normal" title="播放"/>
+                    <state key="normal" title="收藏"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-2O-ZIu">
                     <rect key="frame" x="250" y="40" width="125" height="30"/>
                     <state key="normal" title="分类"/>
+                    <connections>
+                        <action selector="classificationBtnClick:" destination="-1" eventType="touchUpInside" id="B6g-6C-fN9"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-Xp-KnB">
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>

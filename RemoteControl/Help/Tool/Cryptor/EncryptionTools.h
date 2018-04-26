@@ -45,8 +45,10 @@
  *  @return 返回加密后的base64编码字符串
  */
 + (NSString *)encryptAES:(NSString *)content key:(NSString *)key;
++ (NSString *)encryptAESWithHINAVI:(NSString *)content;
 /**
  *  解密字符串
  */
 + (NSString *)decryptAES:(NSString *)content key:(NSString *)key;
++ (NSString *)decryptAESWithHINAVI:(NSString *)content;
 @end

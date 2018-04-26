@@ -9,5 +9,11 @@
 #import "HMDAPKModel.h"
 
 @implementation HMDAPKModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"apkID":@"id",
+             @"apkClass":@"class",
+             };
+    
+}
 @end

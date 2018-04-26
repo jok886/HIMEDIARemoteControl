@@ -197,7 +197,6 @@
         NSString *bodyStr = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
         key = [key stringByAppendingString:bodyStr];
     }
-    NSLog(@"key:%@",key);
     return key;
 }
 

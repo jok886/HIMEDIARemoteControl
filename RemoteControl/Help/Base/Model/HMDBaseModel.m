@@ -26,4 +26,14 @@
     Class curClass = [self class];
     return [curClass mj_objectArrayWithKeyValuesArray:dictArray];
 }
+//映射关系
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+//    return @{
+//             @"uuid":@"UUID",
+//             @"location":@"LOCATION",
+//             @"server":@"SERVER",
+//             @"ip":@"IP",
+//             };
+    return nil;
+}
 @end

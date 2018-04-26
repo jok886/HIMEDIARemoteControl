@@ -25,6 +25,7 @@
 #import "HMDLoginDao.h"
 #import "AppDelegate.h"
 #import "UIImageView+HMDDLANLoadImage.h"
+#import "EncryptionTools.h"
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
 HMDScrollContentViewDelegate,
@@ -148,25 +149,35 @@ HMDLinkViewDelegate>
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillShow) name:HMDLinkViewWillShow object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillHide) name:HMDLinkViewWillHide object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNewDeviceIP:) name:HMDNewDeviceIP object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
 }
 
 -(void)autoLogin{
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:WXLoginRefreshToken];
-    if (!myDelegate.loginState && refreshToken) {
-        HMDWeakSelf(self)
-        [self.loginDao getWechatInfoWithRefreshToken:refreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
-            if (success) {
-                [weakSelf upUserInfoWithUserModel:userModel];
-            }
-        }];
+    if (refreshToken){
+        NSString *decryptRefreshToken = [EncryptionTools decryptAESWithHINAVI:refreshToken];
+        if (!myDelegate.loginState && decryptRefreshToken) {
+            HMDWeakSelf(self)
+            [self.loginDao getWechatInfoWithRefreshToken:decryptRefreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
+                if (success) {
+                    [weakSelf upUserInfoWithUserModel:userModel];
+                }
+            }];
+        }
     }
+
 }
 #pragma mark -点击
 //点击用户头像
 - (void)userIconClick:(UITapGestureRecognizer *)tapGesture {
     //跳转个人中心
+    HMDWeakSelf(self)
     HMDPersonCenterViewController *personCenterVC = [[HMDPersonCenterViewController alloc]init];
+    personCenterVC.upUserInfoBlock = ^(HMDUserModel *userModel) {
+        [weakSelf upUserInfoWithUserModel:userModel];
+    };
     HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:personCenterVC];
 
     [self presentViewController:nav animated:YES completion:^{
@@ -182,16 +193,28 @@ HMDLinkViewDelegate>
 }
 
 #pragma mark - NSNotificationCenter
+//显示链接状态
 -(void)linkViewWillShow{
     self.linkView.hidden = NO;
 }
+//隐藏链接状态
 -(void)linkViewWillHide{
     self.linkView.hidden = YES;
 }
+//更新链接状态
 -(void)getNewDeviceIP:(NSNotification *)info{
     NSString *ip = info.object;
     [self getDLanLink:ip];
     
+}
+//登出
+-(void)wechatSignout:(NSNotification *)info{
+    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    myDelegate.userModel = nil;
+    myDelegate.loginState = NO;
+    [self.userIconImageView setImage:[UIImage imageNamed:@"user_default"]];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXCurHID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXLoginRefreshToken];
 }
 #pragma mark -代理
 //对应的标题被点击

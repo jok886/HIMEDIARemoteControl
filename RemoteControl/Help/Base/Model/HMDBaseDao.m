@@ -7,6 +7,7 @@
 //
 
 #import "HMDBaseDao.h"
+#import "EncryptionTools.h"
 
 @implementation HMDBaseDao
 
@@ -20,5 +21,31 @@
     session.responseSerializer=[AFHTTPResponseSerializer serializer];
     session.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",@"text/xml",nil];
     return session;
+}
+
+-(NSString *)encryptParameters:(NSDictionary *)parameters{
+    NSString *parametersStr = [parameters mj_JSONString];
+    NSString *encryptParameters = [EncryptionTools encryptAESWithHINAVI:parametersStr];
+    return encryptParameters;
+}
+
+-(NSString *)decryptResponseObject:(NSData *)responseObject{
+    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+    //解密
+    NSString *decodeResponseStr = [EncryptionTools decryptAESWithHINAVI:responseStr];
+    return decodeResponseStr;
+}
+
+-(BOOL)successResponseFromHINAVI:(NSDictionary *)responseDict{
+    if ([[responseDict allKeys]containsObject:@"status"]) {
+        NSString *status = [responseDict objectForKey:@"status"];
+        if ([status isEqualToString:@"200"]) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }else{
+        return NO;
+    }
 }
 @end

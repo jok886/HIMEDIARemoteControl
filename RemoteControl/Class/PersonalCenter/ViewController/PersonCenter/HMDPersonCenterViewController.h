@@ -8,6 +8,10 @@
 
 #import "HMDBaseViewController.h"
 @class HMDUserModel;
+
+typedef void(^HMDPersonCenterUPUserInfoBlock)(HMDUserModel *userModel);
+
 @interface HMDPersonCenterViewController : HMDBaseViewController
+@property (nonatomic,copy) HMDPersonCenterUPUserInfoBlock upUserInfoBlock;
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel;
 @end

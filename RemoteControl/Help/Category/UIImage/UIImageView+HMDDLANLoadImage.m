@@ -76,10 +76,8 @@
         self.sessionManager.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",@"text/xml",nil];
          */
         HMDWeakSelf(self)
-    NSLog(@"%@",parameters);
         [self setBase64ImageWithURLRequest:urlRequest placeholderImage:placeholderImage success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
                 weakSelf.image = image;
-            NSLog(@"HMD:%@",[[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]);
         } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
             NSLog(@"failure%s",__FUNCTION__);
         }];

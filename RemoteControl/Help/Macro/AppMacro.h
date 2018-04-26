@@ -13,6 +13,8 @@
 #define HMDEncryptKey    @"564f5335f01448fea293929e418c75dd"
 //微信登录
 #define WXLoginRefreshToken    @"WXLoginRefreshToken"
+//微信登陆后后台HID
+#define WXCurHID    @"HMDCurHID"
 //上次链接的IP
 #define DLANLastTimeLinkIP    @"DLANLastTimeLinkIP"
 //当前链接的IP
@@ -21,6 +23,9 @@
 #define OPENSIDEKEY    @"OpenSideKey"
 //震动开关
 #define OPENSHOCK    @"OpenShock"
+//搜索记录
+#define HMDSearchWordHistory    @"SearchWordHistory"
+//链接状态框高度
 #define LINKVIEHIGHT    50
 #define HMDSTATUSBARMAXY CGRectGetMaxY([[UIApplication sharedApplication] statusBarFrame])
 //机型判断

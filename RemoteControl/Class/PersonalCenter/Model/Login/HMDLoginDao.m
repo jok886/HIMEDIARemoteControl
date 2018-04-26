@@ -35,7 +35,9 @@
             NSString *access_token = [tokenDict objectForKey:@"access_token"];//有效期2小时
             NSString *refresh_token = [tokenDict objectForKey:@"refresh_token"];//有效期30天
             NSString *openid = [tokenDict objectForKey:@"openid"];
-            [[NSUserDefaults standardUserDefaults] setObject:refresh_token forKey:WXLoginRefreshToken];
+            NSString *encryptRefresh_token = [EncryptionTools encryptAESWithHINAVI:refresh_token];
+            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:WXLoginRefreshToken];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [weakSelf getUserInfoWithToken:access_token openID:openid finishBlock:finishBlock];
             NSLog(@"success%s",__FUNCTION__);
         }
@@ -72,7 +74,9 @@
             NSString *access_token = [tokenDict objectForKey:@"access_token"];//有效期2小时
             NSString *refresh_token = [tokenDict objectForKey:@"refresh_token"];//有效期30天
             NSString *openid = [tokenDict objectForKey:@"openid"];
-            [[NSUserDefaults standardUserDefaults] setObject:refresh_token forKey:WXLoginRefreshToken];
+            NSString *encryptRefresh_token = [EncryptionTools encryptAESWithHINAVI:refresh_token];
+            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:WXLoginRefreshToken];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             [weakSelf getUserInfoWithToken:access_token openID:openid finishBlock:finishBlock];
             NSLog(@"success%s",__FUNCTION__);
         }
@@ -128,20 +132,21 @@
     NSDictionary *parametersDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                   openid,@"wxid",
                                   nil];
-    NSString *parameters = [parametersDict mj_JSONString];
-    NSString *encodeParameters = [EncryptionTools encryptAES:parameters key:HMDEncryptKey];
+    NSString *encodeParameters = [self encryptParameters:parametersDict];
 
     [session POST:HMD_HINAVI_LOGIN parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+
         //解密
-        NSString *decodeResponseStr = [EncryptionTools decryptAES:responseStr key:HMDEncryptKey];
+        NSString *decodeResponseStr = [self decryptResponseObject:responseObject];
         NSDictionary *hmdDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
         if ([[hmdDict allKeys]containsObject:@"hid"]) {
             NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionaryWithDictionary:wxInfoDict];
             [userInfoDict addEntriesFromDictionary:hmdDict];
             HMDUserModel *userModel = [HMDUserModel hmd_modelWithDictionary:userInfoDict];
+            [[NSUserDefaults standardUserDefaults] setObject:userModel.hid forKey:WXCurHID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             if (finishBlock) {
                 finishBlock(YES,userModel);
             }

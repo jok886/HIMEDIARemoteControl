@@ -226,8 +226,13 @@
 }
 //返回
 -(void)backAction:(id)sender{
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.isPushVC) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+
 }
 //设置
 -(void)setButtonClick:(id)sender{

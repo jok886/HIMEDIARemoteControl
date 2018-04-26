@@ -27,4 +27,6 @@
 @property (nonatomic,strong) NSString *video_index_name;
 @property (nonatomic,strong) NSString *video_ui_style;
 @property (nonatomic,strong) NSString *played_time;
+//播放记录
+
 @end

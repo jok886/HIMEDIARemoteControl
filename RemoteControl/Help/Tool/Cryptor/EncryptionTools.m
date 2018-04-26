@@ -51,7 +51,9 @@ NSString *const kInitVector = @"0102030405060708";
     free(encryptedBytes);
     return nil;
 }
-
++(NSString *)encryptAESWithHINAVI:(NSString *)content{
+    return [EncryptionTools encryptAES:content key:HMDEncryptKey];
+}
 + (NSString *)decryptAES:(NSString *)content key:(NSString *)key {
     key = [EncryptionTools switchKeyWithMD5:key];
     // 把 base64 String 转换成 Data
@@ -80,5 +82,9 @@ NSString *const kInitVector = @"0102030405060708";
     }
     free(decryptedBytes);
     return nil;
+}
+
++(NSString *)decryptAESWithHINAVI:(NSString *)content{
+    return [EncryptionTools decryptAES:content key:HMDEncryptKey];
 }
 @end

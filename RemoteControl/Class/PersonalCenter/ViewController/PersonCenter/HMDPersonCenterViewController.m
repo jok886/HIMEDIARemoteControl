@@ -7,13 +7,18 @@
 //
 
 #import "HMDPersonCenterViewController.h"
-#import "HMDQRCodeScanViewController.h"
-#import "WXApi.h"
-#import "HMDLoginDao.h"
-#import "UIImageView+HMDDLANLoadImage.h"
+
 #import "AppDelegate.h"
 
+#import "HMDLoginDao.h"
+#import "HMDAppListDao.h"
+
+#import "UIImageView+HMDDLANLoadImage.h"
+#import "WXApi.h"
+
+#import "HMDQRCodeScanViewController.h"
 #import "HMDApplistViewController.h"
+#import "HMDRemoteSettingViewController.h"
 @interface HMDPersonCenterViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;
@@ -21,7 +26,7 @@
 
 @property (assign, nonatomic) BOOL wxLogin;
 @property (strong, nonatomic) HMDLoginDao *loginDao;
-
+@property (strong, nonatomic) HMDAppListDao *appListDao;
 @end
 
 @implementation HMDPersonCenterViewController
@@ -90,7 +95,8 @@
 #pragma mark - 通知
 //登录通知
 -(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatLogin:) name:HMDWECHATLOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatLogin:) name:HMDWechatLogin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
 }
 
 -(void)wechatLogin:(NSNotification *)info{
@@ -137,19 +143,51 @@
 
 //我的应用
 - (IBAction)myAPPListCenter:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
     HMDApplistViewController *appListVC = [[HMDApplistViewController alloc] init];
     [self.navigationController pushViewController:appListVC animated:YES];
+}
+//系统设置
+- (IBAction)systemSetting:(id)sender {
+    HMDRemoteSettingViewController *settingVC = [[HMDRemoteSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
+}
+
+//截屏
+- (IBAction)getCapture:(id)sender {
+    [self.appListDao getCaptureFinishBlock:^(BOOL success, NSData *imageData) {
+        UIImage *image = [UIImage imageWithData:imageData];
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    }];
+}
+//启动清理大师
+- (IBAction)startHiTVAPK:(id)sender {
+
+    [self.appListDao openDLanAppWithPackage:@"com.hitv.process" FinishBlock:^(BOOL success) {
+        if (success) {
+
+        }
+    }];
 }
 
 #pragma mark - 其他
 //更新UI
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel{
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    myDelegate.userModel = userModel;
-    myDelegate.loginState = YES;
+
     [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
     self.userNameLab.text = userModel.nickname;
     self.signInBtn.hidden = YES;
+    if (self.upUserInfoBlock) {
+        self.upUserInfoBlock(userModel);
+    }
+}
+
+//登出
+-(void)wechatSignout:(NSNotification *)info{
+
+    [self.userIconImageView setImage:[UIImage imageNamed:@"user_default"]];
+    self.userNameLab.text = @"登录海美迪会员,用手机玩转盒子";
+    self.signInBtn.hidden = NO;
 }
 #pragma mark - 懒加载
 -(HMDLoginDao *)loginDao{
@@ -157,5 +195,12 @@
         _loginDao = [[HMDLoginDao alloc]init];
     }
     return _loginDao;
+}
+
+-(HMDAppListDao *)appListDao{
+    if (_appListDao == nil) {
+        _appListDao = [[HMDAppListDao alloc] init];
+    }
+    return _appListDao;
 }
 @end

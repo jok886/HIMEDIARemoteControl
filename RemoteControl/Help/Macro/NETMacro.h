@@ -13,6 +13,8 @@
 #define HMDERRORLANADDRESS  @"errorAddress"
 //当前IP
 #define HMDCURLINKDEVICEIP [[NSUserDefaults standardUserDefaults] objectForKey:DLANLINKIP]
+//当前IP
+#define HMDCURWECHAHID [[NSUserDefaults standardUserDefaults] objectForKey:WXCurHID]
 //设备发现
 #define HMD_DLAN_SEARCHDEVICE    @"M-SEARCH * HTTP/1.1\r\nHOST: 239.255.255.250:1900\r\nMan:\"ssdp:discover\"\r\nMX: 1\r\nST:\"searchTarget:ssdp:all\"\r\n\r\n"
 //遥控器按钮
@@ -27,6 +29,12 @@
 #define HMD_DLAN_DEVICE_GETALLAPK @"http://%@:8899/getAllApkInfo"
 //网络海报
 #define HMD_DLAN_VIDEO_RECOMMEND_NETLIST @"http://%@:8899/getNetPosterList"
+//本地播放记录
+#define HMD_DLAN_VIDEO_PLAY_HISTORY @"http://%@:8899/getPlayRecord"
+//播放历史记录中的数据
+#define HMD_DLAN_VIDEO_PLAY_HISTORYVIDEO @"http://%@:8899/playRecord"
+//海报分类
+#define HMD_DLAN_VIDEO_CATEGORY @"http://%@:8899/getPosterCategory"
 //海报图片
 #define HMD_DLAN_VIDEO_GET_POSTERIMAGE @"http://%@:8899/getPic"
 //播放海报视频
@@ -39,8 +47,24 @@
 #define HMD_WINXIN_REFRESH_TOKEN @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
 //微信登录
 #define HMD_WINXIN_OAUTH2 @"https://api.weixin.qq.com/sns/oauth2/access_token"
+
 //本地安装的app
 #define HMD_DLAN_ALLAPPLIST @"http://%@:8899/getAllApk"
+//打开本地apk
+#define HMD_DLAN_OPENAPK @"http://%@:8899/startApk"
+//安装apk
+#define HMD_DLAN_INSTALLAPK @"http://%@:8899/remoteApkStall"
 //本地安装的app的图标
 #define HMD_DLAN_APK_ICON @"http://%@:8899/getApkIcon"
+//后台app推荐
+#define HMD_HINAVI_ALLAPPLIST @"http://account.ms.hinavi.net/account-service/search/appList"
+//后台app安装 ps 暂时没用
+#define HMD_HINAVI_APPINSTALL @"http://account.ms.hinavi.net/account-service/search/pushRecord"
+//后台搜索热词
+#define HMD_HINAVI_SEARCH_HOTWORD @"http://account.ms.hinavi.net/account-service/search/hotWord"
+//后台搜索关键字
+#define HMD_HINAVI_SEARCH_KEYWORD @"http://account.ms.hinavi.net/account-service/search/linkage"
+//后台搜索TV
+#define HMD_HINAVI_SEARCH_TV @"http://account.ms.hinavi.net/account-service/search/search"
+
 #endif /* NETMacro_h */

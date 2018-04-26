@@ -18,7 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //清空上次登录的设置
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DLANLINKIP];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXCurHID];
     //微信登录
     [WXApi registerApp:@"wxed8c151bb3208370"];
 //乐播SDK
@@ -41,7 +43,7 @@
 -(void)onResp:(BaseResp *)resp{
     //登录后的回调
     if ([resp isKindOfClass:[SendAuthResp class]]) {//登录
-        [[NSNotificationCenter defaultCenter] postNotificationName:HMDWECHATLOGIN object:resp];
+        [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:resp];
     }
 }
 

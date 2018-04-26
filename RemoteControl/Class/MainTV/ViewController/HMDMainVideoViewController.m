@@ -7,10 +7,17 @@
 //
 
 #import "HMDMainVideoViewController.h"
+
 #import "HMDLineFlowLayout.h"
 #import "HMDVideoShowCollectionViewCell.h"
 
 #import "HMDVideoDataDao.h"
+
+#import "HMDPlayHistoryViewController.h"
+#import "HMDAllVideoViewController.h"
+#import "HMDNavigationController.h"
+#import "HMDVideoDetailViewController.h"
+
 @interface HMDMainVideoViewController ()
 <
 UICollectionViewDelegate,
@@ -89,8 +96,27 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDVideoModel *videoModel = self.videoDataArray[indexPath.row];
-    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:nil];
+    //进入详情页
+//    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:nil];
+    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
+    detailVC.videoModel = videoModel;
+    [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
 }
+
+#pragma mark - 点击
+//播放历史
+- (IBAction)historyBtnClick:(id)sender {
+    HMDPlayHistoryViewController *playHistoryVC = [[HMDPlayHistoryViewController alloc] init];
+    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:playHistoryVC];
+    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+}
+//分类
+- (IBAction)classificationBtnClick:(id)sender {
+    HMDAllVideoViewController *allVideoVC = [[HMDAllVideoViewController alloc] init];
+    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:allVideoVC];
+    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+}
+
 #pragma mark - 懒加载
 -(NSMutableArray *)videoDataArray{
     if (_videoDataArray == nil) {

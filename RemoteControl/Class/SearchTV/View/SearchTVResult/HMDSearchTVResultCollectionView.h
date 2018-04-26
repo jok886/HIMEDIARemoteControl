@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@class HMDSearchTVResultCollectionView;
+@class HMDVideoModel;
+@protocol HMDSearchTVResultCollectionViewDelegate <NSObject>
+-(void)searchTVResultCollectionView:(HMDSearchTVResultCollectionView *)earchTVResultCollectionView didSelectItemWithModel:(HMDVideoModel *)videoModel;
+@end
 
 @interface HMDSearchTVResultCollectionView : UICollectionView
+@property (nonatomic,strong) NSArray *tvModelArray;
+@property (nonatomic,weak) id<HMDSearchTVResultCollectionViewDelegate> searchDelegate;
 
++(instancetype)searchTVResultCollectionViewWithFrame:(CGRect)frame;
 @end
