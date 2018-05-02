@@ -10,6 +10,8 @@
 #import "HMDMainViewController.h"
 #import <HPCastLink/HPCastLink.h>
 #import <WXApi.h>
+#import "HMDDLANNetTool.h"
+
 @interface AppDelegate ()<WXApiDelegate>
 
 @end
@@ -24,12 +26,15 @@
     //微信登录
     [WXApi registerApp:@"wxed8c151bb3208370"];
 //乐播SDK
-    if ([[HPCastLink sharedCastLink] appkeyVerify:@"29b77f20395691d76cc69fa9bd8e7971"]) {
-         NSLog(@"appkeyVerify_enableDLNA");
+//    if ([[HPCastLink sharedCastLink] appkeyVerify:@"29b77f20395691d76cc69fa9bd8e7971"]) {
+//         NSLog(@"appkeyVerify_enableDLNA");
 //        [HPCastLink sharedCastLink].enableDLNA = YES;
-    }else{
-        NSLog(@"appkeyVerify");
-    }
+//    }else{
+//        NSLog(@"appkeyVerify");
+//    }
+    //开启httpweb
+    [[HMDDLANNetTool sharedInstance] startWebServer];
+
     //初始化根控制器
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     HMDMainViewController *mainVC = [[HMDMainViewController alloc] init];

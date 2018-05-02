@@ -38,6 +38,7 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
 }
 
 -(void)dealloc{
+//    [HMDLinkView sharedInstance].hidden = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
 }
 #pragma mark - 初始化

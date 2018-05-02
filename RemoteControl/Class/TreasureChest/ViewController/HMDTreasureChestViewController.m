@@ -12,6 +12,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Photos/Photos.h>
 #import "UIImageView+HMDDLANLoadImage.h"
+#import "HMDDLANNetTool.h"
 @interface HMDTreasureChestViewController ()
 <
 UICollectionViewDelegate,
@@ -136,41 +137,46 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 }
 
 #pragma mark - UIImagePickerControllerDelegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0){
-    NSData *imageData =UIImagePNGRepresentation(image);
-    [HMDTreasureChestDao startPlayToTVWithImageData:imageData];
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-//    NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
-//    if ([mediaType containsString:@"movie"]) {
-////        NSURL *url = [info objectForKey:@"UIImagePickerControllerMediaURL"];
-//        [HMDTreasureChestDao startPlayVideoToTVWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
-//
-//    }else if ([mediaType containsString:@"image"]){
-//        NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerImageURL"];
-//        PHFetchResult *result = [PHAsset fetchAssetsWithALAssetURLs:@[filePathURL] options:nil];
-//
-//        PHAsset *asset = [result firstObject];
-//
-//        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
-//
-//        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:phImageRequestOptions resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-//
-//            [HMDTreasureChestDao startPlayToTVWithImageData:imageData];
-//
-//        }];
-//
-//
-//    }
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0){
+//    NSData *imageData =UIImagePNGRepresentation(image);
+//    [HMDTreasureChestDao startPlayToTVWithImageData:imageData];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
 //    [picker dismissViewControllerAnimated:YES completion:nil];
 //}
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
+    if ([mediaType containsString:@"movie"]) {
+//        NSURL *url = [info objectForKey:@"UIImagePickerControllerMediaURL"];
+//        [HMDTreasureChestDao startPlayVideoToTVWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
+        [self.treasureChestDao startPlayMediaWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
+    }else if ([mediaType containsString:@"image"]){
+        NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerImageURL"];
+        NSString *fileName = [[filePathURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
+
+        PHAsset *asset = [info objectForKey:@"UIImagePickerControllerPHAsset"];
+
+        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
+
+        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:phImageRequestOptions resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileImageType];
+            [imageData writeToFile:filePath atomically:YES];
+            NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileImageType];
+            [self.treasureChestDao startPlayMediaWithURL:url];
+
+        }];
+
+
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+//    [HMDLinkView sharedInstance].hidden = NO;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+//    [HMDLinkView sharedInstance].hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 功能
@@ -184,19 +190,53 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 //投射照片
 -(void)projectivePhoto{
     //隐藏底部链接状态
+//    [HMDLinkView sharedInstance].hidden = YES;
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    self.imagePickerController.mediaTypes = @[@"public.image"];
+    self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
+                                             (NSString *)kUTTypeImage,
+                                             (NSString *)kUTTypeJPEG,
+                                             (NSString *)kUTTypeJPEG2000,
+                                             (NSString *)kUTTypeTIFF,
+                                             (NSString *)kUTTypePICT,
+                                             (NSString *)kUTTypeICO,
+                                             (NSString *)kUTTypePNG,
+                                             (NSString *)kUTTypeQuickTimeImage,
+                                             (NSString *)kUTTypeAppleICNS,
+                                             (NSString *)kUTTypeBMP,
+                                             nil];
     [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 //投视频
 -(void)projectiveVideo{
+//    const CFStringRef  kUTTypeAudiovisualContent ;抽象的声音视频
+//    const CFStringRef  kUTTypeMovie ;抽象的媒体格式（声音和视频）
+//    const CFStringRef  kUTTypeVideo ;只有视频没有声音
+//    const CFStringRef  kUTTypeAudio ;只有声音没有视频
+//    const CFStringRef  kUTTypeQuickTimeMovie ;
+//    const CFStringRef  kUTTypeMPEG ;
+//    const CFStringRef  kUTTypeMPEG4 ;
+//    const CFStringRef  kUTTypeMP3 ;
+//    const CFStringRef  kUTTypeMPEG4Audio ;
+//    const CFStringRef  kUTTypeAppleProtectedMPEG4Audio;
+
     //隐藏底部链接状态
-//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
-//    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *)kUTTypeMovie, (NSString*) kUTTypeVideo, nil];
-//    [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
-    [HMDTreasureChestDao startPlayVideoToTVWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
+//[HMDLinkView sharedInstance].hidden = YES;
+        self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
+                                                 (NSString *)kUTTypeAudiovisualContent,
+                                                 (NSString *)kUTTypeMovie,
+                                                 (NSString *)kUTTypeVideo,
+                                                 (NSString *)kUTTypeAudio,
+                                                 (NSString *)kUTTypeQuickTimeMovie,
+                                                 (NSString *)kUTTypeMPEG,
+                                                 (NSString *)kUTTypeMPEG4,
+                                                 (NSString *)kUTTypeMP3,
+                                                 (NSString *)kUTTypeMPEG4Audio,
+                                                 (NSString *)kUTTypeAppleProtectedMPEG4Audio,
+                                                 nil];
+    [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
+//    [HMDTreasureChestDao startPlayVideoToTVWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
 }
 
 #pragma mark - 懒加载
@@ -204,6 +244,7 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
     if (_imagePickerController == nil) {
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 //        _imagePickerController.allowsEditing = YES;
     }

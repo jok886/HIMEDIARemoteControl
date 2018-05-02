@@ -12,6 +12,8 @@
 @interface HMDBaseDao : NSObject
 //返回httpManager
 -(AFHTTPSessionManager *)getAFHTTPSessionManager;
+//返回httpManager
++(AFHTTPSessionManager *)getAFHTTPSessionManager;
 //按参数字典返回加密过的字符串
 -(NSString *)encryptParameters:(NSDictionary *)parameters;
 //按data解密出对应的字符串

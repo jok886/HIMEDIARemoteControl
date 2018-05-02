@@ -8,6 +8,7 @@
 
 #import "HMDDeviceListTableView.h"
 #import "HMDDeviceListTableViewCell.h"
+#import <HPCastLink/HPDevicesService.h>
 @interface HMDDeviceListTableView()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -38,7 +39,7 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     HMDDeviceListTableViewCell *deviceListCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    HMDDeviceModel *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
+    HPDevicesService *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
     [deviceListCell setupUIWithDeviceModel:deviceModel];
     return deviceListCell;
 }
@@ -69,11 +70,11 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
         [self.deviceListDeletage researchMoreDevices];
     }
 }
-#pragma mark - 其他
--(void)reloadDeviceData:(NSArray *)deviceArray{
-    self.deviceArray = [NSMutableArray arrayWithArray:deviceArray];
-    [self reloadData];
-}
+//#pragma mark - 其他
+//-(void)reloadDeviceData:(NSArray *)deviceArray{
+//    self.deviceArray = [NSMutableArray arrayWithArray:deviceArray];
+//    [self reloadData];
+//}
 #pragma mark - 懒加载
 -(NSMutableArray *)deviceArray{
     if (_deviceArray == nil) {

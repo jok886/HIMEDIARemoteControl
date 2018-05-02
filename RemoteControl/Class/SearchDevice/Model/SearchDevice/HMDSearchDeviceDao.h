@@ -11,7 +11,7 @@
 
 typedef void(^HMDSearchDeviceDaoGetMoreInfoFinishBlock)(BOOL success,HMDDeviceModel *newDeviceModel);               //数据更新结束
 typedef void(^HMDSearchDeviceDaoSearchFinishBlock)(void);               //停止搜索
-
+typedef void(^HMDDeviceLinkFinishBlock)(BOOL success);
 @protocol  HMDSearchDeviceDaoDelegate<NSObject>
 
 @optional
@@ -28,4 +28,6 @@ typedef void(^HMDSearchDeviceDaoSearchFinishBlock)(void);               //停止
 //-(void)searchDevicesExcludeDevices:(NSArray *)devices;
 //按UUID获取设备详情
 -(void)getMoreInfoFromDevice:(HMDDeviceModel *)deviceModel finishBlock:(HMDSearchDeviceDaoGetMoreInfoFinishBlock) finishBlock;
+//链接
+-(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock;
 @end

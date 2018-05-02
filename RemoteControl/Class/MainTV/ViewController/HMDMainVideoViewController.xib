@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMDMainVideoViewController">
             <connections>
+                <outlet property="mainImageView" destination="Ata-Xp-KnB" id="jFw-3m-qN3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,28 +22,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-v6-RrG">
-                    <rect key="frame" x="0.0" y="40" width="125" height="30"/>
+                    <rect key="frame" x="0.0" y="20" width="125" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="SDT-6a-YhG"/>
+                    </constraints>
                     <state key="normal" title="历史"/>
                     <connections>
                         <action selector="historyBtnClick:" destination="-1" eventType="touchUpInside" id="TDB-iJ-pVG"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-b1-dKN">
-                    <rect key="frame" x="125" y="40" width="125" height="30"/>
+                    <rect key="frame" x="125" y="20" width="125" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="收藏"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-2O-ZIu">
-                    <rect key="frame" x="250" y="40" width="125" height="30"/>
+                    <rect key="frame" x="250" y="20" width="125" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="分类"/>
                     <connections>
                         <action selector="classificationBtnClick:" destination="-1" eventType="touchUpInside" id="B6g-6C-fN9"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-Xp-KnB">
-                    <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-Xp-KnB">
+                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yae-3q-uBg">
-                    <rect key="frame" x="171.5" y="134" width="31" height="30"/>
+                    <rect key="frame" x="171.5" y="114" width="31" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="播放"/>
                 </button>
             </subviews>
@@ -50,7 +58,7 @@
             <constraints>
                 <constraint firstItem="PyD-2O-ZIu" firstAttribute="leading" secondItem="rb1-b1-dKN" secondAttribute="trailing" id="4l1-ff-4Cq"/>
                 <constraint firstItem="Ata-Xp-KnB" firstAttribute="top" secondItem="rWd-v6-RrG" secondAttribute="bottom" id="D9r-G4-9LY"/>
-                <constraint firstItem="rb1-b1-dKN" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="HQN-QR-2hj"/>
+                <constraint firstItem="rb1-b1-dKN" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="HQN-QR-2hj"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="PyD-2O-ZIu" secondAttribute="trailing" id="L8R-Iv-WXq"/>
                 <constraint firstItem="rWd-v6-RrG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="POk-l3-uk7"/>
                 <constraint firstItem="PyD-2O-ZIu" firstAttribute="height" secondItem="rb1-b1-dKN" secondAttribute="height" id="Pfr-Np-vBf"/>
@@ -60,10 +68,10 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Ata-Xp-KnB" secondAttribute="trailing" id="ZvR-zj-ZqI"/>
                 <constraint firstItem="rWd-v6-RrG" firstAttribute="height" secondItem="rb1-b1-dKN" secondAttribute="height" id="bVH-fw-mqU"/>
                 <constraint firstItem="Ata-Xp-KnB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ct9-XJ-mA1"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Ata-Xp-KnB" secondAttribute="bottom" id="elp-o0-TDw"/>
                 <constraint firstItem="yae-3q-uBg" firstAttribute="centerX" secondItem="Ata-Xp-KnB" secondAttribute="centerX" id="fgG-9Q-kc6"/>
                 <constraint firstItem="rb1-b1-dKN" firstAttribute="leading" secondItem="rWd-v6-RrG" secondAttribute="trailing" id="fiT-aa-gmI"/>
                 <constraint firstItem="yae-3q-uBg" firstAttribute="top" secondItem="rb1-b1-dKN" secondAttribute="bottom" constant="64" id="nz8-c8-PJ8"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Ata-Xp-KnB" secondAttribute="bottom" id="trE-R1-z2q"/>
                 <constraint firstItem="rWd-v6-RrG" firstAttribute="top" secondItem="rb1-b1-dKN" secondAttribute="top" id="vWm-Oi-vWG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>

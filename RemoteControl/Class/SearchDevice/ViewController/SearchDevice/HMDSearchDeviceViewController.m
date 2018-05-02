@@ -8,14 +8,14 @@
 
 #import "HMDSearchDeviceViewController.h"
 #import "HMDSearchDeviceDao.h"
-#import "HMDLANNetTool.h"
+#import "HMDDLANNetTool.h"
 
 #import "HMDDeviceListTableView.h"
-
+#import "AppDelegate.h"
 @interface HMDSearchDeviceViewController ()<HMDSearchDeviceDaoDelegate,HMDDeviceListTableViewDelegate>
 @property (nonatomic,strong) NSString *lanNetSSID;
 @property (nonatomic,strong) HMDSearchDeviceDao *searchDao;
-@property (nonatomic,strong) NSMutableArray *deviceArray;
+//@property (nonatomic,strong) NSMutableArray *deviceArray;
 @property (nonatomic,strong) NSMutableDictionary *deviceDict;
 @property (weak, nonatomic) IBOutlet UILabel *curDLANLab;
 @property (nonatomic,weak) HMDDeviceListTableView *deviceListTableView;
@@ -71,7 +71,7 @@
 }
 #pragma mark -局域网获取
 -(void)getLanIP{
-    NSDictionary *wifiDict = [HMDLANNetTool fetchSSIDInfo];
+    NSDictionary *wifiDict = [HMDDLANNetTool fetchSSIDInfo];
     if ([[wifiDict allKeys]containsObject:@"SSID"]) {
         self.lanNetSSID = [wifiDict objectForKey:@"SSID"];
         self.curDLANLab.text = [NSString stringWithFormat:@"当前网络:%@",self.lanNetSSID];
@@ -103,14 +103,16 @@
 //    NSInteger curIndex = [self.deviceArray indexOfObject:newDeviceModel];
     [self.searchDao getMoreInfoFromDevice:newDeviceModel finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
         if (success) {
-            [weakSelf.deviceArray addObject:newDeviceModel];
-            [weakSelf upTableViewData];
+            [weakSelf.deviceListTableView.deviceArray addObject:newDeviceModel];
+            [weakSelf.deviceListTableView reloadData];
             
         }
     }];
 }
 
 -(void)didSelectRowAtIndexPath:(NSInteger)index deviceModel:(HMDDeviceModel *)deviceModel{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.deviceModel = deviceModel;
     //链接
     if (self.selectedFinishBlock) {
         self.selectedFinishBlock(deviceModel.ip);
@@ -118,16 +120,17 @@
 }
 
 -(void)researchMoreDevices{
-    [self.deviceArray removeAllObjects];
+    [self.deviceListTableView.deviceArray removeAllObjects];
+
     self.deviceListTableView.sectionFooterHeight = 0;
     [self.deviceListTableView reloadData];
    [self.searchDao searchDevices];
     
 }
 #pragma mark - 其他
--(void)upTableViewData{
-    [self.deviceListTableView reloadDeviceData:self.deviceArray];
-}
+//-(void)upTableViewData{
+//    [self.deviceListTableView reloadDeviceData:self.deviceArray];
+//}
 #pragma mark -点击
 //返回
 - (void)backAction:(id)sender {
@@ -139,12 +142,12 @@
     
 }
 #pragma mark -懒加载
--(NSMutableArray *)deviceArray{
-    if (_deviceArray == nil) {
-        _deviceArray = [NSMutableArray array];
-    }
-    return _deviceArray;
-}
+//-(NSMutableArray *)deviceArray{
+//    if (_deviceArray == nil) {
+//        _deviceArray = [NSMutableArray array];
+//    }
+//    return _deviceArray;
+//}
 
 
 

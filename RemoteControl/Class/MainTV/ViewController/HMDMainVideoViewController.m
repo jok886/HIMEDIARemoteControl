@@ -27,6 +27,8 @@ UICollectionViewDataSource
 @property (nonatomic,strong) NSMutableArray *videoDataArray;                    //视频数据
 @property (nonatomic) CGRect videoShowCollectionViewFrame;                      //主界面frame
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
+
 @end
 
 @implementation HMDMainVideoViewController
@@ -61,7 +63,7 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     UICollectionView *videoShowCollectionView = [[UICollectionView alloc]initWithFrame:self.videoShowCollectionViewFrame collectionViewLayout:layout];
     [videoShowCollectionView registerNib:[UINib nibWithNibName:@"HMDVideoShowCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     videoShowCollectionView.showsHorizontalScrollIndicator = NO;
-
+    videoShowCollectionView.backgroundColor = [UIColor clearColor];
     videoShowCollectionView.delegate = self;
     videoShowCollectionView.dataSource = self;
     self.videoShowCollectionView = videoShowCollectionView;
@@ -71,8 +73,13 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 -(void)getRecommendVideoData{
     HMDWeakSelf(self)
     [self.videoDataDao getRecommendVideoDataFinish:^(BOOL success, NSArray *modelArray) {
-        weakSelf.videoDataArray = [NSMutableArray arrayWithArray:modelArray];
-        [weakSelf.videoShowCollectionView reloadData];
+        if (success && modelArray.count > 0) {
+            HMDVideoModel *VideoModel = [weakSelf.videoDataArray firstObject];
+            [weakSelf setMainImageViewImageWithVideoModel:VideoModel];
+            weakSelf.videoDataArray = [NSMutableArray arrayWithArray:modelArray];
+            [weakSelf.videoShowCollectionView reloadData];
+        }
+
     }];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -97,12 +104,36 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDVideoModel *videoModel = self.videoDataArray[indexPath.row];
     //进入详情页
-//    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:nil];
-    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
-    detailVC.videoModel = videoModel;
-    [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
+    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:nil];
+//    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
+//    detailVC.videoModel = videoModel;
+//    [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
 }
 
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    CGFloat offsetX = self.videoShowCollectionView.contentOffset.x;
+    NSInteger index = offsetX/(HMDScreenW-80);
+    if (index >0 &&index<self.videoDataArray.count) {
+        HMDVideoModel *VideoModel = self.videoDataArray[index];
+        [self setMainImageViewImageWithVideoModel:VideoModel];
+    }
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGFloat offsetX = self.videoShowCollectionView.contentOffset.x;
+    NSInteger index = offsetX/(HMDScreenW-80);
+    NSLog(@"index:%ld  offset:%f",(long)index,offsetX);
+    if (index >=0 &&index<self.videoDataArray.count) {
+        HMDVideoModel *VideoModel = self.videoDataArray[index];
+        [self setMainImageViewImageWithVideoModel:VideoModel];
+    }
+
+    
+}
+
+#pragma mark - 其他
+-(void)setMainImageViewImageWithVideoModel:(HMDVideoModel *)VideoModel{
+    [self.mainImageView setImageWithURLStr:VideoModel.img_url_vertical placeholderImage:nil];
+}
 #pragma mark - 点击
 //播放历史
 - (IBAction)historyBtnClick:(id)sender {

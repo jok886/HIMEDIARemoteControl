@@ -230,6 +230,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+//        [HMDLinkView sharedInstance].hidden = NO;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 

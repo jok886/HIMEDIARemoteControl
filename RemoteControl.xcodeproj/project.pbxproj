@@ -30,13 +30,8 @@
 		B21BFA172090730100ACFF4B /* HMDSearchTVResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA152090730100ACFF4B /* HMDSearchTVResultCell.xib */; };
 		B21BFA4520917D8600ACFF4B /* NSString+HMDExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA4420917D8600ACFF4B /* NSString+HMDExtend.m */; };
 		B21BFA722091A04700ACFF4B /* HMDVideoDataDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA4A2091A04700ACFF4B /* HMDVideoDataDao.m */; };
-		B21BFA732091A04700ACFF4B /* HMDVideoHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA4B2091A04700ACFF4B /* HMDVideoHistoryModel.m */; };
 		B21BFA742091A04700ACFF4B /* HMDVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA4C2091A04700ACFF4B /* HMDVideoModel.m */; };
 		B21BFA752091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA4F2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib */; };
-		B21BFA762091A04700ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA502091A04700ACFF4B /* HMDVideoHistoryTableViewCell.xib */; };
-		B21BFA772091A04700ACFF4B /* HMDHistoryHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA512091A04700ACFF4B /* HMDHistoryHeadView.m */; };
-		B21BFA782091A04700ACFF4B /* HMDVideoHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA522091A04700ACFF4B /* HMDVideoHistoryTableViewCell.m */; };
-		B21BFA792091A04700ACFF4B /* HMDHistoryHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA552091A04700ACFF4B /* HMDHistoryHeadView.xib */; };
 		B21BFA7A2091A04700ACFF4B /* HMDLineFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA582091A04700ACFF4B /* HMDLineFlowLayout.m */; };
 		B21BFA7B2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA592091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m */; };
 		B21BFA7F2091A04700ACFF4B /* HMDDeviceLinkDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA642091A04700ACFF4B /* HMDDeviceLinkDao.m */; };
@@ -50,18 +45,31 @@
 		B21BFA922091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA8B2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.m */; };
 		B21BFA932091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA8D2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib */; };
 		B21BFA942091A04E00ACFF4B /* HMDTreasureChestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA8F2091A04E00ACFF4B /* HMDTreasureChestViewController.m */; };
-		B21BFA972091A39D00ACFF4B /* HMDVideoCMDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA962091A39D00ACFF4B /* HMDVideoCMDModel.m */; };
-		B21BFA9D2091A6E400ACFF4B /* HMDPlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA992091A6E400ACFF4B /* HMDPlayHistoryViewController.m */; };
 		B21BFA9E2091A6E400ACFF4B /* HMDMainVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFA9A2091A6E400ACFF4B /* HMDMainVideoViewController.m */; };
 		B21BFA9F2091A6E400ACFF4B /* HMDMainVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFA9B2091A6E400ACFF4B /* HMDMainVideoViewController.xib */; };
-		B21BFAA32091B55C00ACFF4B /* HMDAllVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAA12091B55C00ACFF4B /* HMDAllVideoViewController.m */; };
-		B21BFAA42091B55C00ACFF4B /* HMDAllVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAA22091B55C00ACFF4B /* HMDAllVideoViewController.xib */; };
-		B21BFAAD2091C7A000ACFF4B /* HMDVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAAB2091C7A000ACFF4B /* HMDVideoDetailViewController.m */; };
-		B21BFAAE2091C7A000ACFF4B /* HMDVideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAAC2091C7A000ACFF4B /* HMDVideoDetailViewController.xib */; };
-		B21BFAB12091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAB02091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.m */; };
-		B21BFAB52091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAB32091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.m */; };
-		B21BFAB62091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAB42091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.xib */; };
 		B21BFAB92091D10800ACFF4B /* HMDBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAB82091D10800ACFF4B /* HMDBaseTableView.m */; };
+		B21BFACD2092EC3600ACFF4B /* HMDVideoHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAC82092EC3600ACFF4B /* HMDVideoHistoryModel.m */; };
+		B21BFACE2092EC3600ACFF4B /* HMDVideoCMDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAC92092EC3600ACFF4B /* HMDVideoCMDModel.m */; };
+		B21BFACF2092EC3600ACFF4B /* HMDTVClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFACB2092EC3600ACFF4B /* HMDTVClassifyModel.m */; };
+		B21BFAE12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAD12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m */; };
+		B21BFAE22092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAD32092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib */; };
+		B21BFAE32092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAD62092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib */; };
+		B21BFAE42092ECDA00ACFF4B /* HMDHistoryHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAD72092ECDA00ACFF4B /* HMDHistoryHeadView.m */; };
+		B21BFAE52092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAD82092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.m */; };
+		B21BFAE62092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAD92092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib */; };
+		B21BFAE72092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFADA2092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m */; };
+		B21BFAE82092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFADB2092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m */; };
+		B21BFAE92092ECDA00ACFF4B /* HMDHistoryHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFADC2092ECDA00ACFF4B /* HMDHistoryHeadView.xib */; };
+		B21BFAF52092ED2200ACFF4B /* HMDVideoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAEB2092ED2100ACFF4B /* HMDVideoDetailViewController.m */; };
+		B21BFAF62092ED2200ACFF4B /* HMDVideoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAEC2092ED2100ACFF4B /* HMDVideoDetailViewController.xib */; };
+		B21BFAF72092ED2200ACFF4B /* HMDPlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAEF2092ED2100ACFF4B /* HMDPlayHistoryViewController.m */; };
+		B21BFAF82092ED2200ACFF4B /* HMDAllVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFAF22092ED2200ACFF4B /* HMDAllVideoViewController.xib */; };
+		B21BFAF92092ED2200ACFF4B /* HMDAllVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAF32092ED2200ACFF4B /* HMDAllVideoViewController.m */; };
+		B21BFAFC2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAFB2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.m */; };
+		B21BFAFF2092F21500ACFF4B /* HMDTVFilterCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAFE2092F21500ACFF4B /* HMDTVFilterCollectionView.m */; };
+		B21BFB032092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFB012092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m */; };
+		B21BFB042092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */; };
+		B21BFB072092FBC200ACFF4B /* HMDCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFB062092FBC200ACFF4B /* HMDCoverView.m */; };
 		B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */; };
 		B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A51208984FD00B5227B /* EncryptionTools.m */; };
 		B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A89208DB33400B5227B /* NSString+Hash.m */; };
@@ -72,8 +80,9 @@
 		B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A9C208DDF8000B5227B /* HMDLoginDao.m */; };
 		B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */; };
 		B24C6AA8208DDFAA00B5227B /* HMDAPKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */; };
+		B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26313EB20946A35009ECBDF /* HMDDLan.swift */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
-		B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F332074640E00F5E35C /* HMDLANNetTool.m */; };
+		B29E8F342074640E00F5E35C /* HMDDLANNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F332074640E00F5E35C /* HMDDLANNetTool.m */; };
 		B29E8F432079BADB00F5E35C /* HMDBaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F422079BADB00F5E35C /* HMDBaseDao.m */; };
 		B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */; };
 		B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F57207A122900F5E35C /* UIView+Additions.m */; };
@@ -202,20 +211,12 @@
 		B21BFA4320917D8600ACFF4B /* NSString+HMDExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HMDExtend.h"; sourceTree = "<group>"; };
 		B21BFA4420917D8600ACFF4B /* NSString+HMDExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HMDExtend.m"; sourceTree = "<group>"; };
 		B21BFA482091A04700ACFF4B /* HMDVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoModel.h; sourceTree = "<group>"; };
-		B21BFA492091A04700ACFF4B /* HMDVideoHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoHistoryModel.h; sourceTree = "<group>"; };
 		B21BFA4A2091A04700ACFF4B /* HMDVideoDataDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoDataDao.m; sourceTree = "<group>"; };
-		B21BFA4B2091A04700ACFF4B /* HMDVideoHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoHistoryModel.m; sourceTree = "<group>"; };
 		B21BFA4C2091A04700ACFF4B /* HMDVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoModel.m; sourceTree = "<group>"; };
 		B21BFA4D2091A04700ACFF4B /* HMDVideoDataDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoDataDao.h; sourceTree = "<group>"; };
 		B21BFA4F2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDVideoShowCollectionViewCell.xib; sourceTree = "<group>"; };
-		B21BFA502091A04700ACFF4B /* HMDVideoHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDVideoHistoryTableViewCell.xib; sourceTree = "<group>"; };
-		B21BFA512091A04700ACFF4B /* HMDHistoryHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDHistoryHeadView.m; sourceTree = "<group>"; };
-		B21BFA522091A04700ACFF4B /* HMDVideoHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoHistoryTableViewCell.m; sourceTree = "<group>"; };
 		B21BFA532091A04700ACFF4B /* HMDLineFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDLineFlowLayout.h; sourceTree = "<group>"; };
 		B21BFA542091A04700ACFF4B /* HMDVideoShowCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoShowCollectionViewCell.h; sourceTree = "<group>"; };
-		B21BFA552091A04700ACFF4B /* HMDHistoryHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDHistoryHeadView.xib; sourceTree = "<group>"; };
-		B21BFA562091A04700ACFF4B /* HMDVideoHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoHistoryTableViewCell.h; sourceTree = "<group>"; };
-		B21BFA572091A04700ACFF4B /* HMDHistoryHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDHistoryHeadView.h; sourceTree = "<group>"; };
 		B21BFA582091A04700ACFF4B /* HMDLineFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDLineFlowLayout.m; sourceTree = "<group>"; };
 		B21BFA592091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoShowCollectionViewCell.m; sourceTree = "<group>"; };
 		B21BFA632091A04700ACFF4B /* HMDDeviceLinkDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDDeviceLinkDao.h; sourceTree = "<group>"; };
@@ -238,26 +239,48 @@
 		B21BFA8D2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDTreasureChestCollectionViewCell.xib; sourceTree = "<group>"; };
 		B21BFA8F2091A04E00ACFF4B /* HMDTreasureChestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTreasureChestViewController.m; sourceTree = "<group>"; };
 		B21BFA902091A04E00ACFF4B /* HMDTreasureChestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTreasureChestViewController.h; sourceTree = "<group>"; };
-		B21BFA952091A39D00ACFF4B /* HMDVideoCMDModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoCMDModel.h; sourceTree = "<group>"; };
-		B21BFA962091A39D00ACFF4B /* HMDVideoCMDModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoCMDModel.m; sourceTree = "<group>"; };
 		B21BFA982091A6E400ACFF4B /* HMDMainVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDMainVideoViewController.h; sourceTree = "<group>"; };
-		B21BFA992091A6E400ACFF4B /* HMDPlayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDPlayHistoryViewController.m; sourceTree = "<group>"; };
 		B21BFA9A2091A6E400ACFF4B /* HMDMainVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDMainVideoViewController.m; sourceTree = "<group>"; };
 		B21BFA9B2091A6E400ACFF4B /* HMDMainVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDMainVideoViewController.xib; sourceTree = "<group>"; };
-		B21BFA9C2091A6E400ACFF4B /* HMDPlayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDPlayHistoryViewController.h; sourceTree = "<group>"; };
-		B21BFAA02091B55C00ACFF4B /* HMDAllVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDAllVideoViewController.h; sourceTree = "<group>"; };
-		B21BFAA12091B55C00ACFF4B /* HMDAllVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDAllVideoViewController.m; sourceTree = "<group>"; };
-		B21BFAA22091B55C00ACFF4B /* HMDAllVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDAllVideoViewController.xib; sourceTree = "<group>"; };
-		B21BFAAA2091C7A000ACFF4B /* HMDVideoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoDetailViewController.h; sourceTree = "<group>"; };
-		B21BFAAB2091C7A000ACFF4B /* HMDVideoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoDetailViewController.m; sourceTree = "<group>"; };
-		B21BFAAC2091C7A000ACFF4B /* HMDVideoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDVideoDetailViewController.xib; sourceTree = "<group>"; };
-		B21BFAAF2091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoCollectionFlowLayout.h; sourceTree = "<group>"; };
-		B21BFAB02091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoCollectionFlowLayout.m; sourceTree = "<group>"; };
-		B21BFAB22091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDEpisodeCollectionViewCell.h; sourceTree = "<group>"; };
-		B21BFAB32091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDEpisodeCollectionViewCell.m; sourceTree = "<group>"; };
-		B21BFAB42091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDEpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
 		B21BFAB72091D10800ACFF4B /* HMDBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseTableView.h; sourceTree = "<group>"; };
 		B21BFAB82091D10800ACFF4B /* HMDBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDBaseTableView.m; sourceTree = "<group>"; };
+		B21BFAC62092EC3600ACFF4B /* HMDVideoHistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoHistoryModel.h; sourceTree = "<group>"; };
+		B21BFAC72092EC3600ACFF4B /* HMDVideoCMDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoCMDModel.h; sourceTree = "<group>"; };
+		B21BFAC82092EC3600ACFF4B /* HMDVideoHistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoHistoryModel.m; sourceTree = "<group>"; };
+		B21BFAC92092EC3600ACFF4B /* HMDVideoCMDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoCMDModel.m; sourceTree = "<group>"; };
+		B21BFACB2092EC3600ACFF4B /* HMDTVClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTVClassifyModel.m; sourceTree = "<group>"; };
+		B21BFACC2092EC3600ACFF4B /* HMDTVClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTVClassifyModel.h; sourceTree = "<group>"; };
+		B21BFAD12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDTVClassifyCollectionViewCell.m; sourceTree = "<group>"; };
+		B21BFAD22092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDTVClassifyCollectionViewCell.h; sourceTree = "<group>"; };
+		B21BFAD32092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDTVClassifyCollectionViewCell.xib; sourceTree = "<group>"; };
+		B21BFAD62092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDVideoHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		B21BFAD72092ECDA00ACFF4B /* HMDHistoryHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDHistoryHeadView.m; sourceTree = "<group>"; };
+		B21BFAD82092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoHistoryTableViewCell.m; sourceTree = "<group>"; };
+		B21BFAD92092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDEpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
+		B21BFADA2092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDEpisodeCollectionViewCell.m; sourceTree = "<group>"; };
+		B21BFADB2092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoCollectionFlowLayout.m; sourceTree = "<group>"; };
+		B21BFADC2092ECDA00ACFF4B /* HMDHistoryHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDHistoryHeadView.xib; sourceTree = "<group>"; };
+		B21BFADD2092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoHistoryTableViewCell.h; sourceTree = "<group>"; };
+		B21BFADE2092ECDA00ACFF4B /* HMDHistoryHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDHistoryHeadView.h; sourceTree = "<group>"; };
+		B21BFADF2092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDEpisodeCollectionViewCell.h; sourceTree = "<group>"; };
+		B21BFAE02092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoCollectionFlowLayout.h; sourceTree = "<group>"; };
+		B21BFAEB2092ED2100ACFF4B /* HMDVideoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDVideoDetailViewController.m; sourceTree = "<group>"; };
+		B21BFAEC2092ED2100ACFF4B /* HMDVideoDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDVideoDetailViewController.xib; sourceTree = "<group>"; };
+		B21BFAED2092ED2100ACFF4B /* HMDVideoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDVideoDetailViewController.h; sourceTree = "<group>"; };
+		B21BFAEF2092ED2100ACFF4B /* HMDPlayHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDPlayHistoryViewController.m; sourceTree = "<group>"; };
+		B21BFAF02092ED2100ACFF4B /* HMDPlayHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDPlayHistoryViewController.h; sourceTree = "<group>"; };
+		B21BFAF22092ED2200ACFF4B /* HMDAllVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDAllVideoViewController.xib; sourceTree = "<group>"; };
+		B21BFAF32092ED2200ACFF4B /* HMDAllVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDAllVideoViewController.m; sourceTree = "<group>"; };
+		B21BFAF42092ED2200ACFF4B /* HMDAllVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDAllVideoViewController.h; sourceTree = "<group>"; };
+		B21BFAFA2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVClassifyCollectionView.h; sourceTree = "<group>"; };
+		B21BFAFB2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVClassifyCollectionView.m; sourceTree = "<group>"; };
+		B21BFAFD2092F21500ACFF4B /* HMDTVFilterCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVFilterCollectionView.h; sourceTree = "<group>"; };
+		B21BFAFE2092F21500ACFF4B /* HMDTVFilterCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVFilterCollectionView.m; sourceTree = "<group>"; };
+		B21BFB002092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVFilterCollectionViewCell.h; sourceTree = "<group>"; };
+		B21BFB012092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDTVFilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		B21BFB052092FBC200ACFF4B /* HMDCoverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDCoverView.h; sourceTree = "<group>"; };
+		B21BFB062092FBC200ACFF4B /* HMDCoverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDCoverView.m; sourceTree = "<group>"; };
 		B22878D6207F248E009CAF83 /* HMDTVBaseFunctionDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVBaseFunctionDao.h; sourceTree = "<group>"; };
 		B22878D7207F248E009CAF83 /* HMDTVBaseFunctionDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVBaseFunctionDao.m; sourceTree = "<group>"; };
 		B24C6A50208984FD00B5227B /* EncryptionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptionTools.h; sourceTree = "<group>"; };
@@ -277,10 +300,12 @@
 		B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDAppListDao.m; sourceTree = "<group>"; };
 		B24C6AA6208DDFAA00B5227B /* HMDAPKModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDAPKModel.h; sourceTree = "<group>"; };
 		B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDAPKModel.m; sourceTree = "<group>"; };
+		B26313E82094509F009ECBDF /* RemoteControl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RemoteControl-Bridging-Header.h"; sourceTree = "<group>"; };
+		B26313EB20946A35009ECBDF /* HMDDLan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDDLan.swift; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
-		B29E8F322074640E00F5E35C /* HMDLANNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLANNetTool.h; sourceTree = "<group>"; };
-		B29E8F332074640E00F5E35C /* HMDLANNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLANNetTool.m; sourceTree = "<group>"; };
+		B29E8F322074640E00F5E35C /* HMDDLANNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDLANNetTool.h; sourceTree = "<group>"; };
+		B29E8F332074640E00F5E35C /* HMDDLANNetTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDLANNetTool.m; sourceTree = "<group>"; };
 		B29E8F412079BADB00F5E35C /* HMDBaseDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDBaseDao.h; sourceTree = "<group>"; };
 		B29E8F422079BADB00F5E35C /* HMDBaseDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDBaseDao.m; sourceTree = "<group>"; };
 		B29E8F522079F65500F5E35C /* HMDXMLParserTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDXMLParserTool.h; sourceTree = "<group>"; };
@@ -582,10 +607,8 @@
 				B21BFA4A2091A04700ACFF4B /* HMDVideoDataDao.m */,
 				B21BFA482091A04700ACFF4B /* HMDVideoModel.h */,
 				B21BFA4C2091A04700ACFF4B /* HMDVideoModel.m */,
-				B21BFA492091A04700ACFF4B /* HMDVideoHistoryModel.h */,
-				B21BFA4B2091A04700ACFF4B /* HMDVideoHistoryModel.m */,
-				B21BFA952091A39D00ACFF4B /* HMDVideoCMDModel.h */,
-				B21BFA962091A39D00ACFF4B /* HMDVideoCMDModel.m */,
+				B21BFACA2092EC3600ACFF4B /* Classify */,
+				B21BFAC52092EC3600ACFF4B /* History */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,22 +616,14 @@
 		B21BFA4E2091A04700ACFF4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B21BFAD02092ECDA00ACFF4B /* Classify */,
+				B21BFAD42092ECDA00ACFF4B /* Detail */,
+				B21BFAD52092ECDA00ACFF4B /* History */,
 				B21BFA542091A04700ACFF4B /* HMDVideoShowCollectionViewCell.h */,
 				B21BFA592091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m */,
 				B21BFA4F2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib */,
-				B21BFA562091A04700ACFF4B /* HMDVideoHistoryTableViewCell.h */,
-				B21BFA522091A04700ACFF4B /* HMDVideoHistoryTableViewCell.m */,
-				B21BFA502091A04700ACFF4B /* HMDVideoHistoryTableViewCell.xib */,
 				B21BFA532091A04700ACFF4B /* HMDLineFlowLayout.h */,
 				B21BFA582091A04700ACFF4B /* HMDLineFlowLayout.m */,
-				B21BFA572091A04700ACFF4B /* HMDHistoryHeadView.h */,
-				B21BFA512091A04700ACFF4B /* HMDHistoryHeadView.m */,
-				B21BFA552091A04700ACFF4B /* HMDHistoryHeadView.xib */,
-				B21BFAAF2091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.h */,
-				B21BFAB02091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.m */,
-				B21BFAB22091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.h */,
-				B21BFAB32091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.m */,
-				B21BFAB42091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -616,17 +631,12 @@
 		B21BFA5A2091A04700ACFF4B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B21BFAF12092ED2200ACFF4B /* Classify */,
+				B21BFAEA2092ED2100ACFF4B /* Detail */,
+				B21BFAEE2092ED2100ACFF4B /* History */,
 				B21BFA982091A6E400ACFF4B /* HMDMainVideoViewController.h */,
 				B21BFA9A2091A6E400ACFF4B /* HMDMainVideoViewController.m */,
 				B21BFA9B2091A6E400ACFF4B /* HMDMainVideoViewController.xib */,
-				B21BFA9C2091A6E400ACFF4B /* HMDPlayHistoryViewController.h */,
-				B21BFA992091A6E400ACFF4B /* HMDPlayHistoryViewController.m */,
-				B21BFAA02091B55C00ACFF4B /* HMDAllVideoViewController.h */,
-				B21BFAA12091B55C00ACFF4B /* HMDAllVideoViewController.m */,
-				B21BFAA22091B55C00ACFF4B /* HMDAllVideoViewController.xib */,
-				B21BFAAA2091C7A000ACFF4B /* HMDVideoDetailViewController.h */,
-				B21BFAAB2091C7A000ACFF4B /* HMDVideoDetailViewController.m */,
-				B21BFAAC2091C7A000ACFF4B /* HMDVideoDetailViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -653,14 +663,14 @@
 		B21BFA652091A04700ACFF4B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B21BFA662091A04700ACFF4B /* HMDTitleBaseLine.m */,
+				B21BFA6C2091A04700ACFF4B /* HMDLinkView.h */,
 				B21BFA672091A04700ACFF4B /* HMDLinkView.m */,
-				B21BFA682091A04700ACFF4B /* HMDScrollContentView.h */,
+				B21BFA6D2091A04700ACFF4B /* HMDScrollTitleView.h */,
 				B21BFA692091A04700ACFF4B /* HMDScrollTitleView.m */,
 				B21BFA6A2091A04700ACFF4B /* HMDTitleBaseLine.h */,
+				B21BFA662091A04700ACFF4B /* HMDTitleBaseLine.m */,
+				B21BFA682091A04700ACFF4B /* HMDScrollContentView.h */,
 				B21BFA6B2091A04700ACFF4B /* HMDScrollContentView.m */,
-				B21BFA6C2091A04700ACFF4B /* HMDLinkView.h */,
-				B21BFA6D2091A04700ACFF4B /* HMDScrollTitleView.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -668,9 +678,9 @@
 		B21BFA6E2091A04700ACFF4B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B21BFA6F2091A04700ACFF4B /* HMDMainViewController.xib */,
-				B21BFA702091A04700ACFF4B /* HMDMainViewController.m */,
 				B21BFA712091A04700ACFF4B /* HMDMainViewController.h */,
+				B21BFA702091A04700ACFF4B /* HMDMainViewController.m */,
+				B21BFA6F2091A04700ACFF4B /* HMDMainViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -707,10 +717,101 @@
 		B21BFA8E2091A04E00ACFF4B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B21BFA8F2091A04E00ACFF4B /* HMDTreasureChestViewController.m */,
 				B21BFA902091A04E00ACFF4B /* HMDTreasureChestViewController.h */,
+				B21BFA8F2091A04E00ACFF4B /* HMDTreasureChestViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B21BFAC52092EC3600ACFF4B /* History */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFAC62092EC3600ACFF4B /* HMDVideoHistoryModel.h */,
+				B21BFAC72092EC3600ACFF4B /* HMDVideoCMDModel.h */,
+				B21BFAC82092EC3600ACFF4B /* HMDVideoHistoryModel.m */,
+				B21BFAC92092EC3600ACFF4B /* HMDVideoCMDModel.m */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		B21BFACA2092EC3600ACFF4B /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFACB2092EC3600ACFF4B /* HMDTVClassifyModel.m */,
+				B21BFACC2092EC3600ACFF4B /* HMDTVClassifyModel.h */,
+			);
+			path = Classify;
+			sourceTree = "<group>";
+		};
+		B21BFAD02092ECDA00ACFF4B /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFAD22092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.h */,
+				B21BFAD12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m */,
+				B21BFAD32092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib */,
+				B21BFAFA2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.h */,
+				B21BFAFB2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.m */,
+				B21BFAFD2092F21500ACFF4B /* HMDTVFilterCollectionView.h */,
+				B21BFAFE2092F21500ACFF4B /* HMDTVFilterCollectionView.m */,
+				B21BFB002092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.h */,
+				B21BFB012092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m */,
+				B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */,
+			);
+			path = Classify;
+			sourceTree = "<group>";
+		};
+		B21BFAD42092ECDA00ACFF4B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B21BFAD52092ECDA00ACFF4B /* History */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFADE2092ECDA00ACFF4B /* HMDHistoryHeadView.h */,
+				B21BFAD72092ECDA00ACFF4B /* HMDHistoryHeadView.m */,
+				B21BFADC2092ECDA00ACFF4B /* HMDHistoryHeadView.xib */,
+				B21BFADD2092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.h */,
+				B21BFAD82092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.m */,
+				B21BFAD62092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib */,
+				B21BFADF2092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.h */,
+				B21BFADA2092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m */,
+				B21BFAD92092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib */,
+				B21BFADB2092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m */,
+				B21BFAE02092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.h */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		B21BFAEA2092ED2100ACFF4B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFAED2092ED2100ACFF4B /* HMDVideoDetailViewController.h */,
+				B21BFAEB2092ED2100ACFF4B /* HMDVideoDetailViewController.m */,
+				B21BFAEC2092ED2100ACFF4B /* HMDVideoDetailViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B21BFAEE2092ED2100ACFF4B /* History */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFAF02092ED2100ACFF4B /* HMDPlayHistoryViewController.h */,
+				B21BFAEF2092ED2100ACFF4B /* HMDPlayHistoryViewController.m */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		B21BFAF12092ED2200ACFF4B /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				B21BFAF42092ED2200ACFF4B /* HMDAllVideoViewController.h */,
+				B21BFAF32092ED2200ACFF4B /* HMDAllVideoViewController.m */,
+				B21BFAF22092ED2200ACFF4B /* HMDAllVideoViewController.xib */,
+			);
+			path = Classify;
 			sourceTree = "<group>";
 		};
 		B22878A1207DE155009CAF83 /* SearchTV */ = {
@@ -815,10 +916,12 @@
 		B29E8F31207463EA00F5E35C /* NETTool */ = {
 			isa = PBXGroup;
 			children = (
-				B29E8F322074640E00F5E35C /* HMDLANNetTool.h */,
-				B29E8F332074640E00F5E35C /* HMDLANNetTool.m */,
+				B29E8F322074640E00F5E35C /* HMDDLANNetTool.h */,
+				B29E8F332074640E00F5E35C /* HMDDLANNetTool.m */,
 				B29E8F522079F65500F5E35C /* HMDXMLParserTool.h */,
 				B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */,
+				B26313E82094509F009ECBDF /* RemoteControl-Bridging-Header.h */,
+				B26313EB20946A35009ECBDF /* HMDDLan.swift */,
 			);
 			path = NETTool;
 			sourceTree = "<group>";
@@ -1140,6 +1243,8 @@
 				B2F6F92E2071DD6D0037E746 /* HMDBaseView.m */,
 				B21BFAB72091D10800ACFF4B /* HMDBaseTableView.h */,
 				B21BFAB82091D10800ACFF4B /* HMDBaseTableView.m */,
+				B21BFB052092FBC200ACFF4B /* HMDCoverView.h */,
+				B21BFB062092FBC200ACFF4B /* HMDCoverView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1297,6 +1402,7 @@
 				TargetAttributes = {
 					3E03EEDD206E114D004DBB36 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					3E03EEF5206E114D004DBB36 = {
@@ -1338,36 +1444,38 @@
 			files = (
 				B2D73B7D2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib in Resources */,
 				B2D73AD72084A80400B64E36 /* HPCastLink.bundle in Resources */,
-				B21BFAB62091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */,
+				B21BFAE62092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */,
 				B2D73B7E2086F1D400B64E36 /* HMDSearchTipHeadView.xib in Resources */,
 				B2D73B6B2086F09400B64E36 /* HMDSearchHeadView.xib in Resources */,
 				3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */,
-				B21BFA792091A04700ACFF4B /* HMDHistoryHeadView.xib in Resources */,
-				B21BFAAE2091C7A000ACFF4B /* HMDVideoDetailViewController.xib in Resources */,
+				B21BFAF62092ED2200ACFF4B /* HMDVideoDetailViewController.xib in Resources */,
 				B2D73B482086F00400B64E36 /* HMDDeviceListTableViewCell.xib in Resources */,
 				B2D73B582086F05600B64E36 /* HMDSearchTVViewController.xib in Resources */,
 				3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */,
 				3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */,
 				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
 				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
+				B21BFAE32092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
 				B21BFA172090730100ACFF4B /* HMDSearchTVResultCell.xib in Resources */,
-				B21BFAA42091B55C00ACFF4B /* HMDAllVideoViewController.xib in Resources */,
 				B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */,
 				3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */,
+				B21BFAE22092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib in Resources */,
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
 				3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */,
 				B2D73B322086EFA800B64E36 /* HMDRemoteSettingViewController.xib in Resources */,
+				B21BFAE92092ECDA00ACFF4B /* HMDHistoryHeadView.xib in Resources */,
 				B21BFA9F2091A6E400ACFF4B /* HMDMainVideoViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				B21BFA842091A04700ACFF4B /* HMDMainViewController.xib in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
 				B2D73B4E2086F00E00B64E36 /* HMDSearchDeviceViewController.xib in Resources */,
+				B21BFAF82092ED2200ACFF4B /* HMDAllVideoViewController.xib in Resources */,
 				B2D73B342086EFA800B64E36 /* HMDTVRemoteViewController.xib in Resources */,
+				B21BFB042092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib in Resources */,
 				B24C6A94208DD08600B5227B /* HMDAPPListTableViewCell.xib in Resources */,
 				B21BFA932091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib in Resources */,
 				B21BFA752091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib in Resources */,
-				B21BFA762091A04700ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */,
 				B2D73B262086EF4E00B64E36 /* HMDPersonCenterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1396,11 +1504,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
 				"${BUILT_PRODUCTS_DIR}/GDataXMLNode2/GDataXMLNode2.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
@@ -1408,11 +1518,13 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GDataXMLNode2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
@@ -1463,16 +1575,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21BFA772091A04700ACFF4B /* HMDHistoryHeadView.m in Sources */,
+				B21BFACD2092EC3600ACFF4B /* HMDVideoHistoryModel.m in Sources */,
 				B2D73B472086F00400B64E36 /* HMDDeviceListTableView.m in Sources */,
+				B21BFAF92092ED2200ACFF4B /* HMDAllVideoViewController.m in Sources */,
 				B2D73AC120848FBE00B64E36 /* HMDDHRCenter.mm in Sources */,
-				B21BFAAD2091C7A000ACFF4B /* HMDVideoDetailViewController.m in Sources */,
+				B21BFAE52092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.m in Sources */,
 				B21BFA922091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.m in Sources */,
 				B2D73B292086EF4E00B64E36 /* HMDQRCodeScanViewController.m in Sources */,
 				B2D73B3F2086EFF500B64E36 /* HMDSearchDeviceDao.m in Sources */,
-				B21BFAB12091CAAB00ACFF4B /* HMDVideoCollectionFlowLayout.m in Sources */,
+				B21BFAE42092ECDA00ACFF4B /* HMDHistoryHeadView.m in Sources */,
 				B2D73B492086F00400B64E36 /* HMDDeviceListTableViewCell.m in Sources */,
-				B21BFA732091A04700ACFF4B /* HMDVideoHistoryModel.m in Sources */,
 				B21BFA812091A04700ACFF4B /* HMDLinkView.m in Sources */,
 				B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */,
 				B21BFA742091A04700ACFF4B /* HMDVideoModel.m in Sources */,
@@ -1485,56 +1597,63 @@
 				B21BFA852091A04700ACFF4B /* HMDMainViewController.m in Sources */,
 				B29E8F432079BADB00F5E35C /* HMDBaseDao.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
+				B21BFAE72092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */,
 				B2D73B7F2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m in Sources */,
+				B21BFAF72092ED2200ACFF4B /* HMDPlayHistoryViewController.m in Sources */,
 				B2D73B802086F1D400B64E36 /* HMDSearchTipHeadView.m in Sources */,
+				B21BFAE82092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m in Sources */,
 				B2D73B532086F02900B64E36 /* HMDSearchTVDao.m in Sources */,
 				B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */,
-				B21BFA9D2091A6E400ACFF4B /* HMDPlayHistoryViewController.m in Sources */,
 				B2D73B812086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m in Sources */,
+				B21BFAFF2092F21500ACFF4B /* HMDTVFilterCollectionView.m in Sources */,
 				B24C6AA0208DDF8100B5227B /* HMDUserModel.m in Sources */,
 				B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */,
+				B21BFACF2092EC3600ACFF4B /* HMDTVClassifyModel.m in Sources */,
 				B2D73B852086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m in Sources */,
+				B21BFB072092FBC200ACFF4B /* HMDCoverView.m in Sources */,
 				B2F6F9202071CBE50037E746 /* HMDBaseModel.m in Sources */,
 				B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
 				B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */,
-				B21BFAB52091CC9300ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */,
 				B21BFA832091A04700ACFF4B /* HMDScrollContentView.m in Sources */,
 				B2D73B352086EFA800B64E36 /* HMDTVRemoteViewController.m in Sources */,
 				B22878D8207F248E009CAF83 /* HMDTVBaseFunctionDao.m in Sources */,
+				B21BFAF52092ED2200ACFF4B /* HMDVideoDetailViewController.m in Sources */,
 				B2D73B722086F09400B64E36 /* HMDWaterflowLayout.m in Sources */,
 				B21BFA822091A04700ACFF4B /* HMDScrollTitleView.m in Sources */,
 				B2D73B332086EFA800B64E36 /* HMDRemoteSettingViewController.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
+				B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */,
+				B21BFAE12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m in Sources */,
 				B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */,
 				B24C6A93208DD08600B5227B /* HMDAPPListTableViewCell.m in Sources */,
 				B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
 				B21BFA9E2091A6E400ACFF4B /* HMDMainVideoViewController.m in Sources */,
+				B21BFAFC2092EDCF00ACFF4B /* HMDTVClassifyCollectionView.m in Sources */,
+				B21BFB032092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m in Sources */,
 				B2D73B592086F05600B64E36 /* HMDSearchTVViewController.m in Sources */,
 				B21BFA7B2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m in Sources */,
-				B29E8F342074640E00F5E35C /* HMDLANNetTool.m in Sources */,
+				B29E8F342074640E00F5E35C /* HMDDLANNetTool.m in Sources */,
 				B2D73B392086EFB000B64E36 /* HMDTVRemoteDao.m in Sources */,
 				B2F6F946207207870037E746 /* HMDBaseViewController.m in Sources */,
 				B21BFA912091A04E00ACFF4B /* HMDTreasureChestDao.m in Sources */,
 				B2D73B272086EF4E00B64E36 /* HMDPersonCenterViewController.m in Sources */,
 				B21BFA7F2091A04700ACFF4B /* HMDDeviceLinkDao.m in Sources */,
 				B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */,
-				B21BFAA32091B55C00ACFF4B /* HMDAllVideoViewController.m in Sources */,
 				B21BFA802091A04700ACFF4B /* HMDTitleBaseLine.m in Sources */,
 				B21BFA942091A04E00ACFF4B /* HMDTreasureChestViewController.m in Sources */,
 				B2D73B4F2086F00E00B64E36 /* HMDSearchDeviceViewController.m in Sources */,
 				B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */,
 				B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */,
 				B2D73B702086F09400B64E36 /* HMDSearchHeadView.m in Sources */,
-				B21BFA782091A04700ACFF4B /* HMDVideoHistoryTableViewCell.m in Sources */,
+				B21BFACE2092EC3600ACFF4B /* HMDVideoCMDModel.m in Sources */,
 				3EDAD09B206E1E5C007406FB /* AppDelegate.m in Sources */,
 				B21BFA162090730100ACFF4B /* HMDSearchTVResultCell.m in Sources */,
 				B2F6F92F2071DD6D0037E746 /* HMDBaseView.m in Sources */,
 				B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 				B21BFA722091A04700ACFF4B /* HMDVideoDataDao.m in Sources */,
-				B21BFA972091A39D00ACFF4B /* HMDVideoCMDModel.m in Sources */,
 				B21BFA4520917D8600ACFF4B /* NSString+HMDExtend.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1702,7 +1821,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1716,6 +1837,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.himedia.www.RemoteControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RemoteControl/Help/Tool/NETTool/RemoteControl-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1726,7 +1850,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8FXFAY595D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1740,6 +1866,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.himedia.www.RemoteControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RemoteControl/Help/Tool/NETTool/RemoteControl-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1747,6 +1875,7 @@
 		3E03EF0E206E114E004DBB36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
@@ -1762,6 +1891,7 @@
 		3E03EF0F206E114E004DBB36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
@@ -1777,6 +1907,7 @@
 		3E03EF11206E114E004DBB36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
 				INFOPLIST_FILE = RemoteControlUITests/Info.plist;
@@ -1791,6 +1922,7 @@
 		3E03EF12206E114E004DBB36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3C88W5LYG3;
 				INFOPLIST_FILE = RemoteControlUITests/Info.plist;

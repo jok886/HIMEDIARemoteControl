@@ -15,6 +15,7 @@
 @property (nonatomic,strong) NSString *callback_value;
 @property (nonatomic,strong) NSString *videoID;
 @property (nonatomic,strong) NSString *img_url;
+@property (nonatomic,strong) NSString *img_url_vertical;
 @property (nonatomic,strong) NSString *info;
 @property (nonatomic,strong) NSString *source;
 @property (nonatomic,strong) NSString *source_package;

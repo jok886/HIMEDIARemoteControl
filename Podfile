@@ -13,6 +13,9 @@ pod 'WechatOpenSDK_NoPay'
 pod 'GDataXMLNode2'
 pod 'GCDWebServer'
 pod 'SDWebImage'
-use_frameworks!
+pod 'MJRefresh'
+pod 'GCDWebServer'
 
+use_frameworks!
+pod 'AEXML'
 end

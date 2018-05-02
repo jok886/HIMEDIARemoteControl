@@ -15,5 +15,7 @@
 #import "NotificationMacro.h"
 #import "UIView+Additions.h"
 #import "MJExtension.h"
+#import "UIImageView+HMDDLANLoadImage.h"
+
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

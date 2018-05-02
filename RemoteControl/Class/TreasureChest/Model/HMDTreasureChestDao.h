@@ -12,5 +12,9 @@
 //投屏
 +(void)startPlayToTVWithImageData:(NSData *)imageData;
 //投屏
++(void)startPlayMediaWithURL:(NSString *)mediaURL;
+//投屏
+-(void)startPlayMediaWithURL:(NSString *)mediaURL;
+//投屏
 +(void)startPlayVideoToTVWithURL:(NSString *)videoURL;
 @end

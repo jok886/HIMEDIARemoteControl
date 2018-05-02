@@ -32,7 +32,7 @@ HMDScrollContentViewDelegate,
 HMDLinkViewDelegate>
 @property (nonatomic,weak) HMDScrollTitleView *titleView;               //标题
 @property (nonatomic,weak) HMDScrollContentView *contentView;           //内容
-@property (nonatomic,strong) HMDLinkView *linkView;                     //内容
+@property (nonatomic,strong) HMDLinkView *linkView;                     //底部链接状态
 @property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                 //链接设备
 @property (nonatomic,strong) HMDLoginDao *loginDao;                     //登录
 @property (nonatomic,assign) BOOL changeToKeyWindow;                    //链接设备
@@ -131,8 +131,11 @@ HMDLinkViewDelegate>
 }
 
 -(void)setupLinkView{
+//    HMDLinkView *linkView = [HMDLinkView sharedInstance];
+//    linkView.frame = CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT);
     self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT)];
-    self.linkView.delegate = self;
+    self.linkView .delegate = self;
+//    self.linkView.delegate = self;
     [self.view addSubview:self.linkView];
 }
 

@@ -31,7 +31,6 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
     flowLayout.delegate = tipCollectionView;
     //注册Item
     [tipCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell];
-    
     //注册头尾视图
     [tipCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipHeadView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead];
     

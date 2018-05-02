@@ -27,9 +27,11 @@
 #define HMD_DLAN_DEVICE_DOWNLOADICON  @"http://%@:8899/getNoPackageAppIcon"
 //获取所有应用
 #define HMD_DLAN_DEVICE_GETALLAPK @"http://%@:8899/getAllApkInfo"
+//播放网络地址
+#define HMD_DLAN_PLAY_MEDIA @"http://%@:8899/playURL"
 //网络海报
-#define HMD_DLAN_VIDEO_RECOMMEND_NETLIST @"http://%@:8899/getNetPosterList"
-//本地播放记录
+#define HMD_DLAN_VIDEO_RECOMMEND_NETLIST @"http://hot.mv.hinavi.net/hmd-box/mv/hot"
+//播放历史记录视频
 #define HMD_DLAN_VIDEO_PLAY_HISTORY @"http://%@:8899/getPlayRecord"
 //播放历史记录中的数据
 #define HMD_DLAN_VIDEO_PLAY_HISTORYVIDEO @"http://%@:8899/playRecord"

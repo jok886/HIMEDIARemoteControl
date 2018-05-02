@@ -9,6 +9,9 @@
 #import "HMDTreasureChestDao.h"
 #import "HMDDHRCenter.h"
 #import <HPCastLink/HPCastLink.h>
+#import "GDataXMLNode.h"
+#import "RemoteControl-Swift.h"
+#import "AppDelegate.h"
 //#import <HPCastLink/HPDevicesService.h>
 @implementation HMDTreasureChestDao
 +(void)startPlayToTVWithImageData:(NSData *)imageData{
@@ -37,6 +40,26 @@
 
 }
 
++(void)startPlayMediaWithURL:(NSString *)mediaURL{
+
+    AFHTTPSessionManager *session = [HMDTreasureChestDao getAFHTTPSessionManager];
+    
+    NSString *url = [NSString stringWithFormat:HMD_DLAN_PLAY_MEDIA,HMDCURLINKDEVICEIP];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                mediaURL,@"url",
+                                nil];
+    [session POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"success");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Linkfailure:%@",error);
+        
+    }];
+}
+
 +(void)startPlayVideoToTVWithURL:(NSString *)videoURL{
     if ([[HPCastLink sharedCastLink] isConnectTv]) {
         [[HPCastLink sharedCastLink] castSwitchSourcesPlay:HPCastMediaTypeVideo url:(NSString *)videoURL startPosition:0 completeBlock:^(BOOL succeed) {
@@ -55,5 +78,28 @@
             }
         }];
     }
+}
+
+-(void)startPlayMediaWithURL:(NSString *)mediaURL{
+    NSString *ip = HMDCURLINKDEVICEIP;
+   
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    HMDDeviceModel *deviceModel = appDelegate.deviceModel;
+     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:8899",ip]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request addValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+
+
+    
+    HMDDLan *dlan = [[HMDDLan alloc] init];
+    request.HTTPBody = [[dlan dLanSetAVTransportURIWithUri:mediaURL] dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"");
+    }];
+    [task resume];
+    
+
 }
 @end

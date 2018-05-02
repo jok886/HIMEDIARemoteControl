@@ -12,7 +12,7 @@
 typedef void(^HMDGetRecommendVideoDataFinishBlock)(BOOL success,NSArray *modelArray);               //获取数据
 typedef void(^HMDPostPlayNetPosterOrderFinishBlock)(BOOL success);                                  //发送播放命令
 typedef void(^HMDGetPlayHistoryFinishBlock)(BOOL success,NSArray *modelArray);                      //获取播放记录
-typedef void(^HMDPosterCategoryFinishBlock)(BOOL success,NSArray *modelArray);                      //获取分类
+typedef void(^HMDPosterCategoryFinishBlock)(BOOL success,NSDictionary *classifyDict);               //获取分类
 
 @interface HMDVideoDataDao : HMDBaseDao
 //获取海报数据

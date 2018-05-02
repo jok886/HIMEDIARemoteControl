@@ -16,5 +16,7 @@
 @end
 @interface HMDLinkView : HMDBaseView
 @property (nonatomic,weak) id<HMDLinkViewDelegate> delegate;     //滚动代理
+
+-(void)setupUI;
 -(void)switchLinkState:(BOOL)link ip:(NSString *)ip;
 @end

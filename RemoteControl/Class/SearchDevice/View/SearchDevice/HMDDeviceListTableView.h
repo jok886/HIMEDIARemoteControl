@@ -17,5 +17,5 @@
 @interface HMDDeviceListTableView : UITableView
 @property (nonatomic,strong) NSMutableArray *deviceArray;
 @property (nonatomic,weak) id<HMDDeviceListTableViewDelegate> deviceListDeletage;
--(void)reloadDeviceData:(NSArray *)deviceArray;
+//-(void)reloadDeviceData:(NSArray *)deviceArray;
 @end

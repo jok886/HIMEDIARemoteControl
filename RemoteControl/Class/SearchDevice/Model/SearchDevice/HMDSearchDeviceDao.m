@@ -8,7 +8,7 @@
 
 #import "HMDSearchDeviceDao.h"
 #import "GCDAsyncUdpSocket.h"
-#import "HMDLANNetTool.h"
+#import "HMDDLANNetTool.h"
 
 #import "HMDXMLParserTool.h"
 #import <HPCastLink/HPCastLink.h>
@@ -66,7 +66,7 @@
     if (ip == nil) {
         return;
     }
-    NSMutableDictionary *deviceDict = [HMDLANNetTool getDeviceInfoForDataString:receiveData];
+    NSMutableDictionary *deviceDict = [HMDDLANNetTool getDeviceInfoForDataString:receiveData];
     [deviceDict setObject:ip forKey:@"IP"];
     [deviceDict setObject:[NSString stringWithFormat:@"%d",port] forKey:@"port"];
 
@@ -120,10 +120,11 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @synchronized(self){
             [deviceModelBlock upInfoWithXMLData:responseObject];
+            
             if (![weakSelf.deviceIPArray containsObject:ip]) {
                 
                 if ([deviceModelBlock.deviceType containsString:@"MediaRenderer"] || [deviceModelBlock.deviceType containsString:@"AVTransport"]) {
-                    NSLog(@"增加IP:%@",deviceModelBlock.ip);
+                    NSLog(@"增加IP:%@____%@",deviceModelBlock.ip,deviceModelBlock.deviceType);
                     [weakSelf.deviceIPArray addObject:ip];
                     if (weakSelf.finishBlock) {
                         weakSelf.finishBlock(YES, deviceModelBlock);
