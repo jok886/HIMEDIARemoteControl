@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 @property(nonatomic) CGPoint loadingViewCenter;                      //加载中心位置
 
 - (void) start;
+- (void) startWithNoti:(NSString *)noti;
 - (void)endAnimationWithResult:(HMDLoadingViewResultType )result;
 
 @end

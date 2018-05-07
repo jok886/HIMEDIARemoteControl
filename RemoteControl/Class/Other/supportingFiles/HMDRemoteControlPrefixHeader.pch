@@ -13,9 +13,13 @@
 #import "AppMacro.h"
 #import "NETMacro.h"
 #import "NotificationMacro.h"
+
 #import "UIView+Additions.h"
-#import "MJExtension.h"
 #import "UIImageView+HMDDLANLoadImage.h"
+
 #import "HMDDHRCenter.h"
+#import "MJExtension.h"
+#import "MBProgressHUD.h"
+
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

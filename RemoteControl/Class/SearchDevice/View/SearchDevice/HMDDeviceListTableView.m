@@ -42,6 +42,7 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
 
     HMDRenderDeviceModel *deviceInfoModel = [self.deviceArray objectAtIndex:indexPath.row];
     HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:deviceInfoModel.uuid];
+    deviceModel.name = deviceInfoModel.name;
     [deviceListCell setupUIWithDeviceModel:deviceModel];
     return deviceListCell;
 }

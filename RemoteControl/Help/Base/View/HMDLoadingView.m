@@ -17,6 +17,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
 @property(nonatomic, strong) CAShapeLayer *asmContentLayer;
 
 @property (nonatomic,strong) UIView *loadingView;
+@property (nonatomic,strong) UILabel *notiLab;
 @end
 
 @implementation HMDLoadingView
@@ -30,26 +31,51 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
 }
 
 - (void) setup {
+    self.backgroundColor = [UIColor whiteColor];
     self.loadingColor = [UIColor colorWithRed:0x46/255.0 green:0x4d/255.0 blue:0x65/255.0 alpha:1.0];
     self.successColor = [UIColor colorWithRed:0x32/255.0 green:0xa9/255.0 blue:0x82/255.0 alpha:1.0];
     self.errorColor = [UIColor colorWithRed:0xff/255.0 green:0x61/255.0 blue:0x51/255.0 alpha:1.0];
     self.exclamationColor = self.errorColor;
     self.lineWidth = 6;
     self.radius  = 40;
-    self.loadingViewCenter = CGPointMake(self.center.x,self.center.y);
+    self.loadingViewCenter = CGPointMake(HMDScreenW * 0.5,HMDScreenH * 0.5);
     self.loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.radius*2, self.radius*2)];
     self.loadingView.center = self.loadingViewCenter;
+
     [self addSubview:self.loadingView];
+    
+    self.notiLab = [[UILabel alloc] init];
+    [self addSubview:self.notiLab];
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.loadingViewCenter = CGPointMake(self.center.x,self.center.y);
+    [self.notiLab sizeToFit];
+    self.notiLab.center = CGPointMake(self.loadingView.center.x, CGRectGetMaxY(self.loadingView.frame)+0.5*self.notiLab.bounds.size.height);
 }
 #pragma mark - public
 
 - (void)start {
+    
     [self reset];
     [self loading];
 }
 
+-(void)startWithNoti:(NSString *)noti{
+    [self start];
+    if (noti) {
+        self.notiLab.hidden = NO;
+        self.notiLab.text = noti;
+        [self.notiLab sizeToFit];
+        self.notiLab.center = CGPointMake(self.loadingView.center.x, CGRectGetMaxY(self.loadingView.frame)+0.5*self.notiLab.bounds.size.height);
+    }else{
+        self.notiLab.hidden = YES;
+    }
+
+}
 - (void)endAnimationWithResult:(HMDLoadingViewResultType )result {
-    [self.layer removeAllAnimations];
+    [self.loadingView.layer removeAllAnimations];
     [self.asmLayer removeAllAnimations];
     [self.asmContentLayer removeAllAnimations];
     switch (result) {
@@ -67,15 +93,16 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
             [self success];
             break;
     }
+    self.notiLab.hidden = YES;
 }
 
 - (CAShapeLayer *)asmLayer {
     if (_asmLayer == nil) {
         
         _asmLayer = [CAShapeLayer layer];
-        _asmLayer.frame = CGRectMake(0, 0, self.radius * 2 + self.lineWidth, self.radius * 2 + self.lineWidth);
+        _asmLayer.frame = CGRectMake(0, 0, self.radius * 2 - self.lineWidth, self.radius * 2 - self.lineWidth);
         
-        UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) radius:_asmLayer.bounds.size.width/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+        UIBezierPath * path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.loadingView.bounds), CGRectGetMidY(self.loadingView.bounds)) radius:_asmLayer.bounds.size.width/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
         
         //路径
         _asmLayer.path = path.CGPath;
@@ -94,7 +121,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     if (_asmContentLayer == nil) {
         _asmContentLayer = [CAShapeLayer layer];
         _asmContentLayer.frame = self.loadingView.bounds;
-        [self.layer addSublayer:_asmContentLayer];
+        [self.loadingView.layer addSublayer:_asmContentLayer];
     }
     return _asmContentLayer;
 }
@@ -105,7 +132,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     [self.asmContentLayer removeAllAnimations];
     [self.asmContentLayer removeFromSuperlayer];
     _asmContentLayer = nil;
-    [self.layer removeAllAnimations];
+    [self.loadingView.layer removeAllAnimations];
     
     self.loadingView.center = self.loadingViewCenter;
 }
@@ -138,7 +165,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     CAShapeLayer *layer = self.asmContentLayer;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-    CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.loadingView.bounds), CGRectGetMidY(self.loadingView.bounds));
     CGPoint firstPoint = centerPoint;
     firstPoint.x -= self.radius / 2;
     [path moveToPoint:firstPoint];
@@ -172,7 +199,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
 - (void) error {
     CAShapeLayer *layer = self.asmContentLayer;
     
-    CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.loadingView.bounds), CGRectGetMidY(self.loadingView.bounds));
     UIBezierPath *path = [UIBezierPath bezierPath];
     CGPoint point1 = centerPoint;
     point1.x -= self.radius / 2;
@@ -224,19 +251,19 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     CGFloat pathPartCount = 5;
 
     UIBezierPath *path = [UIBezierPath bezierPath];
-    CGFloat originY = CGRectGetMidY(self.bounds) - self.radius+pathPartCount;
+    CGFloat originY = CGRectGetMidY(self.loadingView.bounds) - self.radius+pathPartCount;
     CGFloat destY = originY + partLength * pathPartCount;
-    [path moveToPoint:CGPointMake(CGRectGetMidX(self.bounds), originY)];
-    [path addLineToPoint:CGPointMake(CGRectGetMidX(self.bounds), destY)];
+    [path moveToPoint:CGPointMake(CGRectGetMidX(self.loadingView.bounds), originY)];
+    [path addLineToPoint:CGPointMake(CGRectGetMidX(self.loadingView.bounds), destY)];
     
     //❗️下部分
     CGFloat partLength2 = self.radius * 2 / 8;
     CGFloat pathPartCount2 = 1;
     UIBezierPath *path2 = [UIBezierPath bezierPath];
-    CGFloat originY2 = CGRectGetMidY(self.bounds) + self.radius-partLength2 * pathPartCount2;
+    CGFloat originY2 = CGRectGetMidY(self.loadingView.bounds) + self.radius-partLength2 * pathPartCount2;
     CGFloat destY2 = originY2 - partLength2 * pathPartCount2;
-    [path2 moveToPoint:CGPointMake(CGRectGetMidX(self.bounds), destY2)];
-    [path2 addLineToPoint:CGPointMake(CGRectGetMidX(self.bounds), originY2)];
+    [path2 moveToPoint:CGPointMake(CGRectGetMidX(self.loadingView.bounds), destY2)];
+    [path2 addLineToPoint:CGPointMake(CGRectGetMidX(self.loadingView.bounds), originY2)];
     layer.fillMode = @"forwards";
     [path appendPath:path2];
     
@@ -267,7 +294,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     anima.duration = 0.1;
     anima.autoreverses = YES;
     anima.repeatCount = 4;
-    [self.layer addAnimation:anima forKey:nil];
+    [self.loadingView.layer addAnimation:anima forKey:nil];
 }
 
 #pragma mark - animation delegate

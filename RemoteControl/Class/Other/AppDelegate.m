@@ -8,16 +8,20 @@
 
 #import "AppDelegate.h"
 #import "HMDMainViewController.h"
+#import "OnboardingViewController.h"
+#import "OnboardingContentViewController.h"
+
 #import <HPCastLink/HPCastLink.h>
 #import <WXApi.h>
 #import "HMDDLANNetTool.h"
+
 
 @interface AppDelegate ()<WXApiDelegate>
 
 @end
 
 @implementation AppDelegate
-
+static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //清空上次登录的设置
@@ -33,12 +37,21 @@
 //        NSLog(@"appkeyVerify");
 //    }
     //开启httpweb
-//    [[HMDDLANNetTool sharedInstance] startWebServer];
+    [[HMDDLANNetTool sharedInstance] startWebServer];
 
     //初始化根控制器
+
+    NSString *userHasOnboardedKey = [[NSUserDefaults standardUserDefaults] objectForKey:kUserHasOnboardedKey];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    HMDMainViewController *mainVC = [[HMDMainViewController alloc] init];
-    self.window.rootViewController = mainVC;
+    if ([userHasOnboardedKey isEqualToString:@"1.0"]) {
+        [self setupNormalRootViewController];
+
+    }else {
+        [self setupOnboardedRootViewController];
+//        self.window.rootViewController = [self generateStandardOnboardingVC];
+
+    }
+
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -84,5 +97,67 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - 初始化控制器
+-(void)setupNormalRootViewController{
 
+    HMDMainViewController *mainVC = [[HMDMainViewController alloc] init];
+    self.window.rootViewController = mainVC;
+}
+
+-(void)setupOnboardedRootViewController {
+    OnboardingContentViewController *firstPage = [OnboardingContentViewController contentWithTitle:@"What A Beautiful Photo" body:@"This city background image is so beautiful." image:[UIImage imageNamed:@"blue"] buttonText:@"Enable Location Services" action:^{
+        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+
+        }];
+        [alertC addAction:actionCancel];
+        [alertC addAction:actionClear];
+        [self.window.getCurActiveViewController presentViewController:alertC animated:YES completion:nil];
+    }];
+
+    OnboardingContentViewController *secondPage = [OnboardingContentViewController contentWithTitle:@"I'm so sorry" body:@"I can't get over the nice blurry background photo." image:[UIImage imageNamed:@"red"] buttonText:@"Connect With Facebook" action:^{
+        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertC addAction:actionCancel];
+        [alertC addAction:actionClear];
+        [self.window.getCurActiveViewController presentViewController:alertC animated:YES completion:nil];
+    }];
+    secondPage.movesToNextViewController = YES;
+    secondPage.viewDidAppearBlock = ^{
+
+    };
+
+    OnboardingContentViewController *thirdPage = [OnboardingContentViewController contentWithTitle:@"Seriously Though" body:@"Kudos to the photographer." image:[UIImage imageNamed:@"yellow"] buttonText:@"Get Started" action:^{
+        [self handleOnboardingCompletion];
+    }];
+
+    OnboardingViewController *onboardingVC = [OnboardingViewController onboardWithBackgroundImage:[UIImage imageNamed:@"street"] contents:@[firstPage, secondPage, thirdPage]];
+    onboardingVC.shouldFadeTransitions = YES;
+    onboardingVC.fadePageControlOnLastPage = YES;
+    onboardingVC.fadeSkipButtonOnLastPage = YES;
+    [onboardingVC.skipButton setTitle:@"跳过" forState:UIControlStateNormal];
+    // If you want to allow skipping the onboarding process, enable skipping and set a block to be executed
+    // when the user hits the skip button.
+    onboardingVC.allowSkipping = YES;
+    onboardingVC.skipHandler = ^{
+        [self handleOnboardingCompletion];
+    };
+
+    self.window.rootViewController = onboardingVC;
+}
+
+- (void)handleOnboardingCompletion {
+
+    [self setupNormalRootViewController];
+}
 @end

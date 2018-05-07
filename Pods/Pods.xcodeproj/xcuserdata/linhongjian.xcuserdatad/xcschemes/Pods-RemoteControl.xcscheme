@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "75DFB39A8ECA01499535DB9815195DEF"
+               BlueprintIdentifier = "30AE1EB4CE6D8A602ACE8431DEE54624"
                BuildableName = "Pods_RemoteControl.framework"
                BlueprintName = "Pods-RemoteControl"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "75DFB39A8ECA01499535DB9815195DEF"
+            BlueprintIdentifier = "30AE1EB4CE6D8A602ACE8431DEE54624"
             BuildableName = "Pods_RemoteControl.framework"
             BlueprintName = "Pods-RemoteControl"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -170,16 +170,18 @@
                 if ([category isEqualToString:@"net"]) {
                     if ([[responsDict allKeys] containsObject:@"content"]) {
                         NSString *content = [responsDict objectForKey:@"content"];
-                        NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[content dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-                        NSString *category = [contentDict objectForKey:@"category"];
-                        NSArray *categoryArray = [NSJSONSerialization JSONObjectWithData:[category dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-                        if ([categoryArray isKindOfClass:[NSArray class]] && categoryArray.count > 0) {
-                            NSDictionary *categoryDict = [categoryArray firstObject];
-                            NSArray *classify = [categoryDict objectForKey:@"classify"];
-                            classifyModelArray = [NSMutableArray arrayWithArray:[HMDTVClassifyModel hmd_modelArrayWithKeyValuesArray:classify]];
-                            NSLog(@"");
+                        if ( content.length>1) {
+                            NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[content dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+                            NSString *category = [contentDict objectForKey:@"category"];
+                            NSArray *categoryArray = [NSJSONSerialization JSONObjectWithData:[category dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+                            if ([categoryArray isKindOfClass:[NSArray class]] && categoryArray.count > 0) {
+                                NSDictionary *categoryDict = [categoryArray firstObject];
+                                NSArray *classify = [categoryDict objectForKey:@"classify"];
+                                classifyModelArray = [NSMutableArray arrayWithArray:[HMDTVClassifyModel hmd_modelArrayWithKeyValuesArray:classify]];
+                                NSLog(@"");
+                            }
                         }
-                        
+
                     }
                 }else{
                     if ([[responsDict allKeys] containsObject:@"content"]) {

@@ -15,6 +15,8 @@ pod 'GCDWebServer'
 pod 'SDWebImage'
 pod 'MJRefresh'
 pod 'GCDWebServer'
+pod 'MBProgressHUD'
+pod 'Onboard'
 
 use_frameworks!
 pod 'AEXML'

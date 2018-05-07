@@ -126,8 +126,6 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
         HMDVideoModel *VideoModel = self.videoDataArray[index];
         [self setMainImageViewImageWithVideoModel:VideoModel];
     }
-
-    
 }
 
 #pragma mark - 其他

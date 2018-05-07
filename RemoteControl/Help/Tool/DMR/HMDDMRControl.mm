@@ -149,7 +149,7 @@
 -(void)chooseRenderWithUUID:(NSString *)uuid
 {
     if (![uuid isEqualToString:@""]) {
-       controller -> getMediaRenderer([uuid UTF8String]);
+       controller -> chooseMediaRenderer([uuid UTF8String]);
     }else{
         NSLog(@"UUID is nil when CHOOSE Render !");
         

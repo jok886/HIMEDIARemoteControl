@@ -31,14 +31,14 @@
 HMDScrollContentViewDelegate,
 HMDLinkViewDelegate,
 HMDDMRControlDelegate>
-@property (nonatomic,weak) HMDScrollTitleView *titleView;               //标题
-@property (nonatomic,weak) HMDScrollContentView *contentView;           //内容
-@property (nonatomic,strong) HMDLinkView *linkView;                     //底部链接状态
-@property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                 //链接设备
-@property (nonatomic,strong) HMDLoginDao *loginDao;                     //登录
-@property (nonatomic,assign) BOOL changeToKeyWindow;                    //链接设备
-@property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;               //用户头像
-
+@property (nonatomic,weak) HMDScrollTitleView *titleView;                           //标题
+@property (nonatomic,weak) HMDScrollContentView *contentView;                       //内容
+@property (nonatomic,strong) HMDLinkView *linkView;                                 //底部链接状态
+@property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                             //链接设备
+@property (nonatomic,strong) HMDLoginDao *loginDao;                                 //登录
+@property (nonatomic,assign) BOOL changeToKeyWindow;                                //链接设备
+@property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;                //用户头像
+@property (weak, nonatomic) MBProgressHUD *progressHUD;                             //用户头像
 @end
 
 @implementation HMDMainViewController
@@ -58,6 +58,7 @@ HMDDMRControlDelegate>
         self.changeToKeyWindow = YES;
         [[UIApplication sharedApplication].keyWindow addSubview:self.linkView];
     }
+
 }
 
 -(void)dealloc{
@@ -132,11 +133,9 @@ HMDDMRControlDelegate>
 }
 
 -(void)setupLinkView{
-//    HMDLinkView *linkView = [HMDLinkView sharedInstance];
-//    linkView.frame = CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT);
     self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT)];
     self.linkView .delegate = self;
-//    self.linkView.delegate = self;
+
     [self.view addSubview:self.linkView];
 }
 
@@ -171,7 +170,9 @@ HMDDMRControlDelegate>
                 }
             }];
         }
+
     }
+
 
 }
 #pragma mark -点击
@@ -243,16 +244,16 @@ HMDDMRControlDelegate>
         HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:tvRemoteVC];
         [viewController presentViewController:nav animated:YES completion:nil];
     }else{
+        [[[HMDDHRCenter sharedInstance] DMRControl] stop];
         //进入搜索设备
         HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
         HMDWeakSelf(self)
         HMDWeakObj(searchVC)
         searchVC.selectedFinishBlock = ^(NSString *ip) {
+
+            [weakSelf.linkView switchLinkState:YES ip:ip];
+            [weaksearchVC backAction:nil];
             
-//            [weakSelf.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
-                [weakSelf.linkView switchLinkState:YES ip:ip];
-                [weaksearchVC backAction:nil];
-//            }];
         } ;
         HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
         [viewController presentViewController:nav animated:YES completion:nil];

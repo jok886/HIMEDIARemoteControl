@@ -32,7 +32,7 @@
 -(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel{
     self.deviceModel = deviceModel;
     self.deviceNameLab.text = deviceModel.name;
-    self.deviceIPLab.text = deviceModel.uuid;
+    self.deviceIPLab.text = deviceModel.localIP;
 }
 
 @end

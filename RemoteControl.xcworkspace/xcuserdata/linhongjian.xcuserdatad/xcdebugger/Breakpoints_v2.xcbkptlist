@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/Other/AppDelegate.m"
-            timestampString = "547121455.903548"
+            timestampString = "547380634.628142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-onReq:"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,7 +376,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.904001"
+            timestampString = "547380634.628529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -392,7 +392,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "547121456.1316431"
+                  timestampString = "547380634.806339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -407,7 +407,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "547121456.1333899"
+                  timestampString = "547380634.807919"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "141"
@@ -423,24 +423,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/MainTV/ViewController/HMDMainVideoViewController.m"
-            timestampString = "546925406.8627779"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-scrollViewDidEndDecelerating:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.904098"
+            timestampString = "547380634.628585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -599,102 +583,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/TreasureChest/ViewController/HMDTreasureChestViewController.m"
-            timestampString = "547121455.9044501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/TreasureChest/ViewController/HMDTreasureChestViewController.m"
-            timestampString = "547121455.90452"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Help/Base/Model/HMDTVBaseFunctionDao.m"
-            timestampString = "547121455.904582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-getCaptureFinishBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Help/Base/Model/HMDTVBaseFunctionDao.m"
-            timestampString = "547121455.904634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-getCaptureFinishBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Help/Base/Model/HMDTVBaseFunctionDao.m"
-            timestampString = "547121455.9046839"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-getCaptureFinishBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/SearchDevice/View/SearchDevice/HMDDeviceListTableView.m"
-            timestampString = "547112250.0990109"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/PersonalCenter/ViewController/APPlist/HMDApplistViewController.m"
             timestampString = "547116077.813543"
             startingColumnNumber = "9223372036854775807"
@@ -728,7 +616,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.9048361"
+            timestampString = "547380634.628968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -744,7 +632,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.904886"
+            timestampString = "547380634.629029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -760,7 +648,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "547121456.196308"
+                  timestampString = "547380634.847927"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
@@ -775,7 +663,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "547121456.1981061"
+                  timestampString = "547380634.849461"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -792,7 +680,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.904932"
+            timestampString = "547380634.629076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -808,7 +696,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-            timestampString = "547121455.904978"
+            timestampString = "547380634.62912"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -823,109 +711,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-            timestampString = "547121455.905058"
+            filePath = "RemoteControl/Help/Base/View/HMDLoadingView.m"
+            timestampString = "547367869.4262739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-onDMRRemoved"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HMDSearchDeviceViewController onDMRRemoved]"
-                  moduleName = "RemoteControl"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-                  timestampString = "547121456.208256"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[HMDSearchDeviceViewController onDMRRemoved]_block_invoke"
-                  moduleName = "RemoteControl"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-                  timestampString = "547121456.209996"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-            timestampString = "547121455.905108"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-onDMRAdded"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HMDSearchDeviceViewController onDMRAdded]"
-                  moduleName = "RemoteControl"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-                  timestampString = "547121456.213986"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "324">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__43-[HMDSearchDeviceViewController onDMRAdded]_block_invoke"
-                  moduleName = "RemoteControl"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/SearchDevice/ViewController/SearchDevice/HMDSearchDeviceViewController.m"
-                  timestampString = "547121456.215852"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Help/Tool/DMR/Model/PltMicroMediaController.mm"
-            timestampString = "547123025.870501"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "PLT_MicroMediaController::OnMRRemoved(PLT_DeviceDataReference&amp; device)"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-asmLayer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -935,13 +727,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RemoteControl/Class/SearchDevice/View/SearchDevice/HMDDeviceListTableView.m"
-            timestampString = "547363909.903285"
+            filePath = "RemoteControl/Help/Base/View/HMDLoadingView.m"
+            timestampString = "547367869.426352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-asmContentLayer"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
+            timestampString = "547380634.629217"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-getPosterCategoryFinishBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
