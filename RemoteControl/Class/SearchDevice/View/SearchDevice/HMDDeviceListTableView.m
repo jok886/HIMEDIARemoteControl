@@ -40,7 +40,8 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     HMDDeviceListTableViewCell *deviceListCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 
-    HMDRenderDeviceModel *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
+    HMDRenderDeviceModel *deviceInfoModel = [self.deviceArray objectAtIndex:indexPath.row];
+    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:deviceInfoModel.uuid];
     [deviceListCell setupUIWithDeviceModel:deviceModel];
     return deviceListCell;
 }

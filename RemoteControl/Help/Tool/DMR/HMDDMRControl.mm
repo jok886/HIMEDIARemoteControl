@@ -149,13 +149,38 @@
 -(void)chooseRenderWithUUID:(NSString *)uuid
 {
     if (![uuid isEqualToString:@""]) {
-        controller -> chooseMediaRenderer([uuid UTF8String]);
+       controller -> getMediaRenderer([uuid UTF8String]);
     }else{
         NSLog(@"UUID is nil when CHOOSE Render !");
         
     }
 }
-
+-(HMDRenderDeviceModel *)getRenderWithUUID:(NSString *)uuid
+{
+    if (![uuid isEqualToString:@""]) {
+       PLT_DeviceDataReference device =  controller -> getMediaRenderer([uuid UTF8String]);
+        if (!device.IsNull()) {
+            NSString * name = [NSString stringWithUTF8String:device->GetFriendlyName()];
+            NSString * uuid = [NSString stringWithUTF8String:device->GetUUID()];
+            NSString * manufacturer = [NSString stringWithUTF8String:device->m_Manufacturer];
+            NSString * modelName = [NSString stringWithUTF8String:device->m_ModelName];
+            NSString * modelNumber = [NSString stringWithUTF8String:device->m_ModelNumber];
+            NSString * serialNumber = [NSString stringWithUTF8String:device->m_SerialNumber];
+            NSString * descriptionURL = [NSString stringWithUTF8String:device->GetDescriptionUrl()];
+            NPT_IpAddress ipAddress = device->GetLocalIP();
+            NSString * localIP = [[[[descriptionURL componentsSeparatedByString:@"://"] lastObject] componentsSeparatedByString:@":"]firstObject];
+            
+            HMDRenderDeviceModel * renderDevice = [[HMDRenderDeviceModel alloc] initWithName:name UUID:uuid Manufacturer:manufacturer ModelName:modelName ModelNumber:modelNumber SerialNumber:serialNumber DescriptionURL:descriptionURL LocalIP:localIP];
+            return renderDevice;
+        }else{
+            NSLog(@"Render device is nil in %s",__FUNCTION__);
+            return nil;
+        }
+    }else{
+        NSLog(@"UUID is nil when CHOOSE Render !");
+        return nil;
+    }
+}
 
 /**
  获取当前的媒体渲染器

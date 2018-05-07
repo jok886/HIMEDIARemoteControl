@@ -23,6 +23,7 @@
 		3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A4206E2142007406FB /* HMD_RC_introductory_page_1@2x.png */; };
 		3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */; };
 		73BF8A294C7C538C687E828D /* Pods_RemoteControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC18EBE545C408F58E5BF3CA /* Pods_RemoteControl.framework */; };
+		B20010A2209FEC1A00EF999C /* HMDLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20010A1209FEC1A00EF999C /* HMDLoadingView.m */; };
 		B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD12207C9DD500A2D74F /* AVFoundation.framework */; };
 		B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */; };
 		B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD17207CC34B00A2D74F /* NSString+Hash.m */; };
@@ -199,6 +200,8 @@
 		3EDAD0A5206E2142007406FB /* HMD_RC_introductory_page_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HMD_RC_introductory_page_3@3x.png"; sourceTree = "<group>"; };
 		3EDAD0AF206E223C007406FB /* HMDRemoteControlPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRemoteControlPrefixHeader.pch; sourceTree = "<group>"; };
 		46AE3922A8F8FE7182310D29 /* Pods-RemoteControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RemoteControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-RemoteControl/Pods-RemoteControl.release.xcconfig"; sourceTree = "<group>"; };
+		B20010A0209FEC1A00EF999C /* HMDLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLoadingView.h; sourceTree = "<group>"; };
+		B20010A1209FEC1A00EF999C /* HMDLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLoadingView.m; sourceTree = "<group>"; };
 		B20EBD00207B343800A2D74F /* KeyCodeMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodeMacro.h; sourceTree = "<group>"; };
 		B20EBD0C207C573F00A2D74F /* NotificationMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
 		B20EBD12207C9DD500A2D74F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1244,6 +1247,8 @@
 				B21BFAB82091D10800ACFF4B /* HMDBaseTableView.m */,
 				B21BFB052092FBC200ACFF4B /* HMDCoverView.h */,
 				B21BFB062092FBC200ACFF4B /* HMDCoverView.m */,
+				B20010A0209FEC1A00EF999C /* HMDLoadingView.h */,
+				B20010A1209FEC1A00EF999C /* HMDLoadingView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1568,6 +1573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B21BFACD2092EC3600ACFF4B /* HMDVideoHistoryModel.m in Sources */,
+				B20010A2209FEC1A00EF999C /* HMDLoadingView.m in Sources */,
 				B2D73B472086F00400B64E36 /* HMDDeviceListTableView.m in Sources */,
 				B21BFAF92092ED2200ACFF4B /* HMDAllVideoViewController.m in Sources */,
 				B2D73AC120848FBE00B64E36 /* HMDDHRCenter.mm in Sources */,

@@ -258,7 +258,7 @@ public:
     
     PLT_DeviceDataReference getCurrentMediaServer();
     PLT_DeviceDataReference getCurrentMediaRenderer();
-    
+    PLT_DeviceDataReference getMediaRenderer(NPT_String chosenUUID);
     void    setRendererMute();
     void    getRendererMute();
     void    setRendererUnMute();

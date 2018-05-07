@@ -333,7 +333,17 @@ PLT_MicroMediaController::getCurrentMediaRenderer()
     GetCurMediaRenderer(device);
     return device;
 }
-
+PLT_DeviceDataReference
+PLT_MicroMediaController::getMediaRenderer(NPT_String chosenUUID)
+{
+    PLT_DeviceDataReference* result = NULL;
+    const NPT_Lock<PLT_DeviceMap>& deviceList = m_MediaRenderers;
+    if (chosenUUID.GetLength()) {
+        deviceList.Get(chosenUUID, result);
+    }
+    
+    return result?*result:PLT_DeviceDataReference();
+}
 /*----------------------------------------------------------------------
  |   PLT_MicroMediaController::ChooseDevice
  +---------------------------------------------------------------------*/

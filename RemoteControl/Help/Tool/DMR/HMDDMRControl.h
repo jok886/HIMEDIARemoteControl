@@ -104,7 +104,7 @@
  @return 返回
  */
 -(HMDServerDeviceModel *)getCurrentServer;
-
+-(HMDRenderDeviceModel *)getRenderWithUUID:(NSString *)uuid;
 
 /***************************
  *
