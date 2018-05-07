@@ -13,6 +13,7 @@
 #import <GCDWebServer/GCDWebServer.h>
 #import <GCDWebServer/GCDWebServerDataResponse.h>
 #import <GCDWebServer/GCDWebServerFileResponse.h>
+#import "UIImage+Extend.h"
 
 @interface HMDDLANNetTool ()
 @property (nonatomic,strong) GCDWebServer *webServer;
@@ -224,7 +225,9 @@
     HMDWeakSelf(self)
     [self.webServer addHandlerForMethod:@"GET" pathRegex:@"/image/" requestClass:[GCDWebServerRequest class] asyncProcessBlock:^(__kindof GCDWebServerRequest * _Nonnull request, GCDWebServerCompletionBlock  _Nonnull completionBlock) {
         NSString *filePath = [weakSelf getFilePathWithRequestURL:request.URL.absoluteString fileType:HMDDLANNetFileImageType];
-        NSData *imageData = UIImagePNGRepresentation([UIImage imageWithContentsOfFile:filePath]);
+        
+        NSData *imageData = [weakSelf getImageDataWithFilePath:filePath];
+
         GCDWebServerDataResponse *response = [GCDWebServerDataResponse responseWithData:imageData contentType:@"image/jpeg"];
         completionBlock(response);
     }];
@@ -265,6 +268,19 @@
     //截取地址信息
     NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:fileType];
     return filePath;
+}
+
+-(NSData *)getImageDataWithFilePath:(NSString *)filePath{
+    NSData *imageData;
+    UIImage *curImage = [UIImage imageWithContentsOfFile:filePath];
+
+    if ([filePath containsString:@".png"]) {
+        imageData = UIImagePNGRepresentation(curImage);
+    }else{
+        imageData = UIImageJPEGRepresentation(curImage, 1.0);
+    }
+
+    return imageData;
 }
 
 +(NSString *)getFileNameWithExtensionName:(NSString *)extensionName {

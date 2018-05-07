@@ -9,7 +9,7 @@
 #import "HMDDeviceListTableViewCell.h"
 
 @interface HMDDeviceListTableViewCell()
-@property (nonatomic,strong) HMDDeviceModel *deviceModel;
+@property (nonatomic,strong) HMDRenderDeviceModel *deviceModel;
 @property (weak, nonatomic) IBOutlet UILabel *deviceNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *deviceIPLab;
 @property (weak, nonatomic) IBOutlet UIImageView *deviceLinkStateImageView;
@@ -29,10 +29,10 @@
     // Configure the view for the selected state
 }
 
--(void)setupUIWithDeviceModel:(HMDDeviceModel *)deviceModel{
+-(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel{
     self.deviceModel = deviceModel;
-    self.deviceNameLab.text = deviceModel.friendlyName;
-    self.deviceIPLab.text = deviceModel.ip;
+    self.deviceNameLab.text = deviceModel.name;
+    self.deviceIPLab.text = deviceModel.uuid;
 }
 
 @end

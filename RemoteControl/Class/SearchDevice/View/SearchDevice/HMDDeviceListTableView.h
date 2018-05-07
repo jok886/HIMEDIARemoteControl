@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class HMDDeviceModel;
+#import "HMDDeviceInfoModel.h"
 @protocol HMDDeviceListTableViewDelegate<NSObject>
 
 @optional
-- (void)didSelectRowAtIndexPath:(NSInteger )index deviceModel:(HMDDeviceModel *)deviceModel;
+- (void)didSelectRowAtIndexPath:(NSInteger )index deviceModel:(HMDRenderDeviceModel *)deviceModel;
 - (void)researchMoreDevices;
 @end
 @interface HMDDeviceListTableView : UITableView

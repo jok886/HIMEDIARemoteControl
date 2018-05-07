@@ -36,9 +36,6 @@
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0U3-3s-v6j">
                         <rect key="frame" x="312" y="24" width="46" height="30"/>
                         <state key="normal" title="Button"/>
-                        <connections>
-                            <action selector="actionBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fHu-YD-px2"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-er-2Bm">
                         <rect key="frame" x="79" y="47" width="35.5" height="17"/>

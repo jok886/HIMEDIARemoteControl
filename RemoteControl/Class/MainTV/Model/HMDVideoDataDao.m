@@ -66,6 +66,8 @@
 
 -(void)PostPlayNetPosterOrder:(HMDVideoModel *)videoModel finishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finish{
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    
+    
     NSString *recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_POSTER_PLAY,HMDCURLINKDEVICEIP];
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 videoModel.source_package,@"source_package",

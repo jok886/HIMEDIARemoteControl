@@ -8,10 +8,13 @@
 
 #import "HMDTreasureChestViewController.h"
 #import "HMDTreasureChestCollectionViewCell.h"
-#import "HMDTreasureChestDao.h"
+#import "HMDAppListDao.h"
+
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Photos/Photos.h>
 #import "UIImageView+HMDDLANLoadImage.h"
+
+#import "UIImage+Extend.h"
 #import "HMDDLANNetTool.h"
 @interface HMDTreasureChestViewController ()
 <
@@ -20,10 +23,10 @@ UICollectionViewDataSource,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate
 >
-@property (nonatomic,weak) UICollectionView *treasureChestCollectionView;           //主界面
-@property (nonatomic,strong) UIImagePickerController *imagePickerController;          //相册
-@property (nonatomic,strong) NSArray *itemsArray;                   //百宝箱固定的组件
-@property (nonatomic,strong) HMDTreasureChestDao *treasureChestDao;
+@property (nonatomic,weak) UICollectionView *treasureChestCollectionView;                       //主界面
+@property (nonatomic,strong) UIImagePickerController *imagePickerController;                    //相册
+@property (nonatomic,strong) NSArray *itemsArray;                                               //百宝箱固定的组件
+@property (nonatomic,strong) HMDAppListDao *appListDao;                                         //app应用dao
 @end
 
 @implementation HMDTreasureChestViewController
@@ -120,7 +123,7 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
             [self projectivePhoto];
             break;
         case 2:
-//            [self projectivePhoto];
+            [self clearMaster];
             break;
         case 3:
             [self projectiveVideo];
@@ -137,40 +140,63 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 }
 
 #pragma mark - UIImagePickerControllerDelegate
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0){
-//    NSData *imageData =UIImagePNGRepresentation(image);
-//    [HMDTreasureChestDao startPlayToTVWithImageData:imageData];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-//    [picker dismissViewControllerAnimated:YES completion:nil];
-//}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
     if ([mediaType containsString:@"movie"]) {
-//        NSURL *url = [info objectForKey:@"UIImagePickerControllerMediaURL"];
-//        [HMDTreasureChestDao startPlayVideoToTVWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
-        [self.treasureChestDao startPlayMediaWithURL:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4"];
+        NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
+        NSString *fileName = [[filePathURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
+        
+        PHAsset *asset = [info objectForKey:@"UIImagePickerControllerPHAsset"];
+        NSArray * assetResources = [PHAssetResource assetResourcesForAsset:asset];
+        PHAssetResource * resource;
+        
+        for (PHAssetResource * assetRes in assetResources) {
+            
+            if (assetRes.type == PHAssetResourceTypeVideo) {
+                resource = assetRes;
+            }
+        }
+        NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileVideoType];
+        NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileVideoType];
+        //视频播放
+            [[PHAssetResourceManager defaultManager] writeDataForAssetResource:resource toFile:[NSURL fileURLWithPath:filePath] options:nil completionHandler:^(NSError * _Nullable error) {
+                if (error == nil) {
+                    [[[HMDDHRCenter sharedInstance] DMRControl] renderSetAVTransportWithURI:url metaData:nil];
+                    [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
+                }
+            }];
     }else if ([mediaType containsString:@"image"]){
         NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerImageURL"];
         NSString *fileName = [[filePathURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
-
-        PHAsset *asset = [info objectForKey:@"UIImagePickerControllerPHAsset"];
-
-        PHImageRequestOptions *phImageRequestOptions = [[PHImageRequestOptions alloc] init];
-
-        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:phImageRequestOptions resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-            NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileImageType];
-            [imageData writeToFile:filePath atomically:YES];
-            NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileImageType];
-            [self.treasureChestDao startPlayMediaWithURL:url];
-
-        }];
-
+        UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileImageType];
+        NSData *imageData ;
+        if ([filePath containsString:@".png"]) {
+            imageData = UIImagePNGRepresentation(image);
+        }else{
+            switch (image.imageOrientation) {
+                case UIImageOrientationUp:
+                    imageData = UIImageJPEGRepresentation(image, 1.0);
+                    break;
+                default:
+                {
+                    //拍摄的图片会旋转,需要矫正
+                    UIImage *newImage = [image fixOrientation];
+                    imageData = UIImageJPEGRepresentation(newImage, 1.0);
+                }
+                    break;
+            }
+        }
+        [imageData writeToFile:filePath atomically:YES];
+        NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileImageType];
+        [[[HMDDHRCenter sharedInstance] DMRControl] renderSetAVTransportWithURI:url metaData:nil];
+        [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
 
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-//    [HMDLinkView sharedInstance].hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -182,9 +208,26 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 #pragma mark - 功能
 //截屏
 -(void)getCapture{
-    [self.treasureChestDao getCaptureFinishBlock:^(BOOL success, NSData *imageData) {
-        UIImage *image = [UIImage imageWithData:imageData];
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    [self.appListDao getCaptureFinishBlock:^(BOOL success, NSData *imageData) {
+        if (success) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            UIImageView *showImageView = [[UIImageView alloc] initWithImage:image];
+            showImageView.layer.anchorPoint = CGPointMake(0.1, 0.9);
+            showImageView.contentMode = UIViewContentModeScaleAspectFit;
+            showImageView.frame = CGRectMake(0, 0, HMDScreenW, HMDScreenH);
+            [[UIApplication sharedApplication].keyWindow addSubview:showImageView];
+            [UIView animateWithDuration:1.5 animations:^{
+                CGAffineTransform scaleTransform = CGAffineTransformMakeScale(0.4, 0.4);
+                showImageView.transform = scaleTransform;
+            } completion:^(BOOL finished) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [showImageView removeFromSuperview];
+                });
+                
+            }];
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }
+
     }];
 }
 //投射照片
@@ -207,18 +250,17 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
                                              nil];
     [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
 }
+//清理大师
+-(void)clearMaster{
+    [self.appListDao openDLanAppWithPackage:@"com.hitv.process" FinishBlock:^(BOOL success) {
+        if (success) {
+            
+        }
+    }];
+}
+
 //投视频
 -(void)projectiveVideo{
-//    const CFStringRef  kUTTypeAudiovisualContent ;抽象的声音视频
-//    const CFStringRef  kUTTypeMovie ;抽象的媒体格式（声音和视频）
-//    const CFStringRef  kUTTypeVideo ;只有视频没有声音
-//    const CFStringRef  kUTTypeAudio ;只有声音没有视频
-//    const CFStringRef  kUTTypeQuickTimeMovie ;
-//    const CFStringRef  kUTTypeMPEG ;
-//    const CFStringRef  kUTTypeMPEG4 ;
-//    const CFStringRef  kUTTypeMP3 ;
-//    const CFStringRef  kUTTypeMPEG4Audio ;
-//    const CFStringRef  kUTTypeAppleProtectedMPEG4Audio;
 
     //隐藏底部链接状态
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
@@ -246,15 +288,15 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
         _imagePickerController.delegate = self;
         _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//        _imagePickerController.allowsEditing = YES;
+        _imagePickerController.allowsEditing = NO;
     }
     return _imagePickerController;
 }
 
--(HMDTreasureChestDao *)treasureChestDao{
-    if (_treasureChestDao == nil) {
-        _treasureChestDao = [[HMDTreasureChestDao alloc]init];
+-(HMDAppListDao *)appListDao{
+    if (_appListDao == nil) {
+        _appListDao = [[HMDAppListDao alloc] init];
     }
-    return _treasureChestDao;
+    return _appListDao;
 }
 @end

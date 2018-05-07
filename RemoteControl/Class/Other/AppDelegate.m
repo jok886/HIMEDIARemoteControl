@@ -33,7 +33,7 @@
 //        NSLog(@"appkeyVerify");
 //    }
     //开启httpweb
-    [[HMDDLANNetTool sharedInstance] startWebServer];
+//    [[HMDDLANNetTool sharedInstance] startWebServer];
 
     //初始化根控制器
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

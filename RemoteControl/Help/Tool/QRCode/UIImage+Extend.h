@@ -29,4 +29,7 @@
  @return 二维码内容
  */
 -(NSString*)scanCodeContent;
+
+//修正图片旋转
+- (UIImage *)fixOrientation;
 @end

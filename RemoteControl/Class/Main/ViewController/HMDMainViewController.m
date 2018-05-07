@@ -29,7 +29,8 @@
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
 HMDScrollContentViewDelegate,
-HMDLinkViewDelegate>
+HMDLinkViewDelegate,
+HMDDMRControlDelegate>
 @property (nonatomic,weak) HMDScrollTitleView *titleView;               //标题
 @property (nonatomic,weak) HMDScrollContentView *contentView;           //内容
 @property (nonatomic,strong) HMDLinkView *linkView;                     //底部链接状态
@@ -46,7 +47,7 @@ HMDLinkViewDelegate>
     [super viewDidLoad];
     //是否第一次登陆,第一次需要初始化引导界面
     [self setupUI];
-    [self getDLanLink:[[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkIP]];
+    [self getDLanLink:[[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID]];
     [self addNotificationCenter];
     //这里增加自动登录
     [self autoLogin];
@@ -139,12 +140,13 @@ HMDLinkViewDelegate>
     [self.view addSubview:self.linkView];
 }
 
--(void)getDLanLink:(NSString *)ip{
-    if (ip.length >1) {
-        HMDWeakSelf(self)
-        [self.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
-            [weakSelf.linkView switchLinkState:success ip:ip];
-        }];
+-(void)getDLanLink:(NSString *)uuid{
+    if (uuid.length >1) {
+        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        //启动DMC去搜索设备
+        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+            [[[HMDDHRCenter sharedInstance] DMRControl] start];
+        }
     }
 }
 
@@ -247,10 +249,10 @@ HMDLinkViewDelegate>
         HMDWeakObj(searchVC)
         searchVC.selectedFinishBlock = ^(NSString *ip) {
             
-            [weakSelf.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
-                [weakSelf.linkView switchLinkState:success ip:ip];
+//            [weakSelf.linkDao getDeviceInfo:ip finishBlock:^(BOOL success) {
+                [weakSelf.linkView switchLinkState:YES ip:ip];
                 [weaksearchVC backAction:nil];
-            }];
+//            }];
         } ;
         HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
         [viewController presentViewController:nav animated:YES completion:nil];
@@ -259,6 +261,26 @@ HMDLinkViewDelegate>
 
 -(void)LinkView:(HMDLinkView *)linkView linkOffBtnClickWithViewController:(UIViewController *)viewController{
     [self.linkView switchLinkState:NO ip:nil];
+}
+
+#pragma mark - ZM_DMRProtocolDelegate
+-(void)onDMRAdded
+{
+    if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+        NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+        NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+        for (HMDRenderDeviceModel *model in renders) {
+            if ([lastUUID isEqualToString:model.uuid]) {
+//                [[[HMDDHRCenter sharedInstance] DMRControl] stop];
+                [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
+                HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.linkView switchLinkState:YES ip:deviceModel.localIP];
+                });
+            }
+        }
+    }
+    NSLog(@"%s",__FUNCTION__);
 }
 #pragma mark - 其他
 //更新UI

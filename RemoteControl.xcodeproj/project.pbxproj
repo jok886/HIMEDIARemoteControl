@@ -1057,11 +1057,11 @@
 		B2D73B412086F00400B64E36 /* SearchDevice */ = {
 			isa = PBXGroup;
 			children = (
-				B2D73B422086F00400B64E36 /* HMDDeviceListTableView.m */,
-				B2D73B432086F00400B64E36 /* HMDDeviceListTableViewCell.xib */,
 				B2D73B442086F00400B64E36 /* HMDDeviceListTableViewCell.h */,
-				B2D73B452086F00400B64E36 /* HMDDeviceListTableView.h */,
 				B2D73B462086F00400B64E36 /* HMDDeviceListTableViewCell.m */,
+				B2D73B432086F00400B64E36 /* HMDDeviceListTableViewCell.xib */,
+				B2D73B452086F00400B64E36 /* HMDDeviceListTableView.h */,
+				B2D73B422086F00400B64E36 /* HMDDeviceListTableView.m */,
 			);
 			path = SearchDevice;
 			sourceTree = "<group>";
@@ -1195,7 +1195,6 @@
 			children = (
 				B2E175CE20732B78004629BE /* Tool */,
 				B2F6F9332071F9830037E746 /* Category */,
-				B2F6F9212071D61C0037E746 /* Assembly */,
 				B2F6F91A2071CBCD0037E746 /* Base */,
 				B2F6F90D2071C9C40037E746 /* Macro */,
 			);
@@ -1247,13 +1246,6 @@
 				B21BFB062092FBC200ACFF4B /* HMDCoverView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		B2F6F9212071D61C0037E746 /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assembly;
 			sourceTree = "<group>";
 		};
 		B2F6F9262071D7610037E746 /* ViewController */ = {

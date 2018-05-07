@@ -32,7 +32,7 @@
 @property (nonatomic, retain) NSString *serialNumber;
 //设备地址
 @property (nonatomic, copy) NSString * descriptionURL;
+@property (nonatomic, retain) NSString *localIP;
 
-
--(instancetype)initWithName:(NSString *)name UUID:(NSString *)uuid Manufacturer:(NSString *)manufacturer ModelName:(NSString *)modelName ModelNumber:(NSString *)modelNumber SerialNumber:(NSString *)serialNumber DescriptionURL:(NSString *)descriptionURL;
+-(instancetype)initWithName:(NSString *)name UUID:(NSString *)uuid Manufacturer:(NSString *)manufacturer ModelName:(NSString *)modelName ModelNumber:(NSString *)modelNumber SerialNumber:(NSString *)serialNumber DescriptionURL:(NSString *)descriptionURL LocalIP:(NSString *)localIP;
 @end

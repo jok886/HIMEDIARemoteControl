@@ -27,7 +27,7 @@
 
 @implementation HMDRenderDeviceModel
 
--(instancetype)initWithName:(NSString *)name UUID:(NSString *)uuid Manufacturer:(NSString *)manufacturer ModelName:(NSString *)modelName ModelNumber:(NSString *)modelNumber SerialNumber:(NSString *)serialNumber DescriptionURL:(NSString *)descriptionURL
+-(instancetype)initWithName:(NSString *)name UUID:(NSString *)uuid Manufacturer:(NSString *)manufacturer ModelName:(NSString *)modelName ModelNumber:(NSString *)modelNumber SerialNumber:(NSString *)serialNumber DescriptionURL:(NSString *)descriptionURL LocalIP:(NSString *)localIP
 {
     if (self = [super init]) {
         self.manufacturer = manufacturer;
@@ -35,6 +35,7 @@
         self.modelNumber = modelNumber;
         self.serialNumber = serialNumber;
         self.descriptionURL = descriptionURL;
+        self.localIP = localIP;
     }
     return self;
 }

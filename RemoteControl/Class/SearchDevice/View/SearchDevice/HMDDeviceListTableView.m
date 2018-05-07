@@ -8,7 +8,7 @@
 
 #import "HMDDeviceListTableView.h"
 #import "HMDDeviceListTableViewCell.h"
-#import <HPCastLink/HPDevicesService.h>
+
 @interface HMDDeviceListTableView()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -39,13 +39,17 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     HMDDeviceListTableViewCell *deviceListCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    HPDevicesService *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
+
+    HMDRenderDeviceModel *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
     [deviceListCell setupUIWithDeviceModel:deviceModel];
     return deviceListCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.deviceListDeletage && [self.deviceListDeletage respondsToSelector:@selector(didSelectRowAtIndexPath:deviceModel:)]) {
-        HMDDeviceModel *deviceModel = [self.deviceArray objectAtIndex:indexPath.row];
+        NSString *uuid = [self.deviceArray[indexPath.row] uuid];
+        [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:uuid];
+        [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:DLANLastTimeLinkDeviceUUID];
+        HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
         [self.deviceListDeletage didSelectRowAtIndexPath:indexPath.row deviceModel:deviceModel];
     }
 }

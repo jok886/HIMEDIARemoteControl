@@ -16,6 +16,6 @@
 #import "UIView+Additions.h"
 #import "MJExtension.h"
 #import "UIImageView+HMDDLANLoadImage.h"
-
+#import "HMDDHRCenter.h"
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

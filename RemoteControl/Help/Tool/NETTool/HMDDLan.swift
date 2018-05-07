@@ -22,7 +22,9 @@ class HMDDLan: NSObject {
         let command = AEXMLElement(name: "u:SetAVTransportURI",attributes: ["xmlns:u" : "urn:schemas-upnp-org:service:AVTransport:1"])
         command.addChild(name: "InstanceID", value: "0")
         command.addChild(name: "CurrentURI", value: uri)
-        command.addChild(name: "CurrentURIMetaData")
+
+        let matadata = "<DIDL-Lite xmlns=\"urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/\" xmlns:upnp=\"urn:schemas-upnp-org:metadata-1-0/upnp/\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"><item id=\"1000\" parentID=\"0\" restricted=\"0\"><res protocolInfo=\"http-get:*:image/png:DLNA.ORG_OP=01\">"+uri+"</res><upnp:class>object.item.imageItem</upnp:class></item></DIDL-Lite>";
+        command.addChild(name: "CurrentURIMetaData", value: matadata);
         let xml = self.prepareXMLFileWithCommand(command:command)
         return xml
     }

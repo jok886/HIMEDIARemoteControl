@@ -102,7 +102,7 @@
 }
 
 
--(void)openDLanAppWithPackage:(HMDAPKModel *)package FinishBlock:(HMDOpenAppFinishBlock)finishBlock{
+-(void)openDLanAppWithPackage:(NSString *)package FinishBlock:(HMDOpenAppFinishBlock)finishBlock{
     
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *urlStr = [NSString stringWithFormat:HMD_DLAN_OPENAPK,HMDCURLINKDEVICEIP];

@@ -173,7 +173,10 @@
         NSString * modelNumber = [NSString stringWithUTF8String:device->m_ModelNumber];
         NSString * serialNumber = [NSString stringWithUTF8String:device->m_SerialNumber];
         NSString * descriptionURL = [NSString stringWithUTF8String:device->GetDescriptionUrl()];
-        HMDRenderDeviceModel * renderDevice = [[HMDRenderDeviceModel alloc] initWithName:name UUID:uuid Manufacturer:manufacturer ModelName:modelName ModelNumber:modelNumber SerialNumber:serialNumber DescriptionURL:descriptionURL];
+        NPT_IpAddress ipAddress = device->GetLocalIP();
+        NSString * localIP = [[[[descriptionURL componentsSeparatedByString:@"://"] lastObject] componentsSeparatedByString:@":"]firstObject];
+
+        HMDRenderDeviceModel * renderDevice = [[HMDRenderDeviceModel alloc] initWithName:name UUID:uuid Manufacturer:manufacturer ModelName:modelName ModelNumber:modelNumber SerialNumber:serialNumber DescriptionURL:descriptionURL LocalIP:localIP];
         return renderDevice;
     }else{
         NSLog(@"Render device is nil in %s",__FUNCTION__);

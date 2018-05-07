@@ -7,14 +7,15 @@
 //
 
 #import "HMDSearchDeviceViewController.h"
-#import "HMDSearchDeviceDao.h"
+//#import "HMDSearchDeviceDao.h"
 #import "HMDDLANNetTool.h"
-
+#import "HMDDHRCenter.h"
+#import "HMDDeviceInfoModel.h"
 #import "HMDDeviceListTableView.h"
 #import "AppDelegate.h"
-@interface HMDSearchDeviceViewController ()<HMDSearchDeviceDaoDelegate,HMDDeviceListTableViewDelegate>
+@interface HMDSearchDeviceViewController ()<HMDDeviceListTableViewDelegate,HMDDMRControlDelegate>
 @property (nonatomic,strong) NSString *lanNetSSID;
-@property (nonatomic,strong) HMDSearchDeviceDao *searchDao;
+//@property (nonatomic,strong) HMDSearchDeviceDao *searchDao;
 //@property (nonatomic,strong) NSMutableArray *deviceArray;
 @property (nonatomic,strong) NSMutableDictionary *deviceDict;
 @property (weak, nonatomic) IBOutlet UILabel *curDLANLab;
@@ -31,10 +32,13 @@
     [self searchAllDevice];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
 }
+
+
 #pragma mark - UI
 -(void)setupUI{
     [self setupNavigation];
@@ -51,14 +55,14 @@
     [backButton sizeToFit];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     //扫描按钮
-    UIButton *searchQRButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
-    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
-    [searchQRButton addTarget:self action:@selector(searchMore) forControlEvents:UIControlEventTouchUpInside];
-    [searchQRButton sizeToFit];
-    
-    // 设置返回按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchQRButton];
+//    UIButton *searchQRButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
+//    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
+//    [searchQRButton addTarget:self action:@selector(searchMore) forControlEvents:UIControlEventTouchUpInside];
+//    [searchQRButton sizeToFit];
+//    
+//    // 设置返回按钮
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchQRButton];
 }
 
 -(void)setupTableView{
@@ -82,40 +86,94 @@
 }
 -(void)searchAllDevice{
     if (self.lanNetSSID) {
-        self.searchDao = [[HMDSearchDeviceDao alloc]init];
-        self.searchDao.delegate = self;
-        HMDWeakSelf(self)
-        self.searchDao.searchFinishBlock = ^{
-            weakSelf.deviceListTableView.sectionFooterHeight = 44;
-            [weakSelf.deviceListTableView reloadData];
-        };
-        [self.searchDao searchDevices];
+
+        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        //启动DMC去搜索设备
+        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+            [[[HMDDHRCenter sharedInstance] DMRControl] start];
+        }else{
+            [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+        }
     }
 }
 
-#pragma mark - HMDSearchDeviceDaoDelegate
-//发现新设备UUID
--(void)SearchNewDevice:(HMDDeviceModel *)newDeviceModel{
-    //请求设备详情
-//    NSLog(@"设备UUID:%@\n详情地址:%@",newDeviceModel.uuid,newDeviceModel.location);
-    HMDWeakSelf(self)
-//    [self.deviceArray addObject:newDeviceModel];
-//    NSInteger curIndex = [self.deviceArray indexOfObject:newDeviceModel];
-    [self.searchDao getMoreInfoFromDevice:newDeviceModel finishBlock:^(BOOL success, HMDDeviceModel *newDeviceModel) {
-        if (success) {
-            [weakSelf.deviceListTableView.deviceArray addObject:newDeviceModel];
-            [weakSelf.deviceListTableView reloadData];
-            
-        }
+#pragma mark - ZM_DMRProtocolDelegate
+-(void)onDMRAdded
+{
+    self.deviceListTableView.deviceArray = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.deviceListTableView reloadData];
+    });
+    NSLog(@"%s",__FUNCTION__);
+}
+
+/**
+ 移除DMR
+ */
+-(void)onDMRRemoved
+{
+    NSLog(@"%s",__FUNCTION__);
+    self.deviceListTableView.deviceArray = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.deviceListTableView reloadData];
+    });
+    
+}
+
+#pragma mark - ZM_DMRProtocolDelegate
+
+-(void)getCurrentAVTransportActionResponse:(HMDCurrentAVTransportActionResponse *)response
+{
+    NSLog(@"%@",response.actions);
+}
+-(void)getTransportInfoResponse:(HMDTransportInfoResponse *)response
+{
+    NSLog(@"cur_transport_state:%@--cur_transport_status:%@--:%@",response.cur_transport_state,response.cur_transport_status,response.cur_speed);
+    [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentTransportAction];
+}
+
+-(void)previousResponse:(HMDEventResultResponse *)response
+{
+    [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentTransportAction];
+    NSLog(@"%s",__FUNCTION__);
+}
+
+-(void)nextResponse:(HMDEventResultResponse *)response
+{
+    [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentTransportAction];
+    NSLog(@"%s",__FUNCTION__);
+}
+
+-(void)DMRStateViriablesChanged:(NSArray <HMDEventParamsResponse *> *)response
+{
+    [response enumerateObjectsUsingBlock:^(HMDEventParamsResponse * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //NSLog(@"deviceUUID:%@,ServiceID:%@,eventName:%@,eventValue:%@",obj.deviceUUID,obj.serviceID,obj.eventName,obj.eventValue);
     }];
 }
 
--(void)didSelectRowAtIndexPath:(NSInteger)index deviceModel:(HMDDeviceModel *)deviceModel{
+
+-(void)setAVTransponrtResponse:(HMDEventResultResponse *)response
+{
+    NSLog(@"%s",__FUNCTION__);
+    [[[HMDDHRCenter sharedInstance] DMRControl] getTransportInfo];
+}
+
+-(void)setVolumeResponse:(HMDEventResultResponse *)response
+{
+    [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentTransportAction];
+    NSLog(@"%s",__FUNCTION__);
+    
+    
+    [[[HMDDHRCenter sharedInstance] DMRControl] renderGetVolome];
+}
+
+
+-(void)didSelectRowAtIndexPath:(NSInteger)index deviceModel:(HMDRenderDeviceModel *)deviceModel{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.deviceModel = deviceModel;
+    appDelegate.devicesService = deviceModel;
     //链接
     if (self.selectedFinishBlock) {
-        self.selectedFinishBlock(deviceModel.ip);
+        self.selectedFinishBlock(deviceModel.localIP);
     }
 }
 
@@ -124,30 +182,25 @@
 
     self.deviceListTableView.sectionFooterHeight = 0;
     [self.deviceListTableView reloadData];
-   [self.searchDao searchDevices];
+   [self searchAllDevice];
+    
+    NSLog(@"%s",__FUNCTION__);
+    //删掉所有设备
+    [self.deviceListTableView.deviceArray removeAllObjects];
+    //重启DMC
+    [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+    //获取新设备
+    self.deviceListTableView.deviceArray = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
     
 }
-#pragma mark - 其他
-//-(void)upTableViewData{
-//    [self.deviceListTableView reloadDeviceData:self.deviceArray];
-//}
+
 #pragma mark -点击
 //返回
 - (void)backAction:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-//搜索
--(void)searchMore{
-    
-}
-#pragma mark -懒加载
-//-(NSMutableArray *)deviceArray{
-//    if (_deviceArray == nil) {
-//        _deviceArray = [NSMutableArray array];
-//    }
-//    return _deviceArray;
-//}
+
 
 
 

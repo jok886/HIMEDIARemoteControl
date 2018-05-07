@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HMDDeviceModel.h"
+#import "HMDDeviceInfoModel.h"
 @interface HMDDeviceListTableViewCell : UITableViewCell
--(void)setupUIWithDeviceModel:(HMDDeviceModel *)deviceModel;
+-(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel;
 @end

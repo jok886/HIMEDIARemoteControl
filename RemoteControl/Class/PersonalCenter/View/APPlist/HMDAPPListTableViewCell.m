@@ -31,7 +31,7 @@
 
 -(void)setupCellWithAPKModel:(HMDAPKModel *)model{
     _apkModel = model;
-
+    self.actionBtn.userInteractionEnabled = NO;
     switch (model.apkStyle) {
         case HMDAPKInstallStyle:
         {
@@ -73,11 +73,5 @@
     }
     
 }
-
-//- (IBAction)actionBtnClick:(id)sender {
-//    if (self.actionBlock) {
-//        self.actionBlock(self.apkModel.package,self.apkModel.apkStyle);
-//    }
-//}
 
 @end

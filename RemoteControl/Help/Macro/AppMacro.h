@@ -17,6 +17,8 @@
 #define WXCurHID    @"HMDCurHID"
 //上次链接的IP
 #define DLANLastTimeLinkIP    @"DLANLastTimeLinkIP"
+//上次链接的UUID
+#define DLANLastTimeLinkDeviceUUID    @"DLANLastTimeLinkDeviceUUID"
 //当前链接的IP
 #define DLANLINKIP    @"DlanLinkIP"
 //侧键控制开关

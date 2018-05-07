@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HMDUserModel.h"
-#import "HMDDeviceModel.h"
+#import "HMDDeviceInfoModel.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) HMDUserModel *userModel;
-@property (strong, nonatomic) HMDDeviceModel *deviceModel;
+@property (strong, nonatomic) HMDRenderDeviceModel *devicesService;
 @property (assign, nonatomic,getter=isLogin) BOOL loginState;
 @end
 
