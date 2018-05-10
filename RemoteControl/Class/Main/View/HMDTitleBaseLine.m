@@ -12,7 +12,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = HMDColorFromValue(0xFFA500);
+        self.backgroundColor = HMDMAIN_COLOR;
     }
     return self;
 }

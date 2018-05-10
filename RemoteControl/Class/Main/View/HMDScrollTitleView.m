@@ -26,7 +26,7 @@
         self.autoLayoutBtn = YES;
     }
     if (self.selectColor == nil) {
-        self.selectColor = HMDColorFromValue(0xFFA500);
+        self.selectColor = HMDMAIN_COLOR;
     }
 }
 //基本UI
@@ -75,7 +75,7 @@
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
         NSString *title = self.titleArray[i];
         [btn setTitle:title forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        btn.titleLabel.font = [UIFont systemFontOfSize:17];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.titleScrollView addSubview:btn];
@@ -98,7 +98,7 @@
     }
     //下划线
     CGFloat y = CGRectGetHeight(self.frame);
-    HMDTitleBaseLine *bottomLine = [[HMDTitleBaseLine alloc]initWithFrame:CGRectMake(0, y-1, 100, 1)];
+    HMDTitleBaseLine *bottomLine = [[HMDTitleBaseLine alloc]initWithFrame:CGRectMake(0, y-2, 100, 2)];
     [self.titleScrollView addSubview:bottomLine];
     self.bottomLine = bottomLine;
     //当总宽度小于一个视图宽度的时候平铺布局

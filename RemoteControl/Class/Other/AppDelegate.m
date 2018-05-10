@@ -38,7 +38,7 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 //    }
     //开启httpweb
     [[HMDDLANNetTool sharedInstance] startWebServer];
-
+    [[HMDDLANNetTool sharedInstance] startNotificationWifi];
     //初始化根控制器
 
     NSString *userHasOnboardedKey = [[NSUserDefaults standardUserDefaults] objectForKey:kUserHasOnboardedKey];
@@ -105,54 +105,55 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 }
 
 -(void)setupOnboardedRootViewController {
-    OnboardingContentViewController *firstPage = [OnboardingContentViewController contentWithTitle:@"What A Beautiful Photo" body:@"This city background image is so beautiful." image:[UIImage imageNamed:@"blue"] buttonText:@"Enable Location Services" action:^{
-        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    HMDWeakSelf(self)
+    NSMutableArray *pageArray = [NSMutableArray array];
+    NSString *name ;
+    int maxPage = 4;
+    for (int i = 1; i <= maxPage; i++) {
+        if (iPhoneX) {
+            name = [NSString stringWithFormat:@"iphoneX-guide%d",i];
+        }else{
+            name = [NSString stringWithFormat:@"guide%d",i];
+        }
+        OnboardingContentViewController *page;
         
-        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }];
-        UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (i == maxPage) {
+            page = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:name] buttonText:@"立即体验" action:^{
+                [weakSelf handleOnboardingCompletion];
+            }];
+            page.actionButtonWidth = 180;
+            page.actionButton.titleLabel.font = [UIFont systemFontOfSize:18];
+            [page.actionButton setTitleColor:HMDMAIN_COLOR forState:UIControlStateNormal];
+            page.actionButton.layer.cornerRadius = 25;
+            page.actionButton.layer.borderWidth = 1;
+            page.actionButton.layer.borderColor = HMDMAIN_COLOR.CGColor;
+            page.bottomPadding = 44;
+        }else{
+            page = [OnboardingContentViewController contentWithTitle:nil body:nil image:[UIImage imageNamed:name] buttonText:nil action:^{
+                
+            }];
+        }
+        page.topPadding = 0;
+        [pageArray addObject:page];
+    }
 
-        }];
-        [alertC addAction:actionCancel];
-        [alertC addAction:actionClear];
-        [self.window.getCurActiveViewController presentViewController:alertC animated:YES completion:nil];
-    }];
 
-    OnboardingContentViewController *secondPage = [OnboardingContentViewController contentWithTitle:@"I'm so sorry" body:@"I can't get over the nice blurry background photo." image:[UIImage imageNamed:@"red"] buttonText:@"Connect With Facebook" action:^{
-        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }];
-        UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-        }];
-        [alertC addAction:actionCancel];
-        [alertC addAction:actionClear];
-        [self.window.getCurActiveViewController presentViewController:alertC animated:YES completion:nil];
-    }];
-    secondPage.movesToNextViewController = YES;
-    secondPage.viewDidAppearBlock = ^{
-
-    };
-
-    OnboardingContentViewController *thirdPage = [OnboardingContentViewController contentWithTitle:@"Seriously Though" body:@"Kudos to the photographer." image:[UIImage imageNamed:@"yellow"] buttonText:@"Get Started" action:^{
-        [self handleOnboardingCompletion];
-    }];
-
-    OnboardingViewController *onboardingVC = [OnboardingViewController onboardWithBackgroundImage:[UIImage imageNamed:@"street"] contents:@[firstPage, secondPage, thirdPage]];
-    onboardingVC.shouldFadeTransitions = YES;
-    onboardingVC.fadePageControlOnLastPage = YES;
+    
+    OnboardingViewController *onboardingVC = [OnboardingViewController onboardWithBackgroundImage:nil contents:pageArray];
+//    onboardingVC.shouldFadeTransitions = YES;
+    onboardingVC.fadePageControlPage = YES;
     onboardingVC.fadeSkipButtonOnLastPage = YES;
     [onboardingVC.skipButton setTitle:@"跳过" forState:UIControlStateNormal];
+    [onboardingVC.skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     // If you want to allow skipping the onboarding process, enable skipping and set a block to be executed
     // when the user hits the skip button.
     onboardingVC.allowSkipping = YES;
     onboardingVC.skipHandler = ^{
-        [self handleOnboardingCompletion];
+        [weakSelf handleOnboardingCompletion];
     };
-
+    onboardingVC.finishHandler = ^{
+        [weakSelf handleOnboardingCompletion];
+    };
     self.window.rootViewController = onboardingVC;
 }
 

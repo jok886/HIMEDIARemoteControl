@@ -23,11 +23,11 @@ typedef void(^HMDDeviceLinkFinishBlock)(BOOL success);
 @property (nonatomic,copy) HMDSearchDeviceDaoGetMoreInfoFinishBlock finishBlock;     //解析结束
 @property (nonatomic,copy) HMDSearchDeviceDaoSearchFinishBlock searchFinishBlock;     //解析结束
 //搜索设备
--(void)searchDevices;
+//-(void)searchDevices;
 //在原有基础上搜索设备
 //-(void)searchDevicesExcludeDevices:(NSArray *)devices;
 //按UUID获取设备详情
--(void)getMoreInfoFromDevice:(HMDDeviceModel *)deviceModel finishBlock:(HMDSearchDeviceDaoGetMoreInfoFinishBlock) finishBlock;
+//-(void)getMoreInfoFromDevice:(HMDDeviceModel *)deviceModel finishBlock:(HMDSearchDeviceDaoGetMoreInfoFinishBlock) finishBlock;
 //链接
--(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock;
+//-(void)getDeviceInfo:(NSString *)deviceIP finishBlock:(HMDDeviceLinkFinishBlock)finishBlock;
 @end

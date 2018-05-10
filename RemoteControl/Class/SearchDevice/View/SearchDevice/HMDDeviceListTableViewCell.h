@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "HMDDeviceInfoModel.h"
 @interface HMDDeviceListTableViewCell : UITableViewCell
--(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel;
+-(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel choose:(BOOL)choose;
 @end

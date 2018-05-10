@@ -46,7 +46,7 @@
  * @brief Determines whether or not the background will be masked. The default value of this property is NO.
  */
 @property (nonatomic) BOOL fadePageControlOnLastPage;
-
+@property (nonatomic) BOOL fadePageControlPage;
 
 /**
  * @brief Determines whether or not the skip button will fade away on the last page. The default value of this property is NO.
@@ -65,7 +65,7 @@
  */
 @property (nonatomic, strong) dispatch_block_t skipHandler;
 
-
+@property (nonatomic, strong) dispatch_block_t finishHandler;
 /**
  * @brief Determines whether or not swiping is enabled between pages. The default value of this property is YES.
  */

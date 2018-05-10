@@ -143,8 +143,8 @@
 
 //我的应用
 - (IBAction)myAPPListCenter:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
-//    [HMDLinkView sharedInstance].hidden = YES;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
+    [HMDLinkView sharedInstance].hidden = YES;
     HMDApplistViewController *appListVC = [[HMDApplistViewController alloc] init];
     [self.navigationController pushViewController:appListVC animated:YES];
 }

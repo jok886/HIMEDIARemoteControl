@@ -56,43 +56,44 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 -(void)setupItems{
     NSDictionary *dict_1 = [NSDictionary dictionaryWithObjectsAndKeys:
                           @"电视截屏",@"name",
-                          @"search",@"icon",
+                          @"tool_screenshot",@"icon",
                           nil];
     NSDictionary *dict_2 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"投射照片",@"name",
-                            @"search",@"icon",
+                            @"tool_picture",@"icon",
                             nil];
     NSDictionary *dict_3 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"清理大师",@"name",
-                            @"search",@"icon",
+                            @"tool_clear",@"icon",
                             nil];
     NSDictionary *dict_4 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"投播视频",@"name",
-                            @"search",@"icon",
+                            @"tool_video",@"icon",
                             nil];
     NSDictionary *dict_5 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"抄送文件",@"name",
-                            @"search",@"icon",
+                            @"tool_file",@"icon",
                             nil];
     NSDictionary *dict_6 = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"投放音乐",@"name",
-                            @"search",@"icon",
+                            @"tool_music",@"icon",
                             nil];
     self.itemsArray = [NSArray arrayWithObjects:dict_1,dict_2,dict_3,dict_4,dict_5,dict_6, nil];
 }
 -(void)setupUI{
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-    layout.itemSize = CGSizeMake(80, 100);
+    layout.itemSize = CGSizeMake(100, 110);
     layout.minimumLineSpacing = 20;
-    layout.minimumInteritemSpacing = 30;
+    layout.minimumInteritemSpacing = 10;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionInset = UIEdgeInsetsMake(10, 20, 10, 20);
+    layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
     UICollectionView *treasureChestCollectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
     
     [treasureChestCollectionView registerNib:[UINib nibWithNibName:@"HMDTreasureChestCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     treasureChestCollectionView.allowsMultipleSelection = NO;
     treasureChestCollectionView.dataSource = self;
     treasureChestCollectionView.delegate = self;
+    treasureChestCollectionView.backgroundColor = HMDColorFromValue(0xF0F0F0);
     [self.view addSubview:treasureChestCollectionView];
     self.treasureChestCollectionView = treasureChestCollectionView;
 }
@@ -110,7 +111,6 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
     NSString *name = [curDict objectForKey:@"name"];
     cell.iconImageView.image = [UIImage imageNamed:icon];
     cell.nameLab.text = name;
-    cell.backgroundColor = HMDRandomColor;
     return cell;
 }
 
@@ -195,13 +195,14 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
         [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
 
     }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+    [HMDLinkView sharedInstance].hidden = NO;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+    [HMDLinkView sharedInstance].hidden = NO;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
 //    [HMDLinkView sharedInstance].hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
@@ -233,8 +234,8 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 //投射照片
 -(void)projectivePhoto{
     //隐藏底部链接状态
-//    [HMDLinkView sharedInstance].hidden = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
+    [HMDLinkView sharedInstance].hidden = YES;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
     self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
                                              (NSString *)kUTTypeImage,
@@ -263,8 +264,8 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 -(void)projectiveVideo{
 
     //隐藏底部链接状态
-    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
-//[HMDLinkView sharedInstance].hidden = YES;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
+[HMDLinkView sharedInstance].hidden = YES;
         self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
                                                  (NSString *)kUTTypeAudiovisualContent,
                                                  (NSString *)kUTTypeMovie,

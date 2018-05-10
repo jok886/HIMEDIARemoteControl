@@ -8,15 +8,24 @@
 
 #import "HMDBaseView.h"
 @class HMDLinkView;
+
+typedef enum : NSUInteger {
+    HMDLinkViewStateLinking,            //连接中
+    HMDLinkViewStateLinked,             //已连接
+    HMDLinkViewStateunLink,             //未链接
+} HMDLinkViewState;
+
 @protocol  HMDLinkViewDelegate<NSObject>
 
 @optional
--(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(BOOL)link withViewController:(UIViewController *)viewController;
--(void)LinkView:(HMDLinkView *)linkView linkOffBtnClickWithViewController:(UIViewController *)viewController;
+-(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(HMDLinkViewState)linkState withViewController:(UIViewController *)viewController;
+-(void)LinkView:(HMDLinkView *)linkView remoteBtnClickWithViewController:(UIViewController *)viewController;
 @end
 @interface HMDLinkView : HMDBaseView
+@property (assign, nonatomic) HMDLinkViewState linkViewState;
 @property (nonatomic,weak) id<HMDLinkViewDelegate> delegate;     //滚动代理
 
++(HMDLinkView *)sharedInstance;
 -(void)setupUI;
--(void)switchLinkState:(BOOL)link ip:(NSString *)ip;
+-(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip;
 @end

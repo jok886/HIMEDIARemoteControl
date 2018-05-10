@@ -10,7 +10,8 @@
 #import "HMDDeviceListTableViewCell.h"
 
 @interface HMDDeviceListTableView()<UITableViewDelegate,UITableViewDataSource>
-
+@property (nonatomic,strong) NSString *curSelectUUID;
+@property (nonatomic,strong) NSIndexPath *curIndexPath;
 @end
 @implementation HMDDeviceListTableView
 static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
@@ -27,6 +28,14 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
     return self;
 }
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.delegate = self;
+    self.dataSource = self;
+    [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self registerNib:[UINib nibWithNibName:@"HMDDeviceListTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+}
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSInteger num = self.deviceArray.count;
@@ -34,53 +43,51 @@ static NSString * const reuseIdentifier = @"HMDDeviceListTableViewCell";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 88;
+    return 75;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     HMDDeviceListTableViewCell *deviceListCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 
     HMDRenderDeviceModel *deviceInfoModel = [self.deviceArray objectAtIndex:indexPath.row];
-    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:deviceInfoModel.uuid];
-    deviceModel.name = deviceInfoModel.name;
-    [deviceListCell setupUIWithDeviceModel:deviceModel];
+    if (deviceInfoModel.localIP == nil) {
+        HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:deviceInfoModel.uuid];
+        deviceInfoModel.localIP = deviceModel.localIP;
+    }
+    BOOL choose = NO;
+    if (self.curSelectUUID && [self.curSelectUUID isEqualToString:deviceInfoModel.uuid]) {
+        self.curIndexPath = indexPath;
+        choose = YES;
+    }
+    [deviceListCell setupUIWithDeviceModel:deviceInfoModel choose:choose];
     return deviceListCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.deviceListDeletage && [self.deviceListDeletage respondsToSelector:@selector(didSelectRowAtIndexPath:deviceModel:)]) {
-        NSString *uuid = [self.deviceArray[indexPath.row] uuid];
-        [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:uuid];
-        [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:DLANLastTimeLinkDeviceUUID];
-        HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
-        [self.deviceListDeletage didSelectRowAtIndexPath:indexPath.row deviceModel:deviceModel];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *uuid = [self.deviceArray[indexPath.row] uuid];
+    NSMutableArray *reloadIndexPaths = [NSMutableArray array];
+    BOOL selected = YES;
+    if (self.curIndexPath) {
+        NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:self.curIndexPath.row inSection:self.curIndexPath.section];
+        [reloadIndexPaths addObject:reloadIndexPath];
     }
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView *footView = [[UIView alloc]init];
-    footView.backgroundColor = [UIColor grayColor];
-    UIButton *addMoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addMoreBtn setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
-    [addMoreBtn setTitle:@"重新搜索" forState:UIControlStateNormal];
-    [addMoreBtn addTarget:self action:@selector(searchMoreDevice:) forControlEvents:UIControlEventTouchUpInside];
-    [addMoreBtn sizeToFit];
-    [footView addSubview:addMoreBtn];
-    addMoreBtn.center = CGPointMake(HMDScreenW*0.5, 22);
-//    footView.backgroundColor = [UIColor redColor];
-    return footView;
-}
-
-#pragma mark - 点击
--(void)searchMoreDevice:(UIButton *)btn{
-    if (self.deviceListDeletage && [self.deviceListDeletage respondsToSelector:@selector(researchMoreDevices)]) {
-        [self.deviceListDeletage researchMoreDevices];
+    if ([self.curSelectUUID isEqualToString:uuid]) {
+        self.curSelectUUID = nil;
+        self.curIndexPath = nil;
+        selected = NO;
+    }else{
+        self.curSelectUUID = uuid;
     }
+    
+    [reloadIndexPaths addObject:indexPath];
+    [tableView reloadRowsAtIndexPaths:reloadIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+
+    if (self.deviceListDeletage && [self.deviceListDeletage respondsToSelector:@selector(didSelectRowAtIndexPath:deviceModel:selected:)]) {
+        HMDRenderDeviceModel *deviceInfoModel = [self.deviceArray objectAtIndex:indexPath.row];
+        [self.deviceListDeletage didSelectRowAtIndexPath:indexPath.row deviceModel:deviceInfoModel selected:selected];
+    }
+
 }
-//#pragma mark - 其他
-//-(void)reloadDeviceData:(NSArray *)deviceArray{
-//    self.deviceArray = [NSMutableArray arrayWithArray:deviceArray];
-//    [self reloadData];
-//}
 #pragma mark - 懒加载
 -(NSMutableArray *)deviceArray{
     if (_deviceArray == nil) {

@@ -7,16 +7,20 @@
 //
 
 #import "HMDDLANNetTool.h"
+
 #import <SystemConfiguration/CaptiveNetwork.h>//获取WiFi信息
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import <GCDWebServer/GCDWebServer.h>
 #import <GCDWebServer/GCDWebServerDataResponse.h>
 #import <GCDWebServer/GCDWebServerFileResponse.h>
-#import "UIImage+Extend.h"
+#import <AFNetworking/AFNetworking.h>
 
+#import "UIImage+Extend.h"
+#import "HMDProgressHub.h"
 @interface HMDDLANNetTool ()
 @property (nonatomic,strong) GCDWebServer *webServer;
+@property (nonatomic,assign) BOOL firstTimeNet;                 //第一次网络状态判断
 @end
 
 
@@ -27,7 +31,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[HMDDLANNetTool alloc] init];
-        
+        instance.firstTimeNet = YES;
     });
     return instance;
 }
@@ -343,6 +347,44 @@
     NSString *url = [NSString stringWithFormat:@"http://%@:8899/%@/%@",[HMDDLANNetTool getLocalIPAddressForCurrentWiFi],pathStr,fileName];
 
     return url;
+}
+#pragma mark - 网络环境变换
+-(void)startNotificationWifi{
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (self.firstTimeNet) {
+            self.firstTimeNet = NO;
+            switch (status) {
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    self.wifiEnvironmental = YES;
+                    break;
+                default:
+                    self.wifiEnvironmental = NO;
+                    break;
+            }
+        }else{
+            switch (status) {
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    self.wifiEnvironmental = YES;
+                    [self linkWithWIFI];
+                    break;
+                default:
+                    self.wifiEnvironmental = NO;
+                    [self unLinkWithWIFI];
+                    break;
+            }
+        }
+        
+    }];
+    [manager startMonitoring];
+}
+//进入wifi链接
+-(void)linkWithWIFI{
+    [HMDProgressHub showMessage:@"链接到wifi" hideAfter:1.5];
+}
+//丢失wifi链接
+-(void)unLinkWithWIFI{
+    [HMDProgressHub showMessage:@"与wifi断开链接" hideAfter:1.5];
 }
 #pragma mark - 懒加载
 -(GCDWebServer *)webServer{

@@ -11,114 +11,145 @@
 
 @interface HMDLinkView()
 @property (weak, nonatomic) UIButton *linkStateBtn;
-@property (weak, nonatomic) UILabel *linkStateLab;
-@property (weak, nonatomic) UIButton *linkBtn;
+@property (weak, nonatomic) UIButton *remoteBtn;
 
 @end
 @implementation HMDLinkView
-
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        [self setupUI];
-    }
-    return self;
++(HMDLinkView *)sharedInstance
+{
+    static HMDLinkView * instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[HMDLinkView alloc] init];
+        
+    });
+    return instance;
 }
 
+//-(instancetype)initWithFrame:(CGRect)frame{
+//    if (self = [super initWithFrame:frame]) {
+//        [self setupUI];
+//    }
+//    return self;
+//}
+
 -(void)setupUI{
+    self.backgroundColor = [UIColor whiteColor];
+    self.linkViewState = HMDLinkViewStateunLink;
+    
     UIButton *linkStateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     linkStateBtn.frame = CGRectMake(15, 15, 30, 30);
-    [linkStateBtn setImage:[UIImage imageNamed:@"link-off"] forState:UIControlStateNormal];
-    [linkStateBtn setImage:[UIImage imageNamed:@"link-on"] forState:UIControlStateSelected];
+    linkStateBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [linkStateBtn setImage:[UIImage imageNamed:@"status_unconnected"] forState:UIControlStateNormal];
+    [linkStateBtn setTitle:@"  当前设备未链接,请点击重新连接" forState:UIControlStateNormal];
+    [linkStateBtn setTitleColor:HMDTEXT_UNUSE_COLOR forState:UIControlStateNormal];
+    
+    [linkStateBtn setImage:[UIImage imageNamed:@"status_connected"] forState:UIControlStateSelected];
+    [linkStateBtn setTitleColor:HMDTEXT_COLOR forState:UIControlStateSelected];
+    linkStateBtn.userInteractionEnabled = NO;
+    [linkStateBtn sizeToFit];
+    linkStateBtn.center = CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
     [linkStateBtn addTarget:self action:@selector(linkStateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.linkStateBtn = linkStateBtn;
     [self addSubview:linkStateBtn];
     
-    UIButton *linkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    linkBtn.frame = CGRectMake(HMDScreenW-45, 15, 30, 60);
-    [linkBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [linkBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [linkBtn setTitle:@"搜索设备" forState:UIControlStateNormal];
-    [linkBtn setTitle:@"进入遥控器" forState:UIControlStateSelected];
-    [linkBtn addTarget:self action:@selector(linkBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [linkBtn sizeToFit];
-    CGRect linkBtnFrame = linkBtn.frame;
-    CGPoint center = CGPointMake(30, 30);
-    center.x = HMDScreenW - CGRectGetWidth(linkBtnFrame)*0.5-20;
-    linkBtn.center = center;
-    self.linkBtn = linkBtn;
-    [self addSubview:linkBtn];
-    
-    UILabel *linkStateLab = [[UILabel alloc]initWithFrame:CGRectMake(60, 0, 100, 100)];
-    [linkStateLab setTextColor:[UIColor blackColor]];
-    linkStateLab.text = @"设备未链接";
-    linkStateLab.font = [UIFont systemFontOfSize:14];
-    [linkStateLab sizeToFit];
-    CGRect linkStateLabFrame = linkStateLab.frame;
-    center.x = 60 + CGRectGetWidth(linkStateLabFrame)*0.5;
-    linkStateLab.center = center;
-    self.linkStateLab = linkStateLab;
-    [self addSubview:linkStateLab];
-    
+    UIButton *remoteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    remoteBtn.frame = CGRectMake(HMDScreenW-45, 15, 30, 60);
+    remoteBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [remoteBtn setTitleColor:HMDMAIN_COLOR forState:UIControlStateNormal];
+    [remoteBtn setTitle:@"进入遥控器" forState:UIControlStateNormal];
+    [remoteBtn addTarget:self action:@selector(remoteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [remoteBtn sizeToFit];
+    CGRect remoteBtnFrame = remoteBtn.frame;
+    CGPoint center =  CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
+    center.x = HMDScreenW - CGRectGetWidth(remoteBtnFrame)*0.5-20;
+    remoteBtn.center = center;
+    self.remoteBtn = remoteBtn;
+    self.remoteBtn.hidden = YES;
+    [self addSubview:remoteBtn];
+
 }
 
--(void)linkBtnClick:(UIButton *)btn{
+-(void)remoteBtnClick:(UIButton *)btn{
     if (self.delegate && [self.delegate respondsToSelector:@selector(LinkView:linkBtnClick:withViewController:)]) {
-        [self.delegate LinkView:self linkBtnClick:btn.selected withViewController:[self currentViewController]];
+        [self.delegate LinkView:self remoteBtnClickWithViewController:self.getCurActiveViewController];
     }
 }
+
 -(void)linkStateBtnClick:(UIButton *)btn{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(LinkView:linkOffBtnClickWithViewController:)]) {
-        [self.delegate LinkView:self linkOffBtnClickWithViewController:[self currentViewController]];
+    if (self.linkViewState == HMDLinkViewStateLinked) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(LinkView:linkBtnClick:withViewController:)]) {
+            [self.delegate LinkView:self linkBtnClick:self.linkViewState withViewController:self.getCurActiveViewController];
+        }
     }
 }
--(void)switchLinkState:(BOOL)link ip:(NSString *)ip{
-    self.linkBtn.selected = link;
-    
-    NSString *linkText = @"设备未链接";
-    if (link) {
-        self.linkStateBtn.enabled = YES;
-        linkText = [NSString stringWithFormat:@"已链接:%@",ip];
-        //链接成功将此次的记录,下次登录时直连
-        [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLINKIP];
-        [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLastTimeLinkIP];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }else{
-        self.linkStateBtn.enabled = NO;
-    }
-    self.linkStateBtn.selected = link;
-    self.linkStateLab.text = linkText;
-    
-    [self.linkBtn sizeToFit];
-    CGRect linkBtnFrame = self.linkBtn.frame;
-    CGPoint center = CGPointMake(30, 30);
-    center.x = HMDScreenW - CGRectGetWidth(linkBtnFrame)*0.5-20;
-    self.linkBtn.center = center;
-    
-    [self.linkStateLab sizeToFit];
-    CGRect linkStateLabFrame = self.linkStateLab.frame;
-    center.x = 60 + CGRectGetWidth(linkStateLabFrame)*0.5;
-    self.linkStateLab.center = center;
 
-}
 
-- (UIViewController*)currentViewController{
-    //获得当前活动窗口的根视图
-    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-    while (1)
-    {
-        //根据不同的页面切换方式，逐步取得最上层的viewController
-        if ([vc isKindOfClass:[UITabBarController class]]) {
-            vc = ((UITabBarController*)vc).selectedViewController;
-        }
-        if ([vc isKindOfClass:[UINavigationController class]]) {
-            vc = ((UINavigationController*)vc).visibleViewController;
-        }
-        if (vc.presentedViewController) {
-            vc = vc.presentedViewController;
-        }else{
+-(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip{
+    self.linkViewState = linkState;
+    NSString *linkText;
+    switch (linkState) {
+        case HMDLinkViewStateLinked:
+            {
+                self.linkStateBtn.selected = YES;
+                linkText = [NSString stringWithFormat:@"  已链接:%@",ip];
+                //链接成功将此次的记录,下次登录时直连
+                [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLINKIP];
+                [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLastTimeLinkIP];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self.linkStateBtn setTitle:linkText forState:UIControlStateSelected];
+                self.remoteBtn.hidden = NO;
+                [self.linkStateBtn sizeToFit];
+                CGPoint center = self.linkStateBtn.center;
+                center.x = CGRectGetWidth(self.linkStateBtn.frame)*0.5+15;
+                self.linkStateBtn.center =center;
+            }
             break;
+        case HMDLinkViewStateunLink:
+        {
+            self.linkStateBtn.selected = NO;
+            self.remoteBtn.hidden = YES;
+            [self.linkStateBtn setTitle:@"  当前设备未链接,请点击重新连接" forState:UIControlStateNormal];
+            [self.linkStateBtn sizeToFit];
+            self.linkStateBtn.center =  CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
+        }
+            break;
+        case HMDLinkViewStateLinking:
+        {
+            self.linkStateBtn.selected = NO;
+            self.remoteBtn.hidden = YES;
+            [self.linkStateBtn setTitle:@"  自动连接上次设备中..." forState:UIControlStateNormal];
+            [self.linkStateBtn sizeToFit];
+            self.linkStateBtn.center =  CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (self.linkViewState == HMDLinkViewStateunLink) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(LinkView:linkBtnClick:withViewController:)]) {
+            [self.delegate LinkView:self linkBtnClick:self.linkViewState withViewController:self.getCurActiveViewController];
+        }
+    }else if (self.linkViewState == HMDLinkViewStateLinked){
+        //断开链接
+        //获取当前手指的点
+        CGPoint curP = [self getCurPoint:touches];
+        if (CGRectContainsPoint(self.linkStateBtn.frame, curP)) {
+            [self switchLinkState:HMDLinkViewStateunLink ip:nil];
+            [HMDProgressHub showMessage:@"已与设备断开" hideAfter:2.0];
         }
     }
-    return vc;
 }
+
+//获取当前手指的点
+- (CGPoint)getCurPoint:(NSSet *)touches {
+    //获取当前手指的点
+    UITouch *touch = [touches anyObject];
+    CGPoint curP =  [touch locationInView:self];
+    return curP;
+}
+
 @end

@@ -284,7 +284,15 @@ NSString * const kOnboardActionButtonAccessibilityIdentifier = @"OnboardActionBu
     [self.bodyLabel sizeToFit];
     self.bodyLabel.frame = CGRectMake(xPadding, bodyYOrigin, contentWidth, CGRectGetHeight(self.bodyLabel.frame));
 
-    self.actionButton.frame = CGRectMake((CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2), CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, contentWidth, kActionButtonHeight);
+    CGFloat btnX = (CGRectGetMaxX(self.view.frame) / 2) - (contentWidth / 2);
+    CGFloat btnWidth = contentWidth;
+    if (self.actionButtonWidth != 0) {
+        btnX = (CGRectGetMaxX(self.view.frame) / 2) - (self.actionButtonWidth / 2);
+        btnWidth = self.actionButtonWidth;
+    }
+    
+    self.actionButton.frame = CGRectMake(btnX, CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kMainPageControlHeight - kActionButtonHeight - self.bottomPadding, btnWidth, kActionButtonHeight);
+
 }
 
 

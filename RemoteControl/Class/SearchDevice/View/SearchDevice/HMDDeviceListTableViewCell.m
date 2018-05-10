@@ -29,10 +29,15 @@
     // Configure the view for the selected state
 }
 
--(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel{
+-(void)setupUIWithDeviceModel:(HMDRenderDeviceModel *)deviceModel choose:(BOOL)choose{
     self.deviceModel = deviceModel;
     self.deviceNameLab.text = deviceModel.name;
     self.deviceIPLab.text = deviceModel.localIP;
+    if (choose) {
+        self.deviceLinkStateImageView.hidden = NO;
+    }else{
+        self.deviceLinkStateImageView.hidden = YES;
+    }
 }
 
 @end

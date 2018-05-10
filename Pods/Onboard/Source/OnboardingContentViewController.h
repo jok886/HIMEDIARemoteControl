@@ -62,7 +62,7 @@ typedef void (^action_callback)(OnboardingViewController *onboardController);
  */
 @property (nonatomic, strong) UIButton *actionButton;
 
-
+@property (nonatomic) CGFloat actionButtonWidth;
 /**
  * @brief The width of the icon image view.
  */

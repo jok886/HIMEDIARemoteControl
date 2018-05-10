@@ -95,6 +95,7 @@ static NSString * const kSkipButtonText = @"Skip";
     self.shouldFadeTransitions = NO;
     self.fadePageControlOnLastPage = NO;
     self.fadeSkipButtonOnLastPage = NO;
+    self.fadePageControlPage = NO;
     self.swipingEnabled = YES;
     
     self.allowSkipping = NO;
@@ -157,7 +158,10 @@ static NSString * const kSkipButtonText = @"Skip";
     self.pageVC.view.backgroundColor = [UIColor whiteColor];
     self.pageVC.delegate = self;
     self.pageVC.dataSource = self.swipingEnabled ? self : nil;
-    
+
+    if (self.fadePageControlPage) {
+        self.pageControl.alpha = 0;
+    }
     if (self.shouldBlurBackground) {
         [self blurBackground];
     }
@@ -228,13 +232,13 @@ static NSString * const kSkipButtonText = @"Skip";
     // if we want to fade the transitions, we need to tap into the underlying scrollview
     // so we can set ourself as the delegate, this is sort of hackish but the only current
     // solution I am aware of using a page view controller
-    if (self.shouldFadeTransitions) {
+
         for (UIView *view in self.pageVC.view.subviews) {
             if ([view isKindOfClass:[UIScrollView class]]) {
                 [(UIScrollView *)view setDelegate:self];
             }
         }
-    }
+    
 }
 
 
@@ -331,35 +335,42 @@ static NSString * const kSkipButtonText = @"Skip";
     // scrollview's offset and the width of the screen
     CGFloat percentComplete = fabs(scrollView.contentOffset.x - self.view.frame.size.width) / self.view.frame.size.width;
     CGFloat percentCompleteInverse = 1.0 - percentComplete;
-    
-    // these cases have some funky results given the way this method is called, like stuff
-    // just disappearing, so we want to do nothing in these cases
-    if (percentComplete == 0) {
-        return;
+    if (self.shouldFadeTransitions) {
+
+        
+        // these cases have some funky results given the way this method is called, like stuff
+        // just disappearing, so we want to do nothing in these cases
+        if (percentComplete == 0) {
+            return;
+        }
+        
+        // set the next page's alpha to be the percent complete, so if we're 90% of the way
+        // scrolling towards the next page, its content's alpha should be 90%
+        [_upcomingPage updateAlphas:percentComplete];
+        
+        // set the current page's alpha to the difference between 100% and this percent value,
+        // so we're 90% scrolling towards the next page, the current content's alpha sshould be 10%
+        [_currentPage updateAlphas:percentCompleteInverse];
+        
+
     }
-
-    // set the next page's alpha to be the percent complete, so if we're 90% of the way
-    // scrolling towards the next page, its content's alpha should be 90%
-    [_upcomingPage updateAlphas:percentComplete];
-    
-    // set the current page's alpha to the difference between 100% and this percent value,
-    // so we're 90% scrolling towards the next page, the current content's alpha sshould be 10%
-    [_currentPage updateAlphas:percentCompleteInverse];
-
     // determine if we're transitioning to or from our last page
     BOOL transitioningToLastPage = (_currentPage != self.viewControllers.lastObject && _upcomingPage == self.viewControllers.lastObject);
     BOOL transitioningFromLastPage = (_currentPage == self.viewControllers.lastObject) && (_upcomingPage == self.viewControllers[self.viewControllers.count - 2]);
     
     // fade the page control to and from the last page
-    if (self.fadePageControlOnLastPage) {
-        if (transitioningToLastPage) {
-            self.pageControl.alpha = percentCompleteInverse;
-        }
-
-        else if (transitioningFromLastPage) {
-            self.pageControl.alpha = percentComplete;
+    if (!self.fadePageControlPage) {
+        if (self.fadePageControlOnLastPage) {
+            if (transitioningToLastPage) {
+                self.pageControl.alpha = percentCompleteInverse;
+            }
+            
+            else if (transitioningFromLastPage) {
+                self.pageControl.alpha = percentComplete;
+            }
         }
     }
+
 
     // fade the skip button to and from the last page
     if (self.fadeSkipButtonOnLastPage) {
@@ -371,6 +382,13 @@ static NSString * const kSkipButtonText = @"Skip";
             self.skipButton.alpha = percentComplete;
         }
     }
+    //最后一页还滑自动跳到正式页面
+    if (scrollView.contentOffset.x>self.view.bounds.size.width && _currentPage == self.viewControllers.lastObject) {
+        if (self.finishHandler) {
+            self.finishHandler();
+        }
+    }
+
 }
 
 

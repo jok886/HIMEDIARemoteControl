@@ -12,4 +12,5 @@ typedef void(^HMDSearchDeviceVCSelectedFinishBlock)(NSString *ip);              
 @interface HMDSearchDeviceViewController : HMDBaseViewController
 @property (nonatomic,copy) HMDSearchDeviceVCSelectedFinishBlock selectedFinishBlock;
 - (void)backAction:(id)sender;
+-(void)reloadTableViewWithdeviceArray:(NSArray *)deviceArray;
 @end

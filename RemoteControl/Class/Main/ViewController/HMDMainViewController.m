@@ -26,6 +26,8 @@
 #import "AppDelegate.h"
 #import "UIImageView+HMDDLANLoadImage.h"
 #import "EncryptionTools.h"
+
+#import "UIImage+Color.h"
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
 HMDScrollContentViewDelegate,
@@ -33,12 +35,15 @@ HMDLinkViewDelegate,
 HMDDMRControlDelegate>
 @property (nonatomic,weak) HMDScrollTitleView *titleView;                           //标题
 @property (nonatomic,weak) HMDScrollContentView *contentView;                       //内容
-@property (nonatomic,strong) HMDLinkView *linkView;                                 //底部链接状态
+//@property (nonatomic,weak) HMDLinkView *linkView;                                 //底部链接状态
 @property (nonatomic,strong) HMDDeviceLinkDao *linkDao;                             //链接设备
 @property (nonatomic,strong) HMDLoginDao *loginDao;                                 //登录
-@property (nonatomic,assign) BOOL changeToKeyWindow;                                //链接设备
+@property (nonatomic,assign) BOOL changeToKeyWindow;                                //第一次将linkview转到keywindow
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;                //用户头像
-@property (weak, nonatomic) MBProgressHUD *progressHUD;                             //用户头像
+
+@property (nonatomic,strong) NSString *searchIP;                                    //要搜索的ip
+@property (nonatomic,assign) BOOL autoLink;                                         //尝试自动重连
+@property (nonatomic,weak) HMDSearchDeviceViewController *searchVC;                 //搜索设备界面
 @end
 
 @implementation HMDMainViewController
@@ -47,18 +52,21 @@ HMDDMRControlDelegate>
     [super viewDidLoad];
     //是否第一次登陆,第一次需要初始化引导界面
     [self setupUI];
-    [self getDLanLink:[[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID]];
+    [self autoDLanLink];
     [self addNotificationCenter];
     //这里增加自动登录
     [self autoLogin];
+    UIImage *image = [UIImage imageFromContextWithColor:[UIColor whiteColor] size:CGSizeMake(50, 50)];
+    UIImage *newImage = [UIImage createRoundedRectImage:image size:CGSizeMake(50, 50) radius:4];
+    UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil);
 }
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (!self.changeToKeyWindow) {
         self.changeToKeyWindow = YES;
-        [[UIApplication sharedApplication].keyWindow addSubview:self.linkView];
+        [[UIApplication sharedApplication].keyWindow addSubview:[HMDLinkView sharedInstance]];
     }
-
 }
 
 -(void)dealloc{
@@ -87,8 +95,8 @@ HMDDMRControlDelegate>
                           @"音乐",
                           nil];
     titleView.delegate = self;
-    
-    titleView.frame = CGRectMake(60, 45, HMDScreenW-120, 30);
+    CGFloat viewY = CGRectGetMaxY([[UIApplication sharedApplication] statusBarFrame])+5;
+    titleView.frame = CGRectMake(60, viewY, HMDScreenW-120, 55);
     [titleView setupUIWithTitleArray:titleArray];
     [self.view addSubview:titleView];
     self.titleView = titleView;
@@ -124,7 +132,12 @@ HMDDMRControlDelegate>
     }
     CGFloat viewW = HMDScreenW;
     CGFloat viewH = HMDScreenH - 85-LINKVIEHIGHT;
-    contentView.frame = CGRectMake(0, 85, viewW, viewH);
+    CGFloat viewY = 85;
+    if (iPhoneX) {
+        viewY = SafeAreaTop+65;
+        viewH = HMDScreenH -(SafeAreaTop + SafeAreaBottom)-LINKVIEHIGHT-65;
+    }
+    contentView.frame = CGRectMake(0, viewY, viewW, viewH);
     contentView.delegate = self;
     [contentView setupUIWithchildViewController:childVCArray];
     [self.view addSubview:contentView];
@@ -133,25 +146,41 @@ HMDDMRControlDelegate>
 }
 
 -(void)setupLinkView{
-    self.linkView = [[HMDLinkView alloc]initWithFrame:CGRectMake(0, HMDScreenH-LINKVIEHIGHT, HMDScreenW, LINKVIEHIGHT)];
-    self.linkView .delegate = self;
-
-    [self.view addSubview:self.linkView];
+    CGFloat y = HMDScreenH-LINKVIEHIGHT;
+    if (iPhoneX) {
+        y -= SafeAreaBottom;
+    }
+    HMDLinkView *linkView = [HMDLinkView sharedInstance];
+    linkView.frame = CGRectMake(0, y, HMDScreenW, LINKVIEHIGHT);
+    linkView.delegate = self;
+    [linkView setupUI];
+    [self.view addSubview:linkView];
 }
 
--(void)getDLanLink:(NSString *)uuid{
+-(void)autoDLanLink{
+    NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+    [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
     if (uuid.length >1) {
-        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        self.autoLink = YES;
         //启动DMC去搜索设备
         if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
             [[[HMDDHRCenter sharedInstance] DMRControl] start];
         }
+        
+        //5s内找不到设备停止重连
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.autoLink) {
+                if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+                    [[[HMDDHRCenter sharedInstance] DMRControl] stop];
+                }
+            }
+        });
     }
 }
 
 -(void)addNotificationCenter{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillShow) name:HMDLinkViewWillShow object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillHide) name:HMDLinkViewWillHide object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillShow) name:HMDLinkViewWillShow object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillHide) name:HMDLinkViewWillHide object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNewDeviceIP:) name:HMDNewDeviceIP object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
@@ -172,9 +201,17 @@ HMDDMRControlDelegate>
         }
 
     }
-
+//    MBProgressHUD *hub = [[MBProgressHUD alloc]initWithView:self.view];
+//    hub.label.text = @"自动登录中";
+//    hub.mode = MBProgressHUDModeAnnularDeterminate;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self addprogress:hub];
+//    });
+//    [hub showAnimated:YES];
+//    [self.view addSubview:hub];
 
 }
+
 #pragma mark -点击
 //点击用户头像
 - (void)userIconClick:(UITapGestureRecognizer *)tapGesture {
@@ -199,18 +236,28 @@ HMDDMRControlDelegate>
 }
 
 #pragma mark - NSNotificationCenter
-//显示链接状态
--(void)linkViewWillShow{
-    self.linkView.hidden = NO;
-}
-//隐藏链接状态
--(void)linkViewWillHide{
-    self.linkView.hidden = YES;
-}
+////显示链接状态
+//-(void)linkViewWillShow{
+//    self.linkView.hidden = NO;
+//}
+////隐藏链接状态
+//-(void)linkViewWillHide{
+//    self.linkView.hidden = YES;
+//}
 //更新链接状态
 -(void)getNewDeviceIP:(NSNotification *)info{
     NSString *ip = info.object;
-    [self getDLanLink:ip];
+    self.searchIP = ip;
+
+        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        //启动DMC去搜索设备
+        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+            [[[HMDDHRCenter sharedInstance] DMRControl] start];
+        }else{
+            [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+        }
+
+
     
 }
 //登出
@@ -232,54 +279,102 @@ HMDDMRControlDelegate>
     [self.titleView btnClickAtIndex:index];
 }
 
--(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(BOOL)link withViewController:(UIViewController *)viewController{
-    self.linkView.hidden = YES;
-    if (link) {
-        HMDWeakSelf(self)
-        //进入遥控器
-        HMDTVRemoteViewController *tvRemoteVC = [[HMDTVRemoteViewController alloc]init];
-        tvRemoteVC.powerOffBlock = ^{
-            [weakSelf.linkView switchLinkState:NO ip:nil];
-        };
-        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:tvRemoteVC];
-        [viewController presentViewController:nav animated:YES completion:nil];
-    }else{
-        [[[HMDDHRCenter sharedInstance] DMRControl] stop];
-        //进入搜索设备
-        HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
-        HMDWeakSelf(self)
-        HMDWeakObj(searchVC)
-        searchVC.selectedFinishBlock = ^(NSString *ip) {
+-(void)LinkView:(HMDLinkView *)linkView linkBtnClick:(HMDLinkViewState)linkState withViewController:(UIViewController *)viewController{
 
-            [weakSelf.linkView switchLinkState:YES ip:ip];
-            [weaksearchVC backAction:nil];
+    switch (linkState) {
+        case HMDLinkViewStateunLink:
+        {
             
-        } ;
-        HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchVC];
-        [viewController presentViewController:nav animated:YES completion:nil];
+            //先判断是否局域网状态
+            if ([[HMDDLANNetTool sharedInstance] isWIFIEnvironmental]) {
+                [HMDLinkView sharedInstance].hidden = YES;
+                //停止自动搜索
+                self.autoLink = NO;
+                //进入搜索设备
+                HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
+                
+                self.searchVC = searchVC;
+                [viewController presentViewController:searchVC animated:YES completion:^{
+ 
+                        //开启设备
+                        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+                            [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+                            [[[HMDDHRCenter sharedInstance] DMRControl] start];
+                        }else{
+                            [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+                        }
+
+                }];
+            }else{
+                [HMDProgressHub showMessage:@"请先链接wifi" hideAfter:2.0];
+            }
+
+        }
+            break;
+//        case HMDLinkViewStateLinking:
+//        {
+//            [self.linkView switchLinkState:HMDLinkViewStateunLink ip:nil];
+//        }
+//            break;
+        default:
+            break;
     }
+
+    
 }
 
--(void)LinkView:(HMDLinkView *)linkView linkOffBtnClickWithViewController:(UIViewController *)viewController{
-    [self.linkView switchLinkState:NO ip:nil];
+-(void)LinkView:(HMDLinkView *)linkView remoteBtnClickWithViewController:(UIViewController *)viewController{
+    [HMDLinkView sharedInstance].hidden = YES;
+//    HMDWeakSelf(self)
+    //进入遥控器
+    HMDTVRemoteViewController *tvRemoteVC = [[HMDTVRemoteViewController alloc]init];
+//    tvRemoteVC.powerOffBlock = ^{
+//        [weakSelf.linkView switchLinkState:HMDLinkViewStateunLink ip:nil];
+//    };
+    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:tvRemoteVC];
+    [viewController presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - ZM_DMRProtocolDelegate
 -(void)onDMRAdded
 {
-    if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
-        NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+    if (self.searchIP) {
         NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
         for (HMDRenderDeviceModel *model in renders) {
-            if ([lastUUID isEqualToString:model.uuid]) {
-//                [[[HMDDHRCenter sharedInstance] DMRControl] stop];
+            HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:model.uuid];
+            if ([self.searchIP isEqualToString:deviceModel.localIP]) {
                 [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
                 HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.linkView switchLinkState:YES ip:deviceModel.localIP];
+                    [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP];
                 });
+                self.searchIP = nil;
             }
         }
+    }else if (self.autoLink){
+        if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+            NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+            NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+            for (HMDRenderDeviceModel *model in renders) {
+                if ([lastUUID isEqualToString:model.uuid]) {
+                    [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
+                    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
+                    self.autoLink = NO;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP];
+                    });
+                }
+            }
+        }
+    }
+    if (self.searchVC) {
+        [self.searchVC reloadTableViewWithdeviceArray:[[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]]];
+    }
+    NSLog(@"%s",__FUNCTION__);
+}
+-(void)onDMRRemoved{
+    if (self.searchVC) {
+        [self.searchVC reloadTableViewWithdeviceArray:[[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]]];
     }
     NSLog(@"%s",__FUNCTION__);
 }

@@ -245,8 +245,8 @@
     if (self.isPushVC) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-//        [HMDLinkView sharedInstance].hidden = NO;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
+        [HMDLinkView sharedInstance].hidden = NO;
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 

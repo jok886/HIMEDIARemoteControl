@@ -54,7 +54,7 @@
 @end
 
 @interface HMDDMRControl : NSObject
-@property (nonatomic, strong)id <HMDDMRControlDelegate> delegate;
+@property (nonatomic, weak)id <HMDDMRControlDelegate> delegate;
 /***************************
  *
  * 媒体控制器相关(DMC)

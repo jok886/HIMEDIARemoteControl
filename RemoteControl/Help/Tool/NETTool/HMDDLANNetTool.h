@@ -15,6 +15,8 @@ typedef enum : NSUInteger {
 } HMDDLANNetFileType;
 
 @interface HMDDLANNetTool : NSObject
+@property (nonatomic,assign,getter=isWIFIEnvironmental) BOOL wifiEnvironmental;   //wifi环境
+
 +(HMDDLANNetTool *)sharedInstance;
 /**
  * 获取WiFi 信息，返回的字典中包含了WiFi的名称、路由器的Mac地址、还有一个Data(转换成字符串打印出来是wifi名称)
@@ -39,4 +41,7 @@ typedef enum : NSUInteger {
 +(NSString *)getHttpWebURLWithFileName:(NSString *)fileName fileType:(HMDDLANNetFileType)fileType;
 /** 生成文件名字 */
 +(NSString *)getFileNameWithExtensionName:(NSString *)extensionName;
+
+/** 开启wifi状态监听 */
+-(void)startNotificationWifi;
 @end
