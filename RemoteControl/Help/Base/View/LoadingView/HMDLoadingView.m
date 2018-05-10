@@ -72,7 +72,6 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     }else{
         self.notiLab.hidden = YES;
     }
-
 }
 - (void)endAnimationWithResult:(HMDLoadingViewResultType )result {
     [self.loadingView.layer removeAllAnimations];
