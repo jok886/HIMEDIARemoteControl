@@ -15,7 +15,7 @@
 
 #import "HMDDeviceListTableView.h"
 #import "AppDelegate.h"
-@interface HMDSearchDeviceViewController ()<HMDDeviceListTableViewDelegate,HMDDMRControlDelegate>
+@interface HMDSearchDeviceViewController ()<HMDDeviceListTableViewDelegate,HMDDMRControlDelegate,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *linkStateLab;                         //链接状态文字
 
@@ -28,9 +28,15 @@
 @property (nonatomic,weak) IBOutlet HMDDeviceListTableView *deviceListTableView;    //设备列表
 @property (weak, nonatomic) IBOutlet UILabel *unFoundDeviceLab;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;                            //底部控制器
+@property (weak, nonatomic) IBOutlet UIView *inputIPView;
+@property (weak, nonatomic) IBOutlet UITextField *inputIPTextField;
+
+@property (nonatomic, copy) void(^keyboardShowBlock)(CGRect keyboardFrameEnd);
+@property (nonatomic, copy) void(^keyboardHideBlock)(void);
 
 @property (nonatomic,strong) NSDate *stopAnimationTime;                             //动画停止的时间
 @property (nonatomic,strong) NSString *curSelectUUID;                               //当前选中的UUID
+@property (nonatomic,assign) BOOL exactSearch;                                      //精准查找
 @end
 
 @implementation HMDSearchDeviceViewController
@@ -39,6 +45,7 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setupUI];
+    [self setNotificationCenter];
     [self getLanIP];
     
 }
@@ -55,11 +62,12 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
 
 }
 
-#pragma mark - UI
+#pragma mark - 初始化
 -(void)setupUI{
     [self resetupMainView];
     [self setupTableView];
     [self setUnFoundView];
+    [self setupInputIPView];
 }
 -(void)resetupMainView{
     //渐变色
@@ -85,6 +93,32 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
     });
 }
 
+//IP输入界面
+-(void)setupInputIPView{
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(inputViewTap:)];
+    [self.inputIPView addGestureRecognizer:tapGestureRecognizer];
+    
+    
+    HMDWeakSelf(self);
+    self.keyboardHideBlock = ^{
+        weakSelf.inputIPTextField.transform = CGAffineTransformIdentity;
+        [weakSelf.inputIPTextField resignFirstResponder];
+    };
+    self.keyboardShowBlock = ^(CGRect keyboardFrameEnd){
+        CGRect textFieldRect = weakSelf.inputIPTextField.frame;
+        CGRect mainViewRect = [weakSelf.inputIPTextField.superview convertRect:textFieldRect toView:weakSelf.view];
+        CGFloat offsetY = keyboardFrameEnd.origin.y - CGRectGetMaxY(mainViewRect);
+        weakSelf.inputIPTextField.transform = CGAffineTransformTranslate(weakSelf.inputIPTextField.transform, 0, offsetY);
+    };
+}
+//通知
+-(void)setNotificationCenter{
+    // 添加通知监听见键盘弹出/退出
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
 
 #pragma mark -局域网获取
 -(void)getLanIP{
@@ -117,6 +151,23 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
             }
         });
         NSMutableArray *devices = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+        
+        //如果输入了ip,按ip过滤数据
+        if (self.inputIPTextField.text.length>1) {
+            NSString *ip = self.inputIPTextField.text;
+            NSMutableArray *targetDevice = [NSMutableArray array];
+            for (HMDRenderDeviceModel *deviceInfoModel in devices) {
+                if (deviceInfoModel.localIP == nil) {
+                    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:deviceInfoModel.uuid];
+                    if ([deviceModel.localIP isEqualToString:ip]) {
+                        deviceInfoModel.localIP = deviceModel.localIP;
+                        [targetDevice addObject:deviceInfoModel];
+                    }
+                }
+            }
+            devices = [NSMutableArray arrayWithArray:targetDevice];
+        }
+        
         self.deviceListTableView.deviceArray = devices;
         self.curDevicesNumLab.text = [NSString stringWithFormat:@"找到%lu个设备",(unsigned long)self.deviceListTableView.deviceArray.count];
         [self.deviceListTableView reloadData];
@@ -157,6 +208,8 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
         rotationAnimation.toValue = [NSNumber numberWithFloat:M_PI*2];
         rotationAnimation.duration = 1.0f;
         rotationAnimation.repeatCount = MAXFLOAT;
+        rotationAnimation.removedOnCompletion = NO;
+
         [self.linkStateImageView.layer addAnimation:rotationAnimation forKey:scanAnimationKey];
     }
 
@@ -165,32 +218,21 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
 -(void)stopScanAnimaton{
     if ([[self.linkStateImageView.layer animationKeys] containsObject:scanAnimationKey]) {
         [self.linkStateImageView.layer removeAnimationForKey:scanAnimationKey];
-        switch ([HMDLinkView sharedInstance].linkViewState) {
-            case HMDLinkViewStateLinked:
-                [self.linkStateImageView setImage:[UIImage imageNamed:@"device_connected"]];
-                break;
-            default:
-                [self.linkStateImageView setImage:[UIImage imageNamed:@"device_unconnected"]];
-                break;
-        }
+        [self changLinkeViewStateImage];
     }
 }
 
-
--(IBAction)researchMoreDevices:(id)sender {
-    [self.deviceListTableView.deviceArray removeAllObjects];
-    [self.deviceListTableView reloadData];
-   [self searchAllDevice];
-    NSLog(@"%s",__FUNCTION__);
-    //删掉所有设备
-    [self.deviceListTableView.deviceArray removeAllObjects];
-    //重启DMC
-    [[[HMDDHRCenter sharedInstance] DMRControl] restart];
-    //获取新设备
-    self.deviceListTableView.deviceArray = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
-    
+//改变链接图标
+-(void)changLinkeViewStateImage{
+    switch ([HMDLinkView sharedInstance].linkViewState) {
+        case HMDLinkViewStateLinked:
+            [self.linkStateImageView setImage:[UIImage imageNamed:@"device_connected"]];
+            break;
+        default:
+            [self.linkStateImageView setImage:[UIImage imageNamed:@"device_unconnected"]];
+            break;
+    }
 }
-
 #pragma mark - HMDDeviceListTableViewDelegate
 -(void)didSelectRowAtIndexPath:(NSInteger)index deviceModel:(HMDRenderDeviceModel *)deviceModel selected:(BOOL)selected{
 
@@ -205,6 +247,20 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
     }
     [self changeLinkState:selected ip:deviceModel.localIP uuid:deviceModel.uuid];
 }
+#pragma mark UITextFieldDelegate
+//按确认键
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+
+    textField.transform = CGAffineTransformIdentity;
+    [textField resignFirstResponder];
+}
 
 #pragma mark -点击
 //返回
@@ -213,7 +269,44 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
 //    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+//重新扫描
+-(IBAction)researchMoreDevices:(id)sender {
+    [self.deviceListTableView.deviceArray removeAllObjects];
+    [self.deviceListTableView reloadData];
+    [self searchAllDevice];
 
+    //重启DMC
+    [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+    NSLog(@"%s",__FUNCTION__);
+    
+}
+//输入IP
+- (IBAction)inputIPBtnClick:(id)sender {
+    self.inputIPView.hidden = NO;
+}
+
+//确定输入
+- (IBAction)makeSureInput:(id)sender {
+    NSString *ip = self.inputIPTextField.text;
+    if (ip == nil || [ip isEqualToString:@""]) {
+        self.inputIPView.hidden = YES;
+        [self researchMoreDevices:nil];
+    }else{
+        //先判断ip是否有效
+        if ([HMDDLANNetTool isRightIPAddress:ip]) {
+            self.inputIPView.hidden = YES;
+            [HMDProgressHub showMessage:[NSString stringWithFormat:@"查找IP:%@的设备中",ip] hideAfter:2.0];
+            [self researchMoreDevices:nil];
+        }else{
+            [HMDProgressHub showMessage:@"请输入正确的IP" hideAfter:2.0];
+        }
+    }
+}
+
+//输入状态遮罩被点击
+-(void)inputViewTap:(UITapGestureRecognizer *)tap{
+//    [self.inputIPTextField resignFirstResponder];
+}
 #pragma mark - 其他
 -(void)changeLinkState:(BOOL)link ip:(NSString *)ip uuid:(NSString *)uuid{
     HMDLinkViewState linkState = HMDLinkViewStateLinked;
@@ -232,7 +325,22 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
         self.linkStateLab.text = @"未连接";
     }
     [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:uuid];
-    [[HMDLinkView sharedInstance] switchLinkState:linkState ip:ip];
+    [[HMDLinkView sharedInstance] switchLinkState:linkState ip:ip uuid:uuid];
+}
+#pragma mark 通知
+-(void)keyboardWillShow:(NSNotification *)info{
+    NSDictionary* userInfo = [info userInfo];
+    CGRect keyboardFrameEnd = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];//键盘高度
+    
+    if (self.keyboardShowBlock) {
+        self.keyboardShowBlock(keyboardFrameEnd);
+    }
 }
 
+-(void)keyboardWillHide:(NSNotification *)info{
+    if (self.keyboardHideBlock) {
+        self.keyboardHideBlock();
+    }
+    
+}
 @end

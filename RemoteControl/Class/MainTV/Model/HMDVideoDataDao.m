@@ -274,4 +274,35 @@ NSDictionary *classifyDict = [NSDictionary dictionaryWithObjectsAndKeys:
     return classifyDict;
 
 }
+
+
+-(void)getPostListWithParameters:(NSDictionary *)parameters finishBlock:(void (^)(BOOL, NSArray *))finishBlock{
+
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSString *postListURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_POSTER_LIST,HMDCURLINKDEVICEIP];
+
+    [session POST:postListURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *responsDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if ([responsDict isKindOfClass:[NSDictionary class]] && [[responsDict allKeys]containsObject:@"poster"]) {
+            NSArray *posterArray = [responsDict objectForKey:@"poster"];
+            NSArray *videoModelArray = [HMDVideoModel hmd_modelArrayWithKeyValuesArray:posterArray];
+            if (finishBlock) {
+                finishBlock(YES,videoModelArray);
+            }
+        }else{
+            if (finishBlock) {
+                finishBlock(YES,nil);
+            }
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO,nil);
+        }
+        NSLog(@"failure");
+    }];
+}
 @end

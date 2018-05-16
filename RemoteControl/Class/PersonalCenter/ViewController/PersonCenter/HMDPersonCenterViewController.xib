@@ -6,15 +6,20 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMDPersonCenterViewController">
             <connections>
+                <outlet property="myAppBtn" destination="y5R-ff-CL7" id="aru-Gs-SZN"/>
                 <outlet property="signInBtn" destination="GAg-y1-lLm" id="gH3-rn-tA7"/>
                 <outlet property="userIconImageView" destination="enc-XG-elR" id="tjg-tJ-mF7"/>
+                <outlet property="userMainView" destination="JBF-PG-ENa" id="CvR-xh-0jt"/>
                 <outlet property="userNameLab" destination="HoA-uf-HP8" id="Jju-d3-JEw"/>
+                <outlet property="userNameTopConstraint" destination="wqo-jK-Ebe" id="vu1-EY-dNZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,138 +29,216 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBF-PG-ENa">
-                    <rect key="frame" x="0.0" y="-24" width="375" height="250"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="250"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_default" translatesAutoresizingMaskIntoConstraints="NO" id="enc-XG-elR">
-                            <rect key="frame" x="147.5" y="64" width="80" height="80"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="enc-XG-elR">
+                            <rect key="frame" x="132.5" y="47" width="110" height="110"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="A2y-py-IXw"/>
-                                <constraint firstAttribute="height" constant="80" id="eZR-yY-Zb4"/>
+                                <constraint firstAttribute="height" constant="110" id="GXI-NB-ElG"/>
+                                <constraint firstAttribute="width" constant="110" id="fO1-WF-gqO"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="55"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录海美迪会员,用手机玩转盒子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoA-uf-HP8">
-                            <rect key="frame" x="78.5" y="154" width="218.5" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAg-y1-lLm">
-                            <rect key="frame" x="101" y="187" width="174" height="44"/>
-                            <state key="normal" title="   微信/手机登录" image="share_btn_weixin">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <rect key="frame" x="128" y="195" width="120" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="18C-dI-fEN"/>
+                                <constraint firstAttribute="width" constant="120" id="I6U-vN-Bi9"/>
+                            </constraints>
+                            <state key="normal" title="注册/登录">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                    <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="singInBtnClick:" destination="-1" eventType="touchUpInside" id="TAC-fZ-vwX"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cx-kP-8gz">
+                            <rect key="frame" x="10" y="10" width="35" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="otx-7a-bUs"/>
+                            </constraints>
+                            <state key="normal" image="back_white"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="4bx-Xt-9n3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4a1-dT-Ebe">
+                            <rect key="frame" x="330" y="10" width="35" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="Hkz-HT-ot6"/>
+                            </constraints>
+                            <state key="normal" image="scan"/>
+                            <connections>
+                                <action selector="searchQRCode" destination="-1" eventType="touchUpInside" id="EfX-wo-nST"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录海美迪会员，用手机玩转盒子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoA-uf-HP8">
+                            <rect key="frame" x="72.5" y="170" width="230" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.57620171121668462" green="0.62145294760910463" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="enc-XG-elR" firstAttribute="centerX" secondItem="JBF-PG-ENa" secondAttribute="centerX" id="5C6-c1-2Ld"/>
-                        <constraint firstItem="HoA-uf-HP8" firstAttribute="centerX" secondItem="enc-XG-elR" secondAttribute="centerX" id="JKt-fp-yIX"/>
-                        <constraint firstItem="GAg-y1-lLm" firstAttribute="centerX" secondItem="enc-XG-elR" secondAttribute="centerX" id="QK0-MJ-TaB"/>
+                        <constraint firstAttribute="bottom" secondItem="GAg-y1-lLm" secondAttribute="bottom" constant="15" id="25v-ki-aGc"/>
+                        <constraint firstAttribute="trailing" secondItem="4a1-dT-Ebe" secondAttribute="trailing" constant="10" id="Ce2-t7-6ad"/>
+                        <constraint firstItem="GAg-y1-lLm" firstAttribute="centerX" secondItem="JBF-PG-ENa" secondAttribute="centerX" id="Lv0-F1-Smo"/>
+                        <constraint firstAttribute="bottom" secondItem="enc-XG-elR" secondAttribute="bottom" constant="93" id="MXm-yl-eVJ"/>
+                        <constraint firstItem="8Cx-kP-8gz" firstAttribute="top" secondItem="JBF-PG-ENa" secondAttribute="top" constant="10" id="RcR-fQ-lae"/>
                         <constraint firstAttribute="height" constant="250" id="SnN-Kn-gkl"/>
-                        <constraint firstItem="enc-XG-elR" firstAttribute="top" secondItem="JBF-PG-ENa" secondAttribute="top" constant="64" id="e1o-Ti-WZz"/>
-                        <constraint firstItem="HoA-uf-HP8" firstAttribute="top" secondItem="enc-XG-elR" secondAttribute="bottom" constant="10" id="mob-G9-MEM"/>
-                        <constraint firstItem="GAg-y1-lLm" firstAttribute="top" secondItem="HoA-uf-HP8" secondAttribute="bottom" constant="15" id="syG-OX-aVr"/>
+                        <constraint firstItem="enc-XG-elR" firstAttribute="centerX" secondItem="JBF-PG-ENa" secondAttribute="centerX" id="bWp-hH-b5c"/>
+                        <constraint firstItem="4a1-dT-Ebe" firstAttribute="centerY" secondItem="8Cx-kP-8gz" secondAttribute="centerY" id="ey2-XV-fHl"/>
+                        <constraint firstItem="8Cx-kP-8gz" firstAttribute="leading" secondItem="JBF-PG-ENa" secondAttribute="leading" constant="10" id="mu2-pa-T8t"/>
+                        <constraint firstItem="HoA-uf-HP8" firstAttribute="centerX" secondItem="JBF-PG-ENa" secondAttribute="centerX" id="njl-zn-BZx"/>
+                        <constraint firstItem="HoA-uf-HP8" firstAttribute="top" secondItem="enc-XG-elR" secondAttribute="bottom" constant="13" id="wqo-jK-Ebe"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ga-Lh-LbW">
-                    <rect key="frame" x="20" y="246" width="157.5" height="60"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-Wy-6ej">
+                    <rect key="frame" x="0.0" y="270" width="375" height="397"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5R-ff-CL7" customClass="HMDDoubleTextBtn">
+                            <rect key="frame" x="12" y="12" width="165" height="77.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="y5R-ff-CL7" secondAttribute="height" multiplier="160:75" id="77s-vr-oyS"/>
+                            </constraints>
+                            <state key="normal" title=" 我的应用   " image="mine_application">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" backgroundImage="click_frame"/>
+                            <state key="highlighted" backgroundImage="click_frame"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="精彩内容绘制"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="06o-KV-r0P"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csJ-mf-4Bi" customClass="HMDDoubleTextBtn">
+                            <rect key="frame" x="198" y="12" width="165" height="77.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title=" 系统设置      " image="mine_setting">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" backgroundImage="click_frame"/>
+                            <state key="highlighted" backgroundImage="click_frame"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="方便进行贴心操作"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="mei-Ip-FSM"/>
+                                <action selector="systemSetting:" destination="-1" eventType="touchUpInside" id="0V8-WQ-nz5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnV-Jk-CEp" customClass="HMDDoubleTextBtn">
+                            <rect key="frame" x="12" y="101.5" width="165" height="77.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title=" 电视截屏" image="mine_screenshot">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" backgroundImage="click_frame"/>
+                            <state key="highlighted" backgroundImage="click_frame"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="方便，快捷"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="getCapture:" destination="-1" eventType="touchUpInside" id="MIZ-gs-2bB"/>
+                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="LFM-BQ-DcI"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbg-75-Bce" customClass="HMDDoubleTextBtn">
+                            <rect key="frame" x="198" y="102" width="165" height="77.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title=" 清理大师      " image="mine_clear">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" backgroundImage="click_frame"/>
+                            <state key="highlighted" backgroundImage="click_frame"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="上亿用户共同选择"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="Nj8-8Z-ec6"/>
+                                <action selector="startHiTVAPK:" destination="-1" eventType="touchUpInside" id="4HE-Js-ivy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="wAa-EC-3dl"/>
+                        <constraint firstItem="csJ-mf-4Bi" firstAttribute="height" secondItem="y5R-ff-CL7" secondAttribute="height" id="16T-T4-aCm"/>
+                        <constraint firstItem="mnV-Jk-CEp" firstAttribute="height" secondItem="y5R-ff-CL7" secondAttribute="height" id="1wR-di-9cz"/>
+                        <constraint firstAttribute="trailing" secondItem="sbg-75-Bce" secondAttribute="trailing" constant="12" id="Bze-j6-xVd"/>
+                        <constraint firstItem="sbg-75-Bce" firstAttribute="height" secondItem="y5R-ff-CL7" secondAttribute="height" id="HEw-34-Yod"/>
+                        <constraint firstItem="sbg-75-Bce" firstAttribute="width" secondItem="y5R-ff-CL7" secondAttribute="width" id="HUy-po-DjH"/>
+                        <constraint firstAttribute="trailing" secondItem="csJ-mf-4Bi" secondAttribute="trailing" constant="12" id="UoS-Fy-aJU"/>
+                        <constraint firstItem="y5R-ff-CL7" firstAttribute="leading" secondItem="0DW-Wy-6ej" secondAttribute="leading" constant="12" id="WM3-kd-5gd"/>
+                        <constraint firstItem="mnV-Jk-CEp" firstAttribute="leading" secondItem="0DW-Wy-6ej" secondAttribute="leading" constant="12" id="YtB-Vo-2PO"/>
+                        <constraint firstItem="csJ-mf-4Bi" firstAttribute="top" secondItem="0DW-Wy-6ej" secondAttribute="top" constant="12" id="Z1j-kC-6Ta"/>
+                        <constraint firstItem="sbg-75-Bce" firstAttribute="top" secondItem="csJ-mf-4Bi" secondAttribute="bottom" constant="12" id="cXk-b4-GLV"/>
+                        <constraint firstItem="csJ-mf-4Bi" firstAttribute="width" secondItem="y5R-ff-CL7" secondAttribute="width" id="fRu-02-gsu"/>
+                        <constraint firstItem="y5R-ff-CL7" firstAttribute="width" secondItem="0DW-Wy-6ej" secondAttribute="width" multiplier="0.44" id="lti-UU-xI3"/>
+                        <constraint firstItem="y5R-ff-CL7" firstAttribute="top" secondItem="0DW-Wy-6ej" secondAttribute="top" constant="12" id="sPm-OO-ria"/>
+                        <constraint firstItem="mnV-Jk-CEp" firstAttribute="width" secondItem="y5R-ff-CL7" secondAttribute="width" id="yud-UK-p5r"/>
+                        <constraint firstItem="mnV-Jk-CEp" firstAttribute="top" secondItem="y5R-ff-CL7" secondAttribute="bottom" constant="12" id="zwJ-1R-h0J"/>
                     </constraints>
-                    <state key="normal" title="我的应用"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="SmY-a9-qP6"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYp-DB-A6V">
-                    <rect key="frame" x="20" y="326" width="157.5" height="60"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="f4y-WG-Sbh"/>
-                    </constraints>
-                    <state key="normal" title="截屏"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="getCapture:" destination="-1" eventType="touchUpInside" id="l4z-bo-51O"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-hc-yYj">
-                    <rect key="frame" x="197.5" y="246" width="157.5" height="60"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="5sW-Ps-Nie"/>
-                    </constraints>
-                    <state key="normal" title="系统设置"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="systemSetting:" destination="-1" eventType="touchUpInside" id="PzE-EP-B7X"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZ8-FN-B3p">
-                    <rect key="frame" x="197.5" y="326" width="157.5" height="60"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="d3B-VU-BAd"/>
-                    </constraints>
-                    <state key="normal" title="清理大师"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="startHiTVAPK:" destination="-1" eventType="touchUpInside" id="yPv-zd-V8Q"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.36386460069999998" green="0.69190686940000001" blue="0.57645928859999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="DYp-DB-A6V" firstAttribute="height" secondItem="2ga-Lh-LbW" secondAttribute="height" id="45g-tD-IBL"/>
-                <constraint firstItem="AZ8-FN-B3p" firstAttribute="width" secondItem="2ga-Lh-LbW" secondAttribute="width" id="4q5-lB-lvK"/>
-                <constraint firstItem="DYp-DB-A6V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7o7-3v-7TJ"/>
-                <constraint firstItem="2ga-Lh-LbW" firstAttribute="width" secondItem="gjs-hc-yYj" secondAttribute="width" id="FZr-o3-Ltf"/>
-                <constraint firstAttribute="trailing" secondItem="AZ8-FN-B3p" secondAttribute="trailing" constant="20" id="Fuz-vv-6eh"/>
-                <constraint firstItem="2ga-Lh-LbW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="M0s-HF-7mu"/>
-                <constraint firstItem="gjs-hc-yYj" firstAttribute="height" secondItem="2ga-Lh-LbW" secondAttribute="height" id="N8F-1G-x8s"/>
-                <constraint firstItem="JBF-PG-ENa" firstAttribute="top" secondItem="ZWR-Lb-VcR" secondAttribute="top" constant="-44" id="NYn-kc-6Jw"/>
+                <constraint firstItem="0DW-Wy-6ej" firstAttribute="top" secondItem="JBF-PG-ENa" secondAttribute="bottom" id="8GW-cR-xHy"/>
+                <constraint firstItem="JBF-PG-ENa" firstAttribute="top" secondItem="ZWR-Lb-VcR" secondAttribute="top" id="NYn-kc-6Jw"/>
                 <constraint firstAttribute="trailing" secondItem="JBF-PG-ENa" secondAttribute="trailing" id="OSP-ta-XeF"/>
-                <constraint firstItem="gjs-hc-yYj" firstAttribute="centerY" secondItem="2ga-Lh-LbW" secondAttribute="centerY" id="Qi5-cR-1do"/>
-                <constraint firstAttribute="trailing" secondItem="gjs-hc-yYj" secondAttribute="trailing" constant="20" id="Rux-tb-oLZ"/>
-                <constraint firstItem="AZ8-FN-B3p" firstAttribute="height" secondItem="2ga-Lh-LbW" secondAttribute="height" id="UX8-7q-4mN"/>
-                <constraint firstItem="AZ8-FN-B3p" firstAttribute="centerY" secondItem="DYp-DB-A6V" secondAttribute="centerY" id="VzF-oZ-wif"/>
-                <constraint firstItem="gjs-hc-yYj" firstAttribute="leading" secondItem="2ga-Lh-LbW" secondAttribute="trailing" constant="20" id="ZYM-hx-BUo"/>
-                <constraint firstItem="DYp-DB-A6V" firstAttribute="top" secondItem="2ga-Lh-LbW" secondAttribute="bottom" constant="20" id="Zc7-hv-4QB"/>
+                <constraint firstItem="0DW-Wy-6ej" firstAttribute="leading" secondItem="ZWR-Lb-VcR" secondAttribute="leading" id="Opa-tk-gXX"/>
                 <constraint firstItem="JBF-PG-ENa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="clM-Ad-Jxr"/>
-                <constraint firstItem="2ga-Lh-LbW" firstAttribute="top" secondItem="JBF-PG-ENa" secondAttribute="bottom" constant="20" id="fB1-G2-TyQ"/>
-                <constraint firstItem="DYp-DB-A6V" firstAttribute="width" secondItem="2ga-Lh-LbW" secondAttribute="width" id="gsX-zD-ou3"/>
+                <constraint firstItem="ZWR-Lb-VcR" firstAttribute="trailing" secondItem="0DW-Wy-6ej" secondAttribute="trailing" id="dIG-iR-G8c"/>
+                <constraint firstItem="ZWR-Lb-VcR" firstAttribute="bottom" secondItem="0DW-Wy-6ej" secondAttribute="bottom" id="nHt-jC-Em7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZWR-Lb-VcR"/>
-            <point key="canvasLocation" x="14" y="55"/>
+            <point key="canvasLocation" x="13.5" y="54.5"/>
         </view>
     </objects>
     <resources>
-        <image name="share_btn_weixin" width="44" height="44"/>
-        <image name="user_default" width="90" height="90"/>
+        <image name="back_white" width="24" height="24"/>
+        <image name="click_frame" width="15" height="17"/>
+        <image name="default_avatar" width="110" height="110"/>
+        <image name="mine_application" width="36" height="36"/>
+        <image name="mine_clear" width="36" height="36"/>
+        <image name="mine_screenshot" width="36" height="36"/>
+        <image name="mine_setting" width="36" height="36"/>
+        <image name="scan" width="24" height="24"/>
     </resources>
 </document>

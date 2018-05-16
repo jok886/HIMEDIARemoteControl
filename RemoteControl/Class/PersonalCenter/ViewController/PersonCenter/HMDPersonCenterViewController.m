@@ -8,25 +8,29 @@
 
 #import "HMDPersonCenterViewController.h"
 
-#import "AppDelegate.h"
-
-#import "HMDLoginDao.h"
 #import "HMDAppListDao.h"
 
 #import "UIImageView+HMDDLANLoadImage.h"
-#import "WXApi.h"
+
+#import "AppDelegate.h"
 
 #import "HMDQRCodeScanViewController.h"
 #import "HMDApplistViewController.h"
 #import "HMDRemoteSettingViewController.h"
-@interface HMDPersonCenterViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *signInBtn;
-@property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *userNameLab;
 
-@property (assign, nonatomic) BOOL wxLogin;
-@property (strong, nonatomic) HMDLoginDao *loginDao;
-@property (strong, nonatomic) HMDAppListDao *appListDao;
+#import "HMDDoubleTextBtn.h"
+@interface HMDPersonCenterViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;                   //登录按钮
+@property (weak, nonatomic) IBOutlet UIImageView *userIconImageView;        //用户头像
+@property (weak, nonatomic) IBOutlet UILabel *userNameLab;                  //用户名
+
+@property (strong, nonatomic) HMDAppListDao *appListDao;                    //app数据列表
+
+@property (weak, nonatomic) IBOutlet UIView *userMainView;                  //用户背景
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userNameTopConstraint;
+
+@property (weak, nonatomic) IBOutlet HMDDoubleTextBtn *myAppBtn;
+
 @end
 
 @implementation HMDPersonCenterViewController
@@ -50,47 +54,25 @@
 }
 #pragma mark -初始化
 -(void)setupUI{
-    [self setupNavigation];
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (myDelegate.isLogin) {
+    //渐变色
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, 250);
+    gradientLayer.colors = @[(id)HMDColorFromValue(0x3BC797).CGColor,(id)HMDColorFromValue(0x3BC7C5).CGColor];  // 设置渐变颜色
+    gradientLayer.startPoint = CGPointMake(0.5, 0);   //
+    gradientLayer.endPoint = CGPointMake(0.5, 1);     //
+    [self.userMainView.layer insertSublayer:gradientLayer atIndex:0];
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState]) {
+        AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         HMDUserModel *userModel = myDelegate.userModel;
-        [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
-        self.userNameLab.text = userModel.nickname;
-        self.signInBtn.hidden = YES;
-    }else{
-        //判断是否安装了微信
-        if ([WXApi isWXAppInstalled]) {
-            self.wxLogin = YES;
-            [self.signInBtn setTitle:@"  微信登录" forState:UIControlStateNormal];
-        }else{
-            self.wxLogin = NO;
-            [self.signInBtn setTitle:@"  手机登录" forState:UIControlStateNormal];
-        }
+        [self upUserInfoWithUserModel:userModel];
+        
     }
-
-
+    
+    //设置按钮
+//    [self.myAppBtn setButtonWithImage:[UIImage imageNamed:@"mine_application"] mainTitle:@"我的应用" subtitle:@"精彩内容绘制"];
 }
 
--(void)setupNavigation{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsCompact];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    //返回按钮
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
-    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
-    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    //扫描按钮
-    UIButton *searchQRButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
-    [searchQRButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
-    [searchQRButton addTarget:self action:@selector(searchQRCode) forControlEvents:UIControlEventTouchUpInside];
-    [searchQRButton sizeToFit];
-
-    // 设置返回按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchQRButton];
-}
 
 #pragma mark - 通知
 //登录通知
@@ -100,49 +82,33 @@
 }
 
 -(void)wechatLogin:(NSNotification *)info{
-    if ([info.object isKindOfClass:[SendAuthResp class]]) {
-        SendAuthResp *authResp = (SendAuthResp *)info.object;
-        if (authResp.errCode == 0) {
-            NSLog(@"登录成功");
-            NSString *code = authResp.code;
-            HMDWeakSelf(self)
-            [self.loginDao getWechatInfoWithCode:code finishBlock:^(BOOL success, HMDUserModel *userModel) {
-                if (success) {
-                    [weakSelf upUserInfoWithUserModel:userModel];
-                }
-            }];
-        }else{
-            NSLog(@"登录失败");
-        }
+    if ([info.object isKindOfClass:[HMDUserModel class]]) {
+        HMDUserModel *userModel = (HMDUserModel *)info.object;
+        [self upUserInfoWithUserModel:userModel];
     }
 }
 #pragma mark -点击
 
 //返回
--(void)backAction:(id)sender{
+-(IBAction)backAction:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //扫描
--(void)searchQRCode{
+-(IBAction)searchQRCode{
     HMDQRCodeScanViewController *QRCodeVC = [[HMDQRCodeScanViewController alloc]init];
-    [self.navigationController pushViewController:QRCodeVC animated:YES];
-//    [self presentViewController:QRCodeVC animated:YES completion:nil];
-    
+    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:QRCodeVC];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 //登录
 - (IBAction)singInBtnClick:(UIButton *)sender {
-    if (self.wxLogin) {
-        SendAuthReq *req = [[SendAuthReq alloc]init];
-        req.scope = @"snsapi_userinfo" ;
-        req.state = @"wx_oauth2_authorization_state" ;
-        [WXApi sendReq:req];
-    }
+  
 }
 
 //我的应用
-- (IBAction)myAPPListCenter:(id)sender {
+- (IBAction)myAPPListCenter:(UIButton *)sender {
+//    sender.selected = YES;
 //    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
     [HMDLinkView sharedInstance].hidden = YES;
     HMDApplistViewController *appListVC = [[HMDApplistViewController alloc] init];
@@ -192,11 +158,11 @@
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel{
 
     [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
+    self.userNameLab.font = [UIFont systemFontOfSize:17];
     self.userNameLab.text = userModel.nickname;
+        self.userNameTopConstraint.constant = 17;
     self.signInBtn.hidden = YES;
-    if (self.upUserInfoBlock) {
-        self.upUserInfoBlock(userModel);
-    }
+
 }
 
 //登出
@@ -204,15 +170,11 @@
 
     [self.userIconImageView setImage:[UIImage imageNamed:@"user_default"]];
     self.userNameLab.text = @"登录海美迪会员,用手机玩转盒子";
+    self.userNameLab.font = [UIFont systemFontOfSize:15];
+    self.userNameTopConstraint.constant = 13;
     self.signInBtn.hidden = NO;
 }
 #pragma mark - 懒加载
--(HMDLoginDao *)loginDao{
-    if (_loginDao == nil) {
-        _loginDao = [[HMDLoginDao alloc]init];
-    }
-    return _loginDao;
-}
 
 -(HMDAppListDao *)appListDao{
     if (_appListDao == nil) {

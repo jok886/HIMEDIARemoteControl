@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,56 +16,67 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HMDVideoShowCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="285" height="285"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="285" height="285"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAP-lh-Qte">
-                        <rect key="frame" x="0.0" y="40" width="200" height="160"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm2-av-Wkn">
-                                <rect key="frame" x="25" y="110" width="150" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Jm2-av-Wkn" secondAttribute="height" multiplier="3:1" id="iUD-EY-iuJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
+                        <rect key="frame" x="0.0" y="85" width="285" height="200"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Jm2-av-Wkn" secondAttribute="bottom" id="J46-GH-mgh"/>
-                            <constraint firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="height" multiplier="1:0.8" id="LWe-2Z-eMe"/>
-                            <constraint firstItem="Jm2-av-Wkn" firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="width" multiplier="0.75" id="NlM-nJ-BpN"/>
+                            <constraint firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="height" multiplier="285:200" id="LWe-2Z-eMe"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ky-Dy9">
-                        <rect key="frame" x="50" y="0.0" width="100" height="150"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm2-av-Wkn">
+                        <rect key="frame" x="26" y="187.5" width="233" height="20.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="b6A-ky-Dy9" secondAttribute="height" multiplier="1:1.5" id="FhP-Wk-Krd"/>
+                            <constraint firstAttribute="height" constant="20.5" id="OG1-vg-3Us"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ky-Dy9">
+                        <rect key="frame" x="25" y="7.5" width="235" height="155"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="b6A-ky-Dy9" secondAttribute="height" multiplier="235:155" id="FhP-Wk-Krd"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW6-9r-VzS">
+                        <rect key="frame" x="26" y="222" width="233" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.60000419620000001" green="0.5999925733" blue="0.60000050069999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Jm2-av-Wkn" firstAttribute="centerX" secondItem="b6A-ky-Dy9" secondAttribute="centerX" id="5ng-Rz-qDZ"/>
+                <constraint firstAttribute="trailing" secondItem="oW6-9r-VzS" secondAttribute="trailing" constant="26" id="3wK-Sv-g9G"/>
                 <constraint firstItem="oAP-lh-Qte" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7ZV-6s-Sq4"/>
+                <constraint firstItem="oW6-9r-VzS" firstAttribute="top" secondItem="Jm2-av-Wkn" secondAttribute="bottom" constant="14" id="8O9-t0-F0q"/>
+                <constraint firstItem="Jm2-av-Wkn" firstAttribute="top" secondItem="b6A-ky-Dy9" secondAttribute="bottom" constant="25" id="Cvp-2U-kx0"/>
                 <constraint firstAttribute="trailing" secondItem="oAP-lh-Qte" secondAttribute="trailing" id="Egx-RU-6bb"/>
-                <constraint firstItem="b6A-ky-Dy9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fLe-h8-8rA"/>
+                <constraint firstItem="oW6-9r-VzS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="FY0-B6-IIe"/>
+                <constraint firstAttribute="trailing" secondItem="Jm2-av-Wkn" secondAttribute="trailing" constant="26" id="XjX-ox-ywM"/>
+                <constraint firstItem="b6A-ky-Dy9" firstAttribute="centerY" secondItem="oAP-lh-Qte" secondAttribute="top" id="ezn-jX-IbN"/>
                 <constraint firstItem="b6A-ky-Dy9" firstAttribute="centerX" secondItem="SEy-5g-ep8" secondAttribute="centerX" id="hGb-bh-g63"/>
+                <constraint firstItem="Jm2-av-Wkn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="iM5-3C-gJT"/>
                 <constraint firstAttribute="bottom" secondItem="oAP-lh-Qte" secondAttribute="bottom" id="rUy-1W-2Ie"/>
-                <constraint firstItem="b6A-ky-Dy9" firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="width" multiplier="0.5" id="wUB-Sl-xnz"/>
+                <constraint firstItem="b6A-ky-Dy9" firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="width" multiplier="235:285" id="wUB-Sl-xnz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="174" height="204"/>
             <connections>
-                <outlet property="synopsisLab" destination="Jm2-av-Wkn" id="Siu-Yk-tbZ"/>
+                <outlet property="synopsisLab" destination="oW6-9r-VzS" id="CDJ-W0-rvW"/>
+                <outlet property="titleLab" destination="Jm2-av-Wkn" id="NE9-lp-CyT"/>
                 <outlet property="videoIconImageView" destination="b6A-ky-Dy9" id="wjy-Rs-sJl"/>
             </connections>
             <point key="canvasLocation" x="-107" y="52"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="video_pic_default" width="60" height="90"/>
+    </resources>
 </document>

@@ -42,8 +42,8 @@
     self.memorySizeLab.text = [self getMemorySize];
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clearMemory:)];
     [self.memoryView addGestureRecognizer:tapGesture];
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (myDelegate.isLogin){
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState]){
         self.loginBtn.selected = YES;
     }else{
         self.loginBtn.selected = NO;

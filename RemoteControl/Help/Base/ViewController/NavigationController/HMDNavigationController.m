@@ -26,18 +26,18 @@
     // 设置导航条标题字体 => 拿到导航条去设置
     [UINavigationBar appearance];
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
-    attr[NSFontAttributeName] = [UIFont boldSystemFontOfSize:20];
+    attr[NSFontAttributeName] = [UIFont boldSystemFontOfSize:17];
     
     navBar.titleTextAttributes = attr;
     
     // 设置导航条背景图片
 //    [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     
-    [navBar
-     setBackgroundImage:[UIImage imageFromContextWithColor:[UIColor colorWithRed:38/255.0 green:137/255.0 blue:247/255.0 alpha:0]] forBarMetrics:UIBarMetricsDefault];
-    [navBar
-     setShadowImage:[UIImage new]];
-    navBar.translucent = YES;
+//    [navBar
+//     setBackgroundImage:[UIImage imageFromContextWithColor:[UIColor colorWithRed:38/255.0 green:137/255.0 blue:247/255.0 alpha:0]] forBarMetrics:UIBarMetricsDefault];
+//    [navBar
+//     setShadowImage:[UIImage new]];
+//    navBar.translucent = YES;
 }
 
 - (void)viewDidLoad {

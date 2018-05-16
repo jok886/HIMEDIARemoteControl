@@ -25,7 +25,6 @@
         [self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         self.reuseIdentifier =className;
         [self registerNib:[UINib nibWithNibName:className bundle:nil] forCellReuseIdentifier:self.reuseIdentifier];
-        
     }
     return self;
 }

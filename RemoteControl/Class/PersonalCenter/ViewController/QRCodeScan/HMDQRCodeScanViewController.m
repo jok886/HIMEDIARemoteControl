@@ -33,7 +33,8 @@ const static CGFloat animationTime = 2.5f;//扫描时长
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.title = @"扫描二维码";
+    [self setupFirstNavBar];
     [self initScanCode];
     [self initScanLine];
 }
@@ -260,8 +261,14 @@ const static CGFloat animationTime = 2.5f;//扫描时长
 {
     [self playScanCodeSound];
     BOOL isIP = [self effectiveIP:result];
+    NSString *title;
+    if (isIP) {
+        title = @"是否链接IP";
+    }else{
+        title = @"非法IP";
+    }
     //判断是不是ip
-    [self showMessage:result title:@"扫描结果" andler:^(UIAlertAction *action) {
+    [self showMessage:result title:title andler:^(UIAlertAction *action) {
         if (isIP) {
             [[NSNotificationCenter defaultCenter] postNotificationName:HMDNewDeviceIP object:result];
             [self backAction:nil];
@@ -287,7 +294,7 @@ const static CGFloat animationTime = 2.5f;//扫描时长
 -(void)showMessage:(NSString*)message title:(NSString*)title andler:(void (^)(UIAlertAction *action))handler
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:handler];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"链接" style:UIAlertActionStyleDefault handler:handler];
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
     

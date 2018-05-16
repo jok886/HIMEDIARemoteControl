@@ -42,6 +42,8 @@ typedef enum : NSUInteger {
 /** 生成文件名字 */
 +(NSString *)getFileNameWithExtensionName:(NSString *)extensionName;
 
+/** 判断是否是个有效的IP地址 */
++(BOOL)isRightIPAddress:(NSString *)ip;
 /** 开启wifi状态监听 */
 -(void)startNotificationWifi;
 @end

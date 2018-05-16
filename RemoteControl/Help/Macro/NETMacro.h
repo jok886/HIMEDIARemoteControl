@@ -41,15 +41,8 @@
 #define HMD_DLAN_VIDEO_GET_POSTERIMAGE @"http://%@:8899/getPic"
 //播放海报视频
 #define HMD_DLAN_VIDEO_POSTER_PLAY @"http://%@:8899/playNetPoster"
-//后台登录
-#define HMD_HINAVI_LOGIN @"http://account.ms.hinavi.net/account-service/account/login"
-//微信登录个人信息
-#define HMD_WINXIN_USERINFO @"https://api.weixin.qq.com/sns/userinfo"
-//微信刷新token
-#define HMD_WINXIN_REFRESH_TOKEN @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
-//微信登录
-#define HMD_WINXIN_OAUTH2 @"https://api.weixin.qq.com/sns/oauth2/access_token"
-
+//获取本地视频列表
+#define HMD_DLAN_VIDEO_POSTER_LIST @"http://%@:8899/getPosterList"
 //本地安装的app
 #define HMD_DLAN_ALLAPPLIST @"http://%@:8899/getAllApk"
 //打开本地apk
@@ -58,6 +51,17 @@
 #define HMD_DLAN_INSTALLAPK @"http://%@:8899/remoteApkStall"
 //本地安装的app的图标
 #define HMD_DLAN_APK_ICON @"http://%@:8899/getApkIcon"
+
+//后台登录
+#define HMD_HINAVI_LOGIN @"http://account.ms.hinavi.net/account-service/account/login"
+//微信登录个人信息
+#define HMD_WINXIN_USERINFO @"https://api.weixin.qq.com/sns/userinfo"
+//微信刷新token
+#define HMD_WINXIN_REFRESH_TOKEN @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
+//微信登录
+#define HMD_WINXIN_OAUTH2 @"https://api.weixin.qq.com/sns/oauth2/access_token"
+//获取动态码
+#define HMD_HINAVI_DYNAMICCODE @"http://account.ms.hinavi.net/account-service/phone/getDynamicCode"
 //后台app推荐
 #define HMD_HINAVI_ALLAPPLIST @"http://account.ms.hinavi.net/account-service/search/appList"
 //后台app安装 ps 暂时没用

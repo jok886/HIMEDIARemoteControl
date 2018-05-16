@@ -78,6 +78,18 @@
 		B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A9F208DDF8000B5227B /* HMDAppListDao.m */; };
 		B24C6AA8208DDFAA00B5227B /* HMDAPKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */; };
 		B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26313EB20946A35009ECBDF /* HMDDLan.swift */; };
+		B269CA6020A5635100948C52 /* HMDLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA5F20A5635100948C52 /* HMDLoginView.m */; };
+		B269CA6220A5635800948C52 /* HMDLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B269CA6120A5635800948C52 /* HMDLoginView.xib */; };
+		B269CA6620A57B2300948C52 /* HMDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA6420A57B2300948C52 /* HMDRegisterViewController.m */; };
+		B269CA6720A57B2300948C52 /* HMDRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B269CA6520A57B2300948C52 /* HMDRegisterViewController.xib */; };
+		B269CA6A20A598CB00948C52 /* HMDRegisterDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA6920A598CB00948C52 /* HMDRegisterDao.m */; };
+		B269CA6D20A92E4C00948C52 /* CALayer+HMDXibAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA6C20A92E4C00948C52 /* CALayer+HMDXibAttributes.m */; };
+		B269CA7D20A9627900948C52 /* HMDDoubleTextBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA7C20A9627900948C52 /* HMDDoubleTextBtn.m */; };
+		B269CA8020AA7F6C00948C52 /* UIImageView+HMDAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA7F20AA7F6C00948C52 /* UIImageView+HMDAnimation.m */; };
+		B269CA8320AADFBE00948C52 /* HMDNullPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA8220AADFBE00948C52 /* HMDNullPageView.m */; };
+		B269CA8520AADFD100948C52 /* HMDNullPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B269CA8420AADFD100948C52 /* HMDNullPageView.xib */; };
+		B269CA8820ABF52100948C52 /* HMDMainLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA8720ABF52100948C52 /* HMDMainLoadingView.m */; };
+		B269CA8B20AC135600948C52 /* HMDSroceStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B269CA8A20AC135600948C52 /* HMDSroceStarView.m */; };
 		B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */; };
 		B29E8F342074640E00F5E35C /* HMDDLANNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F332074640E00F5E35C /* HMDDLANNetTool.m */; };
 		B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B29E8F532079F65500F5E35C /* HMDXMLParserTool.m */; };
@@ -299,6 +311,27 @@
 		B24C6AA7208DDFAA00B5227B /* HMDAPKModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDAPKModel.m; sourceTree = "<group>"; };
 		B26313E82094509F009ECBDF /* RemoteControl-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RemoteControl-Bridging-Header.h"; sourceTree = "<group>"; };
 		B26313EB20946A35009ECBDF /* HMDDLan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDDLan.swift; sourceTree = "<group>"; };
+		B269CA5E20A5635100948C52 /* HMDLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLoginView.h; sourceTree = "<group>"; };
+		B269CA5F20A5635100948C52 /* HMDLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLoginView.m; sourceTree = "<group>"; };
+		B269CA6120A5635800948C52 /* HMDLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDLoginView.xib; sourceTree = "<group>"; };
+		B269CA6320A57B2300948C52 /* HMDRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRegisterViewController.h; sourceTree = "<group>"; };
+		B269CA6420A57B2300948C52 /* HMDRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDRegisterViewController.m; sourceTree = "<group>"; };
+		B269CA6520A57B2300948C52 /* HMDRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDRegisterViewController.xib; sourceTree = "<group>"; };
+		B269CA6820A598CB00948C52 /* HMDRegisterDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRegisterDao.h; sourceTree = "<group>"; };
+		B269CA6920A598CB00948C52 /* HMDRegisterDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDRegisterDao.m; sourceTree = "<group>"; };
+		B269CA6B20A92E4C00948C52 /* CALayer+HMDXibAttributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+HMDXibAttributes.h"; sourceTree = "<group>"; };
+		B269CA6C20A92E4C00948C52 /* CALayer+HMDXibAttributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+HMDXibAttributes.m"; sourceTree = "<group>"; };
+		B269CA7B20A9627900948C52 /* HMDDoubleTextBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDoubleTextBtn.h; sourceTree = "<group>"; };
+		B269CA7C20A9627900948C52 /* HMDDoubleTextBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDDoubleTextBtn.m; sourceTree = "<group>"; };
+		B269CA7E20AA7F6C00948C52 /* UIImageView+HMDAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HMDAnimation.h"; sourceTree = "<group>"; };
+		B269CA7F20AA7F6C00948C52 /* UIImageView+HMDAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HMDAnimation.m"; sourceTree = "<group>"; };
+		B269CA8120AADFBE00948C52 /* HMDNullPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDNullPageView.h; sourceTree = "<group>"; };
+		B269CA8220AADFBE00948C52 /* HMDNullPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDNullPageView.m; sourceTree = "<group>"; };
+		B269CA8420AADFD100948C52 /* HMDNullPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDNullPageView.xib; sourceTree = "<group>"; };
+		B269CA8620ABF52100948C52 /* HMDMainLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMainLoadingView.h; sourceTree = "<group>"; };
+		B269CA8720ABF52100948C52 /* HMDMainLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMainLoadingView.m; sourceTree = "<group>"; };
+		B269CA8920AC135600948C52 /* HMDSroceStarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSroceStarView.h; sourceTree = "<group>"; };
+		B269CA8A20AC135600948C52 /* HMDSroceStarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSroceStarView.m; sourceTree = "<group>"; };
 		B29E8F2920738B4C00F5E35C /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
 		B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		B29E8F322074640E00F5E35C /* HMDDLANNetTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDLANNetTool.h; sourceTree = "<group>"; };
@@ -524,6 +557,7 @@
 		3EDAD095206E1E5C007406FB /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B269CA5A20A5634100948C52 /* Login */,
 				B21BFA862091A04E00ACFF4B /* TreasureChest */,
 				B21BFA612091A04700ACFF4B /* Main */,
 				B21BFA462091A04700ACFF4B /* MainTV */,
@@ -626,13 +660,14 @@
 			isa = PBXGroup;
 			children = (
 				B21BFAD02092ECDA00ACFF4B /* Classify */,
-				B21BFAD42092ECDA00ACFF4B /* Detail */,
 				B21BFAD52092ECDA00ACFF4B /* History */,
 				B21BFA542091A04700ACFF4B /* HMDVideoShowCollectionViewCell.h */,
 				B21BFA592091A04700ACFF4B /* HMDVideoShowCollectionViewCell.m */,
 				B21BFA4F2091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib */,
 				B21BFA532091A04700ACFF4B /* HMDLineFlowLayout.h */,
 				B21BFA582091A04700ACFF4B /* HMDLineFlowLayout.m */,
+				B269CA8920AC135600948C52 /* HMDSroceStarView.h */,
+				B269CA8A20AC135600948C52 /* HMDSroceStarView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -767,13 +802,6 @@
 				B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */,
 			);
 			path = Classify;
-			sourceTree = "<group>";
-		};
-		B21BFAD42092ECDA00ACFF4B /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Detail;
 			sourceTree = "<group>";
 		};
 		B21BFAD52092ECDA00ACFF4B /* History */ = {
@@ -911,6 +939,54 @@
 			path = APPList;
 			sourceTree = "<group>";
 		};
+		B269CA5A20A5634100948C52 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B269CA5B20A5634100948C52 /* Model */,
+				B269CA5C20A5634100948C52 /* View */,
+				B269CA5D20A5634100948C52 /* ViewController */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B269CA5B20A5634100948C52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B269CA6820A598CB00948C52 /* HMDRegisterDao.h */,
+				B269CA6920A598CB00948C52 /* HMDRegisterDao.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B269CA5C20A5634100948C52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B269CA5E20A5635100948C52 /* HMDLoginView.h */,
+				B269CA5F20A5635100948C52 /* HMDLoginView.m */,
+				B269CA6120A5635800948C52 /* HMDLoginView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B269CA5D20A5634100948C52 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B269CA6320A57B2300948C52 /* HMDRegisterViewController.h */,
+				B269CA6420A57B2300948C52 /* HMDRegisterViewController.m */,
+				B269CA6520A57B2300948C52 /* HMDRegisterViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B269CA7A20A9625D00948C52 /* CenterBtn */ = {
+			isa = PBXGroup;
+			children = (
+				B269CA7B20A9627900948C52 /* HMDDoubleTextBtn.h */,
+				B269CA7C20A9627900948C52 /* HMDDoubleTextBtn.m */,
+			);
+			path = CenterBtn;
+			sourceTree = "<group>";
+		};
 		B29E8F2820738B4C00F5E35C /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -918,6 +994,8 @@
 				B29E8F2A20738B4C00F5E35C /* UIImage+Color.m */,
 				B2D73B9C20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.h */,
 				B2D73B9D20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m */,
+				B269CA7E20AA7F6C00948C52 /* UIImageView+HMDAnimation.h */,
+				B269CA7F20AA7F6C00948C52 /* UIImageView+HMDAnimation.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -974,6 +1052,8 @@
 			children = (
 				B29E8F56207A122900F5E35C /* UIView+Additions.h */,
 				B29E8F57207A122900F5E35C /* UIView+Additions.m */,
+				B269CA6B20A92E4C00948C52 /* CALayer+HMDXibAttributes.h */,
+				B269CA6C20A92E4C00948C52 /* CALayer+HMDXibAttributes.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -983,6 +1063,8 @@
 			children = (
 				B2A2DE8B20A13A8C00615595 /* HMDLoadingView.h */,
 				B2A2DE8C20A13A8C00615595 /* HMDLoadingView.m */,
+				B269CA8620ABF52100948C52 /* HMDMainLoadingView.h */,
+				B269CA8720ABF52100948C52 /* HMDMainLoadingView.m */,
 			);
 			path = LoadingView;
 			sourceTree = "<group>";
@@ -991,11 +1073,14 @@
 			isa = PBXGroup;
 			children = (
 				B2A2DE8E20A13A8C00615595 /* HMDBaseView.h */,
-				B2A2DE8F20A13A8C00615595 /* HMDCoverView.h */,
-				B2A2DE9020A13A8C00615595 /* HMDBaseTableView.h */,
 				B2A2DE9120A13A8C00615595 /* HMDBaseView.m */,
+				B2A2DE9020A13A8C00615595 /* HMDBaseTableView.h */,
 				B2A2DE9220A13A8C00615595 /* HMDBaseTableView.m */,
+				B2A2DE8F20A13A8C00615595 /* HMDCoverView.h */,
 				B2A2DE9320A13A8C00615595 /* HMDCoverView.m */,
+				B269CA8120AADFBE00948C52 /* HMDNullPageView.h */,
+				B269CA8220AADFBE00948C52 /* HMDNullPageView.m */,
+				B269CA8420AADFD100948C52 /* HMDNullPageView.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1354,6 +1439,7 @@
 		B2F6F94A207228EB0037E746 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B269CA7A20A9625D00948C52 /* CenterBtn */,
 				B24C6A8F208DCDCB00B5227B /* APPlist */,
 			);
 			path = View;
@@ -1495,9 +1581,11 @@
 				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
 				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
 				B21BFAE32092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */,
+				B269CA8520AADFD100948C52 /* HMDNullPageView.xib in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
 				B21BFA172090730100ACFF4B /* HMDSearchTVResultCell.xib in Resources */,
 				B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */,
+				B269CA6720A57B2300948C52 /* HMDRegisterViewController.xib in Resources */,
 				3EDAD0AB206E2142007406FB /* HMD_RC_introductory_page_1@3x.png in Resources */,
 				B21BFAE22092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.xib in Resources */,
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
@@ -1507,6 +1595,7 @@
 				B21BFA9F2091A6E400ACFF4B /* HMDMainVideoViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				B21BFA842091A04700ACFF4B /* HMDMainViewController.xib in Resources */,
+				B269CA6220A5635800948C52 /* HMDLoginView.xib in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
 				B2D73B4E2086F00E00B64E36 /* HMDSearchDeviceViewController.xib in Resources */,
 				B21BFAF82092ED2200ACFF4B /* HMDAllVideoViewController.xib in Resources */,
@@ -1628,8 +1717,11 @@
 				B2D73B3F2086EFF500B64E36 /* HMDSearchDeviceDao.m in Sources */,
 				B2A2DE9820A13A8C00615595 /* HMDCoverView.m in Sources */,
 				B21BFAE42092ECDA00ACFF4B /* HMDHistoryHeadView.m in Sources */,
+				B269CA8320AADFBE00948C52 /* HMDNullPageView.m in Sources */,
+				B269CA6020A5635100948C52 /* HMDLoginView.m in Sources */,
 				B2A2DEA620A13B0900615595 /* HMDTipNotificationManager.m in Sources */,
 				B2D73B492086F00400B64E36 /* HMDDeviceListTableViewCell.m in Sources */,
+				B269CA7D20A9627900948C52 /* HMDDoubleTextBtn.m in Sources */,
 				B21BFA812091A04700ACFF4B /* HMDLinkView.m in Sources */,
 				B2A2DE9620A13A8C00615595 /* HMDBaseView.m in Sources */,
 				B29E8F542079F65500F5E35C /* HMDXMLParserTool.m in Sources */,
@@ -1646,12 +1738,14 @@
 				B21BFAE72092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */,
 				B2D73B7F2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m in Sources */,
 				B21BFAF72092ED2200ACFF4B /* HMDPlayHistoryViewController.m in Sources */,
+				B269CA8020AA7F6C00948C52 /* UIImageView+HMDAnimation.m in Sources */,
 				B2D73B802086F1D400B64E36 /* HMDSearchTipHeadView.m in Sources */,
 				B21BFAE82092ECDA00ACFF4B /* HMDVideoCollectionFlowLayout.m in Sources */,
 				B2D73B532086F02900B64E36 /* HMDSearchTVDao.m in Sources */,
 				B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */,
 				B2D73B812086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m in Sources */,
 				B21BFAFF2092F21500ACFF4B /* HMDTVFilterCollectionView.m in Sources */,
+				B269CA6D20A92E4C00948C52 /* CALayer+HMDXibAttributes.m in Sources */,
 				B24C6AA0208DDF8100B5227B /* HMDUserModel.m in Sources */,
 				B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */,
 				B21BFACF2092EC3600ACFF4B /* HMDTVClassifyModel.m in Sources */,
@@ -1671,6 +1765,7 @@
 				B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */,
 				B21BFAE12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m in Sources */,
 				B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */,
+				B269CA8820ABF52100948C52 /* HMDMainLoadingView.m in Sources */,
 				B24C6A93208DD08600B5227B /* HMDAPPListTableViewCell.m in Sources */,
 				B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
@@ -1688,6 +1783,7 @@
 				B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */,
 				B21BFA802091A04700ACFF4B /* HMDTitleBaseLine.m in Sources */,
 				B21BFA942091A04E00ACFF4B /* HMDTreasureChestViewController.m in Sources */,
+				B269CA6620A57B2300948C52 /* HMDRegisterViewController.m in Sources */,
 				B2D73B4F2086F00E00B64E36 /* HMDSearchDeviceViewController.m in Sources */,
 				B24C6AA2208DDF8100B5227B /* HMDAppListDao.m in Sources */,
 				B2D73AD12084933700B64E36 /* HMDEventParamsResponse.m in Sources */,
@@ -1697,10 +1793,12 @@
 				B21BFA162090730100ACFF4B /* HMDSearchTVResultCell.m in Sources */,
 				B2A2DE9520A13A8C00615595 /* HMDLoadingView.m in Sources */,
 				B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */,
+				B269CA6A20A598CB00948C52 /* HMDRegisterDao.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 				B21BFA722091A04700ACFF4B /* HMDVideoDataDao.m in Sources */,
 				B21BFA4520917D8600ACFF4B /* NSString+HMDExtend.m in Sources */,
 				B2A2DEA320A13AE400615595 /* HMDBaseDao.m in Sources */,
+				B269CA8B20AC135600948C52 /* HMDSroceStarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

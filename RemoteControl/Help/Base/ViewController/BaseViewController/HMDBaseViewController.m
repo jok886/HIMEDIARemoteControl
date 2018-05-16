@@ -30,8 +30,6 @@
 }
 //统一第一个页面的返回
 -(void)setupFirstNavBar{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsCompact];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     //返回按钮
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
@@ -42,8 +40,19 @@
     
 }
 
+-(void)reSetupNavBarWithWhiteItem{
+    //返回按钮
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateHighlighted];
+    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [backButton sizeToFit];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
 -(void)dismissAction:(UIButton *)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+-(void)backAction:(UIButton *)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

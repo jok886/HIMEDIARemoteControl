@@ -8,7 +8,7 @@
 
 #import "HMDLinkView.h"
 #import "UIView+Additions.h"
-
+#import "UIImageView+HMDAnimation.h"
 @interface HMDLinkView()
 @property (weak, nonatomic) UIButton *linkStateBtn;
 @property (weak, nonatomic) UIButton *remoteBtn;
@@ -39,17 +39,28 @@
     
     UIButton *linkStateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     linkStateBtn.frame = CGRectMake(15, 15, 30, 30);
+    //未链接状态
     linkStateBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [linkStateBtn setImage:[UIImage imageNamed:@"status_unconnected"] forState:UIControlStateNormal];
     [linkStateBtn setTitle:@"  当前设备未链接,请点击重新连接" forState:UIControlStateNormal];
     [linkStateBtn setTitleColor:HMDTEXT_UNUSE_COLOR forState:UIControlStateNormal];
-    
+    //链接状态
     [linkStateBtn setImage:[UIImage imageNamed:@"status_connected"] forState:UIControlStateSelected];
     [linkStateBtn setTitleColor:HMDTEXT_COLOR forState:UIControlStateSelected];
     linkStateBtn.userInteractionEnabled = NO;
     [linkStateBtn sizeToFit];
     linkStateBtn.center = CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
     [linkStateBtn addTarget:self action:@selector(linkStateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //连接中
+    [linkStateBtn setImage:[UIImage imageNamed:@"loading_s_green"] forState:UIControlStateDisabled];
+    [linkStateBtn setTitle:@"  自动连接中..." forState:UIControlStateDisabled];
+    [linkStateBtn setTitleColor:HMDMAIN_COLOR forState:UIControlStateDisabled];
+    linkStateBtn.userInteractionEnabled = NO;
+    [linkStateBtn sizeToFit];
+    linkStateBtn.center = CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
+    [linkStateBtn addTarget:self action:@selector(linkStateBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+
     self.linkStateBtn = linkStateBtn;
     [self addSubview:linkStateBtn];
     
@@ -85,17 +96,20 @@
 }
 
 
--(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip{
+-(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip uuid:(NSString *)uuid{
     self.linkViewState = linkState;
+    [self.linkStateBtn.imageView stopRotationAnimaton];
     NSString *linkText;
     switch (linkState) {
         case HMDLinkViewStateLinked:
             {
+                self.linkStateBtn.enabled = YES;
                 self.linkStateBtn.selected = YES;
                 linkText = [NSString stringWithFormat:@"  已链接:%@",ip];
                 //链接成功将此次的记录,下次登录时直连
                 [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLINKIP];
                 [[NSUserDefaults standardUserDefaults] setObject:ip forKey:DLANLastTimeLinkIP];
+                [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:DLANLastTimeLinkDeviceUUID];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [self.linkStateBtn setTitle:linkText forState:UIControlStateSelected];
                 self.remoteBtn.hidden = NO;
@@ -107,6 +121,7 @@
             break;
         case HMDLinkViewStateunLink:
         {
+            self.linkStateBtn.enabled = YES;
             self.linkStateBtn.selected = NO;
             self.remoteBtn.hidden = YES;
             [self.linkStateBtn setTitle:@"  当前设备未链接,请点击重新连接" forState:UIControlStateNormal];
@@ -116,11 +131,12 @@
             break;
         case HMDLinkViewStateLinking:
         {
-            self.linkStateBtn.selected = NO;
+            self.linkStateBtn.enabled = NO;
             self.remoteBtn.hidden = YES;
-            [self.linkStateBtn setTitle:@"  自动连接上次设备中..." forState:UIControlStateNormal];
             [self.linkStateBtn sizeToFit];
             self.linkStateBtn.center =  CGPointMake(CGRectGetWidth(self.bounds)*0.5, CGRectGetHeight(self.bounds)*0.5);
+            [self.linkStateBtn.imageView startRotationAnimation];
+            
         }
             break;
         default:
@@ -138,7 +154,7 @@
         //获取当前手指的点
         CGPoint curP = [self getCurPoint:touches];
         if (CGRectContainsPoint(self.linkStateBtn.frame, curP)) {
-            [self switchLinkState:HMDLinkViewStateunLink ip:nil];
+            [self switchLinkState:HMDLinkViewStateunLink ip:nil uuid:nil];
             [HMDProgressHub showMessage:@"已与设备断开" hideAfter:2.0];
         }
     }

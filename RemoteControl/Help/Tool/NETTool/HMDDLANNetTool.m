@@ -217,7 +217,27 @@
     return infoDict;
 }
 
++(BOOL)isRightIPAddress:(NSString *)ip{
+    {
 
+        //正则表达式
+        NSString *pattern = @"^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\.(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
+        //创建predicate
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:nil];
+        //查找第一个匹配结果，如果查找不到的话match会是nil
+        NSTextCheckingResult *match = [regex firstMatchInString:ip
+                                                        options:NSMatchingReportCompletion
+                                                          range:NSMakeRange(0, [ip length])];
+        if (match)
+        {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+}
 
 #pragma mark - httpWebServer
 -(void)startWebServer{

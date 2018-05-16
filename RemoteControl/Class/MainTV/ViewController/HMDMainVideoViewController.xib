@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,37 +21,49 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-v6-RrG">
-                    <rect key="frame" x="0.0" y="20" width="125" height="30"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-v6-RrG">
+                    <rect key="frame" x="0.0" y="20" width="125" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="SDT-6a-YhG"/>
+                        <constraint firstAttribute="height" constant="40" id="SDT-6a-YhG"/>
                     </constraints>
-                    <state key="normal" title="历史"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="  历史" image="history">
+                        <color key="titleColor" red="0.20000156760215759" green="0.19999706745147705" blue="0.2000001072883606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
                     <connections>
                         <action selector="historyBtnClick:" destination="-1" eventType="touchUpInside" id="TDB-iJ-pVG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-b1-dKN">
-                    <rect key="frame" x="125" y="20" width="125" height="30"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="收藏"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-b1-dKN">
+                    <rect key="frame" x="125" y="20" width="125" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title=" 收藏" image="collection">
+                        <color key="titleColor" red="0.20000156760000001" green="0.19999706749999999" blue="0.20000010730000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-2O-ZIu">
-                    <rect key="frame" x="250" y="20" width="125" height="30"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="分类"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-2O-ZIu">
+                    <rect key="frame" x="250" y="20" width="125" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title=" 本地影片" image="local">
+                        <color key="titleColor" red="0.20000156760000001" green="0.19999706749999999" blue="0.20000010730000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
                     <connections>
                         <action selector="classificationBtnClick:" destination="-1" eventType="touchUpInside" id="B6g-6C-fN9"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-Xp-KnB">
-                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-Xp-KnB">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yae-3q-uBg">
-                    <rect key="frame" x="171.5" y="114" width="31" height="30"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="播放"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yae-3q-uBg">
+                    <rect key="frame" x="151" y="136" width="72" height="72"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="video_play"/>
+                    <connections>
+                        <action selector="playCurVideo:" destination="-1" eventType="touchUpInside" id="0ag-dl-iRd"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,11 +82,18 @@
                 <constraint firstItem="Ata-Xp-KnB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="ct9-XJ-mA1"/>
                 <constraint firstItem="yae-3q-uBg" firstAttribute="centerX" secondItem="Ata-Xp-KnB" secondAttribute="centerX" id="fgG-9Q-kc6"/>
                 <constraint firstItem="rb1-b1-dKN" firstAttribute="leading" secondItem="rWd-v6-RrG" secondAttribute="trailing" id="fiT-aa-gmI"/>
-                <constraint firstItem="yae-3q-uBg" firstAttribute="top" secondItem="rb1-b1-dKN" secondAttribute="bottom" constant="64" id="nz8-c8-PJ8"/>
+                <constraint firstItem="yae-3q-uBg" firstAttribute="top" secondItem="rb1-b1-dKN" secondAttribute="bottom" constant="76" id="nz8-c8-PJ8"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Ata-Xp-KnB" secondAttribute="bottom" id="trE-R1-z2q"/>
                 <constraint firstItem="rWd-v6-RrG" firstAttribute="top" secondItem="rb1-b1-dKN" secondAttribute="top" id="vWm-Oi-vWG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
+    <resources>
+        <image name="collection" width="18" height="18"/>
+        <image name="history" width="18" height="18"/>
+        <image name="local" width="18" height="18"/>
+        <image name="video_pic_default" width="60" height="90"/>
+        <image name="video_play" width="72" height="72"/>
+    </resources>
 </document>

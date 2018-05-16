@@ -7,11 +7,11 @@
 //
 
 #import "HMDMainViewController.h"
-#import "HMDNavigationController.h"
 
 #import "HMDScrollTitleView.h"
 #import "HMDScrollContentView.h"
 #import "HMDLinkView.h"
+#import "HMDLoginView.h"
 
 #import "HMDPersonCenterViewController.h"
 #import "HMDSearchTVViewController.h"
@@ -26,7 +26,7 @@
 #import "AppDelegate.h"
 #import "UIImageView+HMDDLANLoadImage.h"
 #import "EncryptionTools.h"
-
+#import "HMDSroceStarView.h"
 #import "UIImage+Color.h"
 @interface HMDMainViewController ()
 <HMDScrollTitleViewDelegate,
@@ -56,9 +56,7 @@ HMDDMRControlDelegate>
     [self addNotificationCenter];
     //这里增加自动登录
     [self autoLogin];
-    UIImage *image = [UIImage imageFromContextWithColor:[UIColor whiteColor] size:CGSizeMake(50, 50)];
-    UIImage *newImage = [UIImage createRoundedRectImage:image size:CGSizeMake(50, 50) radius:4];
-    UIImageWriteToSavedPhotosAlbum(newImage, nil, nil, nil);
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -158,57 +156,67 @@ HMDDMRControlDelegate>
 }
 
 -(void)autoDLanLink{
-    NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
-    [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
-    if (uuid.length >1) {
-        self.autoLink = YES;
-        //启动DMC去搜索设备
-        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
-            [[[HMDDHRCenter sharedInstance] DMRControl] start];
-        }
-        
-        //5s内找不到设备停止重连
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if (self.autoLink) {
-                if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
-                    [[[HMDDHRCenter sharedInstance] DMRControl] stop];
-                }
+    //wifi环境才进行自动连接
+    if ([HMDDLANNetTool sharedInstance].isWIFIEnvironmental) {
+        NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        if (uuid.length >1) {
+            self.autoLink = YES;
+            //启动DMC去搜索设备
+            if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+                [[[HMDDHRCenter sharedInstance] DMRControl] start];
             }
-        });
+            [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinking ip:nil uuid:nil];
+            //5s内找不到设备停止重连
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.autoLink) {
+                    if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+                        [[[HMDDHRCenter sharedInstance] DMRControl] stop];
+                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateunLink ip:nil uuid:nil];
+                        [HMDProgressHub showMessage:@"未匹配到上次链接的设备" hideAfter:2.0];
+                    }
+                }
+            });
+        }
     }
 }
 
 -(void)addNotificationCenter{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillShow) name:HMDLinkViewWillShow object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(linkViewWillHide) name:HMDLinkViewWillHide object:nil];
+    //登录通知
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatLogin:) name:HMDWechatLogin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNewDeviceIP:) name:HMDNewDeviceIP object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
 }
 
 -(void)autoLogin{
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:WXLoginRefreshToken];
-    if (refreshToken){
-        NSString *decryptRefreshToken = [EncryptionTools decryptAESWithHINAVI:refreshToken];
-        if (!myDelegate.loginState && decryptRefreshToken) {
-            HMDWeakSelf(self)
-            [self.loginDao getWechatInfoWithRefreshToken:decryptRefreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
-                if (success) {
-                    [weakSelf upUserInfoWithUserModel:userModel];
-                }
-            }];
+//    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
+    if ([loginModel isEqualToString:HMDLoginWXModel]) {
+        //上次是微信登录的
+        NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginRefreshToken];
+        if (refreshToken){
+            NSString *decryptRefreshToken = [EncryptionTools decryptAESWithHINAVI:refreshToken];
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState] && decryptRefreshToken) {
+                HMDWeakSelf(self)
+                [self.loginDao getWechatInfoWithRefreshToken:decryptRefreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
+                    if (success) {
+                        [weakSelf upUserInfoWithUserModel:userModel];
+                    }
+                }];
+            }
         }
-
+    }else if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
+        //上次是手机登录的
+        NSDictionary *loginDict = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginRefreshToken];
+        NSString *userID = [loginDict objectForKey:@"userID"];
+        NSString *encryptKey = [loginDict objectForKey:@"key"];
+        NSString *key = [EncryptionTools decryptAESWithHINAVI:encryptKey];
     }
-//    MBProgressHUD *hub = [[MBProgressHUD alloc]initWithView:self.view];
-//    hub.label.text = @"自动登录中";
-//    hub.mode = MBProgressHUDModeAnnularDeterminate;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self addprogress:hub];
-//    });
-//    [hub showAnimated:YES];
-//    [self.view addSubview:hub];
+
 
 }
 
@@ -216,58 +224,65 @@ HMDDMRControlDelegate>
 //点击用户头像
 - (void)userIconClick:(UITapGestureRecognizer *)tapGesture {
     //跳转个人中心
-    HMDWeakSelf(self)
-    HMDPersonCenterViewController *personCenterVC = [[HMDPersonCenterViewController alloc]init];
-    personCenterVC.upUserInfoBlock = ^(HMDUserModel *userModel) {
-        [weakSelf upUserInfoWithUserModel:userModel];
-    };
-    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:personCenterVC];
 
-    [self presentViewController:nav animated:YES completion:^{
+    HMDPersonCenterViewController *personCenterVC = [[HMDPersonCenterViewController alloc]init];
+
+    [self presentViewController:personCenterVC animated:YES completion:^{
         
     }];
     
 }
 //点击搜索按钮
 - (IBAction)searchBtnClick:(UIButton *)sender {
-    HMDSearchTVViewController *searchTVVC = [[HMDSearchTVViewController alloc]init];
-    HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:searchTVVC];
-    [self presentViewController:nav animated:YES completion:nil];
+    [HMDLinkView sharedInstance].hidden = YES;
+    HMDLoginView *loginView = [HMDLoginView hmd_viewFromXib];
+    loginView.frame = self.view.bounds;
+    [self.view addSubview:loginView];
+
 }
 
 #pragma mark - NSNotificationCenter
-////显示链接状态
-//-(void)linkViewWillShow{
-//    self.linkView.hidden = NO;
-//}
-////隐藏链接状态
-//-(void)linkViewWillHide{
-//    self.linkView.hidden = YES;
-//}
+
 //更新链接状态
 -(void)getNewDeviceIP:(NSNotification *)info{
     NSString *ip = info.object;
     self.searchIP = ip;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [HMDProgressHub showMessage:[NSString stringWithFormat:@"尝试链接:%@",ip] hideAfter:2.0];
+        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinking ip:nil uuid:nil];
+    });
 
-        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
-        //启动DMC去搜索设备
-        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
-            [[[HMDDHRCenter sharedInstance] DMRControl] start];
-        }else{
-            [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+    [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+    //启动DMC去搜索设备
+    if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+        [[[HMDDHRCenter sharedInstance] DMRControl] start];
+    }else{
+        [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+    }
+
+//尝试5s,链接不到就取消
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.searchIP) {
+            [HMDProgressHub showMessage:@"无法链接设备" hideAfter:2.0];
+            [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateunLink ip:nil uuid:nil];
         }
-
-
+    });
     
 }
 //登出
 -(void)wechatSignout:(NSNotification *)info{
-    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    myDelegate.userModel = nil;
-    myDelegate.loginState = NO;
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HMDLoginState];
     [self.userIconImageView setImage:[UIImage imageNamed:@"user_default"]];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXCurHID];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXLoginRefreshToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:HMDLoginRefreshToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:HMDLoginModel];
+}
+//登录
+-(void)wechatLogin:(NSNotification *)info{
+    if ([info.object isKindOfClass:[HMDUserModel class]]) {
+        HMDUserModel *userModel = (HMDUserModel *)info.object;
+        [self upUserInfoWithUserModel:userModel];
+    }
 }
 #pragma mark -代理
 //对应的标题被点击
@@ -325,12 +340,9 @@ HMDDMRControlDelegate>
 
 -(void)LinkView:(HMDLinkView *)linkView remoteBtnClickWithViewController:(UIViewController *)viewController{
     [HMDLinkView sharedInstance].hidden = YES;
-//    HMDWeakSelf(self)
     //进入遥控器
     HMDTVRemoteViewController *tvRemoteVC = [[HMDTVRemoteViewController alloc]init];
-//    tvRemoteVC.powerOffBlock = ^{
-//        [weakSelf.linkView switchLinkState:HMDLinkViewStateunLink ip:nil];
-//    };
+    tvRemoteVC.showLinkViewWhenDismiss = YES;
     HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:tvRemoteVC];
     [viewController presentViewController:nav animated:YES completion:nil];
 }
@@ -346,8 +358,10 @@ HMDDMRControlDelegate>
                 [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
                 HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP];
+                    [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
+                    [HMDProgressHub showMessage:@"连接成功" hideAfter:2.0];
                 });
+
                 self.searchIP = nil;
             }
         }
@@ -361,7 +375,7 @@ HMDDMRControlDelegate>
                     HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
                     self.autoLink = NO;
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP];
+                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
                     });
                 }
             }
@@ -383,7 +397,7 @@ HMDDMRControlDelegate>
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel{
     AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     myDelegate.userModel = userModel;
-    myDelegate.loginState = YES;
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HMDLoginState];
     [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
 
 }

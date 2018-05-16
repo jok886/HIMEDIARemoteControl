@@ -14,10 +14,10 @@
 #import <HPCastLink/HPCastLink.h>
 #import <WXApi.h>
 #import "HMDDLANNetTool.h"
-
+#import "HMDLoginDao.h"
 
 @interface AppDelegate ()<WXApiDelegate>
-
+@property (strong, nonatomic) HMDLoginDao *loginDao;
 @end
 
 @implementation AppDelegate
@@ -27,6 +27,7 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
     //清空上次登录的设置
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DLANLINKIP];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:WXCurHID];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HMDLoginState];
     //微信登录
     [WXApi registerApp:@"wxed8c151bb3208370"];
 //乐播SDK
@@ -61,7 +62,24 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 -(void)onResp:(BaseResp *)resp{
     //登录后的回调
     if ([resp isKindOfClass:[SendAuthResp class]]) {//登录
-        [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:resp];
+        SendAuthResp *authResp = (SendAuthResp *)resp;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:resp];
+        if (authResp.errCode == 0) {
+            NSLog(@"登录成功");
+            NSString *code = authResp.code;
+            HMDWeakSelf(self)
+            [self.loginDao getWechatInfoWithCode:code finishBlock:^(BOOL success, HMDUserModel *userModel) {
+                if (success) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:userModel];
+                    weakSelf.userModel = userModel;
+                }else{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:nil];
+                }
+            }];
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:nil];
+            NSLog(@"登录失败");
+        }
     }
 }
 
@@ -160,5 +178,13 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 - (void)handleOnboardingCompletion {
 
     [self setupNormalRootViewController];
+}
+
+#pragma mark - 懒加载
+-(HMDLoginDao *)loginDao{
+    if (_loginDao == nil) {
+        _loginDao = [[HMDLoginDao alloc]init];
+    }
+    return _loginDao;
 }
 @end

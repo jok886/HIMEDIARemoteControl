@@ -12,8 +12,16 @@
 
 //解密的key
 #define HMDEncryptKey    @"564f5335f01448fea293929e418c75dd"
+//登录
+#define HMDLoginModel    @"HMDLoginModel"
+//是否登录
+#define HMDLoginState            @"HMDLoginState"
+//手机登录
+#define HMDLoginPhoneModel    @"HMDLoginPhoneModel"
 //微信登录
-#define WXLoginRefreshToken    @"WXLoginRefreshToken"
+#define HMDLoginWXModel    @"HMDLoginWXModel"
+//登录RefreshToken
+#define HMDLoginRefreshToken    @"HMDLoginRefreshToken"
 //微信登陆后后台HID
 #define WXCurHID    @"HMDCurHID"
 //上次链接的IP
@@ -54,6 +62,10 @@
 #define HMDScreenW [UIScreen mainScreen].bounds.size.width
 #define HMDColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 //颜色
+#define HMDColorFromValue(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define HMDColorFromValue(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \

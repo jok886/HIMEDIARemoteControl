@@ -24,5 +24,7 @@
 #import "HMDProgressHub.h"
 #import "HMDTipNotificationManager.h"
 
+#import "HMDNavigationController.h"
+
 #endif
 #endif /* HMDRemoteControlPrefixHeader_pch */

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HMDVideoModel.h"
 @interface HMDTVFilterCollectionViewCell : UICollectionViewCell
 
+-(void)setupTVFilterCellWithModel:(HMDVideoModel *)videoModel;
 @end

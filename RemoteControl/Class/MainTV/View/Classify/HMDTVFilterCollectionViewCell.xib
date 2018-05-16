@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,36 +14,56 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HMDTVFilterCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="170"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="80" height="130"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Scr-vN-MXn">
-                        <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="Scr-vN-MXn">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Scr-vN-MXn" secondAttribute="height" multiplier="2:3" id="PRx-Ua-koq"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDw-O9-Pwi">
-                        <rect key="frame" x="0.0" y="100" width="80" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="0.0" y="154" width="100" height="16"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20000156760215759" green="0.19999706745147705" blue="0.2000001072883606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKo-NH-zGl">
+                        <rect key="frame" x="86" y="129" width="9" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Scr-vN-MXn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0xD-c7-iKe"/>
-                <constraint firstItem="Scr-vN-MXn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="C4I-4z-CP9"/>
-                <constraint firstAttribute="trailing" secondItem="Scr-vN-MXn" secondAttribute="trailing" id="awu-yc-FD2"/>
-                <constraint firstAttribute="bottom" secondItem="Scr-vN-MXn" secondAttribute="bottom" constant="30" id="c4F-sr-Y6H"/>
-                <constraint firstItem="NDw-O9-Pwi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dDN-FO-Yf9"/>
-                <constraint firstAttribute="trailing" secondItem="NDw-O9-Pwi" secondAttribute="trailing" id="edY-kP-no8"/>
-                <constraint firstAttribute="bottom" secondItem="NDw-O9-Pwi" secondAttribute="bottom" id="hj8-Lb-zvJ"/>
-                <constraint firstItem="NDw-O9-Pwi" firstAttribute="top" secondItem="Scr-vN-MXn" secondAttribute="bottom" id="i8m-Sy-bL8"/>
+                <constraint firstAttribute="bottom" secondItem="NDw-O9-Pwi" secondAttribute="bottom" id="6eA-MH-NZD"/>
+                <constraint firstAttribute="trailing" secondItem="NDw-O9-Pwi" secondAttribute="trailing" id="MdG-GN-LaL"/>
+                <constraint firstAttribute="trailing" secondItem="Scr-vN-MXn" secondAttribute="trailing" id="Oeh-8S-eq1"/>
+                <constraint firstItem="Scr-vN-MXn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TTj-vY-cP3"/>
+                <constraint firstItem="NDw-O9-Pwi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Yc0-ZC-g2Z"/>
+                <constraint firstItem="Scr-vN-MXn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eh6-li-Zay"/>
+                <constraint firstItem="rKo-NH-zGl" firstAttribute="trailing" secondItem="Scr-vN-MXn" secondAttribute="trailing" constant="-5" id="nI5-46-8Ca"/>
+                <constraint firstItem="rKo-NH-zGl" firstAttribute="bottom" secondItem="Scr-vN-MXn" secondAttribute="bottom" constant="-5" id="tE8-MY-NOv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="227" height="282"/>
+            <connections>
+                <outlet property="scoreLab" destination="rKo-NH-zGl" id="k3L-df-NhC"/>
+                <outlet property="videoIconImageView" destination="Scr-vN-MXn" id="gYK-Gy-kZa"/>
+                <outlet property="videoTitleLab" destination="NDw-O9-Pwi" id="2r4-W4-Aze"/>
+            </connections>
             <point key="canvasLocation" x="-5" y="67"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="video_pic_default" width="60" height="90"/>
+    </resources>
 </document>

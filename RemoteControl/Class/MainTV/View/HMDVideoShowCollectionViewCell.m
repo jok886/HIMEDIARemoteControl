@@ -12,7 +12,7 @@
 @interface HMDVideoShowCollectionViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *videoIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLab;
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @end
 @implementation HMDVideoShowCollectionViewCell
 
@@ -23,8 +23,9 @@
 
 -(void)setupCellWithVideoModel:(HMDVideoModel *)videoModel{
 
-    [self.videoIconImageView setImageWithURLStr:videoModel.img_url placeholderImage:[UIImage imageNamed:@"search"]];
+    [self.videoIconImageView setImageWithURLStr:videoModel.img_url placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
     self.synopsisLab.text = videoModel.info;
+    self.titleLab.text = videoModel.title;
 
 }
 @end

@@ -11,5 +11,6 @@
 @interface HMDBaseViewController : UIViewController
 
 -(void)setupFirstNavBar;
+-(void)reSetupNavBarWithWhiteItem;
 -(void)dismissAction:(UIButton *)sender;
 @end

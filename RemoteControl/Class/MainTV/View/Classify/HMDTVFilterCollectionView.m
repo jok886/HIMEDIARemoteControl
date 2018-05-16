@@ -8,6 +8,8 @@
 
 #import "HMDTVFilterCollectionView.h"
 #import "HMDTVFilterCollectionViewCell.h"
+#import "HMDVideoDetailViewController.h"
+#import <MJRefresh/MJRefresh.h>
 @interface HMDTVFilterCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
@@ -18,21 +20,29 @@
     self.dataSource = self;
     self.delegate = self;
     [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDTVFilterCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:self.restorationIdentifier];
-    
+
 }
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    NSInteger num = 0;
+    if (self.videoModelArray) {
+        num = self.videoModelArray.count;
+    }
+    return num;
 }
 
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDTVFilterCollectionViewCell *videoShowCell = [collectionView dequeueReusableCellWithReuseIdentifier:self.restorationIdentifier forIndexPath:indexPath];
-    videoShowCell.backgroundColor = HMDRandomColor;
+    HMDVideoModel *videoModel = self.videoModelArray[indexPath.row];
+    [videoShowCell setupTVFilterCellWithModel:videoModel];
     return videoShowCell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    HMDVideoModel *videoModel = self.videoModelArray[indexPath.row];
+    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
+    detailVC.videoModel = videoModel;
+    [self.getCurActiveViewController.navigationController pushViewController:detailVC animated:YES];
 }
 @end

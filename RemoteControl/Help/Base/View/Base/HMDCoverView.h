@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDCoverView : UIView
-
+@property (nonatomic,assign) CGFloat cornerRadius;              //圆角  默认4
+@property (nonatomic,assign) CGFloat borderWidth;               //线宽 默认1;
 @end

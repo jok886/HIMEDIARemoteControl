@@ -152,6 +152,7 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     anima3.toValue = [NSNumber numberWithFloat:-M_PI*2];
     anima3.duration = 1.0f;
     anima3.repeatCount = MAXFLOAT;
+    anima3.removedOnCompletion = NO;
     [self.loadingView.layer addAnimation:anima3 forKey:@"rotaionAniamtion"];
     
 }
@@ -293,6 +294,8 @@ static NSString * const kALAnimationKey = @"kHMDAnimationKey";
     anima.duration = 0.1;
     anima.autoreverses = YES;
     anima.repeatCount = 4;
+    anima.removedOnCompletion = NO;
+
     [self.loadingView.layer addAnimation:anima forKey:nil];
 }
 

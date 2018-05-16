@@ -14,7 +14,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) HMDUserModel *userModel;
-@property (strong, nonatomic) HMDRenderDeviceModel *devicesService;
-@property (assign, nonatomic,getter=isLogin) BOOL loginState;
+
 @end
 

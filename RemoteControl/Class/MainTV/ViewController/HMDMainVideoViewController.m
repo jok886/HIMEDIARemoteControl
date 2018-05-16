@@ -15,7 +15,6 @@
 
 #import "HMDPlayHistoryViewController.h"
 #import "HMDAllVideoViewController.h"
-#import "HMDNavigationController.h"
 #import "HMDVideoDetailViewController.h"
 
 @interface HMDMainVideoViewController ()
@@ -27,8 +26,8 @@ UICollectionViewDataSource
 @property (nonatomic,strong) NSMutableArray *videoDataArray;                    //视频数据
 @property (nonatomic) CGRect videoShowCollectionViewFrame;                      //主界面frame
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
-@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
-
+@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;                //主界面图片
+@property (nonatomic,strong) HMDVideoModel *curVideoModel;                      //当前的video
 @end
 
 @implementation HMDMainVideoViewController
@@ -74,8 +73,9 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     HMDWeakSelf(self)
     [self.videoDataDao getRecommendVideoDataFinish:^(BOOL success, NSArray *modelArray) {
         if (success && modelArray.count > 0) {
-            HMDVideoModel *VideoModel = [weakSelf.videoDataArray firstObject];
-            [weakSelf setMainImageViewImageWithVideoModel:VideoModel];
+            HMDVideoModel *videoModel = [weakSelf.videoDataArray firstObject];
+            weakSelf.curVideoModel = videoModel;
+            [weakSelf setMainImageViewImageWithVideoModel:videoModel];
             weakSelf.videoDataArray = [NSMutableArray arrayWithArray:modelArray];
             [weakSelf.videoShowCollectionView reloadData];
         }
@@ -104,31 +104,30 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDVideoModel *videoModel = self.videoDataArray[indexPath.row];
     //进入详情页
-    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:nil];
-//    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
-//    detailVC.videoModel = videoModel;
-//    [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
+    HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
+    detailVC.videoModel = videoModel;
+    [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
 }
 
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
     CGFloat offsetX = self.videoShowCollectionView.contentOffset.x;
-    NSInteger index = offsetX/(HMDScreenW-80);
-    if (index >0 &&index<self.videoDataArray.count) {
-        HMDVideoModel *VideoModel = self.videoDataArray[index];
-        [self setMainImageViewImageWithVideoModel:VideoModel];
-    }
+    [self scrollViewDidEndWithOffset:offsetX];
 }
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGFloat offsetX = self.videoShowCollectionView.contentOffset.x;
-    NSInteger index = offsetX/(HMDScreenW-80);
-    NSLog(@"index:%ld  offset:%f",(long)index,offsetX);
-    if (index >=0 &&index<self.videoDataArray.count) {
-        HMDVideoModel *VideoModel = self.videoDataArray[index];
-        [self setMainImageViewImageWithVideoModel:VideoModel];
-    }
+    [self scrollViewDidEndWithOffset:offsetX];
 }
 
 #pragma mark - 其他
+//滚动停止
+-(void)scrollViewDidEndWithOffset:(CGFloat)offset{
+    NSInteger index = offset/(HMDScreenW-80);
+    if (index >=0 &&index<self.videoDataArray.count) {
+        HMDVideoModel *videoModel = self.videoDataArray[index];
+        [self setMainImageViewImageWithVideoModel:videoModel];
+        self.curVideoModel = videoModel;
+    }
+}
 -(void)setMainImageViewImageWithVideoModel:(HMDVideoModel *)VideoModel{
     [self.mainImageView setImageWithURLStr:VideoModel.img_url_vertical placeholderImage:nil];
 }
@@ -141,9 +140,16 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 }
 //分类
 - (IBAction)classificationBtnClick:(id)sender {
+    [HMDLinkView sharedInstance].hidden = YES;
     HMDAllVideoViewController *allVideoVC = [[HMDAllVideoViewController alloc] init];
     HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:allVideoVC];
     [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+}
+//播放当前视频
+- (IBAction)playCurVideo:(id)sender {
+    if (self.curVideoModel) {
+        [self.videoDataDao PostPlayNetPosterOrder:self.curVideoModel finishBlock:nil];
+    }
 }
 
 #pragma mark - 懒加载

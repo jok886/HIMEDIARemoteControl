@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDTVFilterCollectionView : UICollectionView
-
+@property (nonatomic,strong) NSMutableArray *videoModelArray;
 @end

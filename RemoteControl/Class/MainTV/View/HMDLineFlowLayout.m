@@ -116,6 +116,7 @@
         }
         // 设置缩放比例
         attr.transform3D = CATransform3DMakeScale(scale, scale, scale);
+        attr.alpha = 1 - 0.5 * (delay / self.collectionView.frame.size.width);
     }
     
     self.attrs = attrs;

@@ -25,4 +25,6 @@ typedef void(^HMDPosterCategoryFinishBlock)(BOOL success,NSDictionary *classifyD
 -(void)playHistoryWithHistoryModel:(HMDVideoHistoryModel *)videoHistoryModel FinishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finishBlock;
 //获取分类
 -(void)getPosterCategoryFinishBlock:(HMDPosterCategoryFinishBlock)finishBlock;
+//获取播放列表
+-(void)getPostListWithParameters:(NSDictionary *)parameters finishBlock:(void(^)(BOOL success,NSArray *posterList))finishBlock;
 @end

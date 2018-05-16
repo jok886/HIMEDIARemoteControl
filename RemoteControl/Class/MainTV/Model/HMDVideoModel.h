@@ -28,6 +28,33 @@
 @property (nonatomic,strong) NSString *video_index_name;
 @property (nonatomic,strong) NSString *video_ui_style;
 @property (nonatomic,strong) NSString *played_time;
-//播放记录
+//本地影片
+@property (nonatomic,strong) NSString *collect;
+@property (nonatomic,strong) NSString *country;
+@property (nonatomic,strong) NSString *dateModified;
+@property (nonatomic,strong) NSString *extra1;
+@property (nonatomic,strong) NSString *extra2;
+@property (nonatomic,strong) NSString *fanartPicString;
+@property (nonatomic,strong) NSString *genre;
+@property (nonatomic,strong) NSString *language;
+@property (nonatomic,strong) NSString *machineLinkString;
+@property (nonatomic,strong) NSString *md5;
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *path;
+@property (nonatomic,strong) NSString *posterPicString;
+@property (nonatomic,strong) NSString *rating;
+@property (nonatomic,strong) NSString *s_name;
+@property (nonatomic,strong) NSString *series_name;
+@property (nonatomic,strong) NSString *t_actor;
+@property (nonatomic,strong) NSString *t_credits;
+@property (nonatomic,strong) NSString *t_plot;
+@property (nonatomic,strong) NSString *t_year;
+@property (nonatomic,strong) NSString *totalRating;
+@property (nonatomic,strong) NSString *tv_id;
+@property (nonatomic,strong) NSString *type;
+@property (nonatomic,strong) NSString *url;
+@property (nonatomic,strong) NSString *videoId;
+@property (nonatomic,strong) NSString *videoType;
+
 
 @end

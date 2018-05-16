@@ -17,6 +17,7 @@
 @interface HMDTVRemoteViewController ()
 @property (nonatomic,strong) HMDTVRemoteDao *remoteDao;                 //发送按键
 @property (weak, nonatomic) IBOutlet UIView *centerKeyBoardView;        //中间键盘
+@property (weak, nonatomic) IBOutlet UIImageView *keyBoardBGImageView;
 @property (weak, nonatomic) IBOutlet UIView *gestureView;               //手势键盘
 @property (nonatomic,assign,getter=isOpenSideKey) BOOL openSideKey;     //开启侧键
 @property (nonatomic,assign,getter=isOpenShock) BOOL openShock;         //开启震动
@@ -24,6 +25,8 @@
 @property (nonatomic,assign) CGFloat systemVolum;                       //系统音量大小
 @property (nonatomic,assign) CGFloat curVolum;                          //当前音量大小
 @property (nonatomic,weak) MPVolumeView *systemVolumeView;
+
+@property (nonatomic,weak) UIImageView *touchImageView;                 //触电位置
 @end
 
 @implementation HMDTVRemoteViewController
@@ -57,6 +60,7 @@
 }
 #pragma mark - 初始化
 -(void)setupUI{
+    self.title = @"海美迪盒子";
     [self setupNavigation];
     [self addGestureRecognizer];
 }
@@ -94,29 +98,20 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 -(void)setupNavigation{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsCompact];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self setupFirstNavBar];
     //返回按钮
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
-    [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
-    [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+
     //设置按钮
     UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [setButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
-//    [setButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
-    [setButton setTitle:@"设置" forState:UIControlStateNormal];
+    [setButton setImage:[UIImage imageNamed:@"remote_setting"] forState:UIControlStateNormal];
+
     [setButton addTarget:self action:@selector(setButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [setButton sizeToFit];
     UIBarButtonItem *setBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:setButton];
     //隐藏键盘
     UIButton *hideKeyBoardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [setButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateNormal];
-    //    [setButton setImage:[UIImage imageNamed:@"search-gray"] forState:UIControlStateHighlighted];
-    [hideKeyBoardButton setTitle:@"  X  " forState:UIControlStateNormal];
-    [hideKeyBoardButton setTitle:@"  O  " forState:UIControlStateSelected];
+    [hideKeyBoardButton setImage:[UIImage imageNamed:@"remote_model"] forState:UIControlStateNormal];
+
     [hideKeyBoardButton addTarget:self action:@selector(hideKeyBoardButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [hideKeyBoardButton sizeToFit];
     UIBarButtonItem *hideKeyBoardBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:hideKeyBoardButton];
@@ -136,6 +131,21 @@
 #pragma mark - 手势
 
 -(void)panGesture:(UIPanGestureRecognizer *)panGesture{
+    switch (panGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            self.touchImageView.hidden = NO;
+            break;
+        case UIGestureRecognizerStateEnded:
+            self.touchImageView.hidden = YES;
+            break;
+        default:
+            
+            break;
+    }
+    
+    CGPoint center = [panGesture locationInView:self.gestureView];
+    self.touchImageView.center = center;
+    
     CGPoint translation = [panGesture translationInView:self.gestureView];
     CGFloat x = translation.x;
     CGFloat y = translation.y;
@@ -162,6 +172,21 @@
     [self remoteTVWithKey:KEYCODE_DPAD_CENTER finishBlock:nil];
 }
 #pragma mark -点击
+//返回
+-(void)dismissAction:(UIButton *)sender{
+    if (self.pushVC) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [super dismissAction:sender];
+    }
+    
+    if (self.showLinkViewWhenDismiss) {
+        [HMDLinkView sharedInstance].hidden = NO;
+    }else{
+        [HMDLinkView sharedInstance].hidden = YES;
+    }
+    
+}
 //电源
 - (IBAction)TVPowerBtnClick:(UIButton *)sender {
     HMDWeakObj(self)
@@ -169,7 +194,7 @@
         if (weakself.powerOffBlock) {
             weakself.powerOffBlock();
         }
-        [weakself backAction:nil];
+        [weakself dismissAction:nil];
     }];
     
 }
@@ -177,26 +202,57 @@
 - (IBAction)TVHomeBtnClick:(UIButton *)sender {
     [self remoteTVWithKey:KEYCODE_HOME finishBlock:nil];
 }
-//上
-- (IBAction)TVUPBtnClick:(UIButton *)sender {
-    [self remoteTVWithKey:KEYCODE_DPAD_UP finishBlock:nil];
-}
-//下
-- (IBAction)TVDownBtnClick:(UIButton *)sender {
-    [self remoteTVWithKey:KEYCODE_DPAD_DOWN finishBlock:nil];
-}
-//左
-- (IBAction)TVLeftBtnClick:(UIButton *)sender {
-    [self remoteTVWithKey:KEYCODE_DPAD_LEFT finishBlock:nil];
-}
-//右
-- (IBAction)TVRightBtnClick:(UIButton *)sender {
-    [self remoteTVWithKey:KEYCODE_DPAD_RIGHT finishBlock:nil];
-}
+
 //OK
 - (IBAction)TVOKBtnClick:(UIButton *)sender {
     [self remoteTVWithKey:KEYCODE_DPAD_CENTER finishBlock:nil];
 }
+
+//按键效果
+- (IBAction)keyBoardTouchDown:(UIButton *)sender {
+    NSString *imageName = @"remote_direction_";
+    switch (sender.tag) {
+        case 101://上
+            imageName = @"remote_direction_up";
+            break;
+        case 102://下
+            imageName = @"remote_direction_down";
+            break;
+        case 103://左
+            imageName = @"remote_direction_left";
+            break;
+        case 104://右
+            imageName = @"remote_direction_right";
+            break;
+            
+        default:
+            break;
+    }
+    [self.keyBoardBGImageView setImage:[UIImage imageNamed:imageName]];
+}
+
+- (IBAction)keyBoardTouchUP:(UIButton *)sender {
+    switch (sender.tag) {
+        case 101:
+            [self remoteTVWithKey:KEYCODE_DPAD_UP finishBlock:nil];
+            break;
+        case 102:
+            [self remoteTVWithKey:KEYCODE_DPAD_DOWN finishBlock:nil];
+            break;
+        case 103:
+            [self remoteTVWithKey:KEYCODE_DPAD_LEFT finishBlock:nil];
+            break;
+        case 104:
+            [self remoteTVWithKey:KEYCODE_DPAD_RIGHT finishBlock:nil];
+            break;
+            
+        default:
+            break;
+    }
+    [self.keyBoardBGImageView setImage:nil];
+}
+
+
 //菜单
 - (IBAction)TVMenuBtnClick:(UIButton *)sender {
     
@@ -240,17 +296,7 @@
 - (IBAction)TVVolumeMinusBtnClick:(UIButton *)sender {
     [self remoteTVWithKey:KEYCODE_VOLUME_DOWN finishBlock:nil];
 }
-//返回
--(void)backAction:(id)sender{
-    if (self.isPushVC) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-//        [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-        [HMDLinkView sharedInstance].hidden = NO;
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 
-}
 //设置
 -(void)setButtonClick:(id)sender{
     HMDRemoteSettingViewController *settingVC= [[HMDRemoteSettingViewController alloc]init];
@@ -260,7 +306,7 @@
 -(void)hideKeyBoardButtonClick:(UIButton *)sender{
     sender.selected = !sender.selected;
     self.centerKeyBoardView.hidden = sender.selected;
-    self.gestureView.userInteractionEnabled = sender.selected;
+    self.gestureView.hidden = !sender.selected;
 
 }
 -(void)remoteTVWithKey:(NSInteger)keyCode finishBlock:(HMDTVRemoteFinishBlock)block{
@@ -320,5 +366,15 @@
         _systemVolumeView = systemVolumeView;
     }
     return _systemVolumeView;
+}
+
+-(UIImageView *)touchImageView{
+    if (_touchImageView == nil) {
+        UIImageView *touchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+        touchImageView.image = [UIImage imageNamed:@"remote_focus"];
+        [self.gestureView addSubview:touchImageView];
+        _touchImageView = touchImageView;
+    }
+    return _touchImageView;
 }
 @end

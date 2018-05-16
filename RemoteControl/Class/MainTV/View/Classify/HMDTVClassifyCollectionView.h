@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDTVClassifyCollectionView : UICollectionView
+@property (nonatomic,strong) NSIndexPath *curIndexPath;
 @property (nonatomic,strong) NSArray *classifyArray;
+@property (nonatomic,copy) void(^selectClassifyBlock)(NSString *classifyName,BOOL videoType);
 @end

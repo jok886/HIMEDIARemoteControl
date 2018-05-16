@@ -36,7 +36,9 @@
             NSString *refresh_token = [tokenDict objectForKey:@"refresh_token"];//有效期30天
             NSString *openid = [tokenDict objectForKey:@"openid"];
             NSString *encryptRefresh_token = [EncryptionTools encryptAESWithHINAVI:refresh_token];
-            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:WXLoginRefreshToken];
+            //微信登录,登录刷新的token
+            [[NSUserDefaults standardUserDefaults] setObject:HMDLoginWXModel forKey:HMDLoginModel];
+            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:HMDLoginRefreshToken];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [weakSelf getUserInfoWithToken:access_token openID:openid finishBlock:finishBlock];
             NSLog(@"success%s",__FUNCTION__);
@@ -75,7 +77,9 @@
             NSString *refresh_token = [tokenDict objectForKey:@"refresh_token"];//有效期30天
             NSString *openid = [tokenDict objectForKey:@"openid"];
             NSString *encryptRefresh_token = [EncryptionTools encryptAESWithHINAVI:refresh_token];
-            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:WXLoginRefreshToken];
+            //微信登录,登录刷新的token
+            [[NSUserDefaults standardUserDefaults] setObject:HMDLoginWXModel forKey:HMDLoginModel];
+            [[NSUserDefaults standardUserDefaults] setObject:encryptRefresh_token forKey:HMDLoginRefreshToken];
             [[NSUserDefaults standardUserDefaults] synchronize];
             [weakSelf getUserInfoWithToken:access_token openID:openid finishBlock:finishBlock];
             NSLog(@"success%s",__FUNCTION__);

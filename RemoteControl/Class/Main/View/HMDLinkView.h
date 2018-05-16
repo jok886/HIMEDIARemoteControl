@@ -27,5 +27,5 @@ typedef enum : NSUInteger {
 
 +(HMDLinkView *)sharedInstance;
 -(void)setupUI;
--(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip;
+-(void)switchLinkState:(HMDLinkViewState)linkState ip:(NSString *)ip uuid:(NSString *)uuid;
 @end
