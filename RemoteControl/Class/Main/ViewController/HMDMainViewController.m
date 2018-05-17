@@ -234,10 +234,17 @@ HMDDMRControlDelegate>
 }
 //点击搜索按钮
 - (IBAction)searchBtnClick:(UIButton *)sender {
-    [HMDLinkView sharedInstance].hidden = YES;
-    HMDLoginView *loginView = [HMDLoginView hmd_viewFromXib];
-    loginView.frame = self.view.bounds;
-    [self.view addSubview:loginView];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState]) {
+        HMDSearchTVViewController *searchVC = [[HMDSearchTVViewController alloc] init];
+        HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:searchVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    }else{
+        [HMDLinkView sharedInstance].hidden = YES;
+        HMDLoginView *loginView = [HMDLoginView hmd_viewFromXib];
+        loginView.frame = self.view.bounds;
+        [self.view addSubview:loginView];
+    }
+
 
 }
 

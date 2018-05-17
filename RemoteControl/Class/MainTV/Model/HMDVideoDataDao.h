@@ -17,7 +17,7 @@ typedef void(^HMDPosterCategoryFinishBlock)(BOOL success,NSDictionary *classifyD
 @interface HMDVideoDataDao : HMDBaseDao
 //获取海报数据
 -(void)getRecommendVideoDataFinish:(HMDGetRecommendVideoDataFinishBlock)finish;
-//播放对应视频
+//播放对应网络视频
 -(void)PostPlayNetPosterOrder:(HMDVideoModel *)videoModel finishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finish;
 //获取播放记录
 -(void)getPlayHistoryFinishBlock:(HMDGetPlayHistoryFinishBlock) finishBlock;
@@ -27,4 +27,8 @@ typedef void(^HMDPosterCategoryFinishBlock)(BOOL success,NSDictionary *classifyD
 -(void)getPosterCategoryFinishBlock:(HMDPosterCategoryFinishBlock)finishBlock;
 //获取播放列表
 -(void)getPostListWithParameters:(NSDictionary *)parameters finishBlock:(void(^)(BOOL success,NSArray *posterList))finishBlock;
+//获取收藏列表
+-(void)getCollectRecordFinishBlock:(void(^)(BOOL success,NSArray *favoriteList))finishBlock;
+//播放对应本地视频
+-(void)PostPlayDLanPosterOrder:(HMDVideoModel *)videoModel finishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finish;
 @end

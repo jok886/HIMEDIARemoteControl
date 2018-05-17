@@ -47,7 +47,7 @@
     // 设置vc的view的位置
     CGRect frame = CGRectMake(x, 0, viewW,viewH);
     childVC.view.frame = frame;
-    childVC.view.backgroundColor = HMDRandomColor;
+//    childVC.view.backgroundColor = HMDRandomColor;
     [self.contentScrollView addSubview:childVC.view];
 }
 #pragma mark -UIScrollViewDelegate

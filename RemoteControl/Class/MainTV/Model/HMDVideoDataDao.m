@@ -68,13 +68,41 @@
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     
     
+    NSString *recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_POSTER_PLAY_NET,HMDCURLINKDEVICEIP];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:videoModel.source_package forKey:@"source_package"];
+    [parameters setValue:videoModel.callback_method forKey:@"callback_method"];
+    [parameters setValue:videoModel.callback_key forKey:@"callback_key"];
+    [parameters setValue:videoModel.callback_value forKey:@"callback_value"];
+
+
+    [session POST:recommendURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (finish) {
+            finish(YES);
+        }
+        NSLog(@"success");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finish) {
+            finish(NO);
+        }
+        NSLog(@"failure");
+    }];
+}
+
+-(void)PostPlayDLanPosterOrder:(HMDVideoModel *)videoModel finishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finish{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    
+    
     NSString *recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_POSTER_PLAY,HMDCURLINKDEVICEIP];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                videoModel.source_package,@"source_package",
-                                videoModel.callback_method,@"callback_method",
-                                videoModel.callback_key,@"callback_key",
-                                videoModel.callback_value,@"callback_value",
-                                nil];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:videoModel.path forKey:@"path"];
+    [parameters setValue:videoModel.type forKey:@"type"];
+    [parameters setValue:videoModel.url forKey:@"url"];
+    [parameters setValue:videoModel.machineLinkString forKey:@"machineLinkString"];
+    
     [session POST:recommendURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -124,18 +152,18 @@
 -(void)playHistoryWithHistoryModel:(HMDVideoHistoryModel *)videoHistoryModel FinishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finishBlock{
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_PLAY_HISTORYVIDEO,HMDCURLINKDEVICEIP];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [videoHistoryModel.cmd mj_JSONString],@"cmd",
-                                videoHistoryModel.videoSource,@"videoSource",
-                                videoHistoryModel.videoImgUrl,@"videoImgUrl",
-                                videoHistoryModel.extra,@"extra",
-                                videoHistoryModel.videoCallback,@"videoCallback",
-                                videoHistoryModel.date,@"date",
-                                videoHistoryModel.videoAction,@"videoAction",
-                                videoHistoryModel.videoName,@"videoName",
-                                videoHistoryModel.vid,@"vid",
-                                videoHistoryModel.week,@"week",
-                                nil];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:[videoHistoryModel.cmd mj_JSONString] forKey:@"cmd"];
+    [parameters setValue:videoHistoryModel.videoSource forKey:@"videoSource"];
+    [parameters setValue:videoHistoryModel.videoImgUrl forKey:@"videoImgUrl"];
+    [parameters setValue:videoHistoryModel.extra forKey:@"extra"];
+    [parameters setValue:videoHistoryModel.videoCallback forKey:@"videoCallback"];
+    [parameters setValue:videoHistoryModel.date forKey:@"date"];
+    [parameters setValue:videoHistoryModel.videoAction forKey:@"videoAction"];
+    [parameters setValue:videoHistoryModel.videoName forKey:@"videoName"];
+    [parameters setValue:videoHistoryModel.vid forKey:@"vid"];
+    [parameters setValue:videoHistoryModel.week forKey:@"week"];
+
     [session POST:recommendURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -297,6 +325,36 @@ NSDictionary *classifyDict = [NSDictionary dictionaryWithObjectsAndKeys:
             }
         }
         
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO,nil);
+        }
+        NSLog(@"failure");
+    }];
+}
+
+-(void)getCollectRecordFinishBlock:(void (^)(BOOL, NSArray *))finishBlock{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSString *recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_COLLECT_LIST,HMDCURLINKDEVICEIP];
+    [session GET:recommendURL parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *posterArray = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                               options:NSJSONReadingMutableContainers
+                                                                 error:nil];
+        if (posterArray.count>0) {
+            NSArray *videoModelArray = [HMDVideoHistoryModel hmd_modelArrayWithKeyValuesArray:posterArray];
+            if (finishBlock) {
+                finishBlock(YES,videoModelArray);
+            }
+        }else{
+            if (finishBlock) {
+                finishBlock(YES,nil);
+            }
+        }
+        
+        NSLog(@"success");
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (finishBlock) {

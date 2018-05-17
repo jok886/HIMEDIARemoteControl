@@ -12,23 +12,39 @@
 #import "HMDHistoryHeadView.h"
 
 #import "HMDVideoDataDao.h"
+#import "NSString+HMDExtend.h"
+
+typedef enum : NSInteger{
+    HMDHistoryListOnlyTodayType = (1<<0),
+    HMDHistoryListOnlyBeforeType = (1<<1),
+    HMDHistoryListDoubleType = ((1<<1)|(1<<0)),
+}HMDHistoryListType;
 
 @interface HMDPlayHistoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView *historyTableView;
 @property (nonatomic,strong) NSMutableArray *historyListArray;                  //所有的历史数据
 @property (nonatomic,strong) NSMutableArray *historyListTodayArray;             //今日的历史数据
-@property (nonatomic,strong) NSMutableArray *historyListOldArray;               //更早的历史数据
+@property (nonatomic,strong) NSMutableArray *historyListBeforeArray;               //更早的历史数据
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
+@property (nonatomic,assign) HMDHistoryListType historyListType;
 @end
 
 @implementation HMDPlayHistoryViewController
 static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = HMDColorFromValue(0xF0F0F0);
+    self.title = @"历史";
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, 0, 1, HMDScreenH)];
+    view.backgroundColor = HMDColorFromValue(0xCCCCCC);
+    [self.view addSubview:view];
     [self setupFirstNavBar];
     [self getHistoryData];
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [HMDLinkView sharedInstance].hidden = NO;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -41,6 +57,7 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
     [self.videoDataDao getPlayHistoryFinishBlock:^(BOOL success, NSArray *modelArray) {
         if (success) {
             weakSelf.historyListArray = [NSMutableArray arrayWithArray:modelArray];
+            [weakSelf historyListDivideIntoGroups];
             [weakSelf.historyTableView reloadData];
         }
         [weakSelf.historyTableView reloadData];
@@ -48,39 +65,101 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
 }
 //数据分组
 -(void)historyListDivideIntoGroups{
-    
+
+    for (HMDVideoHistoryModel *model in self.historyListArray) {
+        if ([model.time isTodayTime]) {
+            self.historyListType = self.historyListType|HMDHistoryListOnlyTodayType;
+            [self.historyListTodayArray addObject:model];
+        }else{
+            self.historyListType = self.historyListType|HMDHistoryListOnlyBeforeType;
+            [self.historyListBeforeArray addObject:model];
+        }
+    }
+
 }
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.historyListArray.count;
+//    switch (self.historyListType) {
+//        case HMDHistoryListOnlyTodayType:
+//            return self.historyListTodayArray.count;
+//            break;
+//        case HMDHistoryListOnlyBeforeType:
+//            return self.historyListBeforeArray.count;
+//            break;
+//
+//        default:
+//            {
+                if (section == 0) {
+                    return self.historyListTodayArray.count;
+                }else{
+                    return self.historyListBeforeArray.count;
+                }
+//            }
+//            break;
+//    }
 }
-
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+//    switch (self.historyListType) {
+//        case HMDHistoryListOnlyTodayType:
+//        case HMDHistoryListOnlyBeforeType:
+//            return 1;
+//            break;
+//
+//        default:
+//            return 2;
+//            break;
+//    }
+    return 2;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 65;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40;
+    return 30;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HMDVideoHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     HMDVideoHistoryModel *model = self.historyListArray[indexPath.row];
     [cell setupCellWithHistoryModel:model];
-    cell.backgroundColor = HMDRandomColor;
     return cell;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HMDHistoryHeadView *headView = [HMDHistoryHeadView hmd_viewFromXib];
-    headView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 40);
-    headView.backgroundColor = HMDRandomColor;
+    headView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 30);
+//    switch (self.historyListType) {
+//        case HMDHistoryListOnlyTodayType:
+//            [headView setheadWithToday:YES];
+//            break;
+//        case HMDHistoryListOnlyBeforeType:
+//
+//            break;
+//
+//        default:
+//        {
+//            if (section == 0) {
+//                [headView setheadWithToday:YES];
+//            }
+//        }
+//            break;
+//    }
+    if (section == 0) {
+        [headView setheadWithToday:YES];
+    }
     return headView;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HMDVideoHistoryModel *model = self.historyListArray[indexPath.row];
+    HMDVideoHistoryModel *model;
+    NSInteger section = indexPath.section;
+    if (section == 0) {
+        model = self.historyListTodayArray[indexPath.row];
+    }else{
+        model = self.historyListBeforeArray[indexPath.row];
+    }
     [self.videoDataDao playHistoryWithHistoryModel:model FinishBlock:^(BOOL success) {
         
     }];
@@ -97,6 +176,18 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
     return _historyListArray;
 }
 
+-(NSMutableArray *)historyListTodayArray{
+    if (_historyListTodayArray == nil) {
+        _historyListTodayArray = [NSMutableArray array];
+    }
+    return _historyListTodayArray;
+}
+-(NSMutableArray *)historyListBeforeArray{
+    if (_historyListBeforeArray == nil) {
+        _historyListBeforeArray = [NSMutableArray array];
+    }
+    return _historyListBeforeArray;
+}
 -(UITableView *)historyTableView{
     if (_historyTableView == nil) {
         _historyTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
@@ -104,6 +195,8 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
         _historyTableView.delegate = self;
         _historyTableView.dataSource = self;
         _historyTableView.showsVerticalScrollIndicator = NO;
+        _historyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _historyTableView.backgroundColor = [UIColor clearColor];
         _historyTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.view addSubview:_historyTableView];
     }

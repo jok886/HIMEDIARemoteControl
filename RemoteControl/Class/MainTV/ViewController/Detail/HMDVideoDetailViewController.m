@@ -10,6 +10,7 @@
 #import "HMDVideoDataDao.h"
 #import "HMDEpisodeCollectionViewCell.h"
 #import "UIImage+Color.h"
+#import "UIImageView+HMDDLANLoadImage.h"
 @interface HMDVideoDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic,strong) HMDVideoDataDao *videoDao;
 
@@ -32,9 +33,11 @@
 @property (weak, nonatomic) IBOutlet UIView *episodeView;//剧集
 @property (weak, nonatomic) IBOutlet UICollectionView *episodeCollectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *summaryTopConstraint;//有剧集的时候是129,没有的时候是14
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @property (weak, nonatomic) IBOutlet UITextView *summaryContentTextView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;        //渐变效果
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -49,12 +52,12 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [HMDLinkView sharedInstance].hidden = NO;
-//    self.navigationController.navigationBar.translucent = YES;
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [HMDLinkView sharedInstance].hidden = YES;
-//    self.navigationController.navigationBar.translucent = YES;
+    if (!self.netPoster) {
+        [HMDLinkView sharedInstance].hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,23 +78,26 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
     gradientLayer.startPoint = CGPointMake(0.5, 0);
     gradientLayer.endPoint = CGPointMake(0.5, 1);
     [self.bottomView.layer addSublayer:gradientLayer];
-    
-    [self reSetupNavBarWithWhiteItem];
+    if (self.pushModel) {
+        [self reSetupNavBarWithWhiteItem];
+        [self setupNavigation];
+        self.backBtn.hidden = YES;
+        self.topConstraint.constant = -44;
+    }
+    self.summaryContentTextView.editable = NO;
     [self setupEpisode];
-    [self setupNavigation];
     [self setupVideoDetail];
 }
 
 -(void)setupEpisode{
-    if (1) {
-        self.episodeView.hidden = YES;
-        self.summaryTopConstraint.constant = 14;
-    }else{
-        self.episodeCollectionView.delegate = self;
-        self.episodeCollectionView.dataSource = self;
-        [self.episodeCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDEpisodeCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
 
+    self.episodeView.hidden = YES;
+    if (self.netPoster) {
+        self.summaryTopConstraint.constant = -14;
+    }else{
+        self.summaryTopConstraint.constant = 14;
     }
+
 }
 
 -(void)setupNavigation{
@@ -103,22 +109,34 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 }
 
 -(void)setupVideoDetail{
-//    self.videoShowImageView;
-    self.videoTitleLab.text = self.videoModel.title;
-    self.videoActorLab.text = self.videoModel.t_actor;
-    NSString *country = self.videoModel.country;
-    NSString *year = self.videoModel.t_year;
-    NSString *genre = self.videoModel.genre;
-    NSString *locationText;
-    locationText = [self appendingString:country targetString:locationText];
-    locationText = [self appendingString:year targetString:locationText];
-    locationText = [self appendingString:genre targetString:locationText];
-    self.videoLocationLab.text = locationText;
-    self.summaryContentTextView.text = self.videoModel.t_plot;
-    
-    CGFloat rating = [self.videoModel.rating floatValue];
-    self.scoreLab.text = self.videoModel.rating;
-    [self setupSroceView:rating];
+    if (self.netPoster) {
+        [self.videoShowImageView setImageWithURLStr:self.videoModel.img_url placeholderImage:nil];
+        self.videoTitleLab.text = self.videoModel.title;
+        self.summaryContentTextView.text = self.videoModel.info;
+        [self setupSroceView:0];
+        self.videoActorLab.hidden = YES;
+        self.videoLocationLab.hidden = YES;
+    }else{
+        NSString *url = [NSString stringWithFormat:HMD_DLAN_VIDEO_GET_POSTERIMAGE,HMDCURLINKDEVICEIP];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:self.videoModel.posterPicString,@"posterPicString", nil];
+        [self.videoShowImageView setDLANImageWithMethod:@"POST" URLStr:url parameters:parameters placeholderImage:nil];
+        self.videoTitleLab.text = self.videoModel.name;
+        self.videoActorLab.text = self.videoModel.t_actor;
+        NSString *country = self.videoModel.country;
+        NSString *year = self.videoModel.t_year;
+        NSString *genre = self.videoModel.genre;
+        NSString *locationText;
+        locationText = [self appendingString:country targetString:locationText];
+        locationText = [self appendingString:year targetString:locationText];
+        locationText = [self appendingString:genre targetString:locationText];
+        self.videoLocationLab.text = locationText;
+        self.summaryContentTextView.text = self.videoModel.t_plot;
+        
+        CGFloat rating = [self.videoModel.rating floatValue];
+        self.scoreLab.text = self.videoModel.rating;
+        [self setupSroceView:rating];
+    }
+
 }
 
 -(void)setupSroceView:(CGFloat)sroce{
@@ -170,7 +188,7 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDEpisodeCollectionViewCell *videoShowCell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    videoShowCell.backgroundColor = HMDRandomColor;
+//    videoShowCell.backgroundColor = HMDRandomColor;
     return videoShowCell;
 }
 
@@ -180,6 +198,30 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 
 
 #pragma mark - 点击
+
+- (IBAction)playCurVideo:(id)sender {
+    if (self.netPoster) {
+        [self.videoDao PostPlayNetPosterOrder:self.videoModel finishBlock:^(BOOL success) {
+            
+        }];
+    }else{
+        [self.videoDao PostPlayDLanPosterOrder:self.videoModel finishBlock:^(BOOL success) {
+            
+        }];
+    }
+
+}
+- (IBAction)backBtnClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.netPoster) {
+            [HMDLinkView sharedInstance].hidden = NO;
+        }else{
+            [HMDLinkView sharedInstance].hidden = YES;
+        }
+        
+    }];
+}
+
 
 #pragma mark - 懒加载
 -(HMDVideoDataDao *)videoDao{

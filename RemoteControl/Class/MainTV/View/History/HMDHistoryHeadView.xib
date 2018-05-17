@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,35 +16,35 @@
             <rect key="frame" x="0.0" y="0.0" width="359" height="46"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvX-eI-Aqy">
-                    <rect key="frame" x="41" y="13" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更早之前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvX-eI-Aqy">
+                    <rect key="frame" x="31" y="16" width="49.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVE-cI-wOt">
-                    <rect key="frame" x="20" y="0.0" width="1" height="46"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="15" y="0.0" width="1" height="46"/>
+                    <color key="backgroundColor" red="0.80000537630000002" green="0.79999023680000003" blue="0.80000060799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="nfi-sk-3YD"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-jX-afd">
-                    <rect key="frame" x="9.5" y="12" width="22" height="22"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history_before" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-jX-afd">
+                    <rect key="frame" x="8" y="15.5" width="15" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="D4v-Ez-dAs"/>
-                        <constraint firstAttribute="width" constant="22" id="sYV-YJ-HGQ"/>
+                        <constraint firstAttribute="height" constant="15" id="D4v-Ez-dAs"/>
+                        <constraint firstAttribute="width" constant="15" id="sYV-YJ-HGQ"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="zDw-jX-afd" firstAttribute="centerX" secondItem="pVE-cI-wOt" secondAttribute="centerX" id="TRQ-rS-Kgo"/>
                 <constraint firstItem="zDw-jX-afd" firstAttribute="centerY" secondItem="pVE-cI-wOt" secondAttribute="centerY" id="TkV-4O-2xb"/>
                 <constraint firstItem="WvX-eI-Aqy" firstAttribute="centerY" secondItem="pVE-cI-wOt" secondAttribute="centerY" id="W0M-95-OPJ"/>
-                <constraint firstItem="WvX-eI-Aqy" firstAttribute="leading" secondItem="pVE-cI-wOt" secondAttribute="trailing" constant="20" id="bZE-LH-TDS"/>
+                <constraint firstItem="WvX-eI-Aqy" firstAttribute="leading" secondItem="pVE-cI-wOt" secondAttribute="trailing" constant="15" id="bZE-LH-TDS"/>
                 <constraint firstItem="pVE-cI-wOt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dtp-3v-u6w"/>
-                <constraint firstItem="pVE-cI-wOt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="hLl-jB-2rk"/>
+                <constraint firstItem="pVE-cI-wOt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="hLl-jB-2rk"/>
                 <constraint firstItem="pVE-cI-wOt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="oOo-Lc-yrc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -56,4 +56,7 @@
             <point key="canvasLocation" x="25.5" y="62"/>
         </view>
     </objects>
+    <resources>
+        <image name="history_before" width="15" height="15"/>
+    </resources>
 </document>

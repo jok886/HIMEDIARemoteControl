@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,33 +20,29 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpe-Qd-0dZ">
-                        <rect key="frame" x="0.0" y="0.0" width="257" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="8" y="16" width="241" height="18"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1W-5Z-CzG">
-                        <rect key="frame" x="217" y="10" width="30" height="30"/>
-                        <state key="normal" title="x"/>
-                        <connections>
-                            <action selector="deleteBtnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="q9T-sw-ay0"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="i1W-5Z-CzG" secondAttribute="trailing" constant="10" id="3Yc-BB-jnx"/>
-                <constraint firstItem="Dpe-Qd-0dZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KuC-Hi-JfO"/>
-                <constraint firstAttribute="trailing" secondItem="Dpe-Qd-0dZ" secondAttribute="trailing" id="hxw-m4-L3N"/>
-                <constraint firstItem="i1W-5Z-CzG" firstAttribute="centerY" secondItem="Dpe-Qd-0dZ" secondAttribute="centerY" id="o3f-eZ-WT8"/>
-                <constraint firstItem="Dpe-Qd-0dZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tFj-K3-miZ"/>
-                <constraint firstAttribute="bottom" secondItem="Dpe-Qd-0dZ" secondAttribute="bottom" id="z2w-1O-exy"/>
+                <constraint firstItem="Dpe-Qd-0dZ" firstAttribute="centerY" secondItem="SEy-5g-ep8" secondAttribute="centerY" id="UHf-N6-5md"/>
+                <constraint firstAttribute="trailing" secondItem="Dpe-Qd-0dZ" secondAttribute="trailing" constant="8" id="cJI-64-seD"/>
+                <constraint firstItem="Dpe-Qd-0dZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="orX-rw-DsR"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="257" height="50"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="deleteBtn" destination="i1W-5Z-CzG" id="Msj-O0-xBI"/>
                 <outlet property="tipLab" destination="Dpe-Qd-0dZ" id="nAk-Pm-G9U"/>
             </connections>
             <point key="canvasLocation" x="136.5" y="54"/>

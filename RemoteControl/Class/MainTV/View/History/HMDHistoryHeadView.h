@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDHistoryHeadView : UIView
-
+-(void)setheadWithToday:(BOOL)today;
 @end

@@ -7,234 +7,146 @@
 //
 
 #import "HMDSearchTVTipsCollectionView.h"
-#import "HMDWaterflowLayout.h"
+
 #import "HMDSearchTipCollectionViewCell.h"
+#import "HMDSearchHistoryCollectionViewCell.h"
+
+
 #import "HMDSearchTipHeadView.h"
 #import "NSString+HMDExtend.h"
 @interface HMDSearchTVTipsCollectionView()
 <UICollectionViewDelegate,
 UICollectionViewDataSource,
-HMDWaterflowLayoutDelegate,
+UICollectionViewDelegateFlowLayout,
 HMDSearchTipCollectionViewCellDelegate>
 
 @end
 
 @implementation HMDSearchTVTipsCollectionView
 static NSString * const reuseIdentifierCell = @"HMDSearchTipCollectionViewCell";
+static NSString * const reuseIdentifierCell_History = @"HMDSearchHistoryCollectionViewCell";
 static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
-+(instancetype)searchTVTipsCollectionViewWithFrame:(CGRect)frame{
-    HMDWaterflowLayout *flowLayout = [[HMDWaterflowLayout alloc]init];
-    flowLayout.flowLayoutStyle = HMDVHWaterFlow;
-    HMDSearchTVTipsCollectionView *tipCollectionView = [[HMDSearchTVTipsCollectionView alloc]initWithFrame:frame collectionViewLayout:flowLayout];
-    tipCollectionView.delegate = tipCollectionView;
-    tipCollectionView.dataSource = tipCollectionView;
-    flowLayout.delegate = tipCollectionView;
-    //注册Item
-    [tipCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell];
-    //注册头尾视图
-    [tipCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipHeadView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead];
-    
-    return tipCollectionView;
-}
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.delegate = self;
+    self.dataSource = self;
+    
+    //注册Item
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell];
+    //历史记录
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchHistoryCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell_History];
+    //注册头尾视图
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipHeadView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead];
+}
 #pragma mark - UICollectionViewDelegate/UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    switch (self.searchTVTipsType) {
-        case HMDSearchTVHotTipsType:
-        {
-             return self.hotArray.count;
-        }
-        break;
-        case HMDSearchTVRecordTipsType:
-        {
+
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        return self.recommendArray.count;
+    }else{
+        if (section==0) {
             return self.recordArray.count;
+        }else{
+            return self.hotArray.count;
         }
-        break;
-        case HMDSearchTVRecommendTipsType:
-        {
-            return self.recommendArray.count;
-        }
-        break;
-        case HMDSearchTVRecordAndHotTipsType:
-        {
-            if (section==0) {
-                return self.recordArray.count;
-            }else{
-                return self.hotArray.count;
-            }
-        }
-        break;
-        default:
-        return 0;
-        break;
     }
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    switch (self.searchTVTipsType) {
-        case HMDSearchTVHotTipsType:
-        case HMDSearchTVRecordTipsType:
-        case HMDSearchTVRecommendTipsType:
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
         return 1;
-        break;
-        default:
+    }else{
         return 2;
-        break;
+    }
+}
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGRect bounds = collectionView.bounds;
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        return CGSizeMake(CGRectGetWidth(bounds), 44);
+    }else{
+        return CGSizeMake((CGRectGetWidth(bounds)-10)*0.5, 35);
+    }
+}
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    CGRect bounds = collectionView.bounds;
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        return CGSizeZero;
+    }else{
+        return CGSizeMake(CGRectGetWidth(bounds), 50);
+    }
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        return 0;
+    }else{
+        return 5;
     }
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 10;
+}
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
-    NSString *tip;
-    BOOL needCenter = YES;
-    BOOL deleteBtn = NO;
-    switch (self.searchTVTipsType) {
-        case HMDSearchTVHotTipsType:
-        tip = self.hotArray[indexPath.row];
-        break;
-        case HMDSearchTVRecordTipsType:
-        tip = self.recordArray[indexPath.row];
-        break;
-        case HMDSearchTVRecordAndHotTipsType:
-        {
-            if (indexPath.section == 0){
-                tip = self.recordArray[indexPath.row];
-            }else{
-                tip = self.hotArray[indexPath.row];
-            }
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        HMDSearchHistoryCollectionViewCell *historyCell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell_History forIndexPath:indexPath];
+        NSString *tip = self.recommendArray[indexPath.row];
+        [historyCell setHistoryText:tip keyWord:self.curKeyWord];
+        return historyCell;
+    }else{
+        HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+        NSString *tip;
+        if (indexPath.section == 0){
+            tip = self.recordArray[indexPath.row];
+        }else{
+            tip = self.hotArray[indexPath.row];
         }
-        break;
-        case HMDSearchTVRecommendTipsType:
-        {
-            needCenter = NO;
-            deleteBtn = YES;
-            tip = self.recommendArray[indexPath.row];
-        }
-        break;
-        default:
-        break;
+        cell.delegate = self;
+        [cell setupCellWithTipSting:tip needCenter:YES deleteBtn:NO];
+        return cell;
     }
-    cell.delegate = self;
-    [cell setupCellWithTipSting:tip needCenter:needCenter deleteBtn:deleteBtn];
-    return cell;
+
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
-        NSString *tip;
-        switch (self.searchTVTipsType) {
-            case HMDSearchTVHotTipsType:
-            tip = self.hotArray[indexPath.row];
-            break;
-            case HMDSearchTVRecordTipsType:
+    NSString *tip;
+    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+        tip = self.recommendArray[indexPath.row];
+    }else{
+        if (indexPath.section == 0){
             tip = self.recordArray[indexPath.row];
-            break;
-            case HMDSearchTVRecordAndHotTipsType:
-            {
-                if (indexPath.section == 0){
-                    tip = self.recordArray[indexPath.row];
-                }else{
-                    tip = self.hotArray[indexPath.row];
-                }
-            }
-            break;
-            case HMDSearchTVRecommendTipsType:
-            {
-                tip = self.recommendArray[indexPath.row];
-            }
-            break;
-            default:
-            break;
+        }else{
+            tip = self.hotArray[indexPath.row];
         }
-        if (self.searchTVTipBlock) {
-            self.searchTVTipBlock(tip);
-        }
+    }
+    
+    if (self.searchTVTipBlock) {
+        self.searchTVTipBlock(tip);
+    }
     
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-    HMDSearchTipHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead forIndexPath:indexPath];
-            headerView.hidden = NO;
-            switch (self.searchTVTipsType) {
-                case HMDSearchTVHotTipsType:
-                headerView.searchTipStyle = HMDSearchTipHot;
-                break;
-                case HMDSearchTVRecordTipsType:
-                headerView.searchTipStyle = HMDSearchTipRecord;
-                break;
-                case HMDSearchTVRecordAndHotTipsType:
-                {
-                    if (indexPath.section == 0){
-                        headerView.searchTipStyle = HMDSearchTipRecord;
-                    }else{
-                       headerView.searchTipStyle = HMDSearchTipHot;
-                    }
-                }
-                break;
-                default:
-                {
-                    headerView.hidden = YES;
-                    return headerView;
-                }
-
-                break;
-            }
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        HMDSearchTipHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead forIndexPath:indexPath];
+        if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
+            headerView.hidden = YES;
             return headerView;
-    
         }else{
-            return  nil;
-        }
-}
-#pragma mark - HMDWaterflowLayoutDelegate
-
-/** 水平瀑布流 item等高不等宽 */
--(CGFloat)waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout widthForItemAtIndexPath:(NSIndexPath *)indexPath itemHeight:(CGFloat)itemHeight{
-    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType){
-        return self.frame.size.width -20;
-    }else{
-        NSString *tip;
-        switch (self.searchTVTipsType) {
-            case HMDSearchTVHotTipsType:
-            tip = self.hotArray[indexPath.row];
-            break;
-            case HMDSearchTVRecordTipsType:
-            tip = self.recordArray[indexPath.row];
-            break;
-            case HMDSearchTVRecordAndHotTipsType:
-            {
-                if (indexPath.section == 0){
-                    tip = self.recordArray[indexPath.row];
-                }else{
-                    tip = self.hotArray[indexPath.row];
-                }
+            headerView.hidden = NO;
+            if (indexPath.section == 0){
+                headerView.searchTipStyle = HMDSearchTipRecord;
+            }else{
+                headerView.searchTipStyle = HMDSearchTipHot;
             }
-            break;
-            
-            default:
-            break;
         }
-        CGFloat width = [tip calculateRowWidthWithHight:40 fontSize:15]+20;
+        return headerView;
+    }else{
+        return  nil;
+    }
+}
 
-        return width;
-    }
-}
-/** itemSize */
--(CGSize)waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(30, 40);
-}
-/** 头视图Size */
--(CGSize )waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout sizeForHeaderViewInSection:(NSInteger)section{
-    CGFloat height = 40;
-    if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
-        height = 0.1;
-    }
-    return CGSizeMake(HMDScreenW-20, height);
-}
-/** 脚视图Size */
-//-(CGSize )waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout sizeForFooterViewInSection:(NSInteger)section{
-//    return CGSizeMake(0, 0);
-//}
 #pragma mark - HMDSearchTipCollectionViewCellDelegate
 -(void)searchTipCollectionViewCellDeleteAtIndexPath:(NSIndexPath *)indexPath{
 //    [self.recordArray removeObjectAtIndex:indexPath.row];
@@ -242,6 +154,13 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
+#pragma mark - 其他
+//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    if (self.scrollViewWillBeginDraggingBlock) {
+//        self.scrollViewWillBeginDraggingBlock();
+//    }
+//}
+
 #pragma mark - 懒加载
 -(NSMutableArray *)recordArray{
     if (_recordArray == nil) {

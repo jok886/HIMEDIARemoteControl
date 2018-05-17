@@ -10,10 +10,8 @@
 #import "HMDSearchTipHeadView.h"
 
 typedef enum {
-    HMDSearchTVRecordTipsType = 0,              //记录
-    HMDSearchTVHotTipsType = 1,                 //热词
-    HMDSearchTVRecordAndHotTipsType = 2,        //记录与热词
-    HMDSearchTVRecommendTipsType = 3,           //推荐
+    HMDSearchTVRecordAndHotTipsType = 0,        //记录与热词
+    HMDSearchTVRecommendTipsType = 1,           //推荐
 } HMDSearchTVTipsType;
 
 typedef void(^HMDSearchTVTipBlock)(NSString *keyWord);
@@ -23,7 +21,6 @@ typedef void(^HMDSearchTVTipBlock)(NSString *keyWord);
 @property (nonatomic,strong) NSArray *recommendArray;                           //推荐词组
 @property (nonatomic,assign) HMDSearchTVTipsType searchTVTipsType;              //推荐模式
 @property (nonatomic,copy) HMDSearchTVTipBlock searchTVTipBlock;                //关键词搜索
-
-
-+(instancetype)searchTVTipsCollectionViewWithFrame:(CGRect)frame;
+@property (nonatomic,copy) void(^scrollViewWillBeginDraggingBlock)(void);       //界面拖动
+@property (nonatomic,strong) NSString *curKeyWord;
 @end

@@ -16,12 +16,12 @@
 
 @implementation HMDHistoryHeadView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+-(void)setheadWithToday:(BOOL)today{
+    if (today) {
+        [self.timeIcon setImage:[UIImage imageNamed:@"history_today"]];
+        self.timeLab.text = @"今天";
+        [self.timeLab setTextColor:HMDMAIN_COLOR];
+    }
 }
-*/
 
 @end

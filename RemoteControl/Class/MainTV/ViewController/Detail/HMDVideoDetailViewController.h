@@ -10,4 +10,6 @@
 #import "HMDVideoModel.h"
 @interface HMDVideoDetailViewController : HMDBaseViewController
 @property (nonatomic,strong) HMDVideoModel *videoModel;
+@property (nonatomic,assign) BOOL netPoster;                    //网络视频
+@property (nonatomic,assign) BOOL pushModel;                    //push出来的
 @end

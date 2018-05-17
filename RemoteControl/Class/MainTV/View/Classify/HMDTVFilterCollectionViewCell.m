@@ -21,7 +21,10 @@
 }
 
 -(void)setupTVFilterCellWithModel:(HMDVideoModel *)videoModel{
-    [self.videoIconImageView setImageWithURLStr:videoModel.extra1 placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+//    [self.videoIconImageView setImageWithURLStr:videoModel.extra1 placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+    NSString *url = [NSString stringWithFormat:HMD_DLAN_VIDEO_GET_POSTERIMAGE,HMDCURLINKDEVICEIP];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:videoModel.posterPicString,@"posterPicString", nil];
+    [self.videoIconImageView setDLANImageWithMethod:@"POST" URLStr:url parameters:parameters placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
     NSString *score = videoModel.rating;
     if (score == nil || [score integerValue] == 0) {
         self.scoreLab.hidden = YES;

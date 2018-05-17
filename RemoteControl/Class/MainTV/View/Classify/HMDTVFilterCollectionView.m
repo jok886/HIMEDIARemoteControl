@@ -43,6 +43,8 @@
     HMDVideoModel *videoModel = self.videoModelArray[indexPath.row];
     HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
     detailVC.videoModel = videoModel;
+    detailVC.netPoster = NO;
+    detailVC.pushModel = YES;
     [self.getCurActiveViewController.navigationController pushViewController:detailVC animated:YES];
 }
 @end

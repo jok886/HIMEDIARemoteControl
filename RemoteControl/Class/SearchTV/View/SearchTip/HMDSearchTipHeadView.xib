@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,15 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGi-G2-GDH">
-                    <rect key="frame" x="16" y="12" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGi-G2-GDH">
+                    <rect key="frame" x="6" y="13" width="37.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.60000419616699219" green="0.59999257326126099" blue="0.60000050067901611" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9n-WX-Rsq">
-                    <rect key="frame" x="246" y="11" width="58" height="22"/>
-                    <state key="normal" title="  删除" image="search-gray">
+                    <rect key="frame" x="284" y="9.5" width="40" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Ctx-XA-ykZ"/>
+                    </constraints>
+                    <state key="normal" image="search_del_all">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
                     <connections>
@@ -32,12 +35,11 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.66267471060000005" green="0.66666668650000005" blue="0.080571309460000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a9n-WX-Rsq" secondAttribute="trailing" constant="20" id="Dj4-Qj-TfT"/>
-                <constraint firstItem="IGi-G2-GDH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="alx-j1-IXh"/>
-                <constraint firstItem="IGi-G2-GDH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dTw-Xq-O2q"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IGi-G2-GDH" secondAttribute="bottom" constant="11" id="ply-gB-BtU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a9n-WX-Rsq" secondAttribute="trailing" id="Dj4-Qj-TfT"/>
+                <constraint firstItem="IGi-G2-GDH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="alx-j1-IXh"/>
+                <constraint firstItem="IGi-G2-GDH" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="p26-1T-ZSf"/>
                 <constraint firstItem="a9n-WX-Rsq" firstAttribute="centerY" secondItem="IGi-G2-GDH" secondAttribute="centerY" id="yCq-vA-iqS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -50,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="search-gray" width="12" height="12"/>
+        <image name="search_del_all" width="24" height="24"/>
     </resources>
 </document>

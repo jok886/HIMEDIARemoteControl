@@ -50,9 +50,9 @@
 -(void)downLoadImageFromFilepath:(NSString *)filePath ip:(NSString *)ip Finish:(HMDTVDownLoadImageFinishBlock)finishBlock{
     NSLog(@"下载");
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                filePath,@"posterPicString",
-                                nil];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:filePath forKey:@"posterPicString"];
+
     NSString *url = [NSString stringWithFormat:HMD_DLAN_DEVICE_DOWNLOADICON,ip];
     [session POST:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"----");

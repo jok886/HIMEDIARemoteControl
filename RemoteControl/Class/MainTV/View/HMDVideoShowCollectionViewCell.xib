@@ -28,6 +28,12 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="height" multiplier="285:200" id="LWe-2Z-eMe"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jm2-av-Wkn">
                         <rect key="frame" x="26" y="187.5" width="233" height="20.5"/>
@@ -38,11 +44,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_pic_default" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ky-Dy9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_banner_default_s" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ky-Dy9">
                         <rect key="frame" x="25" y="7.5" width="235" height="155"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="b6A-ky-Dy9" secondAttribute="height" multiplier="235:155" id="FhP-Wk-Krd"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW6-9r-VzS">
                         <rect key="frame" x="26" y="222" width="233" height="16"/>
@@ -77,6 +89,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="video_pic_default" width="60" height="90"/>
+        <image name="video_banner_default_s" width="245" height="165"/>
     </resources>
 </document>

@@ -15,11 +15,11 @@
 
 -(void)getDynamicCodeForRegister:(NSString *)phoneNum codeType:(HMDDynamicCodeType)type{
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
-    NSDictionary *parametersDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    phoneNum,@"phone",
-                                    [NSString stringWithFormat:@"%ld",(long)type],@"type",
-                                    nil];
-    NSString *encodeParameters = [self encryptParameters:parametersDict];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:phoneNum forKey:@"phone"];
+    [parameters setValue:[NSString stringWithFormat:@"%ld",(long)type] forKey:@"type"];
+
+    NSString *encodeParameters = [self encryptParameters:parameters];
     NSString *url = HMD_HINAVI_DYNAMICCODE;
     [session GET:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
         

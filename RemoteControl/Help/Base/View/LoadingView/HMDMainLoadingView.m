@@ -34,7 +34,7 @@
     [self addSubview:loadingImageView];
     self.loadingImageView = loadingImageView;
     loadingImageView.image = [UIImage imageNamed:@"loading_l_green"];
-    
+    self.backgroundColor = HMDColorFromValue(0xF0F0F0);
 }
 
 -(void)startLoading{

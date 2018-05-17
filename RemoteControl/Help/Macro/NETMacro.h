@@ -33,6 +33,8 @@
 #define HMD_DLAN_VIDEO_RECOMMEND_NETLIST @"http://hot.mv.hinavi.net/hmd-box/mv/hot"
 //播放历史记录视频
 #define HMD_DLAN_VIDEO_PLAY_HISTORY @"http://%@:8899/getPlayRecord"
+//收藏列表
+#define HMD_DLAN_VIDEO_COLLECT_LIST @"http://%@:8899/getCollectRecord"
 //播放历史记录中的数据
 #define HMD_DLAN_VIDEO_PLAY_HISTORYVIDEO @"http://%@:8899/playRecord"
 //海报分类
@@ -40,7 +42,9 @@
 //海报图片
 #define HMD_DLAN_VIDEO_GET_POSTERIMAGE @"http://%@:8899/getPic"
 //播放海报视频
-#define HMD_DLAN_VIDEO_POSTER_PLAY @"http://%@:8899/playNetPoster"
+#define HMD_DLAN_VIDEO_POSTER_PLAY_NET @"http://%@:8899/playNetPoster"
+//播放海报视频
+#define HMD_DLAN_VIDEO_POSTER_PLAY @"http://%@:8899/playPoster"
 //获取本地视频列表
 #define HMD_DLAN_VIDEO_POSTER_LIST @"http://%@:8899/getPosterList"
 //本地安装的app

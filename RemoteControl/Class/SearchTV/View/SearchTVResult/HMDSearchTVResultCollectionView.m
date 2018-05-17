@@ -29,13 +29,33 @@ static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
     
     return resultCollectionView;
 }
-
+-(void)awakeFromNib{
+    [super awakeFromNib];
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+//    flowLayout.itemSize = CGSizeMake(frame.size.width, 100);
+//    flowLayout.minimumLineSpacing = 1;
+//    flowLayout.minimumInteritemSpacing = 10;
+//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    HMDSearchTVResultCollectionView *resultCollectionView = [[HMDSearchTVResultCollectionView alloc]initWithFrame:frame collectionViewLayout:flowLayout];
+    self.delegate = self;
+    self.dataSource = self;
+    //注册Item
+    [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTVResultCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
+}
 
 #pragma mark - UICollectionViewDelegate/UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.tvModelArray.count;
 }
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGRect bounds = collectionView.bounds;
+    return CGSizeMake(bounds.size.width, 100);
 
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 1;
+}
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDSearchTVResultCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     HMDVideoModel *tvModel = self.tvModelArray[indexPath.row];

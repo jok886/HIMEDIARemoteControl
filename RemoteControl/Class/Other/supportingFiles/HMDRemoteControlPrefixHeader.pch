@@ -17,6 +17,7 @@
 #import "UIView+Additions.h"
 #import "UIImageView+HMDDLANLoadImage.h"
 #import "HMDLinkView.h"
+#import "HMDMainLoadingView.h"
 
 #import "HMDDHRCenter.h"
 #import "HMDDLANNetTool.h"

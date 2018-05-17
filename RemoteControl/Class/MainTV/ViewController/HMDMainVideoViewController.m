@@ -16,7 +16,7 @@
 #import "HMDPlayHistoryViewController.h"
 #import "HMDAllVideoViewController.h"
 #import "HMDVideoDetailViewController.h"
-
+#import "HMDFavoriteVideoViewController.h"
 @interface HMDMainVideoViewController ()
 <
 UICollectionViewDelegate,
@@ -28,6 +28,8 @@ UICollectionViewDataSource
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;                //主界面图片
 @property (nonatomic,strong) HMDVideoModel *curVideoModel;                      //当前的video
+@property (weak, nonatomic) IBOutlet HMDMainLoadingView *loadingView;
+
 @end
 
 @implementation HMDMainVideoViewController
@@ -71,15 +73,17 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 
 -(void)getRecommendVideoData{
     HMDWeakSelf(self)
+                [self.loadingView startLoading];
     [self.videoDataDao getRecommendVideoDataFinish:^(BOOL success, NSArray *modelArray) {
+        [weakSelf.loadingView endLoading];
         if (success && modelArray.count > 0) {
             HMDVideoModel *videoModel = [weakSelf.videoDataArray firstObject];
             weakSelf.curVideoModel = videoModel;
             [weakSelf setMainImageViewImageWithVideoModel:videoModel];
             weakSelf.videoDataArray = [NSMutableArray arrayWithArray:modelArray];
             [weakSelf.videoShowCollectionView reloadData];
-        }
 
+        }
     }];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -106,6 +110,7 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     //进入详情页
     HMDVideoDetailViewController *detailVC = [[HMDVideoDetailViewController alloc] init];
     detailVC.videoModel = videoModel;
+    detailVC.netPoster = YES;
     [self.view.getCurActiveViewController presentViewController:detailVC animated:YES completion:nil];
 }
 
@@ -134,6 +139,7 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
 #pragma mark - 点击
 //播放历史
 - (IBAction)historyBtnClick:(id)sender {
+    [HMDLinkView sharedInstance].hidden = YES;
     HMDPlayHistoryViewController *playHistoryVC = [[HMDPlayHistoryViewController alloc] init];
     HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:playHistoryVC];
     [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
@@ -145,6 +151,14 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:allVideoVC];
     [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
 }
+//收藏
+- (IBAction)favoriteBtnClick:(id)sender {
+    [HMDLinkView sharedInstance].hidden = YES;
+    HMDFavoriteVideoViewController *favoriteVideoViewController = [[HMDFavoriteVideoViewController alloc] init];
+    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:favoriteVideoViewController];
+    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+}
+
 //播放当前视频
 - (IBAction)playCurVideo:(id)sender {
     if (self.curVideoModel) {
