@@ -110,8 +110,11 @@ static NSString * const kSkipButtonText = @"Skip";
     [self.skipButton setTitle:kSkipButtonText forState:UIControlStateNormal];
     [self.skipButton addTarget:self action:@selector(handleSkipButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     self.skipButton.titleLabel.font = [UIFont systemFontOfSize:12];
-    [self.skipButton setTitleColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1] forState:UIControlStateNormal];
-    self.skipButton.backgroundColor = [UIColor redColor];
+    [self.skipButton setTitleColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] forState:UIControlStateNormal];
+    self.skipButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.05];
+    self.skipButton.layer.cornerRadius = 4;
+//    self.skipButton.layer.borderWidth = 1;
+    self.skipButton.layer.masksToBounds = YES;
     return self;
 }
 

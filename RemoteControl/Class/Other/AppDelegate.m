@@ -43,14 +43,14 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
     //初始化根控制器
 
     NSString *userHasOnboardedKey = [[NSUserDefaults standardUserDefaults] objectForKey:kUserHasOnboardedKey];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    if ([userHasOnboardedKey isEqualToString:@"1.0"]) {
+    if ([userHasOnboardedKey isEqualToString:version]) {
         [self setupNormalRootViewController];
-
+        
     }else {
+        [[NSUserDefaults standardUserDefaults] setObject:version forKey:kUserHasOnboardedKey];
         [self setupOnboardedRootViewController];
-//        self.window.rootViewController = [self generateStandardOnboardingVC];
-
     }
 
     [self.window makeKeyAndVisible];
@@ -162,7 +162,7 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
     onboardingVC.fadePageControlPage = YES;
     onboardingVC.fadeSkipButtonOnLastPage = YES;
     [onboardingVC.skipButton setTitle:@"跳过" forState:UIControlStateNormal];
-    [onboardingVC.skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [onboardingVC.skipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     // If you want to allow skipping the onboarding process, enable skipping and set a block to be executed
     // when the user hits the skip button.
     onboardingVC.allowSkipping = YES;
