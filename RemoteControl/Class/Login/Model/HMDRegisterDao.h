@@ -13,5 +13,13 @@ typedef enum : NSInteger{
     HMDDynamicCodeLoginType = 3,            //登录
 }HMDDynamicCodeType;
 @interface HMDRegisterDao : HMDLoginDao
--(void)getDynamicCodeForRegister:(NSString *)phoneNum;
+//注册动态码
+-(void)getDynamicCodeForRegister:(NSString *)phoneNum finishBlock:(void(^)(NSInteger status))finishBlock;
+//修改密码动态码
+-(void)getDynamicCodeForForgetPWD:(NSString *)phoneNum finishBlock:(void(^)(NSInteger status))finishBlock;
+//注册
+-(void)registerPhone:(NSString *)phoneNum dynamicCode:(NSString *)dynamicCode password:(NSString *)pwd finishBlock:(void(^)(NSInteger status))finishBlock;
+//修改密码
+-(void)recoverPWDWithPhone:(NSString *)phoneNum dynamicCode:(NSString *)dynamicCode password:(NSString *)pwd finishBlock:(void(^)(NSInteger status))finishBlock;
+
 @end

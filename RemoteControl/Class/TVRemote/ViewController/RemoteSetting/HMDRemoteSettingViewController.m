@@ -8,13 +8,13 @@
 
 #import "HMDRemoteSettingViewController.h"
 #import "AppDelegate.h"
-#import <WXApi.h>
+
 @interface HMDRemoteSettingViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *sideKeyControlBtn;
 @property (weak, nonatomic) IBOutlet UIButton *shockBtn;
 @property (weak, nonatomic) IBOutlet UILabel *memorySizeLab;
 @property (weak, nonatomic) IBOutlet UIView *memoryView;
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+
 
 @end
 
@@ -22,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.needSetNav) {
+        [self setupFirstNavBar];
+    }
     [self setupUI];
     [self addNotification];
 }
@@ -35,6 +38,7 @@
 }
 #pragma mark - 初始化
 -(void)setupUI{
+    self.title = @"系统设置";
     BOOL openSideKey = [[NSUserDefaults standardUserDefaults] boolForKey:OPENSIDEKEY];
     self.sideKeyControlBtn.selected = openSideKey;
     BOOL openShock = [[NSUserDefaults standardUserDefaults] boolForKey:OPENSHOCK];
@@ -43,15 +47,9 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clearMemory:)];
     [self.memoryView addGestureRecognizer:tapGesture];
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState]){
-        self.loginBtn.selected = YES;
-    }else{
-        self.loginBtn.selected = NO;
-    }
-
 }
 -(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:HMDWechatLogin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:HMDLogin object:nil];
 }
 //内存
 -(NSString *)getMemorySize{
@@ -133,32 +131,8 @@
     [alertC addAction:actionClear];
     [self presentViewController:alertC animated:YES completion:nil];
 }
-//退出登录
-- (IBAction)signoutBtnClick:(UIButton *)sender {
-    if(sender.selected){
-        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"确认退出当前登录?" message:@"退出后部分功能受限制" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }];
-        UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatSignout object:nil];
-            self.loginBtn.selected = NO;
-        }];
-        [alertC addAction:actionCancel];
-        [alertC addAction:actionClear];
-        [self presentViewController:alertC animated:YES completion:nil];
-    }else{
-        SendAuthReq *req = [[SendAuthReq alloc]init];
-        req.scope = @"snsapi_userinfo" ;
-        req.state = @"wx_oauth2_authorization_state" ;
-        [WXApi sendReq:req];
-    }
 
-}
 
 #pragma mark - 其他
--(void)loginSuccess:(NSNotification *)info{
-     self.loginBtn.selected = YES;
-}
+
 @end

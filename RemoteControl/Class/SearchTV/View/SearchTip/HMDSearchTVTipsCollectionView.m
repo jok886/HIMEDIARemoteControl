@@ -10,7 +10,7 @@
 
 #import "HMDSearchTipCollectionViewCell.h"
 #import "HMDSearchHistoryCollectionViewCell.h"
-
+#import "HMDHotTipCollectionViewCell.h"
 
 #import "HMDSearchTipHeadView.h"
 #import "NSString+HMDExtend.h"
@@ -18,13 +18,15 @@
 <UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
-HMDSearchTipCollectionViewCellDelegate>
+HMDSearchTipCollectionViewCellDelegate,
+HMDSearchTipHeadViewDelegate>
 
 @end
 
 @implementation HMDSearchTVTipsCollectionView
 static NSString * const reuseIdentifierCell = @"HMDSearchTipCollectionViewCell";
 static NSString * const reuseIdentifierCell_History = @"HMDSearchHistoryCollectionViewCell";
+static NSString * const reuseIdentifierCell_Hot = @"HMDHotTipCollectionViewCell";
 static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
 
 -(void)awakeFromNib{
@@ -36,6 +38,8 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
     [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell];
     //历史记录
     [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchHistoryCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell_History];
+    //热门
+        [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDHotTipCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifierCell_Hot];
     //注册头尾视图
     [self registerNib:[UINib nibWithNibName:NSStringFromClass([HMDSearchTipHeadView class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead];
 }
@@ -94,16 +98,21 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
         [historyCell setHistoryText:tip keyWord:self.curKeyWord];
         return historyCell;
     }else{
-        HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
-        NSString *tip;
+
         if (indexPath.section == 0){
-            tip = self.recordArray[indexPath.row];
+            HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+            NSString *tip = self.recordArray[indexPath.row];
+            [cell setupCellWithTipSting:tip needCenter:YES deleteBtn:NO];
+
+            return cell;
         }else{
-            tip = self.hotArray[indexPath.row];
+            HMDHotTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell_Hot forIndexPath:indexPath];
+            NSString *tip = self.hotArray[indexPath.row];
+            [cell setHotTipWithName:tip level:indexPath.row+1];
+            return cell;
         }
-        cell.delegate = self;
-        [cell setupCellWithTipSting:tip needCenter:YES deleteBtn:NO];
-        return cell;
+
+        
     }
 
 }
@@ -130,6 +139,7 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         HMDSearchTipHeadView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHead forIndexPath:indexPath];
+        headerView.delegate = self;
         if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
             headerView.hidden = YES;
             return headerView;
@@ -147,12 +157,18 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
     }
 }
 
-#pragma mark - HMDSearchTipCollectionViewCellDelegate
+#pragma mark - HMDSearchTipCollectionViewCellDelegate/HMDSearchTipHeadViewDelegate
 -(void)searchTipCollectionViewCellDeleteAtIndexPath:(NSIndexPath *)indexPath{
 //    [self.recordArray removeObjectAtIndex:indexPath.row];
 //    [[NSUserDefaults standardUserDefaults] setObject:self.recordArray forKey:HMDSearchWordHistory];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     
+}
+-(void)searchTipHeadView:(HMDSearchTipHeadView *)searchTipHeadView clickBtnClick:(UIButton *)btn{
+    self.recordArray = nil;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:HMDSearchWordHistory];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self reloadData];
 }
 #pragma mark - 其他
 //-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

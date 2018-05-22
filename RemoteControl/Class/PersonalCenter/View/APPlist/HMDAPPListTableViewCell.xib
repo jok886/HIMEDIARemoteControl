@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,49 +19,100 @@
                 <rect key="frame" x="0.0" y="0.0" width="384" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QlO-TB-P2n">
-                        <rect key="frame" x="21" y="16" width="48" height="48"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmT-4T-dNg">
+                        <rect key="frame" x="8" y="0.0" width="368" height="78.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QlO-TB-P2n">
+                                <rect key="frame" x="10" y="14.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="5Gq-TK-Lxu"/>
+                                    <constraint firstAttribute="width" constant="50" id="E2k-lp-wOh"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="IbB-fE-NRb"/>
+                                    <constraint firstAttribute="height" constant="50" id="iqg-Va-nOf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.80000537633895874" green="0.79999023675918579" blue="0.80000060796737671" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yj-8M-baZ">
+                                <rect key="frame" x="70" y="30.5" width="168" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0U3-3s-v6j">
+                                <rect key="frame" x="308" y="24.5" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JD1-op-oT1"/>
+                                    <constraint firstAttribute="height" constant="30" id="v93-6E-Y7J"/>
+                                </constraints>
+                                <state key="normal" title="打开" backgroundImage="border_btn">
+                                    <color key="titleColor" red="0.36393660309999998" green="0.69185036420000001" blue="0.58038145299999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="click_frame"/>
+                                <connections>
+                                    <action selector="openBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d3t-SC-UGG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQy-um-g0o">
+                                <rect key="frame" x="248" y="24" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="oT7-PM-tb0"/>
+                                    <constraint firstAttribute="height" constant="30" id="wwQ-hs-Eea"/>
+                                </constraints>
+                                <state key="normal" title="卸载" backgroundImage="border_btn">
+                                    <color key="titleColor" red="0.40000283718109131" green="0.39999482035636902" blue="0.40000027418136597" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="click_frame"/>
+                                <connections>
+                                    <action selector="uninstallBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7IE-FW-mC5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="QlO-TB-P2n" secondAttribute="height" id="adh-JP-tiF"/>
+                            <constraint firstItem="8yj-8M-baZ" firstAttribute="leading" secondItem="QlO-TB-P2n" secondAttribute="trailing" constant="10" id="3qY-V6-Knv"/>
+                            <constraint firstItem="QlO-TB-P2n" firstAttribute="leading" secondItem="bmT-4T-dNg" secondAttribute="leading" constant="10" id="6t0-a3-tbe"/>
+                            <constraint firstItem="bQy-um-g0o" firstAttribute="leading" secondItem="8yj-8M-baZ" secondAttribute="trailing" constant="10" id="Dlt-1A-T58"/>
+                            <constraint firstItem="0U3-3s-v6j" firstAttribute="leading" secondItem="bQy-um-g0o" secondAttribute="trailing" constant="10" id="JuK-mr-vel"/>
+                            <constraint firstItem="QlO-TB-P2n" firstAttribute="centerY" secondItem="bmT-4T-dNg" secondAttribute="centerY" id="K9z-8E-1a8"/>
+                            <constraint firstAttribute="trailing" secondItem="0U3-3s-v6j" secondAttribute="trailing" constant="10" id="O6R-eC-4tN"/>
+                            <constraint firstItem="8yj-8M-baZ" firstAttribute="centerY" secondItem="QlO-TB-P2n" secondAttribute="centerY" id="VnE-g3-TxP"/>
+                            <constraint firstItem="0U3-3s-v6j" firstAttribute="centerY" secondItem="bmT-4T-dNg" secondAttribute="centerY" id="gcA-XL-w6U"/>
+                            <constraint firstItem="bQy-um-g0o" firstAttribute="centerY" secondItem="bmT-4T-dNg" secondAttribute="centerY" id="uYz-Xd-Uf9"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yj-8M-baZ">
-                        <rect key="frame" x="79" y="16" width="35.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0U3-3s-v6j">
-                        <rect key="frame" x="312" y="24" width="46" height="30"/>
-                        <state key="normal" title="Button"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAK-er-2Bm">
-                        <rect key="frame" x="79" y="47" width="35.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
-                    <constraint firstItem="QlO-TB-P2n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="2rj-Ge-iWb"/>
-                    <constraint firstItem="8yj-8M-baZ" firstAttribute="top" secondItem="QlO-TB-P2n" secondAttribute="top" id="4YT-Wj-Fz3"/>
-                    <constraint firstItem="cAK-er-2Bm" firstAttribute="leading" secondItem="8yj-8M-baZ" secondAttribute="leading" id="A4v-P4-eaF"/>
-                    <constraint firstItem="0U3-3s-v6j" firstAttribute="centerY" secondItem="QlO-TB-P2n" secondAttribute="centerY" id="AAt-Oh-1oD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="0U3-3s-v6j" secondAttribute="trailing" constant="10" id="Ci1-yC-g2c"/>
-                    <constraint firstItem="8yj-8M-baZ" firstAttribute="leading" secondItem="QlO-TB-P2n" secondAttribute="trailing" constant="10" id="O99-Xy-EGk"/>
-                    <constraint firstItem="QlO-TB-P2n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="XFE-eQ-lkl"/>
-                    <constraint firstItem="cAK-er-2Bm" firstAttribute="bottom" secondItem="QlO-TB-P2n" secondAttribute="bottom" id="cB6-ID-fRa"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="QlO-TB-P2n" secondAttribute="bottom" constant="5" id="dMZ-Vb-Pn2"/>
+                    <constraint firstItem="bmT-4T-dNg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4ij-Dy-aAo"/>
+                    <constraint firstItem="bmT-4T-dNg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="XWA-yW-cIN"/>
+                    <constraint firstAttribute="bottom" secondItem="bmT-4T-dNg" secondAttribute="bottom" constant="1" id="XaI-Hn-gq1"/>
+                    <constraint firstAttribute="trailing" secondItem="bmT-4T-dNg" secondAttribute="trailing" constant="8" id="Z7O-JM-znv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="actionBtn" destination="0U3-3s-v6j" id="Cq7-yq-RtC"/>
-                <outlet property="apkDescribeLab" destination="cAK-er-2Bm" id="NmS-Jx-YXX"/>
                 <outlet property="apkIconImageView" destination="QlO-TB-P2n" id="BSs-b5-WVw"/>
                 <outlet property="apkNameLab" destination="8yj-8M-baZ" id="4PS-TK-0hu"/>
+                <outlet property="uninstallBtn" destination="bQy-um-g0o" id="KF9-TA-Sou"/>
             </connections>
             <point key="canvasLocation" x="64" y="99.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="border_btn" width="10" height="12"/>
+        <image name="click_frame" width="15" height="17"/>
+    </resources>
 </document>

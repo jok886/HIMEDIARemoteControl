@@ -28,7 +28,9 @@ typedef enum {
 static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = HMDColor(204, 204, 204, 1);
+    self.title = @"我的应用";
+    [self setupFirstNavBar];
     [self getAPPlistData];
 }
 
@@ -58,7 +60,6 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
     [self.appListDao getInstallAppListFinishBlock:^(BOOL success, NSArray *appList) {
         if (success) {
             weakSelf.installAppList = [NSMutableArray arrayWithArray:appList];
-
             [weakSelf.appListTableView reloadData];
         }
     }];
@@ -119,29 +120,42 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
     return num;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 70;
 }
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, HMDScreenW-40, 30)];
+    headerLabel.backgroundColor = HMDColor(240, 240, 240, 1);
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:12];
     NSMutableArray *titleArray = [NSMutableArray array];
     if (self.installAppList.count >0) {
-        [titleArray addObject:@"已安装应用"];
+        NSString *title = [NSString stringWithFormat:@"   已安装应用(%lu)",(unsigned long)self.installAppList.count];
+        [titleArray addObject:title];
     }
     if (self.recommendAppList.count >0) {
-        [titleArray addObject:@"推荐应用"];
+        NSString *title = [NSString stringWithFormat:@"   推荐应用(%lu)",(unsigned long)self.recommendAppList.count];
+        [titleArray addObject:title];
     }
     if (titleArray.count == 2) {
         if (section == 0) {
-            return @"已安装应用";
+            NSString *title = [NSString stringWithFormat:@"   已安装应用(%lu)",(unsigned long)self.installAppList.count];
+            headerLabel.text = title;
         }
         if (section == 1) {
-            return @"推荐应用";
+            NSString *title = [NSString stringWithFormat:@"   推荐应用(%lu)",(unsigned long)self.recommendAppList.count];
+            headerLabel.text = title;
         }
     }
     if (titleArray.count == 1) {
-        return [titleArray firstObject];
+        headerLabel.text = [titleArray firstObject];
     }
-    return nil;
+    return headerLabel;
 }
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HMDAPPListTableViewCell *appListCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -177,43 +191,49 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
             break;
     }
     [appListCell setupCellWithAPKModel:apkModel];
-
+    appListCell.indexPath = indexPath;
+    HMDWeakSelf(self)
+    appListCell.actionBlock = ^(NSIndexPath *indexPath) {
+        HMDAPKModel *apkModel ;
+        switch (weakSelf.appListType) {
+            case HMDInstallAppListType:
+            {
+                apkModel = weakSelf.installAppList[indexPath.row];
+                [weakSelf openApkWithModel:apkModel];
+            }
+                break;
+            case HMDRecommendAppListType:
+            {
+                apkModel = weakSelf.recommendAppList[indexPath.row];
+                [weakSelf installApkWithModel:apkModel indexPath:indexPath];
+            }
+                break;
+            case HMDAllAppListType:
+            {
+                if (indexPath.section == 0) {
+                    apkModel = weakSelf.installAppList[indexPath.row];
+                    [weakSelf openApkWithModel:apkModel];
+                }
+                if (indexPath.section == 1) {
+                    apkModel = weakSelf.recommendAppList[indexPath.row];
+                    [weakSelf installApkWithModel:apkModel indexPath:indexPath];
+                    
+                }
+            }
+                break;
+            default:
+                break;
+        }
+    };
+    appListCell.uninstallBlock = ^(NSIndexPath *indexPath) {
+        HMDAPKModel *apkModel = weakSelf.installAppList[indexPath.row];
+        [weakSelf uninstallApkWithModel:apkModel];
+    };
     return appListCell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-     HMDAPKModel *apkModel ;
-    switch (self.appListType) {
-        case HMDInstallAppListType:
-        {
-            apkModel = self.installAppList[indexPath.row];
-            [self openApkWithModel:apkModel];
-        }
-            break;
-        case HMDRecommendAppListType:
-        {
-            apkModel = self.recommendAppList[indexPath.row];
-            [self installApkWithModel:apkModel indexPath:indexPath];
-        }
-            break;
-        case HMDAllAppListType:
-        {
-            if (indexPath.section == 0) {
-                apkModel = self.installAppList[indexPath.row];
-                [self openApkWithModel:apkModel];
-            }
-            if (indexPath.section == 1) {
-                apkModel = self.recommendAppList[indexPath.row];
-                [self installApkWithModel:apkModel indexPath:indexPath];
-                
-            }
-        }
-            break;
-        default:
-            break;
-    }
-
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - 其他
@@ -263,7 +283,28 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
     }
 
 }
+-(void)uninstallApkWithModel:(HMDAPKModel *)apkModel{
+    UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"请确定是否卸载此应用" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    UIAlertAction * actionClear = [UIAlertAction actionWithTitle:@"卸载" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        HMDWeakSelf(self)
+        [self.appListDao uninstallDLanAppWithPackage:apkModel.package FinishBlock:^(BOOL success) {
+            if (success) {
+                if ([weakSelf.installAppList containsObject:apkModel]) {
+                    [weakSelf.installAppList removeObject:apkModel];
+                    [weakSelf.appListTableView reloadData];
+                }
+            }
+        }];
+    }];
+    [alertC addAction:actionCancel];
+    [alertC addAction:actionClear];
+    [self presentViewController:alertC animated:YES completion:nil];
 
+}
 #pragma mark - 懒加载
 
 -(UITableView *)appListTableView{
@@ -272,6 +313,9 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
         appListTableView.delegate = self;
         appListTableView.dataSource = self;
         [appListTableView registerNib:[UINib nibWithNibName:@"HMDAPPListTableViewCell" bundle:[NSBundle mainBundle]]  forCellReuseIdentifier:reuseIdentifier];
+        appListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        appListTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+
         _appListTableView = appListTableView;
         [self.view addSubview:appListTableView];
     }

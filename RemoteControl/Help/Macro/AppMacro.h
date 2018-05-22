@@ -18,6 +18,8 @@
 #define HMDLoginState            @"HMDLoginState"
 //手机登录
 #define HMDLoginPhoneModel    @"HMDLoginPhoneModel"
+//手机登录
+#define HMDLoginPhoneNum    @"HMDLoginPhoneNum"
 //微信登录
 #define HMDLoginWXModel    @"HMDLoginWXModel"
 //登录RefreshToken

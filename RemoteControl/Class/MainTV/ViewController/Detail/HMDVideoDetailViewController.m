@@ -118,7 +118,8 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
         self.videoLocationLab.hidden = YES;
     }else{
         NSString *url = [NSString stringWithFormat:HMD_DLAN_VIDEO_GET_POSTERIMAGE,HMDCURLINKDEVICEIP];
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:self.videoModel.posterPicString,@"posterPicString", nil];
+        NSString *imageName = self.videoModel.fanartPicString.length>=1?self.videoModel.fanartPicString:self.videoModel.posterPicString;
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:imageName,@"posterPicString", nil];
         [self.videoShowImageView setDLANImageWithMethod:@"POST" URLStr:url parameters:parameters placeholderImage:nil];
         self.videoTitleLab.text = self.videoModel.name;
         self.videoActorLab.text = self.videoModel.t_actor;
@@ -183,12 +184,12 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return 0;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDEpisodeCollectionViewCell *videoShowCell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-//    videoShowCell.backgroundColor = HMDRandomColor;
+
     return videoShowCell;
 }
 
@@ -200,15 +201,21 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 #pragma mark - 点击
 
 - (IBAction)playCurVideo:(id)sender {
-    if (self.netPoster) {
-        [self.videoDao PostPlayNetPosterOrder:self.videoModel finishBlock:^(BOOL success) {
-            
-        }];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        if (self.netPoster) {
+            [self.videoDao PostPlayNetPosterOrder:self.videoModel finishBlock:^(BOOL success) {
+                
+            }];
+        }else{
+            [self.videoDao PostPlayDLanPosterOrder:self.videoModel finishBlock:^(BOOL success) {
+                
+            }];
+        }
     }else{
-        [self.videoDao PostPlayDLanPosterOrder:self.videoModel finishBlock:^(BOOL success) {
-            
-        }];
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
     }
+
 
 }
 - (IBAction)backBtnClick:(id)sender {

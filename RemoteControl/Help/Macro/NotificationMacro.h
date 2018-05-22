@@ -12,10 +12,10 @@
 //#define HMDLinkViewWillShow @"HMDLinkViewWillShow"
 ////链接界面隐藏
 //#define HMDLinkViewWillHide @"HMDLinkViewWillHide"
-//微信登录
-#define HMDWechatLogin @"HMDWechatLogin"
-//微信登出
-#define HMDWechatSignout @"HMDWechatSignout"
+//登录
+#define HMDLogin @"HMDLogin_WeChat_Phone"
+//登出
+#define HMDSignout @"HMDSignout_WeChat_Phone"
 //当前链接的设备IP
 #define HMDNewDeviceIP @"HMDNewDeviceIP"
 #endif /* NotificationMacro_h */

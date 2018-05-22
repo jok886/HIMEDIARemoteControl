@@ -12,6 +12,7 @@
 @property (nonatomic,strong) HMDVideoCMDModel *cmd;
 @property (nonatomic,strong) NSString *date;
 @property (nonatomic,strong) NSString *extra;
+@property (nonatomic,strong) NSString *extra2;
 @property (nonatomic,strong) NSString *time;
 @property (nonatomic,strong) NSString *vid;
 @property (nonatomic,strong) NSString *videoAction;

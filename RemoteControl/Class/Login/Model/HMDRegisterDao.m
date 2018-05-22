@@ -9,11 +9,13 @@
 #import "HMDRegisterDao.h"
 
 @implementation HMDRegisterDao
--(void)getDynamicCodeForRegister:(NSString *)phoneNum{
-    [self getDynamicCodeForRegister:phoneNum codeType:HMDDynamicCodeRegisteType];
+-(void)getDynamicCodeForRegister:(NSString *)phoneNum finishBlock:(void (^)(NSInteger))finishBlock{
+    [self getDynamicCodeForRegister:phoneNum codeType:HMDDynamicCodeRegisteType finishBlock:finishBlock];
 }
-
--(void)getDynamicCodeForRegister:(NSString *)phoneNum codeType:(HMDDynamicCodeType)type{
+-(void)getDynamicCodeForForgetPWD:(NSString *)phoneNum finishBlock:(void (^)(NSInteger))finishBlock{
+        [self getDynamicCodeForRegister:phoneNum codeType:HMDDynamicCodeForgetPWDType finishBlock:finishBlock];
+}
+-(void)getDynamicCodeForRegister:(NSString *)phoneNum codeType:(HMDDynamicCodeType)type finishBlock:(void (^)(NSInteger))finishBlock{
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:phoneNum forKey:@"phone"];
@@ -21,37 +23,83 @@
 
     NSString *encodeParameters = [self encryptParameters:parameters];
     NSString *url = HMD_HINAVI_DYNAMICCODE;
-    [session GET:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [session POST:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         //解密
         NSString *decodeResponseStr = [self decryptResponseObject:responseObject];
-        NSDictionary *hmdDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
-//        if ([[hmdDict allKeys]containsObject:@"hid"]) {
-//            NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionaryWithDictionary:wxInfoDict];
-//            [userInfoDict addEntriesFromDictionary:hmdDict];
-//            HMDUserModel *userModel = [HMDUserModel hmd_modelWithDictionary:userInfoDict];
-//            [[NSUserDefaults standardUserDefaults] setObject:userModel.hid forKey:WXCurHID];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//            if (finishBlock) {
-//                finishBlock(YES,userModel);
-//            }
-//            NSLog(@"success%s",__FUNCTION__);
-//        }else{
-//
-//            if (finishBlock) {
-//                finishBlock(NO,nil);
-//            }
-//            NSLog(@"过期失败failure%s",__FUNCTION__);
-//        }
-        
-        
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        if ([responseDict isKindOfClass:[NSDictionary class]] && [[responseDict allKeys]containsObject:@"status"]) {
+            if (finishBlock) {
+                NSString *status = [responseDict objectForKey:@"status"];
+                finishBlock([status integerValue]);
+            }
+        }
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        if (finishBlock) {
-//            finishBlock(NO,nil);
-//        }
+
         NSLog(@"failure%s",__FUNCTION__);
     }];
 }
+
+- (void)registerPhone:(NSString *)phoneNum dynamicCode:(NSString *)dynamicCode password:(NSString *)pwd finishBlock:(void (^)(NSInteger))finishBlock{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:phoneNum forKey:@"phone"];
+    [parameters setValue:pwd forKey:@"password"];
+    [parameters setValue:dynamicCode forKey:@"dynamic_code"];
+
+    NSString *encodeParameters = [self encryptParameters:parameters];
+    NSString *url = HMD_HINAVI_PHONE_REGISTER;
+    [session POST:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //解密
+        NSString *decodeResponseStr = [self decryptResponseObject:responseObject];
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        if ([responseDict isKindOfClass:[NSDictionary class]] && [[responseDict allKeys]containsObject:@"status"]) {
+            if (finishBlock) {
+                NSString *status = [responseDict objectForKey:@"status"];
+                finishBlock([status integerValue]);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"failure%s",__FUNCTION__);
+    }];
+}
+
+-(void)recoverPWDWithPhone:(NSString *)phoneNum dynamicCode:(NSString *)dynamicCode password:(NSString *)pwd finishBlock:(void (^)(NSInteger))finishBlock{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:phoneNum forKey:@"phone"];
+    [parameters setValue:pwd forKey:@"password"];
+    [parameters setValue:dynamicCode forKey:@"dynamic_code"];
+    
+    NSString *encodeParameters = [self encryptParameters:parameters];
+    NSString *url = HMD_HINAVI_PHONE_RECOVERPWD;
+    [session POST:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //解密
+        NSString *decodeResponseStr = [self decryptResponseObject:responseObject];
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        if ([responseDict isKindOfClass:[NSDictionary class]] && [[responseDict allKeys]containsObject:@"status"]) {
+            if (finishBlock) {
+                NSString *status = [responseDict objectForKey:@"status"];
+                finishBlock([status integerValue]);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"failure%s",__FUNCTION__);
+    }];
+}
+
+
 @end

@@ -9,5 +9,5 @@
 #import "HMDBaseViewController.h"
 
 @interface HMDRemoteSettingViewController : HMDBaseViewController
-
+@property (nonatomic,assign) BOOL needSetNav;
 @end

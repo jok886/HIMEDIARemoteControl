@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-/**君子协议*/
 @protocol HMDSearchTipCollectionViewCellDelegate <NSObject>
 -(void)searchTipCollectionViewCellDeleteAtIndexPath:(NSIndexPath *)indexPath;
 @end

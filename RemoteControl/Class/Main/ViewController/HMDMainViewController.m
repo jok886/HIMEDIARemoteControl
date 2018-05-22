@@ -18,7 +18,7 @@
 #import "HMDSearchDeviceViewController.h"
 #import "HMDTVRemoteViewController.h"
 #import "HMDMainVideoViewController.h"
-
+#import "HMDMusicViewController.h"
 #import "HMDTreasureChestViewController.h"
 
 #import "HMDDeviceLinkDao.h"
@@ -121,7 +121,7 @@ HMDDMRControlDelegate>
                 
             default:
             {
-                UIViewController *childVC = [[UIViewController alloc]init];
+                HMDMusicViewController *childVC = [[HMDMusicViewController alloc]init];
                 [childVCArray addObject:childVC];
             }
                 break;
@@ -156,10 +156,11 @@ HMDDMRControlDelegate>
 }
 
 -(void)autoDLanLink{
+    [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
     //wifi环境才进行自动连接
     if ([HMDDLANNetTool sharedInstance].isWIFIEnvironmental) {
         NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
-        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+        
         if (uuid.length >1) {
             self.autoLink = YES;
             //启动DMC去搜索设备
@@ -184,12 +185,11 @@ HMDDMRControlDelegate>
 -(void)addNotificationCenter{
     //登录通知
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatLogin:) name:HMDWechatLogin object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatLogin:) name:HMDLogin object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDSignout object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNewDeviceIP:) name:HMDNewDeviceIP object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wechatSignout:) name:HMDWechatSignout object:nil];
 }
 
 -(void)autoLogin{
@@ -201,20 +201,26 @@ HMDDMRControlDelegate>
         if (refreshToken){
             NSString *decryptRefreshToken = [EncryptionTools decryptAESWithHINAVI:refreshToken];
             if (![[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState] && decryptRefreshToken) {
-                HMDWeakSelf(self)
+//                HMDWeakSelf(self)
                 [self.loginDao getWechatInfoWithRefreshToken:decryptRefreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
                     if (success) {
-                        [weakSelf upUserInfoWithUserModel:userModel];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:userModel];;
                     }
                 }];
             }
         }
     }else if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
         //上次是手机登录的
-        NSDictionary *loginDict = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginRefreshToken];
-        NSString *userID = [loginDict objectForKey:@"userID"];
-        NSString *encryptKey = [loginDict objectForKey:@"key"];
-        NSString *key = [EncryptionTools decryptAESWithHINAVI:encryptKey];
+        NSString *refreshToken = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginRefreshToken];
+        NSString *key = [EncryptionTools decryptAESWithHINAVI:refreshToken];
+        NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginPhoneNum];
+        [self.loginDao loginWithPhoneNum:userID passWord:key finishBlock:^(BOOL success, HMDUserModel *userModel) {
+            if (success) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:userModel];
+            }else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:nil];
+            }
+        }];
     }
 
 
@@ -406,6 +412,7 @@ HMDDMRControlDelegate>
     myDelegate.userModel = userModel;
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HMDLoginState];
     [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
+    
 
 }
 #pragma mark - 懒加载

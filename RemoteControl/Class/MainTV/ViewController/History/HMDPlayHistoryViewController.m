@@ -13,7 +13,7 @@
 
 #import "HMDVideoDataDao.h"
 #import "NSString+HMDExtend.h"
-
+#import "HMDMainLoadingView.h"
 typedef enum : NSInteger{
     HMDHistoryListOnlyTodayType = (1<<0),
     HMDHistoryListOnlyBeforeType = (1<<1),
@@ -27,6 +27,7 @@ typedef enum : NSInteger{
 @property (nonatomic,strong) NSMutableArray *historyListBeforeArray;               //更早的历史数据
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
 @property (nonatomic,assign) HMDHistoryListType historyListType;
+@property (nonatomic,strong) HMDMainLoadingView *loadingView;
 @end
 
 @implementation HMDPlayHistoryViewController
@@ -37,6 +38,9 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
     self.title = @"历史";
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, 0, 1, HMDScreenH)];
     view.backgroundColor = HMDColorFromValue(0xCCCCCC);
+    self.loadingView = [[HMDMainLoadingView alloc] initWithFrame:self.view.bounds];
+    self.loadingView.backgroundColor = HMDColorFromValue(0xF0F0F0);
+    [self.view addSubview:self.loadingView];
     [self.view addSubview:view];
     [self setupFirstNavBar];
     [self getHistoryData];
@@ -53,8 +57,10 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
 #pragma mark - 初始化
 
 -(void)getHistoryData{
+    [self.loadingView startLoading];
     HMDWeakSelf(self)
     [self.videoDataDao getPlayHistoryFinishBlock:^(BOOL success, NSArray *modelArray) {
+        [weakSelf.loadingView endLoading];
         if (success) {
             weakSelf.historyListArray = [NSMutableArray arrayWithArray:modelArray];
             [weakSelf historyListDivideIntoGroups];

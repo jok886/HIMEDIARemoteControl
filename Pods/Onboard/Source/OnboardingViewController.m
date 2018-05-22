@@ -12,8 +12,8 @@
 @import Accelerate;
 
 static CGFloat const kPageControlHeight = 35;
-static CGFloat const kSkipButtonWidth = 100;
-static CGFloat const kSkipButtonHeight = 44;
+static CGFloat const kSkipButtonWidth = 40;
+static CGFloat const kSkipButtonHeight = 20;
 static CGFloat const kBackgroundMaskAlpha = 0.6;
 static CGFloat const kDefaultBlurRadius = 20;
 static CGFloat const kDefaultSaturationDeltaFactor = 1.8;
@@ -109,8 +109,9 @@ static NSString * const kSkipButtonText = @"Skip";
     self.skipButton = [UIButton new];
     [self.skipButton setTitle:kSkipButtonText forState:UIControlStateNormal];
     [self.skipButton addTarget:self action:@selector(handleSkipButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    self.skipButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
+    self.skipButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [self.skipButton setTitleColor:[UIColor colorWithRed:153 green:153 blue:153 alpha:1] forState:UIControlStateNormal];
+    self.skipButton.backgroundColor = [UIColor redColor];
     return self;
 }
 
@@ -145,10 +146,11 @@ static NSString * const kSkipButtonText = @"Skip";
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+    CGFloat y = [[UIApplication sharedApplication] statusBarFrame].size.height+15;
 
     self.pageVC.view.frame = self.view.frame;
     self.moviePlayerController.view.frame = self.view.frame;
-    self.skipButton.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - kSkipButtonWidth, CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kSkipButtonHeight, kSkipButtonWidth, kSkipButtonHeight);
+    self.skipButton.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - kSkipButtonWidth-15, y, kSkipButtonWidth, kSkipButtonHeight);
     self.pageControl.frame = CGRectMake(0, CGRectGetMaxY(self.view.frame) - self.underPageControlPadding - kPageControlHeight, self.view.frame.size.width, kPageControlHeight);
 }
 

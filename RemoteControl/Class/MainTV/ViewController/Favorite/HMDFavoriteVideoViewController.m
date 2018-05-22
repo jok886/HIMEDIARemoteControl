@@ -32,6 +32,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)dealloc{
+    [HMDLinkView sharedInstance].hidden = NO;
+}
 #pragma mark - 初始化
 -(void)setupUI{
     self.title = @"收藏";
@@ -64,15 +67,15 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HMDFavoriteVideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableView.restorationIdentifier];
-    HMDVideoHistoryModel *videoModel = self.favoriteVideoArray[indexPath.row];
+    HMDFavoriteVideoModel *videoModel = self.favoriteVideoArray[indexPath.row];
     [cell setupCellWithModel:videoModel];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    HMDVideoHistoryModel *videoModel = self.favoriteVideoArray[indexPath.row];
-    [self.videoDataDao playHistoryWithHistoryModel:videoModel FinishBlock:^(BOOL success) {
+    HMDFavoriteVideoModel *videoModel = self.favoriteVideoArray[indexPath.row];
+    [self.videoDataDao playCollectWithCollectModel:videoModel FinishBlock:^(BOOL success) {
         
     }];
 }

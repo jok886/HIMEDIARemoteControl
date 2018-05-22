@@ -131,6 +131,28 @@
     }];
 }
 
+-(void)uninstallDLanAppWithPackage:(NSString *)package FinishBlock:(HMDOpenAppFinishBlock)finishBlock{
+    
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSString *urlStr = [NSString stringWithFormat:HMD_DLAN_UNINSTALLAPK,HMDCURLINKDEVICEIP,package];
+
+    [session GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",responseStr);
+        if (finishBlock) {
+            finishBlock(YES);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO);
+        }
+        NSLog(@"failure%s",__FUNCTION__);
+    }];
+}
 -(void)installHINAVIAppWithAPKModel:(HMDAPKModel *)apkModel FinishBlock:(HMDOpenAppFinishBlock)finishBlock{
     [self startMonitoring];
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];

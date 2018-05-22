@@ -134,36 +134,60 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     }
 }
 -(void)setMainImageViewImageWithVideoModel:(HMDVideoModel *)VideoModel{
-    [self.mainImageView setImageWithURLStr:VideoModel.img_url_vertical placeholderImage:nil];
+    [self.mainImageView setImageWithURLStr:VideoModel.img_url_vertical placeholderImage:[UIImage imageNamed:@"video_banner_default_l"]];
 }
 #pragma mark - 点击
 //播放历史
 - (IBAction)historyBtnClick:(id)sender {
-    [HMDLinkView sharedInstance].hidden = YES;
-    HMDPlayHistoryViewController *playHistoryVC = [[HMDPlayHistoryViewController alloc] init];
-    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:playHistoryVC];
-    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        [HMDLinkView sharedInstance].hidden = YES;
+        HMDPlayHistoryViewController *playHistoryVC = [[HMDPlayHistoryViewController alloc] init];
+        HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:playHistoryVC];
+        [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
+
 }
 //分类
 - (IBAction)classificationBtnClick:(id)sender {
-    [HMDLinkView sharedInstance].hidden = YES;
-    HMDAllVideoViewController *allVideoVC = [[HMDAllVideoViewController alloc] init];
-    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:allVideoVC];
-    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        [HMDLinkView sharedInstance].hidden = YES;
+        HMDAllVideoViewController *allVideoVC = [[HMDAllVideoViewController alloc] init];
+        HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:allVideoVC];
+        [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
+
 }
 //收藏
 - (IBAction)favoriteBtnClick:(id)sender {
-    [HMDLinkView sharedInstance].hidden = YES;
-    HMDFavoriteVideoViewController *favoriteVideoViewController = [[HMDFavoriteVideoViewController alloc] init];
-    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:favoriteVideoViewController];
-    [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        [HMDLinkView sharedInstance].hidden = YES;
+        HMDFavoriteVideoViewController *favoriteVideoViewController = [[HMDFavoriteVideoViewController alloc] init];
+        HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:favoriteVideoViewController];
+        [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
+
 }
 
 //播放当前视频
 - (IBAction)playCurVideo:(id)sender {
-    if (self.curVideoModel) {
-        [self.videoDataDao PostPlayNetPosterOrder:self.curVideoModel finishBlock:nil];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        if (self.curVideoModel) {
+            [self.videoDataDao PostPlayNetPosterOrder:self.curVideoModel finishBlock:nil];
+        }
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
     }
+
 }
 
 #pragma mark - 懒加载

@@ -109,6 +109,28 @@
 		B2AC3F0620AD4E910038B5CE /* HMDFavoriteVideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F0420AD4E910038B5CE /* HMDFavoriteVideoTableViewCell.xib */; };
 		B2AC3F0A20AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F0820AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.m */; };
 		B2AC3F0B20AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F0920AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.xib */; };
+		B2AC3F0F20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F0D20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.m */; };
+		B2AC3F1020AE7DA40038B5CE /* HMDHotTipCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F0E20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.xib */; };
+		B2AC3F1320AEA93F0038B5CE /* HMDPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F1220AEA93F0038B5CE /* HMDPredicate.m */; };
+		B2AC3F1720AEB8610038B5CE /* HMDFavoriteVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F1620AEB8610038B5CE /* HMDFavoriteVideoModel.m */; };
+		B2AC3F1C20AEBD620038B5CE /* HMDUserInfoCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F1A20AEBD620038B5CE /* HMDUserInfoCenterViewController.m */; };
+		B2AC3F1F20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F1E20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard */; };
+		B2AC3F2420AED1FC0038B5CE /* HMDUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F2220AED1FC0038B5CE /* HMDUserInfoTableViewCell.m */; };
+		B2AC3F2520AED1FC0038B5CE /* HMDUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F2320AED1FC0038B5CE /* HMDUserInfoTableViewCell.xib */; };
+		B2AC3F2920B270750038B5CE /* HMDRecoveredPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F2720B270750038B5CE /* HMDRecoveredPWDViewController.m */; };
+		B2AC3F2A20B270750038B5CE /* HMDRecoveredPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F2820B270750038B5CE /* HMDRecoveredPWDViewController.xib */; };
+		B2AC3F2D20B29B370038B5CE /* HMDResetNickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F2C20B29B370038B5CE /* HMDResetNickNameViewController.m */; };
+		B2AC3F3120B2B2610038B5CE /* HMDImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F3020B2B2610038B5CE /* HMDImageCropperViewController.m */; };
+		B2AC3F3420B2C59E0038B5CE /* HMDUpUserInfoDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F3320B2C59E0038B5CE /* HMDUpUserInfoDao.m */; };
+		B2AC3F3820B3E34F0038B5CE /* HMDScreenshotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F3620B3E34F0038B5CE /* HMDScreenshotViewController.m */; };
+		B2AC3F3920B3E34F0038B5CE /* HMDScreenshotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F3720B3E34F0038B5CE /* HMDScreenshotViewController.xib */; };
+		B2AC3F3D20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F3B20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.m */; };
+		B2AC3F3E20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F3C20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.xib */; };
+		B2AC3F4620B3F5EA0038B5CE /* HMDMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F4420B3F5EA0038B5CE /* HMDMusicViewController.m */; };
+		B2AC3F4720B3F5EA0038B5CE /* HMDMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F4520B3F5EA0038B5CE /* HMDMusicViewController.xib */; };
+		B2AC3F4A20B3F9C50038B5CE /* HMDMusicListDao.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F4920B3F9C50038B5CE /* HMDMusicListDao.m */; };
+		B2AC3F4E20B4045C0038B5CE /* HMDMusicListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2AC3F4C20B4045C0038B5CE /* HMDMusicListTableViewCell.m */; };
+		B2AC3F4F20B4045C0038B5CE /* HMDMusicListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC3F4D20B4045C0038B5CE /* HMDMusicListTableViewCell.xib */; };
 		B2D73902208483A100B64E36 /* Platinum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73900208483A100B64E36 /* Platinum.framework */; };
 		B2D73903208483A100B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
 		B2D73904208483B600B64E36 /* Neptune.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73901208483A100B64E36 /* Neptune.framework */; };
@@ -373,6 +395,42 @@
 		B2AC3F0720AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDSearchHistoryCollectionViewCell.h; sourceTree = "<group>"; };
 		B2AC3F0820AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDSearchHistoryCollectionViewCell.m; sourceTree = "<group>"; };
 		B2AC3F0920AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDSearchHistoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2AC3F0C20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDHotTipCollectionViewCell.h; sourceTree = "<group>"; };
+		B2AC3F0D20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDHotTipCollectionViewCell.m; sourceTree = "<group>"; };
+		B2AC3F0E20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDHotTipCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2AC3F1120AEA93F0038B5CE /* HMDPredicate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDPredicate.h; sourceTree = "<group>"; };
+		B2AC3F1220AEA93F0038B5CE /* HMDPredicate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDPredicate.m; sourceTree = "<group>"; };
+		B2AC3F1520AEB8610038B5CE /* HMDFavoriteVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDFavoriteVideoModel.h; sourceTree = "<group>"; };
+		B2AC3F1620AEB8610038B5CE /* HMDFavoriteVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDFavoriteVideoModel.m; sourceTree = "<group>"; };
+		B2AC3F1920AEBD620038B5CE /* HMDUserInfoCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDUserInfoCenterViewController.h; sourceTree = "<group>"; };
+		B2AC3F1A20AEBD620038B5CE /* HMDUserInfoCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDUserInfoCenterViewController.m; sourceTree = "<group>"; };
+		B2AC3F1E20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HMDUserInfoCenterViewController.storyboard; sourceTree = "<group>"; };
+		B2AC3F2120AED1FC0038B5CE /* HMDUserInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		B2AC3F2220AED1FC0038B5CE /* HMDUserInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		B2AC3F2320AED1FC0038B5CE /* HMDUserInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDUserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		B2AC3F2620B270750038B5CE /* HMDRecoveredPWDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDRecoveredPWDViewController.h; sourceTree = "<group>"; };
+		B2AC3F2720B270750038B5CE /* HMDRecoveredPWDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDRecoveredPWDViewController.m; sourceTree = "<group>"; };
+		B2AC3F2820B270750038B5CE /* HMDRecoveredPWDViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDRecoveredPWDViewController.xib; sourceTree = "<group>"; };
+		B2AC3F2B20B29B370038B5CE /* HMDResetNickNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDResetNickNameViewController.h; sourceTree = "<group>"; };
+		B2AC3F2C20B29B370038B5CE /* HMDResetNickNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDResetNickNameViewController.m; sourceTree = "<group>"; };
+		B2AC3F2F20B2B2610038B5CE /* HMDImageCropperViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDImageCropperViewController.h; sourceTree = "<group>"; };
+		B2AC3F3020B2B2610038B5CE /* HMDImageCropperViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDImageCropperViewController.m; sourceTree = "<group>"; };
+		B2AC3F3220B2C59E0038B5CE /* HMDUpUserInfoDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDUpUserInfoDao.h; sourceTree = "<group>"; };
+		B2AC3F3320B2C59E0038B5CE /* HMDUpUserInfoDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDUpUserInfoDao.m; sourceTree = "<group>"; };
+		B2AC3F3520B3E34F0038B5CE /* HMDScreenshotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScreenshotViewController.h; sourceTree = "<group>"; };
+		B2AC3F3620B3E34F0038B5CE /* HMDScreenshotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScreenshotViewController.m; sourceTree = "<group>"; };
+		B2AC3F3720B3E34F0038B5CE /* HMDScreenshotViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDScreenshotViewController.xib; sourceTree = "<group>"; };
+		B2AC3F3A20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDScreenshotCollectionViewCell.h; sourceTree = "<group>"; };
+		B2AC3F3B20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDScreenshotCollectionViewCell.m; sourceTree = "<group>"; };
+		B2AC3F3C20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
+		B2AC3F4320B3F5EA0038B5CE /* HMDMusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMusicViewController.h; sourceTree = "<group>"; };
+		B2AC3F4420B3F5EA0038B5CE /* HMDMusicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMusicViewController.m; sourceTree = "<group>"; };
+		B2AC3F4520B3F5EA0038B5CE /* HMDMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMusicViewController.xib; sourceTree = "<group>"; };
+		B2AC3F4820B3F9C50038B5CE /* HMDMusicListDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMusicListDao.h; sourceTree = "<group>"; };
+		B2AC3F4920B3F9C50038B5CE /* HMDMusicListDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMusicListDao.m; sourceTree = "<group>"; };
+		B2AC3F4B20B4045C0038B5CE /* HMDMusicListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDMusicListTableViewCell.h; sourceTree = "<group>"; };
+		B2AC3F4C20B4045C0038B5CE /* HMDMusicListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDMusicListTableViewCell.m; sourceTree = "<group>"; };
+		B2AC3F4D20B4045C0038B5CE /* HMDMusicListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDMusicListTableViewCell.xib; sourceTree = "<group>"; };
 		B2D73900208483A100B64E36 /* Platinum.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Platinum.framework; sourceTree = "<group>"; };
 		B2D73901208483A100B64E36 /* Neptune.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Neptune.framework; sourceTree = "<group>"; };
 		B2D73ABF20848FBE00B64E36 /* HMDDHRCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDDHRCenter.h; sourceTree = "<group>"; };
@@ -572,6 +630,7 @@
 		3EDAD095206E1E5C007406FB /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				B2AC3F3F20B3F5C80038B5CE /* Music */,
 				B269CA5A20A5634100948C52 /* Login */,
 				B21BFA862091A04E00ACFF4B /* TreasureChest */,
 				B21BFA612091A04700ACFF4B /* Main */,
@@ -665,6 +724,7 @@
 				B21BFA4A2091A04700ACFF4B /* HMDVideoDataDao.m */,
 				B21BFA482091A04700ACFF4B /* HMDVideoModel.h */,
 				B21BFA4C2091A04700ACFF4B /* HMDVideoModel.m */,
+				B2AC3F1420AEB8330038B5CE /* Favorite */,
 				B21BFACA2092EC3600ACFF4B /* Classify */,
 				B21BFAC52092EC3600ACFF4B /* History */,
 			);
@@ -771,6 +831,9 @@
 				B21BFA8B2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.m */,
 				B21BFA8C2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.h */,
 				B21BFA8D2091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib */,
+				B2AC3F3A20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.h */,
+				B2AC3F3B20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.m */,
+				B2AC3F3C20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -780,6 +843,9 @@
 			children = (
 				B21BFA902091A04E00ACFF4B /* HMDTreasureChestViewController.h */,
 				B21BFA8F2091A04E00ACFF4B /* HMDTreasureChestViewController.m */,
+				B2AC3F3520B3E34F0038B5CE /* HMDScreenshotViewController.h */,
+				B2AC3F3620B3E34F0038B5CE /* HMDScreenshotViewController.m */,
+				B2AC3F3720B3E34F0038B5CE /* HMDScreenshotViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -941,6 +1007,8 @@
 				B24C6A99208DDF8000B5227B /* HMDUserModel.m */,
 				B24C6A9A208DDF8000B5227B /* HMDLoginDao.h */,
 				B24C6A9C208DDF8000B5227B /* HMDLoginDao.m */,
+				B2AC3F3220B2C59E0038B5CE /* HMDUpUserInfoDao.h */,
+				B2AC3F3320B2C59E0038B5CE /* HMDUpUserInfoDao.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -991,6 +1059,9 @@
 				B269CA6320A57B2300948C52 /* HMDRegisterViewController.h */,
 				B269CA6420A57B2300948C52 /* HMDRegisterViewController.m */,
 				B269CA6520A57B2300948C52 /* HMDRegisterViewController.xib */,
+				B2AC3F2620B270750038B5CE /* HMDRecoveredPWDViewController.h */,
+				B2AC3F2720B270750038B5CE /* HMDRecoveredPWDViewController.m */,
+				B2AC3F2820B270750038B5CE /* HMDRecoveredPWDViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1146,6 +1217,85 @@
 			path = Favorite;
 			sourceTree = "<group>";
 		};
+		B2AC3F1420AEB8330038B5CE /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F1520AEB8610038B5CE /* HMDFavoriteVideoModel.h */,
+				B2AC3F1620AEB8610038B5CE /* HMDFavoriteVideoModel.m */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		B2AC3F1820AEBD400038B5CE /* UserInfoCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F1920AEBD620038B5CE /* HMDUserInfoCenterViewController.h */,
+				B2AC3F1A20AEBD620038B5CE /* HMDUserInfoCenterViewController.m */,
+				B2AC3F2B20B29B370038B5CE /* HMDResetNickNameViewController.h */,
+				B2AC3F2C20B29B370038B5CE /* HMDResetNickNameViewController.m */,
+				B2AC3F1E20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard */,
+			);
+			path = UserInfoCenter;
+			sourceTree = "<group>";
+		};
+		B2AC3F2020AED1DE0038B5CE /* UserInfoCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F2120AED1FC0038B5CE /* HMDUserInfoTableViewCell.h */,
+				B2AC3F2220AED1FC0038B5CE /* HMDUserInfoTableViewCell.m */,
+				B2AC3F2320AED1FC0038B5CE /* HMDUserInfoTableViewCell.xib */,
+			);
+			path = UserInfoCenter;
+			sourceTree = "<group>";
+		};
+		B2AC3F2E20B2B2470038B5CE /* ImageCropperViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F2F20B2B2610038B5CE /* HMDImageCropperViewController.h */,
+				B2AC3F3020B2B2610038B5CE /* HMDImageCropperViewController.m */,
+			);
+			path = ImageCropperViewController;
+			sourceTree = "<group>";
+		};
+		B2AC3F3F20B3F5C80038B5CE /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F4020B3F5C80038B5CE /* Model */,
+				B2AC3F4120B3F5C80038B5CE /* View */,
+				B2AC3F4220B3F5C80038B5CE /* ViewController */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		B2AC3F4020B3F5C80038B5CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F4820B3F9C50038B5CE /* HMDMusicListDao.h */,
+				B2AC3F4920B3F9C50038B5CE /* HMDMusicListDao.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2AC3F4120B3F5C80038B5CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F4B20B4045C0038B5CE /* HMDMusicListTableViewCell.h */,
+				B2AC3F4C20B4045C0038B5CE /* HMDMusicListTableViewCell.m */,
+				B2AC3F4D20B4045C0038B5CE /* HMDMusicListTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2AC3F4220B3F5C80038B5CE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC3F4320B3F5EA0038B5CE /* HMDMusicViewController.h */,
+				B2AC3F4420B3F5EA0038B5CE /* HMDMusicViewController.m */,
+				B2AC3F4520B3F5EA0038B5CE /* HMDMusicViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B2D73ABE20848DA700B64E36 /* DMR */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,6 +1443,9 @@
 				B2AC3F0720AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.h */,
 				B2AC3F0820AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.m */,
 				B2AC3F0920AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.xib */,
+				B2AC3F0C20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.h */,
+				B2AC3F0D20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.m */,
+				B2AC3F0E20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.xib */,
 				B2D73B7C2086F1D400B64E36 /* HMDSearchTipHeadView.h */,
 				B2D73B792086F1D400B64E36 /* HMDSearchTipHeadView.m */,
 				B2D73B772086F1D400B64E36 /* HMDSearchTipHeadView.xib */,
@@ -1407,6 +1560,8 @@
 			children = (
 				B2A2DE9920A13AE400615595 /* BaseModel */,
 				B2A2DEA020A13AE400615595 /* TipNotification */,
+				B2AC3F1120AEA93F0038B5CE /* HMDPredicate.h */,
+				B2AC3F1220AEA93F0038B5CE /* HMDPredicate.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1423,6 +1578,7 @@
 		B2F6F9262071D7610037E746 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B2AC3F2E20B2B2470038B5CE /* ImageCropperViewController */,
 				B2F6F942207207870037E746 /* BaseViewController */,
 				B2F6F93F207207870037E746 /* NavigationController */,
 			);
@@ -1479,6 +1635,7 @@
 		B2F6F94A207228EB0037E746 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B2AC3F2020AED1DE0038B5CE /* UserInfoCenter */,
 				B269CA7A20A9625D00948C52 /* CenterBtn */,
 				B24C6A8F208DCDCB00B5227B /* APPlist */,
 			);
@@ -1488,6 +1645,7 @@
 		B2F6F94B207228EB0037E746 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B2AC3F1820AEBD400038B5CE /* UserInfoCenter */,
 				B24C6A8B208DCC8E00B5227B /* APPlist */,
 				B2D73B1E2086EF4E00B64E36 /* PersonCenter */,
 				B2D73B222086EF4E00B64E36 /* QRCodeScan */,
@@ -1609,20 +1767,26 @@
 			files = (
 				B2D73B7D2086F1D400B64E36 /* HMDSearchTipCollectionViewCell.xib in Resources */,
 				B2D73AD72084A80400B64E36 /* HPCastLink.bundle in Resources */,
+				B2AC3F3920B3E34F0038B5CE /* HMDScreenshotViewController.xib in Resources */,
 				B21BFAE62092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */,
 				B2D73B7E2086F1D400B64E36 /* HMDSearchTipHeadView.xib in Resources */,
 				B2D73B6B2086F09400B64E36 /* HMDSearchHeadView.xib in Resources */,
+				B2AC3F1F20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard in Resources */,
 				3EDAD0AC206E2142007406FB /* HMD_RC_introductory_page_1@2x.png in Resources */,
 				B21BFAF62092ED2200ACFF4B /* HMDVideoDetailViewController.xib in Resources */,
 				B2D73B482086F00400B64E36 /* HMDDeviceListTableViewCell.xib in Resources */,
+				B2AC3F4F20B4045C0038B5CE /* HMDMusicListTableViewCell.xib in Resources */,
+				B2AC3F2A20B270750038B5CE /* HMDRecoveredPWDViewController.xib in Resources */,
 				B2D73B582086F05600B64E36 /* HMDSearchTVViewController.xib in Resources */,
 				3EDAD0A7206E2142007406FB /* HMD_RC_introductory_page_4@3x.png in Resources */,
 				3E03EEEE206E114D004DBB36 /* LaunchScreen.storyboard in Resources */,
 				3EDAD0AA206E2142007406FB /* HMD_RC_introductory_page_3@2x.png in Resources */,
 				3EDAD0A6206E2142007406FB /* HMD_RC_introductory_page_4@2x.png in Resources */,
 				B21BFAE32092ECDA00ACFF4B /* HMDVideoHistoryTableViewCell.xib in Resources */,
+				B2AC3F1020AE7DA40038B5CE /* HMDHotTipCollectionViewCell.xib in Resources */,
 				B269CA8520AADFD100948C52 /* HMDNullPageView.xib in Resources */,
 				3E03EEEB206E114D004DBB36 /* Assets.xcassets in Resources */,
+				B2AC3F4720B3F5EA0038B5CE /* HMDMusicViewController.xib in Resources */,
 				B21BFA172090730100ACFF4B /* HMDSearchTVResultCell.xib in Resources */,
 				B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */,
 				B269CA6720A57B2300948C52 /* HMDRegisterViewController.xib in Resources */,
@@ -1637,8 +1801,10 @@
 				B21BFA842091A04700ACFF4B /* HMDMainViewController.xib in Resources */,
 				B269CA6220A5635800948C52 /* HMDLoginView.xib in Resources */,
 				3EDAD0A9206E2142007406FB /* HMD_RC_introductory_page_2@3x.png in Resources */,
+				B2AC3F2520AED1FC0038B5CE /* HMDUserInfoTableViewCell.xib in Resources */,
 				B2D73B4E2086F00E00B64E36 /* HMDSearchDeviceViewController.xib in Resources */,
 				B2AC3F0620AD4E910038B5CE /* HMDFavoriteVideoTableViewCell.xib in Resources */,
+				B2AC3F3E20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.xib in Resources */,
 				B21BFAF82092ED2200ACFF4B /* HMDAllVideoViewController.xib in Resources */,
 				B2D73B342086EFA800B64E36 /* HMDTVRemoteViewController.xib in Resources */,
 				B2AC3F0120AD4E5E0038B5CE /* HMDFavoriteVideoViewController.xib in Resources */,
@@ -1758,12 +1924,16 @@
 				B21BFA922091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.m in Sources */,
 				B2D73B292086EF4E00B64E36 /* HMDQRCodeScanViewController.m in Sources */,
 				B2D73B3F2086EFF500B64E36 /* HMDSearchDeviceDao.m in Sources */,
+				B2AC3F2420AED1FC0038B5CE /* HMDUserInfoTableViewCell.m in Sources */,
 				B2A2DE9820A13A8C00615595 /* HMDCoverView.m in Sources */,
+				B2AC3F1720AEB8610038B5CE /* HMDFavoriteVideoModel.m in Sources */,
 				B21BFAE42092ECDA00ACFF4B /* HMDHistoryHeadView.m in Sources */,
 				B269CA8320AADFBE00948C52 /* HMDNullPageView.m in Sources */,
+				B2AC3F1C20AEBD620038B5CE /* HMDUserInfoCenterViewController.m in Sources */,
 				B269CA6020A5635100948C52 /* HMDLoginView.m in Sources */,
 				B2A2DEA620A13B0900615595 /* HMDTipNotificationManager.m in Sources */,
 				B2D73B492086F00400B64E36 /* HMDDeviceListTableViewCell.m in Sources */,
+				B2AC3F1320AEA93F0038B5CE /* HMDPredicate.m in Sources */,
 				B269CA7D20A9627900948C52 /* HMDDoubleTextBtn.m in Sources */,
 				B21BFA812091A04700ACFF4B /* HMDLinkView.m in Sources */,
 				B2A2DE9620A13A8C00615595 /* HMDBaseView.m in Sources */,
@@ -1772,13 +1942,16 @@
 				B24C6AA8208DDFAA00B5227B /* HMDAPKModel.m in Sources */,
 				B2A2DEA920A16D8500615595 /* HMDProgressHub.m in Sources */,
 				B2D73B402086EFF500B64E36 /* HMDDeviceModel.m in Sources */,
+				B2AC3F4A20B3F9C50038B5CE /* HMDMusicListDao.m in Sources */,
 				B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */,
+				B2AC3F2920B270750038B5CE /* HMDRecoveredPWDViewController.m in Sources */,
 				B21BFA7A2091A04700ACFF4B /* HMDLineFlowLayout.m in Sources */,
 				B2D73B9E20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m in Sources */,
 				B21BFA852091A04700ACFF4B /* HMDMainViewController.m in Sources */,
 				B2A2DEA220A13AE400615595 /* HMDBaseModel.m in Sources */,
 				3EDAD09A206E1E5C007406FB /* main.m in Sources */,
 				B21BFAE72092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.m in Sources */,
+				B2AC3F4620B3F5EA0038B5CE /* HMDMusicViewController.m in Sources */,
 				B2D73B7F2086F1D400B64E36 /* HMDSearchTVTipsCollectionView.m in Sources */,
 				B21BFAF72092ED2200ACFF4B /* HMDPlayHistoryViewController.m in Sources */,
 				B269CA8020AA7F6C00948C52 /* UIImageView+HMDAnimation.m in Sources */,
@@ -1787,9 +1960,11 @@
 				B2D73B532086F02900B64E36 /* HMDSearchTVDao.m in Sources */,
 				B24C6AA1208DDF8100B5227B /* HMDLoginDao.m in Sources */,
 				B2D73B812086F1D400B64E36 /* HMDSearchTipCollectionViewCell.m in Sources */,
+				B2AC3F2D20B29B370038B5CE /* HMDResetNickNameViewController.m in Sources */,
 				B21BFAFF2092F21500ACFF4B /* HMDTVFilterCollectionView.m in Sources */,
 				B269CA6D20A92E4C00948C52 /* CALayer+HMDXibAttributes.m in Sources */,
 				B24C6AA0208DDF8100B5227B /* HMDUserModel.m in Sources */,
+				B2AC3F3820B3E34F0038B5CE /* HMDScreenshotViewController.m in Sources */,
 				B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */,
 				B21BFACF2092EC3600ACFF4B /* HMDTVClassifyModel.m in Sources */,
 				B2D73B852086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m in Sources */,
@@ -1798,6 +1973,7 @@
 				B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
 				B2D73ACE208491F600B64E36 /* HMDDeviceInfoModel.m in Sources */,
+				B2AC3F0F20AE7DA40038B5CE /* HMDHotTipCollectionViewCell.m in Sources */,
 				B21BFA832091A04700ACFF4B /* HMDScrollContentView.m in Sources */,
 				B2D73B352086EFA800B64E36 /* HMDTVRemoteViewController.m in Sources */,
 				B21BFAF52092ED2200ACFF4B /* HMDVideoDetailViewController.m in Sources */,
@@ -1809,8 +1985,10 @@
 				B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */,
 				B21BFAE12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m in Sources */,
 				B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */,
+				B2AC3F3420B2C59E0038B5CE /* HMDUpUserInfoDao.m in Sources */,
 				B2AC3F0520AD4E910038B5CE /* HMDFavoriteVideoTableViewCell.m in Sources */,
 				B269CA8820ABF52100948C52 /* HMDMainLoadingView.m in Sources */,
+				B2AC3F4E20B4045C0038B5CE /* HMDMusicListTableViewCell.m in Sources */,
 				B24C6A93208DD08600B5227B /* HMDAPPListTableViewCell.m in Sources */,
 				B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */,
 				B29E8F58207A122900F5E35C /* UIView+Additions.m in Sources */,
@@ -1826,6 +2004,7 @@
 				B2D73B272086EF4E00B64E36 /* HMDPersonCenterViewController.m in Sources */,
 				B21BFA7F2091A04700ACFF4B /* HMDDeviceLinkDao.m in Sources */,
 				B2D73AC42084908A00B64E36 /* HMDDMRControl.mm in Sources */,
+				B2AC3F3120B2B2610038B5CE /* HMDImageCropperViewController.m in Sources */,
 				B21BFA802091A04700ACFF4B /* HMDTitleBaseLine.m in Sources */,
 				B21BFA942091A04E00ACFF4B /* HMDTreasureChestViewController.m in Sources */,
 				B269CA6620A57B2300948C52 /* HMDRegisterViewController.m in Sources */,
@@ -1842,6 +2021,7 @@
 				B269CA6A20A598CB00948C52 /* HMDRegisterDao.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 				B21BFA722091A04700ACFF4B /* HMDVideoDataDao.m in Sources */,
+				B2AC3F3D20B3E78E0038B5CE /* HMDScreenshotCollectionViewCell.m in Sources */,
 				B21BFA4520917D8600ACFF4B /* NSString+HMDExtend.m in Sources */,
 				B2A2DEA320A13AE400615595 /* HMDBaseDao.m in Sources */,
 				B269CA8B20AC135600948C52 /* HMDSroceStarView.m in Sources */,

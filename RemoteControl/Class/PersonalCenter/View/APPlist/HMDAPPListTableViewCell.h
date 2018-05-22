@@ -13,8 +13,11 @@ typedef enum {
     HMDAPKActionInstall = 1,            //安装
 } HMDAPKActionType; //apk的类型
 
-//typedef void(^HMDAPPListTableViewCellActionBlock)(NSString *package,HMDAPKStyle apkStyle);
+typedef void(^HMDAPPListTableViewCellActionBlock)(NSIndexPath *indexPath);
 @interface HMDAPPListTableViewCell : UITableViewCell
-//@property (nonatomic,copy) HMDAPPListTableViewCellActionBlock actionBlock;
+@property (nonatomic,copy) HMDAPPListTableViewCellActionBlock actionBlock;
+@property (nonatomic,copy) HMDAPPListTableViewCellActionBlock uninstallBlock;
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
 -(void)setupCellWithAPKModel:(HMDAPKModel *)model;
 @end

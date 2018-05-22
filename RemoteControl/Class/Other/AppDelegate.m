@@ -70,14 +70,14 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
             HMDWeakSelf(self)
             [self.loginDao getWechatInfoWithCode:code finishBlock:^(BOOL success, HMDUserModel *userModel) {
                 if (success) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:userModel];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:userModel];
                     weakSelf.userModel = userModel;
                 }else{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:nil];
                 }
             }];
         }else{
-            [[NSNotificationCenter defaultCenter] postNotificationName:HMDWechatLogin object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:nil];
             NSLog(@"登录失败");
         }
     }

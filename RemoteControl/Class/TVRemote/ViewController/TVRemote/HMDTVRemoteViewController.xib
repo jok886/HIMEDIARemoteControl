@@ -111,18 +111,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-Ve-MoW">
                     <rect key="frame" x="72" y="138" width="230" height="230"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-TC-815">
-                            <rect key="frame" x="0.0" y="0.0" width="230" height="230"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="230" id="Bit-el-ix6"/>
-                                <constraint firstAttribute="height" constant="230" id="KCG-vn-Bx1"/>
-                            </constraints>
-                        </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remote_wheel" translatesAutoresizingMaskIntoConstraints="NO" id="oOS-Z2-rM9">
                             <rect key="frame" x="0.0" y="0.0" width="230" height="230"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="230" id="boo-Uy-NzX"/>
                                 <constraint firstAttribute="height" constant="230" id="wba-7n-Trd"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lin-TC-815">
+                            <rect key="frame" x="0.0" y="0.0" width="230" height="230"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="230" id="Bit-el-ix6"/>
+                                <constraint firstAttribute="height" constant="230" id="KCG-vn-Bx1"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMA-3X-Pai">
@@ -178,7 +178,7 @@
                                 <action selector="keyBoardTouchUP:" destination="-1" eventType="touchUpInside" id="rxn-4H-7Jj"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-sL-pVA">
+                        <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9Y-sL-pVA">
                             <rect key="frame" x="70" y="70" width="90" height="90"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -186,7 +186,8 @@
                                 <constraint firstAttribute="width" constant="90" id="dob-gQ-Pgl"/>
                             </constraints>
                             <connections>
-                                <action selector="TVOKBtnClick:" destination="-1" eventType="touchUpInside" id="4qc-fu-JCi"/>
+                                <action selector="keyBoardTouchDown:" destination="-1" eventType="touchDown" id="BeY-PD-jMS"/>
+                                <action selector="keyBoardTouchUP:" destination="-1" eventType="touchUpInside" id="ScW-cs-8EQ"/>
                             </connections>
                         </button>
                     </subviews>

@@ -22,4 +22,7 @@
 //后台
 @property (nonatomic,strong) NSString *hid;                 //后台的ID
 
+
+@property (nonatomic,strong) NSString *head_portrait_url;   //手机登录的头像
+@property (nonatomic,strong) NSString *status;              //登录状态
 @end

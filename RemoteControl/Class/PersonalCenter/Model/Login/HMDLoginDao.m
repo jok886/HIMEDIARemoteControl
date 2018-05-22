@@ -10,7 +10,7 @@
 #import "HMDUserModel.h"
 #import "EncryptionTools.h"
 @implementation HMDLoginDao
--(void)getWechatInfoWithCode:(NSString *)code finishBlock:(HMDWXLoginFinishBlock)finishBlock{
+-(void)getWechatInfoWithCode:(NSString *)code finishBlock:(HMDLoginFinishBlock)finishBlock{
     HMDWeakSelf(self)
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *oauth2URL = HMD_WINXIN_OAUTH2;
@@ -52,7 +52,7 @@
         NSLog(@"failure%s",__FUNCTION__);
     }];
 }
--(void)getWechatInfoWithRefreshToken:(NSString *)refresh_token finishBlock:(HMDWXLoginFinishBlock)finishBlock;{
+-(void)getWechatInfoWithRefreshToken:(NSString *)refresh_token finishBlock:(HMDLoginFinishBlock)finishBlock;{
     HMDWeakSelf(self)
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *refreshTokenURL = HMD_WINXIN_REFRESH_TOKEN;
@@ -93,7 +93,7 @@
         NSLog(@"failure%s",__FUNCTION__);
     }];
 }
--(void)getUserInfoWithToken:(NSString *)token openID:(NSString *)openID finishBlock:(HMDWXLoginFinishBlock)finishBlock{
+-(void)getUserInfoWithToken:(NSString *)token openID:(NSString *)openID finishBlock:(HMDLoginFinishBlock)finishBlock{
     HMDWeakSelf(self)
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *userInfoURL = HMD_WINXIN_USERINFO;
@@ -129,7 +129,7 @@
     }];
 }
 
--(void)getHIMEDIALoginInfoWithWXInfo:(NSDictionary *)wxInfoDict finishBlock:(HMDWXLoginFinishBlock)finishBlock{
+-(void)getHIMEDIALoginInfoWithWXInfo:(NSDictionary *)wxInfoDict finishBlock:(HMDLoginFinishBlock)finishBlock{
     
     AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
     NSString *openid = [wxInfoDict objectForKey:@"openid"];
@@ -171,6 +171,54 @@
         NSLog(@"failure%s",__FUNCTION__);
     }];
 }
+
+
+-(void)loginWithPhoneNum:(NSString *)phone passWord:(NSString *)pwd finishBlock:(HMDLoginFinishBlock)finishBlock{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:phone forKey:@"phone"];
+    [parameters setValue:pwd forKey:@"password"];
+
+    NSString *encodeParameters = [self encryptParameters:parameters];
+    NSString *url = HMD_HINAVI_PHONE_LOGIN;
+    [session POST:url parameters:encodeParameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //解密
+        NSString *decodeResponseStr = [self decryptResponseObject:responseObject];
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:[decodeResponseStr dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+        if ([responseDict isKindOfClass:[NSDictionary class]] && [[responseDict allKeys]containsObject:@"status"]) {
+            NSString *status = [responseDict objectForKey:@"status"];
+             HMDUserModel *userModel = [HMDUserModel hmd_modelWithDictionary:responseDict];
+            if ([status integerValue] == 200) {
+                if (finishBlock) {
+                    userModel.headimgurl = userModel.head_portrait_url;
+                    finishBlock(YES,userModel);
+                }
+            }else{
+                if (finishBlock) {
+                    finishBlock(NO,userModel);
+                }
+            }
+
+        }else{
+            if (finishBlock) {
+                finishBlock(NO,nil);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO,nil);
+        }
+        NSLog(@"failure%s",__FUNCTION__);
+    }];
+}
+
+
+
+
 -(id)valueForUndefinedKey:(NSString *)key{
     return nil;
 }

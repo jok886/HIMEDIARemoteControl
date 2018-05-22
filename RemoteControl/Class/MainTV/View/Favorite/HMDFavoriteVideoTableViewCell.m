@@ -29,10 +29,16 @@
     // Configure the view for the selected state
 }
 
--(void)setupCellWithModel:(HMDVideoHistoryModel *)videoModel{
-    NSString *url = [NSString stringWithFormat:HMD_DLAN_VIDEO_GET_POSTERIMAGE,HMDCURLINKDEVICEIP];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:videoModel.videoImgUrl,@"posterPicString", nil];
-    [self.videoImageView setDLANImageWithMethod:@"POST" URLStr:url parameters:parameters placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+-(void)setupCellWithModel:(HMDFavoriteVideoModel *)videoModel{
+    //收藏分为腾讯视频和本地视频区分加载
+    if ([videoModel.videoSource isEqualToString:@"poster"]) {
+        NSString *url = [NSString stringWithFormat:HMD_DLAN_VIDEO_GET_POSTERIMAGE,HMDCURLINKDEVICEIP];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:videoModel.videoImgUrl,@"posterPicString", nil];
+        [self.videoImageView setDLANImageWithMethod:@"POST" URLStr:url parameters:parameters placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+    }else{
+        [self.videoImageView setImageWithURLStr:videoModel.videoImgUrl placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+    }
+
     self.videoNameLab.text = videoModel.videoName;
     NSString *time = [videoModel.time timeSince1970_yyyy_MM_dd_hh_mm_ss];
     if (time.length >4) {

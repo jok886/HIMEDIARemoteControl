@@ -133,7 +133,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="精彩内容绘制"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="06o-KV-r0P"/>
+                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="uvo-zC-fPw"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csJ-mf-4Bi" customClass="HMDDoubleTextBtn">
@@ -152,8 +152,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="方便进行贴心操作"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="mei-Ip-FSM"/>
-                                <action selector="systemSetting:" destination="-1" eventType="touchUpInside" id="0V8-WQ-nz5"/>
+                                <action selector="systemSetting:" destination="-1" eventType="touchUpInside" id="hS7-TI-qf9"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnV-Jk-CEp" customClass="HMDDoubleTextBtn">
@@ -172,8 +171,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="方便，快捷"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="getCapture:" destination="-1" eventType="touchUpInside" id="MIZ-gs-2bB"/>
-                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="LFM-BQ-DcI"/>
+                                <action selector="getCapture:" destination="-1" eventType="touchUpInside" id="Lu3-sW-bsq"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbg-75-Bce" customClass="HMDDoubleTextBtn">
@@ -192,8 +190,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="上亿用户共同选择"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="myAPPListCenter:" destination="-1" eventType="touchUpInside" id="Nj8-8Z-ec6"/>
-                                <action selector="startHiTVAPK:" destination="-1" eventType="touchUpInside" id="4HE-Js-ivy"/>
+                                <action selector="startHiTVAPK:" destination="-1" eventType="touchUpInside" id="6Sg-vN-dct"/>
                             </connections>
                         </button>
                     </subviews>

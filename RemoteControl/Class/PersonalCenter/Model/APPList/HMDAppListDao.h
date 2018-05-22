@@ -16,6 +16,8 @@ typedef void(^HMDInstallAppFinishBlock)(NSString *package);                     
 
 //本地安装的app
 -(void)getInstallAppListFinishBlock:(HMDGetAppListFinishBlock)finishBlock;
+//卸载本地的app
+-(void)uninstallDLanAppWithPackage:(NSString *)package FinishBlock:(HMDOpenAppFinishBlock)finishBlock;
 //打开本地的应用
 -(void)openDLanAppWithPackage:(NSString *)package FinishBlock:(HMDOpenAppFinishBlock)finishBlock;
 //系统推荐的app

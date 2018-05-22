@@ -19,6 +19,8 @@
 #import "HMDLinkView.h"
 #import "HMDMainLoadingView.h"
 
+#import "HMDPredicate.h"
+
 #import "HMDDHRCenter.h"
 #import "HMDDLANNetTool.h"
 #import "MJExtension.h"

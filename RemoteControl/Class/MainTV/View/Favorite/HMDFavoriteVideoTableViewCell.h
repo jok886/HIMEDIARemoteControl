@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HMDVideoHistoryModel.h"
+#import "HMDFavoriteVideoModel.h"
 @interface HMDFavoriteVideoTableViewCell : UITableViewCell
--(void)setupCellWithModel:(HMDVideoHistoryModel *)videoModel;
+-(void)setupCellWithModel:(HMDFavoriteVideoModel *)videoModel;
 @end

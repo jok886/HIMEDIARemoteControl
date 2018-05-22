@@ -205,7 +205,7 @@
 
 //OK
 - (IBAction)TVOKBtnClick:(UIButton *)sender {
-    [self remoteTVWithKey:KEYCODE_DPAD_CENTER finishBlock:nil];
+    
 }
 
 //按键效果
@@ -223,6 +223,9 @@
             break;
         case 104://右
             imageName = @"remote_direction_right";
+            break;
+        case 105://右
+            imageName = @"remote_ok_click";
             break;
             
         default:
@@ -245,7 +248,9 @@
         case 104:
             [self remoteTVWithKey:KEYCODE_DPAD_RIGHT finishBlock:nil];
             break;
-            
+        case 105:
+            [self remoteTVWithKey:KEYCODE_DPAD_CENTER finishBlock:nil];
+            break;
         default:
             break;
     }

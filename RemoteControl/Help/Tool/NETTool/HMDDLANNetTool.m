@@ -261,7 +261,7 @@
         completionBlock(response);
     }];
 
-    [self.webServer startWithPort:8899 bonjourName:nil];
+//    [self.webServer startWithPort:8899 bonjourName:nil];
 }
 
 -(NSString *)getFilePathWithRequestURL:(NSString *)url fileType:(HMDDLANNetFileType)fileType{
@@ -412,5 +412,18 @@
         _webServer = [[GCDWebServer alloc] init];
     }
     return _webServer;
+}
+
+-(void)setWifiEnvironmental:(BOOL)wifiEnvironmental{
+    _wifiEnvironmental = wifiEnvironmental;
+    if (wifiEnvironmental) {
+        if (![self.webServer isRunning]) {
+            [self.webServer start];
+        }
+    }else{
+        if ([self.webServer isRunning]) {
+            [self.webServer stop];
+        }
+    }
 }
 @end

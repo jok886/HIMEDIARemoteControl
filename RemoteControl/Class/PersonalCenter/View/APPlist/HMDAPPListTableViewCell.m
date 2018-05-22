@@ -12,8 +12,10 @@
 @interface HMDAPPListTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *apkIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *apkNameLab;
-@property (weak, nonatomic) IBOutlet UILabel *apkDescribeLab;
-@property (weak, nonatomic) IBOutlet UIButton *actionBtn;
+//@property (weak, nonatomic) IBOutlet UILabel *apkDescribeLab;
+@property (weak, nonatomic) IBOutlet UIButton *actionBtn;               //打开
+@property (weak, nonatomic) IBOutlet UIButton *uninstallBtn;            //卸载
+
 @property (nonatomic,strong) HMDAPKModel *apkModel;
 @end
 @implementation HMDAPPListTableViewCell
@@ -21,6 +23,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,25 +34,24 @@
 
 -(void)setupCellWithAPKModel:(HMDAPKModel *)model{
     _apkModel = model;
-    self.actionBtn.userInteractionEnabled = NO;
     switch (model.apkStyle) {
         case HMDAPKInstallStyle:
         {
             self.apkNameLab.text = model.name;
-            self.apkDescribeLab.text = model.versionName;
+            self.uninstallBtn.hidden = NO;
             NSString *imageURL = [NSString stringWithFormat:HMD_DLAN_APK_ICON,HMDCURLINKDEVICEIP];
             NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                         model.package,@"package",
                                         nil];
             [self.actionBtn setTitle:@"打开" forState:UIControlStateNormal];
-            [self.apkIconImageView setDLANImageWithMethod:@"POST" URLStr:imageURL parameters:parameters placeholderImage:nil];
+            [self.apkIconImageView setDLANImageWithMethod:@"POST" URLStr:imageURL parameters:parameters placeholderImage:[UIImage imageNamed:@"app_default"]];
         }
 
             break;
         case HMDAPKRecommendStyle:
         {
+            self.uninstallBtn.hidden = YES;
             self.apkNameLab.text = model.name;
-            self.apkDescribeLab.text = model.alias;
             switch ([model.installed integerValue]) {
                 case 0:
                     [self.actionBtn setTitle:@"安装中" forState:UIControlStateNormal];
@@ -65,13 +67,23 @@
                     [self.actionBtn setTitle:@"未知状态" forState:UIControlStateNormal];
                     break;
             }
-            [self.apkIconImageView setImageWithURLStr:model.img_url placeholderImage:nil];
+            [self.apkIconImageView setImageWithURLStr:model.img_url placeholderImage:[UIImage imageNamed:@"app_default"]];
         }
             break;
         default:
             break;
     }
     
+}
+- (IBAction)openBtnClick:(id)sender {
+    if (self.actionBlock) {
+        self.actionBlock(self.indexPath);
+    }
+}
+- (IBAction)uninstallBtnClick:(id)sender {
+    if (self.uninstallBlock) {
+        self.uninstallBlock(self.indexPath);
+    }
 }
 
 @end

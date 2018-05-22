@@ -10,6 +10,7 @@
 
 #import "HMDVideoModel.h"
 #import "HMDTVClassifyModel.h"
+#import "HMDFavoriteVideoModel.h"
 
 #import "HMDVideoHistoryModel.h"
 #import "NSString+HMDExtend.h"
@@ -164,6 +165,46 @@
     [parameters setValue:videoHistoryModel.vid forKey:@"vid"];
     [parameters setValue:videoHistoryModel.week forKey:@"week"];
 
+    [session POST:recommendURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (finishBlock) {
+            finishBlock(YES);
+        }
+        NSLog(@"success");
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (finishBlock) {
+            finishBlock(NO);
+        }
+        NSLog(@"failure");
+    }];
+}
+-(void)playCollectWithCollectModel:(HMDFavoriteVideoModel *)favoriteVideoModel FinishBlock:(HMDPostPlayNetPosterOrderFinishBlock)finishBlock
+{
+    AFHTTPSessionManager *session = [self getAFHTTPSessionManager];
+    NSString *recommendURL;
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if ([favoriteVideoModel.videoSource isEqualToString:@"tencent"]) {
+        //腾讯视频
+        recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_POSTER_PLAY_NET,HMDCURLINKDEVICEIP];
+        
+        [parameters setValue:@"com.ktcp.tvvideo" forKey:@"source_package"];
+        [parameters setValue:@"startActivity" forKey:@"callback_method"];
+        [parameters setValue:@"cmd" forKey:@"callback_key"];
+        [parameters setValue:[NSString stringWithFormat:@"tenvideo2://?action=1&cover_id=%@",favoriteVideoModel.cmd] forKey:@"callback_value"];
+
+    }else{
+        recommendURL = [NSString stringWithFormat:HMD_DLAN_VIDEO_PLAY_COLLECT,HMDCURLINKDEVICEIP];
+        [parameters setValue:favoriteVideoModel.cmd == nil?@"":favoriteVideoModel.cmd  forKey:@"playUrl"];
+        [parameters setValue:favoriteVideoModel.videoName forKey:@"name"];
+        [parameters setValue:favoriteVideoModel.extra2== nil?@"":favoriteVideoModel.extra2 forKey:@"extra2"];
+        [parameters setValue:favoriteVideoModel.videoSource forKey:@"videoSource"];
+        [parameters setValue:favoriteVideoModel.videoCallback forKey:@"videoCallback"];
+
+    }
+
+    
     [session POST:recommendURL parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -344,7 +385,7 @@ NSDictionary *classifyDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                                                options:NSJSONReadingMutableContainers
                                                                  error:nil];
         if (posterArray.count>0) {
-            NSArray *videoModelArray = [HMDVideoHistoryModel hmd_modelArrayWithKeyValuesArray:posterArray];
+            NSArray *videoModelArray = [HMDFavoriteVideoModel hmd_modelArrayWithKeyValuesArray:posterArray];
             if (finishBlock) {
                 finishBlock(YES,videoModelArray);
             }
