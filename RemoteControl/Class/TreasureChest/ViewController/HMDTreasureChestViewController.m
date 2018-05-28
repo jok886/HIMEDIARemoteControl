@@ -131,9 +131,11 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
             [self projectiveVideo];
             break;
         case 4:
+            [HMDProgressHub showMessage:@"功能暂未开放" hideAfter:2.0];
 //            [self projectivePhoto];
             break;
         case 5:
+            [HMDProgressHub showMessage:@"功能暂未开放" hideAfter:2.0];
 //            [self projectivePhoto];
             break;
         default:

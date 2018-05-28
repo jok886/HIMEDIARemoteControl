@@ -23,7 +23,7 @@
 
 -(void)setupCellWithVideoModel:(HMDVideoModel *)videoModel{
 
-    [self.videoIconImageView setImageWithURLStr:videoModel.img_url placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
+    [self.videoIconImageView setImageWithURLStr:videoModel.img_url placeholderImage:[UIImage imageNamed:@"video_banner_default_s"]];
     self.synopsisLab.text = videoModel.info;
     self.titleLab.text = videoModel.title;
 

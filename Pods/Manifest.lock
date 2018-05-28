@@ -29,6 +29,7 @@ PODS:
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - TOCropViewController (2.3.6)
   - WechatOpenSDK_NoPay (1.8.0)
   - YYCache (1.0.4)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - Onboard
   - pop
   - SDWebImage
+  - TOCropViewController
   - WechatOpenSDK_NoPay
   - YYCache
 
@@ -61,9 +63,10 @@ SPEC CHECKSUMS:
   Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
   WechatOpenSDK_NoPay: 27366a152202a6a7c8a15fad4d07261e87fb2389
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: e66a03fada5c154d0cfd64f6815c255d016c6b03
+PODFILE CHECKSUM: 3c3613d4fe5c49c94babafed5d6055fe4bb03722
 
 COCOAPODS: 1.4.0

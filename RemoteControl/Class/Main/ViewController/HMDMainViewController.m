@@ -158,7 +158,8 @@ HMDDMRControlDelegate>
 -(void)autoDLanLink{
     [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
     //wifi环境才进行自动连接
-    if ([HMDDLANNetTool sharedInstance].isWIFIEnvironmental) {
+    NSString *ip = [HMDDLANNetTool getLocalIPAddressForCurrentWiFi];
+    if (ip) {
         NSString *uuid = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
         
         if (uuid.length >1) {

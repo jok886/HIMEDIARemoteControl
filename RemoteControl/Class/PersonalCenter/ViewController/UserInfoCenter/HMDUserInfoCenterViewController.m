@@ -135,37 +135,55 @@ HMDResetNickNameDelegate>
 #pragma mark - 点击
 //重设头像
 -(void)resetHeadImageView{
-    UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"更换头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction * actionPhotograph = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:self.imagePickerController animated:YES completion:nil];
-    }];
-    UIAlertAction * actionAlbum = [UIAlertAction actionWithTitle:@"从相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self presentViewController:self.imagePickerController animated:YES completion:nil];
-    }];
-    UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
+    if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
+        UIAlertController * alertC = [UIAlertController alertControllerWithTitle:@"更换头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
-    }];
-    [alertC addAction:actionPhotograph];
-    [alertC addAction:actionAlbum];
-    [alertC addAction:actionCancel];
-    [self presentViewController:alertC animated:YES completion:nil];
+        UIAlertAction * actionPhotograph = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:self.imagePickerController animated:YES completion:nil];
+        }];
+        UIAlertAction * actionAlbum = [UIAlertAction actionWithTitle:@"从相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:self.imagePickerController animated:YES completion:nil];
+        }];
+        UIAlertAction * actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertC addAction:actionPhotograph];
+        [alertC addAction:actionAlbum];
+        [alertC addAction:actionCancel];
+        [self presentViewController:alertC animated:YES completion:nil];
+    }else{
+        [HMDProgressHub showMessage:@"第三方登录不支持个人信息修改" hideAfter:2.0];
+    }
+    
 }
 
 //重设昵称
 -(void)resetNickName{
+    NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
+    if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
         HMDResetNickNameViewController *resetNickNameVC = [[UIStoryboard storyboardWithName:@"HMDUserInfoCenterViewController" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"HMDResetNickNameViewController"];
-//    resetNickNameVC.delegate = self;
+        //    resetNickNameVC.delegate = self;
         [self.navigationController pushViewController:resetNickNameVC animated:YES];
+    }else{
+        [HMDProgressHub showMessage:@"第三方登录不支持个人信息修改" hideAfter:2.0];
+    }
+
 }
 
 //重设密码
 -(void)resetPWD{
-    HMDRecoveredPWDViewController *recoveredPWDVC = [[HMDRecoveredPWDViewController alloc] init];
-    recoveredPWDVC.resetPWD = YES;
-    [self.navigationController pushViewController:recoveredPWDVC animated:YES];
+    NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
+    if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
+        HMDRecoveredPWDViewController *recoveredPWDVC = [[HMDRecoveredPWDViewController alloc] init];
+        recoveredPWDVC.resetPWD = YES;
+        [self.navigationController pushViewController:recoveredPWDVC animated:YES];
+    }else{
+        [HMDProgressHub showMessage:@"第三方登录不支持个人信息修改" hideAfter:2.0];
+    }
+
     
 }
 

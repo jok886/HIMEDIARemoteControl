@@ -26,7 +26,7 @@
         [self setupFirstNavBar];
     }
     [self setupUI];
-    [self addNotification];
+ 
 }
 
 -(void)dealloc{
@@ -48,9 +48,7 @@
     [self.memoryView addGestureRecognizer:tapGesture];
 
 }
--(void)addNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:HMDLogin object:nil];
-}
+
 //内存
 -(NSString *)getMemorySize{
     long long ttotalSize = 0;
@@ -67,11 +65,11 @@
     NSFileManager *mgr = [NSFileManager defaultManager];
     NSArray *subpaths = [mgr subpathsAtPath:filePath];
     for (NSString *subpath in subpaths) {
-//        //忽略jrdb和Video相关的
-//        if ([subpath containsString:@"jrdb"]||[subpath containsString:@"Draft"]||[subpath containsString:@"SpecialEffects"]) {
-//
-//            continue ;
-//        }
+        //忽略jrdb和Video相关的
+        if ([subpath containsString:@"HMDDocument"]) {
+
+            continue ;
+        }
         NSString *fullpath = [filePath stringByAppendingPathComponent:subpath];
         BOOL dir = NO;
         [mgr fileExistsAtPath:fullpath isDirectory:&dir];
@@ -93,10 +91,10 @@
         NSArray *childerFiles=[fileManager subpathsAtPath:filePath];
         for (NSString *fileName in childerFiles) {
             //如有需要，加入条件，过滤掉不想删除的文件
-//            //忽略jrdb和Draft相关的
-//            if ([fileName containsString:@"jrdb"]||[fileName containsString:@"Draft"]||[fileName containsString:@"SpecialEffects"]) {
-//                continue ;
-//            }
+//            //忽略HMDDocument相关的
+            if ([fileName containsString:@"HMDDocument"]) {
+                continue ;
+            }
             NSString *absolutePath=[filePath stringByAppendingPathComponent:fileName];
             NSError *error;
             BOOL move = [fileManager removeItemAtPath:absolutePath error:&error];

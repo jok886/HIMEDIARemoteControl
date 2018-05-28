@@ -179,16 +179,13 @@
 }
 
 -(void)gotoUserInfoCenter:(UITapGestureRecognizer *)tap{
-    NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
-    if ([loginModel isEqualToString:HMDLoginPhoneModel]) {
+
         [HMDLinkView sharedInstance].hidden = YES;
         HMDUserInfoCenterViewController *userInfoCenter = [[UIStoryboard storyboardWithName:@"HMDUserInfoCenterViewController" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
         
         HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:userInfoCenter];
         [self presentViewController:nav animated:YES completion:nil];
-    }else{
-        [HMDProgressHub showMessage:@"第三方登录不支持个人信息修改" hideAfter:2.0];
-    }
+
 
 }
 #pragma mark - 其他

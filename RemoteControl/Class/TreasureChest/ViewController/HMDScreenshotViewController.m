@@ -10,6 +10,8 @@
 
 #import "HMDScreenshotCollectionViewCell.h"
 #import "HMDTVBaseFunctionDao.h"
+#import "HMDImageShowViewController.h"
+#import "HMDSaveTool.h"
 @interface HMDScreenshotViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UIButton *albumBtn;
 
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-
+    [self getAllCurImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +41,12 @@
     self.title = @"电视截屏";
     [self setupFirstNavBar];
 }
-
+-(void)getAllCurImage{
+    NSArray *fileArray = [HMDSaveTool getAllImageFile];
+    if (fileArray.count > 0) {
+        self.albumBtn.hidden = NO;
+    }
+}
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.shotImageArray.count;
@@ -66,7 +73,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [self gotoAlbumBtnClick:nil];
 }
 
 #pragma mark - 点击
@@ -77,9 +84,12 @@
         if (success) {
             UIImage *image = [UIImage imageWithData:imageData];
             [weakSelf.shotImageArray addObject:image];
-
+            NSString *filePath = [HMDSaveTool getSaveImageFilePathWithImageData:imageData];
             [weakSelf reloadUI];
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+
+            [imageData writeToFile:filePath atomically:YES];
+
         }
         
     }];
@@ -87,7 +97,9 @@
 
 //进入沙盒相册
 - (IBAction)gotoAlbumBtnClick:(id)sender {
-    
+    [HMDLinkView sharedInstance].hidden = YES;
+    HMDImageShowViewController *imageShowVC = [[HMDImageShowViewController alloc] init];
+    [self.navigationController pushViewController:imageShowVC animated:YES];
 }
 
 #pragma mark - 其他

@@ -21,11 +21,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H26-ws-qzd">
-                    <rect key="frame" x="8" y="30" width="359" height="120"/>
+                    <rect key="frame" x="8" y="10" width="359" height="120"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-vf-mGY">
                             <rect key="frame" x="324" y="17" width="25" height="25"/>
@@ -102,7 +102,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtH-Af-Y0E">
-                    <rect key="frame" x="8" y="160" width="359" height="60"/>
+                    <rect key="frame" x="8" y="140" width="359" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTZ-nV-Z4o">
                             <rect key="frame" x="8" y="12" width="62" height="18"/>
@@ -133,7 +133,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FB-6L-4Zm">
-                    <rect key="frame" x="8" y="230" width="359" height="60"/>
+                    <rect key="frame" x="8" y="210" width="359" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清除海报缓存" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBf-Nx-Z4c">
                             <rect key="frame" x="8" y="12" width="92" height="18"/>
@@ -174,8 +174,9 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QtH-Af-Y0E" secondAttribute="trailing" constant="8" id="WI2-Pl-ADk"/>
                 <constraint firstItem="H26-ws-qzd" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="hbd-dL-WTm"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0FB-6L-4Zm" secondAttribute="trailing" constant="8" id="t9K-MI-ETF"/>
-                <constraint firstItem="H26-ws-qzd" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="wvE-rf-Dqt"/>
+                <constraint firstItem="H26-ws-qzd" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" priority="750" constant="10" id="wvE-rf-Dqt"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="32.5" y="92.5"/>
         </view>

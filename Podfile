@@ -17,7 +17,7 @@ pod 'MJRefresh'
 pod 'GCDWebServer'
 pod 'MBProgressHUD'
 pod 'Onboard'
-
+pod 'TOCropViewController'
 use_frameworks!
 pod 'AEXML'
 end

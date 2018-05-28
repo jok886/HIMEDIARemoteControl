@@ -48,7 +48,7 @@
                 <outlet property="iconImageView" destination="BHX-2t-BYn" id="JV6-Ek-2fS"/>
                 <outlet property="nameLab" destination="owu-6a-7Nm" id="70E-p2-l8e"/>
             </connections>
-            <point key="canvasLocation" x="-17.5" y="120"/>
+            <point key="canvasLocation" x="-18" y="120"/>
         </collectionViewCell>
     </objects>
 </document>

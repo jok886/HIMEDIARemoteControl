@@ -68,7 +68,7 @@
 
 /** 获取本机在WiFi环境下的IP地址 */
 + (NSString *)getLocalIPAddressForCurrentWiFi{
-    NSString *address = HMDERRORLANADDRESS;
+    NSString *address;
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
     int success = 0;
@@ -183,34 +183,6 @@
                         [infoDict setObject:curUUID forKey:@"UUID"];
                     }
                 }
-                //获取IP
-//                if ([key isEqualToString:@"LOCATION"]) {
-//      
-//                    //获取IP
-//                    //正则表达式
-//                    NSString *pattern = @"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}";
-//                    //创建predicate
-//                    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-//                                                                                           options:NSRegularExpressionCaseInsensitive
-//                                                                                             error:nil];
-//                    //查找第一个匹配结果，如果查找不到的话match会是nil
-//                    NSTextCheckingResult *match = [regex firstMatchInString:value
-//                                                                    options:NSMatchingReportCompletion
-//                                                                      range:NSMakeRange(0, [value length])];
-//                    if (match)
-//                    {
-//                        NSString *curIP = [value substringWithRange:match.range];
-//                        [infoDict setObject:curIP forKey:@"IP"];
-//                        //获取IP后获得端口号
-//                        //                     http://192.168.31.238:25806/description.xml
-//                        //获取端口
-//                        NSRange descriptionRange = [value rangeOfString:@"/description.xml"];
-//                        NSInteger indexEnd = match.range.location+match.range.length;
-//                        NSRange portRange = NSMakeRange(indexEnd+1, descriptionRange.location-indexEnd-1);
-//                        NSString *port = [value substringWithRange:portRange];
-//                        [infoDict setObject:port forKey:@"port"];
-//                    }
-//                }
             }
         }
     }
@@ -257,6 +229,7 @@
     }];
     [self.webServer addHandlerForMethod:@"GET" pathRegex:@"/video/" requestClass:[GCDWebServerRequest class] asyncProcessBlock:^(__kindof GCDWebServerRequest * _Nonnull request, GCDWebServerCompletionBlock  _Nonnull completionBlock) {
         NSString *filePath = [weakSelf getFilePathWithRequestURL:request.URL.absoluteString fileType:HMDDLANNetFileVideoType];
+        NSLog(@"request.byteRange%lu",(unsigned long)request.byteRange.length);
         GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:filePath byteRange:request.byteRange];
         completionBlock(response);
     }];
@@ -418,7 +391,7 @@
     _wifiEnvironmental = wifiEnvironmental;
     if (wifiEnvironmental) {
         if (![self.webServer isRunning]) {
-            [self.webServer start];
+            [self.webServer startWithPort:8899 bonjourName:nil];
         }
     }else{
         if ([self.webServer isRunning]) {
