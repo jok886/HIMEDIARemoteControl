@@ -43,6 +43,9 @@ typedef enum : NSInteger
 @property (weak, nonatomic) IBOutlet HMDMainLoadingView *loadingView;
 
 @property (nonatomic,assign) NSInteger curPage;                                                     //当前页码
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nullPageTopConstraint;
+
+
 @end
 
 @implementation HMDAllVideoViewController
@@ -76,6 +79,7 @@ static NSString * const kOrder = @"order";
     self.showCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf addMoreVideoList];
     }];
+
 }
 #pragma mark - 网络
 //获取分类列表
@@ -83,6 +87,7 @@ static NSString * const kOrder = @"order";
     HMDWeakSelf(self)
     [self.videoDao getPosterCategoryFinishBlock:^(BOOL success, NSDictionary *classifyDict) {
         if (success) {
+            weakSelf.nullPageTopConstraint.priority = 900;
             NSArray *typeArray = [classifyDict objectForKey:@"type"];
             weakSelf.categoryCollectionView.classifyArray = [NSArray arrayWithArray:typeArray];
             weakSelf.categoryCollectionView.selectClassifyBlock = ^(NSString *classifyName, BOOL videoType) {
@@ -262,6 +267,11 @@ static NSString * const kOrder = @"order";
         }
     }
 
+    [self getVideoList];
+}
+//重新加载分类
+- (IBAction)reloadClassify:(id)sender {
+    [self getPosterCategory];
     [self getVideoList];
 }
 

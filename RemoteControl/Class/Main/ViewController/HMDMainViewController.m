@@ -172,7 +172,7 @@ HMDDMRControlDelegate>
             //5s内找不到设备停止重连
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.autoLink) {
-                    if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+                    if ([HMDLinkView sharedInstance].linkViewState != HMDLinkViewStateLinked ) {
                         [[[HMDDHRCenter sharedInstance] DMRControl] stop];
                         [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateunLink ip:nil uuid:nil];
                         [HMDProgressHub showMessage:@"未匹配到上次链接的设备" hideAfter:2.0];
@@ -380,7 +380,7 @@ HMDDMRControlDelegate>
             }
         }
     }else if (self.autoLink){
-        if ([[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender] == nil) {
+        if ([HMDLinkView sharedInstance].linkViewState != HMDLinkViewStateLinked) {
             NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
             NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
             for (HMDRenderDeviceModel *model in renders) {

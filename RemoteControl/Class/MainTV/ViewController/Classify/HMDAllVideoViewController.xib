@@ -21,6 +21,7 @@
                 <outlet property="graphemeBtn" destination="XyX-kR-aK8" id="A3T-Bm-DuQ"/>
                 <outlet property="loadingView" destination="kur-le-uw1" id="Upg-7P-2JU"/>
                 <outlet property="locationCollectionView" destination="t78-c2-4Bz" id="iAD-WI-Nih"/>
+                <outlet property="nullPageTopConstraint" destination="pxa-1F-8nb" id="ONa-6p-qeh"/>
                 <outlet property="nullPageView" destination="Zff-FD-RHl" id="Zfh-uO-Hse"/>
                 <outlet property="showCollectionView" destination="sse-72-hQd" id="DOO-Lj-KTa"/>
                 <outlet property="showTimeBtn" destination="ieJ-yu-7O7" id="1PK-Sf-GOx"/>
@@ -64,6 +65,21 @@
                     </state>
                     <connections>
                         <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="PfR-EL-3hw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-pC-1j8">
+                    <rect key="frame" x="250" y="22" width="125" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="豆瓣评分">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.40665155649185181" green="0.77105504274368286" blue="0.60390210151672363" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="sCo-ng-J9a"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clF-bO-he5">
@@ -170,12 +186,8 @@
                                 <inset key="sectionInset" minX="10" minY="15" maxX="10" maxY="20"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kur-le-uw1" customClass="HMDMainLoadingView">
-                            <rect key="frame" x="0.0" y="102" width="355" height="498"/>
-                            <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zff-FD-RHl">
-                            <rect key="frame" x="0.0" y="102" width="355" height="498"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null_page" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-nS-Usu">
                                     <rect key="frame" x="0.0" y="25" width="355" height="296"/>
@@ -189,15 +201,41 @@
                                     <color key="textColor" red="0.40000283718109131" green="0.39999482035636902" blue="0.40000027418136597" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeK-O2-ENJ">
+                                    <rect key="frame" x="117" y="384" width="120" height="40"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="120" id="6bh-nq-RTa"/>
+                                        <constraint firstAttribute="height" constant="40" id="Ud3-5C-qMd"/>
+                                    </constraints>
+                                    <state key="normal" title="点我重试">
+                                        <color key="titleColor" red="0.20000156760215759" green="0.19999706745147705" blue="0.2000001072883606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="reloadClassify:" destination="-1" eventType="touchUpInside" id="2qC-fD-h0A"/>
+                                    </connections>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="R9h-nS-Usu" secondAttribute="trailing" id="AUv-rd-1hl"/>
                                 <constraint firstItem="Obp-kz-KpZ" firstAttribute="centerX" secondItem="R9h-nS-Usu" secondAttribute="centerX" id="Fu2-Ja-scm"/>
                                 <constraint firstItem="R9h-nS-Usu" firstAttribute="top" secondItem="Zff-FD-RHl" secondAttribute="top" constant="25" id="JP7-AX-vzU"/>
                                 <constraint firstItem="Obp-kz-KpZ" firstAttribute="top" secondItem="R9h-nS-Usu" secondAttribute="bottom" constant="25" id="fXR-pS-kbw"/>
+                                <constraint firstItem="OeK-O2-ENJ" firstAttribute="centerX" secondItem="Zff-FD-RHl" secondAttribute="centerX" id="o7G-s0-MQt"/>
+                                <constraint firstItem="OeK-O2-ENJ" firstAttribute="top" secondItem="Obp-kz-KpZ" secondAttribute="bottom" constant="20" id="scY-xB-xd0"/>
                                 <constraint firstItem="R9h-nS-Usu" firstAttribute="leading" secondItem="Zff-FD-RHl" secondAttribute="leading" id="wEi-pc-YnD"/>
                             </constraints>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kur-le-uw1" customClass="HMDMainLoadingView">
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
+                            <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -218,12 +256,13 @@
                         <constraint firstAttribute="trailing" secondItem="Zff-FD-RHl" secondAttribute="trailing" id="bys-yr-RH1"/>
                         <constraint firstItem="kur-le-uw1" firstAttribute="leading" secondItem="fuV-tN-YiJ" secondAttribute="leading" id="f76-Lf-ViN"/>
                         <constraint firstItem="t78-c2-4Bz" firstAttribute="top" secondItem="Qkr-jZ-L5y" secondAttribute="top" id="frt-km-aje"/>
-                        <constraint firstItem="kur-le-uw1" firstAttribute="top" secondItem="Bka-vD-vFT" secondAttribute="bottom" id="hv3-ha-WZJ"/>
+                        <constraint firstItem="Zff-FD-RHl" firstAttribute="top" secondItem="fuV-tN-YiJ" secondAttribute="top" priority="750" id="hn7-4r-q0g"/>
+                        <constraint firstItem="kur-le-uw1" firstAttribute="top" secondItem="Zff-FD-RHl" secondAttribute="top" id="hv3-ha-WZJ"/>
                         <constraint firstItem="t78-c2-4Bz" firstAttribute="bottom" secondItem="Qkr-jZ-L5y" secondAttribute="bottom" id="icO-AG-qQI"/>
                         <constraint firstItem="Zff-FD-RHl" firstAttribute="leading" secondItem="fuV-tN-YiJ" secondAttribute="leading" id="jlr-cz-Sqi"/>
                         <constraint firstAttribute="bottom" secondItem="kur-le-uw1" secondAttribute="bottom" id="mJD-2U-Txa"/>
                         <constraint firstItem="Qkr-jZ-L5y" firstAttribute="leading" secondItem="fuV-tN-YiJ" secondAttribute="leading" id="oFg-pE-BLk"/>
-                        <constraint firstItem="Zff-FD-RHl" firstAttribute="top" secondItem="Bka-vD-vFT" secondAttribute="bottom" id="pxa-1F-8nb"/>
+                        <constraint firstItem="Zff-FD-RHl" firstAttribute="top" secondItem="Bka-vD-vFT" secondAttribute="bottom" priority="250" id="pxa-1F-8nb"/>
                         <constraint firstAttribute="trailing" secondItem="Bka-vD-vFT" secondAttribute="trailing" id="q7D-by-hYE"/>
                         <constraint firstItem="Qkr-jZ-L5y" firstAttribute="top" secondItem="ZEB-Ug-a7j" secondAttribute="bottom" id="s2n-Eh-aci"/>
                         <constraint firstAttribute="trailing" secondItem="lgO-xT-RuT" secondAttribute="trailing" id="sgr-Iy-Ht6"/>
@@ -240,21 +279,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-pC-1j8">
-                    <rect key="frame" x="250" y="22" width="125" height="40"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" title="豆瓣评分">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" red="0.40665155649185181" green="0.77105504274368286" blue="0.60390210151672363" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </state>
-                    <connections>
-                        <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="sCo-ng-J9a"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
