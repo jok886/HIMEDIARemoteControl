@@ -584,7 +584,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "549338433.350275"
+                  timestampString = "549361801.091422"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -599,7 +599,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/Model/HMDVideoDataDao.m"
-                  timestampString = "549338433.355193"
+                  timestampString = "549361801.093248"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
@@ -728,7 +728,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/ViewController/Favorite/HMDFavoriteVideoViewController.m"
-                  timestampString = "549338433.589071"
+                  timestampString = "549361801.1196131"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
@@ -743,7 +743,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/ViewController/Favorite/HMDFavoriteVideoViewController.m"
-                  timestampString = "549338433.592212"
+                  timestampString = "549361801.121148"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -840,7 +840,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/Login/Model/HMDRegisterDao.m"
-                  timestampString = "549338433.6966619"
+                  timestampString = "549361801.142841"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
@@ -855,7 +855,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/Login/Model/HMDRegisterDao.m"
-                  timestampString = "549338433.7017"
+                  timestampString = "549361801.144767"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "28"
@@ -888,7 +888,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/Login/View/HMDLoginView.m"
-                  timestampString = "549338433.716942"
+                  timestampString = "549361801.149226"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "132"
@@ -903,7 +903,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/Login/View/HMDLoginView.m"
-                  timestampString = "549338433.726468"
+                  timestampString = "549361801.150804"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "105"
@@ -1016,7 +1016,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/PersonalCenter/Model/APPList/HMDAppListDao.m"
-                  timestampString = "549338433.792138"
+                  timestampString = "549361801.171797"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
@@ -1031,7 +1031,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/PersonalCenter/Model/APPList/HMDAppListDao.m"
-                  timestampString = "549338433.7967581"
+                  timestampString = "549361801.173368"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "141"
@@ -1080,7 +1080,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/PersonalCenter/ViewController/APPlist/HMDApplistViewController.m"
-                  timestampString = "549338433.81832"
+                  timestampString = "549361801.184244"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "242"
@@ -1095,7 +1095,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/PersonalCenter/ViewController/APPlist/HMDApplistViewController.m"
-                  timestampString = "549338433.821467"
+                  timestampString = "549361801.186497"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
@@ -1110,7 +1110,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/PersonalCenter/ViewController/APPlist/HMDApplistViewController.m"
-                  timestampString = "549338433.825492"
+                  timestampString = "549361801.188607"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "242"
@@ -1395,7 +1395,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/ViewController/Classify/HMDAllVideoViewController.m"
-                  timestampString = "549338433.982034"
+                  timestampString = "549361801.292551"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
@@ -1410,7 +1410,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/ViewController/Classify/HMDAllVideoViewController.m"
-                  timestampString = "549338433.985101"
+                  timestampString = "549361801.294873"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "101"
@@ -1425,7 +1425,7 @@
                   moduleName = "RemoteControl"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/linhongjian/Desktop/HIMEDIA/%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6/RemoteControl/RemoteControl/Class/MainTV/ViewController/Classify/HMDAllVideoViewController.m"
-                  timestampString = "549338433.988194"
+                  timestampString = "549361801.297381"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
@@ -1433,6 +1433,54 @@
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemoteControl/Class/TVRemote/ViewController/TVRemote/HMDTVRemoteViewController.m"
+            timestampString = "549364244.862578"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "-emitterLayer"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemoteControl/Class/TVRemote/ViewController/TVRemote/HMDTVRemoteViewController.m"
+            timestampString = "549364244.862657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
+            landmarkName = "-emitterLayer"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RemoteControl/Class/TVRemote/ViewController/TVRemote/HMDTVRemoteViewController.m"
+            timestampString = "549364244.862707"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
+            landmarkName = "-emitterLayer"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
