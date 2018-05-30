@@ -70,20 +70,9 @@ static NSString * const kOrder = @"order";
     [self.filterDict setObject:@"t_year" forKey:kOrder];
     [self.filterDict setObject:@"DESC" forKey:@"mode"];
     self.curPage = 0;
-    
-//    //下拉刷新
-//    HMDWeakSelf(self)
-//    self.showCollectionView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
-//
-//        [weakSelf addMoreVideoList];
-//    }];
+
     HMDWeakSelf(self)
-//    self.showCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        NSLog(@"header");
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [weakSelf.showCollectionView.mj_header endRefreshing];
-//        });
-//    }];
+
     self.showCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf addMoreVideoList];
     }];

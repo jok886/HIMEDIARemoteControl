@@ -406,6 +406,73 @@ HMDDMRControlDelegate>
     }
     NSLog(@"%s",__FUNCTION__);
 }
+-(void)onDMRRemovedUUID:(NSString *)uuid{
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        NSString *curUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+        if ([uuid isEqualToString:curUUID]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateunLink ip:nil uuid:nil];
+            });
+            
+        }
+    }
+    NSLog(@"%s",__FUNCTION__);
+}
+//-(void)getCurrentAVTransportActionResponse:(HMDCurrentAVTransportActionResponse *)response{
+//     NSLog(@"%s",__FUNCTION__);
+//     NSLog(@"%@",response);
+//}
+//
+//-(void)getTransportInfoResponse:(HMDTransportInfoResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)previousResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)nextResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)DMRStateViriablesChanged:(NSArray <HMDEventParamsResponse *> *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)playResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)pasuseResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)stopResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)setAVTransponrtResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)setVolumeResponse:(HMDEventResultResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+//
+//-(void)getVolumeResponse:(HMDVolumResponse *)response{
+//    NSLog(@"%s",__FUNCTION__);
+//    NSLog(@"%@",response);
+//}
+
 #pragma mark - 其他
 //更新UI
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel{

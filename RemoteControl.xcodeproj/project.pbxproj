@@ -30,6 +30,11 @@
 		B20DA0EA20B572A600A8226D /* HMDPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DA0E920B572A600A8226D /* HMDPhotoBrowserAnimator.m */; };
 		B20DA0EE20B682DA00A8226D /* HMDImageShowCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DA0EC20B682D900A8226D /* HMDImageShowCollectionViewCell.m */; };
 		B20DA0EF20B682DA00A8226D /* HMDImageShowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20DA0ED20B682D900A8226D /* HMDImageShowCollectionViewCell.xib */; };
+		B20DA0F820BCE3B700A8226D /* HMDVideoChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DA0F620BCE3B700A8226D /* HMDVideoChoiceViewController.m */; };
+		B20DA0F920BCE3B700A8226D /* HMDVideoChoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20DA0F720BCE3B700A8226D /* HMDVideoChoiceViewController.xib */; };
+		B20DA10120BCEBDC00A8226D /* HMDLocationVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DA10020BCEBDC00A8226D /* HMDLocationVideoModel.m */; };
+		B20DA10A20BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DA10820BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.m */; };
+		B20DA10B20BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20DA10920BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.xib */; };
 		B20EBD13207C9DD500A2D74F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD12207C9DD500A2D74F /* AVFoundation.framework */; };
 		B20EBD15207CA7D900A2D74F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20EBD14207CA7D900A2D74F /* MediaPlayer.framework */; };
 		B20EBD19207CC34C00A2D74F /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B20EBD17207CC34B00A2D74F /* NSString+Hash.m */; };
@@ -261,6 +266,14 @@
 		B20DA0EB20B682D900A8226D /* HMDImageShowCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDImageShowCollectionViewCell.h; sourceTree = "<group>"; };
 		B20DA0EC20B682D900A8226D /* HMDImageShowCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDImageShowCollectionViewCell.m; sourceTree = "<group>"; };
 		B20DA0ED20B682D900A8226D /* HMDImageShowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDImageShowCollectionViewCell.xib; sourceTree = "<group>"; };
+		B20DA0F520BCE3B700A8226D /* HMDVideoChoiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDVideoChoiceViewController.h; sourceTree = "<group>"; };
+		B20DA0F620BCE3B700A8226D /* HMDVideoChoiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDVideoChoiceViewController.m; sourceTree = "<group>"; };
+		B20DA0F720BCE3B700A8226D /* HMDVideoChoiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDVideoChoiceViewController.xib; sourceTree = "<group>"; };
+		B20DA0FF20BCEBDC00A8226D /* HMDLocationVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLocationVideoModel.h; sourceTree = "<group>"; };
+		B20DA10020BCEBDC00A8226D /* HMDLocationVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLocationVideoModel.m; sourceTree = "<group>"; };
+		B20DA10720BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLocationVideoCollectionViewCell.h; sourceTree = "<group>"; };
+		B20DA10820BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLocationVideoCollectionViewCell.m; sourceTree = "<group>"; };
+		B20DA10920BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDLocationVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B20EBD00207B343800A2D74F /* KeyCodeMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyCodeMacro.h; sourceTree = "<group>"; };
 		B20EBD0C207C573F00A2D74F /* NotificationMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
 		B20EBD12207C9DD500A2D74F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -858,6 +871,8 @@
 			children = (
 				B21BFA882091A04E00ACFF4B /* HMDTreasureChestDao.h */,
 				B21BFA892091A04E00ACFF4B /* HMDTreasureChestDao.m */,
+				B20DA0FF20BCEBDC00A8226D /* HMDLocationVideoModel.h */,
+				B20DA10020BCEBDC00A8226D /* HMDLocationVideoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -874,6 +889,9 @@
 				B20DA0EB20B682D900A8226D /* HMDImageShowCollectionViewCell.h */,
 				B20DA0EC20B682D900A8226D /* HMDImageShowCollectionViewCell.m */,
 				B20DA0ED20B682D900A8226D /* HMDImageShowCollectionViewCell.xib */,
+				B20DA10720BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.h */,
+				B20DA10820BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.m */,
+				B20DA10920BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -889,6 +907,9 @@
 				B20DA0E220B5650300A8226D /* HMDImageShowViewController.h */,
 				B20DA0E320B5650300A8226D /* HMDImageShowViewController.m */,
 				B20DA0E420B5650300A8226D /* HMDImageShowViewController.xib */,
+				B20DA0F520BCE3B700A8226D /* HMDVideoChoiceViewController.h */,
+				B20DA0F620BCE3B700A8226D /* HMDVideoChoiceViewController.m */,
+				B20DA0F720BCE3B700A8226D /* HMDVideoChoiceViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1818,6 +1839,7 @@
 				B21BFAE62092ECDA00ACFF4B /* HMDEpisodeCollectionViewCell.xib in Resources */,
 				B2D73B7E2086F1D400B64E36 /* HMDSearchTipHeadView.xib in Resources */,
 				B20DA0EF20B682DA00A8226D /* HMDImageShowCollectionViewCell.xib in Resources */,
+				B20DA10B20BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.xib in Resources */,
 				B2D73B6B2086F09400B64E36 /* HMDSearchHeadView.xib in Resources */,
 				B2AC3F1F20AEBF080038B5CE /* HMDUserInfoCenterViewController.storyboard in Resources */,
 				B20DA0E620B5650300A8226D /* HMDImageShowViewController.xib in Resources */,
@@ -1846,6 +1868,7 @@
 				B2D73B322086EFA800B64E36 /* HMDRemoteSettingViewController.xib in Resources */,
 				B21BFAE92092ECDA00ACFF4B /* HMDHistoryHeadView.xib in Resources */,
 				B21BFA9F2091A6E400ACFF4B /* HMDMainVideoViewController.xib in Resources */,
+				B20DA0F920BCE3B700A8226D /* HMDVideoChoiceViewController.xib in Resources */,
 				3EDAD0A8206E2142007406FB /* HMD_RC_introductory_page_2@2x.png in Resources */,
 				B21BFA842091A04700ACFF4B /* HMDMainViewController.xib in Resources */,
 				B269CA6220A5635800948C52 /* HMDLoginView.xib in Resources */,
@@ -1998,6 +2021,7 @@
 				B2F6F945207207870037E746 /* HMDNavigationController.m in Sources */,
 				B2AC3F2920B270750038B5CE /* HMDRecoveredPWDViewController.m in Sources */,
 				B21BFA7A2091A04700ACFF4B /* HMDLineFlowLayout.m in Sources */,
+				B20DA0F820BCE3B700A8226D /* HMDVideoChoiceViewController.m in Sources */,
 				B2D73B9E20873DAC00B64E36 /* UIImageView+HMDDLANLoadImage.m in Sources */,
 				B21BFA852091A04700ACFF4B /* HMDMainViewController.m in Sources */,
 				B2A2DEA220A13AE400615595 /* HMDBaseModel.m in Sources */,
@@ -2022,6 +2046,7 @@
 				B2D73B852086F1DB00B64E36 /* HMDSearchTVResultCollectionView.m in Sources */,
 				B20DA0E120B548BA00A8226D /* UIImage+HMDImageType.m in Sources */,
 				B2A2DE9720A13A8C00615595 /* HMDBaseTableView.m in Sources */,
+				B20DA10120BCEBDC00A8226D /* HMDLocationVideoModel.m in Sources */,
 				B2AC3F0020AD4E5E0038B5CE /* HMDFavoriteVideoViewController.m in Sources */,
 				B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */,
 				B2E175DF20736D80004629BE /* NSString+QRCode.m in Sources */,
@@ -2035,6 +2060,7 @@
 				B21BFA822091A04700ACFF4B /* HMDScrollTitleView.m in Sources */,
 				B2A2DEA120A13AE400615595 /* HMDTVBaseFunctionDao.m in Sources */,
 				B2D73B332086EFA800B64E36 /* HMDRemoteSettingViewController.m in Sources */,
+				B20DA10A20BCF6F900A8226D /* HMDLocationVideoCollectionViewCell.m in Sources */,
 				B29E8F2B20738B4C00F5E35C /* UIImage+Color.m in Sources */,
 				B26313EC20946A35009ECBDF /* HMDDLan.swift in Sources */,
 				B21BFAE12092ECDA00ACFF4B /* HMDTVClassifyCollectionViewCell.m in Sources */,

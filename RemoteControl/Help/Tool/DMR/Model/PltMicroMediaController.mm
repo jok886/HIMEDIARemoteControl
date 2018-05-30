@@ -212,6 +212,10 @@ PLT_MicroMediaController::OnMRRemoved(PLT_DeviceDataReference& device)
     {
         [m_Target.delegate onDMRRemoved];
     }
+    if(m_Target.delegate && [m_Target.delegate respondsToSelector:@selector(onDMRRemovedUUID:)])
+    {
+        [m_Target.delegate onDMRRemovedUUID:[NSString stringWithUTF8String:uuid]];
+    }
 }
 
 /*----------------------------------------------------------------------

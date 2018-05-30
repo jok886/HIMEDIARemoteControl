@@ -38,7 +38,7 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
 //        NSLog(@"appkeyVerify");
 //    }
     //开启httpweb
-    [[HMDDLANNetTool sharedInstance] startWebServer];
+    [[HMDDLANNetTool sharedInstance] setupWebServer];
     [[HMDDLANNetTool sharedInstance] startNotificationWifi];
     //初始化根控制器
 

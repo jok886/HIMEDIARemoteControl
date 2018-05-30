@@ -21,6 +21,7 @@
 @interface HMDDLANNetTool ()
 @property (nonatomic,strong) GCDWebServer *webServer;
 @property (nonatomic,assign) BOOL firstTimeNet;                 //第一次网络状态判断
+@property (nonatomic,assign) BOOL openWebServer;                //需要开启网络服务
 @end
 
 
@@ -212,29 +213,38 @@
 }
 
 #pragma mark - httpWebServer
--(void)startWebServer{
-
+-(void)setupWebServer{
+    
     NSLog(@"ip:%@",[HMDDLANNetTool getLocalIPAddressForCurrentWiFi]);
     //不符合时的响应
-//    GCDWebServerResponse *mediaNotFoundResponse = [[GCDWebServerResponse alloc] initWithStatusCode:404];
+    //    GCDWebServerResponse *mediaNotFoundResponse = [[GCDWebServerResponse alloc] initWithStatusCode:404];
     //图片响应
     HMDWeakSelf(self)
     [self.webServer addHandlerForMethod:@"GET" pathRegex:@"/image/" requestClass:[GCDWebServerRequest class] asyncProcessBlock:^(__kindof GCDWebServerRequest * _Nonnull request, GCDWebServerCompletionBlock  _Nonnull completionBlock) {
         NSString *filePath = [weakSelf getFilePathWithRequestURL:request.URL.absoluteString fileType:HMDDLANNetFileImageType];
         
         NSData *imageData = [weakSelf getImageDataWithFilePath:filePath];
-
+        
         GCDWebServerDataResponse *response = [GCDWebServerDataResponse responseWithData:imageData contentType:@"image/jpeg"];
         completionBlock(response);
     }];
     [self.webServer addHandlerForMethod:@"GET" pathRegex:@"/video/" requestClass:[GCDWebServerRequest class] asyncProcessBlock:^(__kindof GCDWebServerRequest * _Nonnull request, GCDWebServerCompletionBlock  _Nonnull completionBlock) {
         NSString *filePath = [weakSelf getFilePathWithRequestURL:request.URL.absoluteString fileType:HMDDLANNetFileVideoType];
-        NSLog(@"request.byteRange%lu",(unsigned long)request.byteRange.length);
+        NSLog(@"request.byteRange____length:%lu____location:%lu__filePath:%@",(unsigned long)request.byteRange.length,(unsigned long)request.byteRange.location,filePath);
+        
         GCDWebServerFileResponse *response = [GCDWebServerFileResponse responseWithFile:filePath byteRange:request.byteRange];
         completionBlock(response);
     }];
+    
+}
+-(void)startWebServer{
+    self.openWebServer = YES;
+    [self.webServer startWithPort:8899 bonjourName:nil];
+}
 
-//    [self.webServer startWithPort:8899 bonjourName:nil];
+-(void)stopWebServer{
+    self.openWebServer = NO;
+    [self.webServer stop];
 }
 
 -(NSString *)getFilePathWithRequestURL:(NSString *)url fileType:(HMDDLANNetFileType)fileType{
@@ -391,7 +401,9 @@
     _wifiEnvironmental = wifiEnvironmental;
     if (wifiEnvironmental) {
         if (![self.webServer isRunning]) {
-            [self.webServer startWithPort:8899 bonjourName:nil];
+            if (self.openWebServer) {
+                [self.webServer startWithPort:8899 bonjourName:nil];
+            }
         }
     }else{
         if ([self.webServer isRunning]) {

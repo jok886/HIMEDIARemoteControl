@@ -34,7 +34,9 @@ typedef enum : NSUInteger {
 /** 获取本地设备的相关信息 */
 +(NSMutableDictionary *)getDeviceInfoForDataString:(NSString *)dataStr;
 /** 开启http服务 */
+-(void)setupWebServer;
 -(void)startWebServer;
+-(void)stopWebServer;
 /** 返回存储的路径 */
 +(NSString *)saveFileForName:(NSString *)fileName saveType:(HMDDLANNetFileType)fileType;
 /** 返回URL的路径 */

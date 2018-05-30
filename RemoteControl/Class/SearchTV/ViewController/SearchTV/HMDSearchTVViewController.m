@@ -195,6 +195,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 
     [textField resignFirstResponder];
+    [self searchTVWithKeyWord:textField.text];
     return YES;
 }
 

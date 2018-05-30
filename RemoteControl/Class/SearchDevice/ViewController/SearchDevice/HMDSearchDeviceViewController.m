@@ -70,13 +70,13 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
     [self setupInputIPView];
 }
 -(void)resetupMainView{
-    //渐变色
+    //增加渐变层
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, 254);
-    gradientLayer.colors = @[(id)HMDColorFromValue(0x3BC797).CGColor,(id)HMDColorFromValue(0x3BC7C5).CGColor];  // 设置渐变颜色
-    gradientLayer.startPoint = CGPointMake(0.5, 0);   //
-    gradientLayer.endPoint = CGPointMake(0.5, 1);     //
-    [self.linkStateView.layer insertSublayer:gradientLayer atIndex:0];
+    gradientLayer.frame = CGRectMake(0, -25, HMDScreenW, 25);
+    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
+    gradientLayer.startPoint = CGPointMake(0.5, 0);
+    gradientLayer.endPoint = CGPointMake(0.5, 1);
+    [self.bottomView.layer addSublayer:gradientLayer];
 }
 
 -(void)setupTableView{

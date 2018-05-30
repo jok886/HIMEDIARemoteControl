@@ -17,4 +17,15 @@
     hub.userInteractionEnabled = NO;
     [hub hideAnimated:YES afterDelay:time];
 }
+
++(void)showAnimationWithMessage:(NSString *)message inView:(UIView *)view{
+    MBProgressHUD *hub =[MBProgressHUD showHUDAddedTo:view animated:YES];
+    hub.mode = MBProgressHUDModeIndeterminate;
+    hub.label.text = message;
+    hub.userInteractionEnabled = NO;
+
+}
++(void)hidHubFremView:(UIView *)view{
+    [MBProgressHUD hideHUDForView:view animated:YES];
+}
 @end

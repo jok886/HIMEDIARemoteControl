@@ -13,12 +13,17 @@
 @property (weak, nonatomic) IBOutlet UIImageView *videoIconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UIView *shadowView;
 @end
 @implementation HMDVideoShowCollectionViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.shadowView.layer.shadowOffset = CGSizeMake(10, 10);
+    self.shadowView.layer.shadowOpacity = 0.3;
+    self.shadowView.layer.shadowRadius = 5.0;
 }
 
 -(void)setupCellWithVideoModel:(HMDVideoModel *)videoModel{

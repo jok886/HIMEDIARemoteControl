@@ -18,6 +18,7 @@
 #import "HMDDLANNetTool.h"
 
 #import "HMDScreenshotViewController.h"
+#import "HMDVideoChoiceViewController.h"
 @interface HMDTreasureChestViewController ()
 <
 UICollectionViewDelegate,
@@ -148,28 +149,56 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
     if ([mediaType containsString:@"movie"]) {
+//        [[[HMDDHRCenter sharedInstance] DMRControl] renderSetAVTransportWithURI:@"http://bla.gtimg.com/qqlive/201609/BRDD_20160920182023501.mp4" metaData:nil];
+//        [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
         NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
         NSString *fileName = [[filePathURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
-        
-        PHAsset *asset = [info objectForKey:@"UIImagePickerControllerPHAsset"];
-        NSArray * assetResources = [PHAssetResource assetResourcesForAsset:asset];
-        PHAssetResource * resource;
-        
-        for (PHAssetResource * assetRes in assetResources) {
-            
-            if (assetRes.type == PHAssetResourceTypeVideo) {
-                resource = assetRes;
-            }
-        }
-        NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileVideoType];
-        NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileVideoType];
-        //视频播放
-            [[PHAssetResourceManager defaultManager] writeDataForAssetResource:resource toFile:[NSURL fileURLWithPath:filePath] options:nil completionHandler:^(NSError * _Nullable error) {
-                if (error == nil) {
-                    [[[HMDDHRCenter sharedInstance] DMRControl] renderSetAVTransportWithURI:url metaData:nil];
-                    [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
+
+        PHAsset *phAsset = [info objectForKey:@"UIImagePickerControllerPHAsset"];
+
+        PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+
+        options.version = PHImageRequestOptionsVersionCurrent;
+
+        options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+
+        PHImageManager *manager = [PHImageManager defaultManager];
+
+        [manager requestAVAssetForVideo:phAsset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+
+            AVURLAsset *urlAsset = (AVURLAsset *)asset;
+            //转码配置
+            NSString *filePath = [HMDDLANNetTool saveFileForName:fileName saveType:HMDDLANNetFileVideoType];
+            NSString *url = [HMDDLANNetTool getHttpWebURLWithFileName:fileName fileType:HMDDLANNetFileVideoType];
+            filePath = [filePath stringByReplacingOccurrencesOfString:@".MOV" withString:@".mp4"];
+            url = [url stringByReplacingOccurrencesOfString:@".MOV" withString:@".mp4"];
+            AVAssetExportSession *exportSession= [[AVAssetExportSession alloc] initWithAsset:urlAsset presetName:AVAssetExportPresetMediumQuality];
+            exportSession.shouldOptimizeForNetworkUse = YES;
+            exportSession.outputURL = [NSURL fileURLWithPath:filePath];
+            exportSession.outputFileType = AVFileTypeQuickTimeMovie;
+            [exportSession exportAsynchronouslyWithCompletionHandler:^{
+                int exportStatus = exportSession.status;
+
+                switch (exportStatus)
+                {
+                    case AVAssetExportSessionStatusFailed:
+                    {
+                        // log error to text view
+                        NSError *exportError = exportSession.error;
+                        NSLog (@"AVAssetExportSessionStatusFailed: %@", exportError);
+                        break;
+                    }
+                    case AVAssetExportSessionStatusCompleted:
+                    {
+                        NSLog (@"AVAssetExportSessionStatusCompleted");
+                        [[[HMDDHRCenter sharedInstance] DMRControl] renderSetAVTransportWithURI:url metaData:nil];
+                        [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
+                    }
                 }
             }];
+
+        }];
+
     }else if ([mediaType containsString:@"image"]){
         NSURL *filePathURL = [info objectForKey:@"UIImagePickerControllerImageURL"];
         NSString *fileName = [[filePathURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
@@ -199,15 +228,12 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
         [[[HMDDHRCenter sharedInstance] DMRControl] renderPlay];
 
     }
-    [HMDLinkView sharedInstance].hidden = NO;
-//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-    [picker dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [[HMDDLANNetTool sharedInstance] stopWebServer];
     [HMDLinkView sharedInstance].hidden = NO;
-//    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillShow object:nil];
-//    [HMDLinkView sharedInstance].hidden = NO;
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 功能
@@ -227,22 +253,10 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 -(void)projectivePhoto{
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        [[HMDDLANNetTool sharedInstance] startWebServer];
         //隐藏底部链接状态
         [HMDLinkView sharedInstance].hidden = YES;
-        //    [[NSNotificationCenter defaultCenter] postNotificationName:HMDLinkViewWillHide object:nil];
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
-                                                 (NSString *)kUTTypeImage,
-                                                 (NSString *)kUTTypeJPEG,
-                                                 (NSString *)kUTTypeJPEG2000,
-                                                 (NSString *)kUTTypeTIFF,
-                                                 (NSString *)kUTTypePICT,
-                                                 (NSString *)kUTTypeICO,
-                                                 (NSString *)kUTTypePNG,
-                                                 (NSString *)kUTTypeQuickTimeImage,
-                                                 (NSString *)kUTTypeAppleICNS,
-                                                 (NSString *)kUTTypeBMP,
-                                                 nil];
+
         [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
     }else{
         [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
@@ -268,25 +282,15 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
 -(void)projectiveVideo{
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
-        //隐藏底部链接状态
         [HMDLinkView sharedInstance].hidden = YES;
-        self.imagePickerController.mediaTypes = [[NSArray alloc] initWithObjects:
-                                                 (NSString *)kUTTypeAudiovisualContent,
-                                                 (NSString *)kUTTypeMovie,
-                                                 (NSString *)kUTTypeVideo,
-                                                 (NSString *)kUTTypeAudio,
-                                                 (NSString *)kUTTypeQuickTimeMovie,
-                                                 (NSString *)kUTTypeMPEG,
-                                                 (NSString *)kUTTypeMPEG4,
-                                                 (NSString *)kUTTypeMP3,
-                                                 (NSString *)kUTTypeMPEG4Audio,
-                                                 (NSString *)kUTTypeAppleProtectedMPEG4Audio,
-                                                 nil];
-        [[self.view getCurActiveViewController] presentViewController:self.imagePickerController animated:YES completion:nil];
+        HMDVideoChoiceViewController *videoListVC = [[HMDVideoChoiceViewController alloc] init];
+        HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:videoListVC];
+        [self.view.getCurActiveViewController presentViewController:nav animated:YES completion:^{
+            [[HMDDLANNetTool sharedInstance] startWebServer];
+        }];
     }else{
         [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
     }
-
 
 }
 
@@ -296,7 +300,7 @@ static NSString * const reuseIdentifier = @"HMDTreasureChestCollectionViewCell";
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
         _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//        _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         _imagePickerController.allowsEditing = NO;
     }
     return _imagePickerController;

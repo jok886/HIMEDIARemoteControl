@@ -39,12 +39,13 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Uf3-NF-jv4"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="上映时间">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="selected">
-                        <color key="titleColor" red="0.36386460069999998" green="0.69190686940000001" blue="0.57645928859999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="titleColor" red="0.40665155650000001" green="0.77105504270000003" blue="0.60390210150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="81g-z4-ZCO"/>
@@ -53,12 +54,13 @@
                 <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyX-kR-aK8">
                     <rect key="frame" x="125" y="22" width="125" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="字母排序">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="selected">
-                        <color key="titleColor" red="0.36386460069999998" green="0.69190686940000001" blue="0.57645928859999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="titleColor" red="0.40665155650000001" green="0.77105504270000003" blue="0.60390210150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="PfR-EL-3hw"/>
@@ -72,11 +74,12 @@
                     <rect key="frame" x="10" y="67" width="355" height="600"/>
                     <subviews>
                         <button opaque="NO" tag="104" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEB-Ug-a7j">
-                            <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="47" height="34"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="oEp-eh-Kr1"/>
-                                <constraint firstAttribute="width" constant="60" id="wIq-Rd-J3G"/>
+                                <constraint firstAttribute="height" constant="34" id="oEp-eh-Kr1"/>
+                                <constraint firstAttribute="width" constant="47" id="wIq-Rd-J3G"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="全部">
                                 <color key="titleColor" red="0.40000283718109131" green="0.39999482035636902" blue="0.40000027418136597" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -89,11 +92,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="105" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qkr-jZ-L5y">
-                            <rect key="frame" x="0.0" y="40" width="60" height="40"/>
+                            <rect key="frame" x="0.0" y="34" width="47" height="34"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="Qin-h0-Azx"/>
-                                <constraint firstAttribute="height" constant="40" id="mMG-Q3-evT"/>
+                                <constraint firstAttribute="width" constant="47" id="Qin-h0-Azx"/>
+                                <constraint firstAttribute="height" constant="34" id="mMG-Q3-evT"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="全部">
                                 <color key="titleColor" red="0.40000283720000002" green="0.39999482040000001" blue="0.40000027420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -106,11 +110,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="106" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2a-C5-7yg">
-                            <rect key="frame" x="0.0" y="80" width="60" height="40"/>
+                            <rect key="frame" x="0.0" y="68" width="47" height="34"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="X6i-hZ-dnD"/>
-                                <constraint firstAttribute="width" constant="60" id="fZ3-UV-s1Y"/>
+                                <constraint firstAttribute="height" constant="34" id="X6i-hZ-dnD"/>
+                                <constraint firstAttribute="width" constant="47" id="fZ3-UV-s1Y"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="全部">
                                 <color key="titleColor" red="0.40000283720000002" green="0.39999482040000001" blue="0.40000027420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -123,18 +128,18 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="typeClassifyCell" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lgO-xT-RuT" customClass="HMDTVClassifyCollectionView">
-                            <rect key="frame" x="60" y="0.0" width="295" height="40"/>
+                            <rect key="frame" x="47" y="0.0" width="308" height="34"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="gLa-ac-czL">
-                                <size key="itemSize" width="50" height="50"/>
+                                <size key="itemSize" width="50" height="34"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="locationClassifyCell" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="t78-c2-4Bz" customClass="HMDTVClassifyCollectionView">
-                            <rect key="frame" x="60" y="40" width="295" height="40"/>
+                            <rect key="frame" x="47" y="34" width="308" height="34"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="aNG-xi-1n4">
@@ -145,7 +150,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="yearClassifyCell" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bka-vD-vFT" customClass="HMDTVClassifyCollectionView">
-                            <rect key="frame" x="60" y="80" width="295" height="40"/>
+                            <rect key="frame" x="47" y="68" width="308" height="34"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="tZX-7D-xaK">
@@ -156,21 +161,21 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="TVFilterCell" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sse-72-hQd" customClass="HMDTVFilterCollectionView">
-                            <rect key="frame" x="0.0" y="120" width="355" height="480"/>
+                            <rect key="frame" x="0.0" y="102" width="355" height="498"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z3O-si-aTz">
-                                <size key="itemSize" width="100" height="170"/>
+                                <size key="itemSize" width="100" height="155"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="10" minY="15" maxX="10" maxY="20"/>
                             </collectionViewFlowLayout>
                         </collectionView>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kur-le-uw1" customClass="HMDMainLoadingView">
-                            <rect key="frame" x="0.0" y="120" width="355" height="480"/>
+                            <rect key="frame" x="0.0" y="102" width="355" height="498"/>
                             <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zff-FD-RHl">
-                            <rect key="frame" x="0.0" y="120" width="355" height="480"/>
+                            <rect key="frame" x="0.0" y="102" width="355" height="498"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="null_page" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-nS-Usu">
                                     <rect key="frame" x="0.0" y="25" width="355" height="296"/>
@@ -238,12 +243,13 @@
                 <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-pC-1j8">
                     <rect key="frame" x="250" y="22" width="125" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="豆瓣评分">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="selected">
-                        <color key="titleColor" red="0.36386460069999998" green="0.69190686940000001" blue="0.57645928859999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="titleColor" red="0.40665155649185181" green="0.77105504274368286" blue="0.60390210151672363" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </state>
                     <connections>
                         <action selector="changeSortType:" destination="-1" eventType="touchUpInside" id="sCo-ng-J9a"/>

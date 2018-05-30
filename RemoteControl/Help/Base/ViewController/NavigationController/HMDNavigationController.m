@@ -33,10 +33,10 @@
     // 设置导航条背景图片
 //    [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     
-//    [navBar
-//     setBackgroundImage:[UIImage imageFromContextWithColor:[UIColor colorWithRed:38/255.0 green:137/255.0 blue:247/255.0 alpha:0]] forBarMetrics:UIBarMetricsDefault];
-//    [navBar
-//     setShadowImage:[UIImage new]];
+    [navBar
+     setBackgroundImage:[UIImage imageFromContextWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]] forBarMetrics:UIBarMetricsDefault];
+    [navBar
+     setShadowImage:[UIImage new]];
 //    navBar.translucent = YES;
 }
 

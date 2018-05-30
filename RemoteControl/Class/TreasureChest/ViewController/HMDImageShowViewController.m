@@ -106,7 +106,7 @@
            [self.choiceImageArray addObject:rowStr];
         }
         [self.showImageCollectionView reloadItemsAtIndexPaths:@[indexPath]];
-        self.title = [NSString stringWithFormat:@"已选择%ld个文件",self.choiceImageArray.count];
+        self.title = [NSString stringWithFormat:@"已选择%lu个文件",(unsigned long)self.choiceImageArray.count];
     }
 }
 #pragma mark - 点击

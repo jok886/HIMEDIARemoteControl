@@ -44,8 +44,8 @@
                                 <action selector="backAction:" destination="-1" eventType="touchUpInside" id="XoH-OO-ImV"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device_unconnected" translatesAutoresizingMaskIntoConstraints="NO" id="3Bs-KV-KqX">
-                            <rect key="frame" x="132" y="72" width="110" height="110"/>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device_unconnected" translatesAutoresizingMaskIntoConstraints="NO" id="3Bs-KV-KqX">
+                            <rect key="frame" x="132" y="62" width="110" height="110"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="110" id="QdL-tH-Fih"/>
                                 <constraint firstAttribute="width" constant="110" id="neA-SI-Nqu"/>
@@ -81,10 +81,18 @@
                         <constraint firstAttribute="bottom" secondItem="OV9-uL-V2B" secondAttribute="bottom" constant="10" id="j7e-vf-uDN"/>
                         <constraint firstItem="BRo-45-8Uy" firstAttribute="centerX" secondItem="6Kl-Tw-wln" secondAttribute="centerX" id="nx4-pT-JSD"/>
                         <constraint firstAttribute="height" constant="254" id="nzE-UK-oYm"/>
-                        <constraint firstItem="3Bs-KV-KqX" firstAttribute="centerY" secondItem="6Kl-Tw-wln" secondAttribute="centerY" id="ytT-a7-95G"/>
+                        <constraint firstItem="3Bs-KV-KqX" firstAttribute="centerY" secondItem="6Kl-Tw-wln" secondAttribute="centerY" constant="-10" id="ytT-a7-95G"/>
                         <constraint firstItem="vKG-l9-28x" firstAttribute="leading" secondItem="6Kl-Tw-wln" secondAttribute="leading" constant="15" id="zmM-D9-WzV"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApV-P4-a0n">
+                    <rect key="frame" x="0.0" y="274" width="375" height="343"/>
+                    <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6cn-4L-iem" customClass="HMDDeviceListTableView">
+                    <rect key="frame" x="20" y="274" width="335" height="343"/>
+                    <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twe-jo-S1B">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <subviews>
@@ -130,10 +138,6 @@
                         <constraint firstItem="fv6-Ob-Ue3" firstAttribute="leading" secondItem="twe-jo-S1B" secondAttribute="leading" id="y7o-Tz-ip2"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6cn-4L-iem" customClass="HMDDeviceListTableView">
-                    <rect key="frame" x="0.0" y="274" width="375" height="343"/>
-                    <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请确保设备和手机在同一网络下 盒子IP地址:设置&gt;网络设置" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQv-Gb-FBM">
                     <rect key="frame" x="78" y="427.5" width="219" height="36"/>
                     <constraints>
@@ -217,10 +221,14 @@
                 <constraint firstItem="6Kl-Tw-wln" firstAttribute="top" secondItem="qN4-DH-Dye" secondAttribute="top" id="9Ac-je-XsZ"/>
                 <constraint firstItem="Hdw-zX-dlh" firstAttribute="leading" secondItem="qN4-DH-Dye" secondAttribute="leading" id="Fis-iw-aTv"/>
                 <constraint firstItem="twe-jo-S1B" firstAttribute="top" secondItem="6cn-4L-iem" secondAttribute="bottom" id="Ges-wP-Rjg"/>
+                <constraint firstItem="ApV-P4-a0n" firstAttribute="top" secondItem="6Kl-Tw-wln" secondAttribute="bottom" id="Hkv-OB-ila"/>
                 <constraint firstAttribute="trailing" secondItem="twe-jo-S1B" secondAttribute="trailing" id="IQq-5W-UF6"/>
-                <constraint firstItem="6cn-4L-iem" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UZn-qd-sOi"/>
+                <constraint firstItem="qN4-DH-Dye" firstAttribute="trailing" secondItem="ApV-P4-a0n" secondAttribute="trailing" id="ITf-p9-lSo"/>
+                <constraint firstItem="ApV-P4-a0n" firstAttribute="leading" secondItem="qN4-DH-Dye" secondAttribute="leading" id="L78-hx-MBp"/>
+                <constraint firstItem="twe-jo-S1B" firstAttribute="top" secondItem="ApV-P4-a0n" secondAttribute="bottom" id="Thd-o5-n87"/>
+                <constraint firstItem="6cn-4L-iem" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="UZn-qd-sOi"/>
                 <constraint firstItem="twe-jo-S1B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="W1C-Jr-ckQ"/>
-                <constraint firstAttribute="trailing" secondItem="6cn-4L-iem" secondAttribute="trailing" id="XY4-GW-Qpx"/>
+                <constraint firstAttribute="trailing" secondItem="6cn-4L-iem" secondAttribute="trailing" constant="20" id="XY4-GW-Qpx"/>
                 <constraint firstItem="MQv-Gb-FBM" firstAttribute="centerX" secondItem="6cn-4L-iem" secondAttribute="centerX" id="aKC-F8-Eai"/>
                 <constraint firstItem="Hdw-zX-dlh" firstAttribute="top" secondItem="qN4-DH-Dye" secondAttribute="top" id="aWF-xw-9Yr"/>
                 <constraint firstAttribute="trailing" secondItem="6Kl-Tw-wln" secondAttribute="trailing" id="aoR-iX-aBN"/>

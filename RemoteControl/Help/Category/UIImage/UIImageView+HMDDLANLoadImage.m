@@ -77,7 +77,9 @@
          */
         HMDWeakSelf(self)
         [self setBase64ImageWithURLRequest:urlRequest placeholderImage:placeholderImage success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+            if (image) {
                 weakSelf.image = image;
+            }
         } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
             NSLog(@"failure%s",__FUNCTION__);
         }];

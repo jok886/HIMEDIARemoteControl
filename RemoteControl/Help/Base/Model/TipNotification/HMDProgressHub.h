@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HMDProgressHub : NSObject
-+ (void)showMessage:(NSString *)message hideAfter:(CGFloat)time; 
++ (void)showMessage:(NSString *)message hideAfter:(CGFloat)time;
++(void)showAnimationWithMessage:(NSString *)message inView:(UIView *)view;
++(void)hidHubFremView:(UIView *)view;
 @end

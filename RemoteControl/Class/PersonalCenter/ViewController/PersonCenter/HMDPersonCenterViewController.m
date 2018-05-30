@@ -113,6 +113,7 @@
 
 //我的应用
 - (IBAction)myAPPListCenter:(UIButton *)sender {
+
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
         [HMDLinkView sharedInstance].hidden = YES;
@@ -125,7 +126,8 @@
 
 }
 //系统设置
-- (IBAction)systemSetting:(id)sender {
+- (IBAction)systemSetting:(UIButton *)sender {
+
     HMDRemoteSettingViewController *settingVC = [[HMDRemoteSettingViewController alloc] init];
     settingVC.needSetNav = YES;
     HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:settingVC];
@@ -133,7 +135,8 @@
 }
 
 //截屏
-- (IBAction)getCapture:(id)sender {
+- (IBAction)getCapture:(UIButton *)sender {
+
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
         HMDScreenshotViewController *screenshotVC = [[HMDScreenshotViewController alloc] init];
@@ -142,29 +145,9 @@
     }else{
         [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
     }
-//    [self.appListDao getCaptureFinishBlock:^(BOOL success, NSData *imageData) {
-//        if (success) {
-//            UIImage *image = [UIImage imageWithData:imageData];
-//            UIImageView *showImageView = [[UIImageView alloc] initWithImage:image];
-//            showImageView.layer.anchorPoint = CGPointMake(0.1, 0.9);
-//            showImageView.contentMode = UIViewContentModeScaleAspectFit;
-//            showImageView.frame = CGRectMake(0, 0, HMDScreenW, HMDScreenH);
-//            [[UIApplication sharedApplication].keyWindow addSubview:showImageView];
-//            [UIView animateWithDuration:1.5 animations:^{
-//                CGAffineTransform scaleTransform = CGAffineTransformMakeScale(0.4, 0.4);
-//                showImageView.transform = scaleTransform;
-//            } completion:^(BOOL finished) {
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    [showImageView removeFromSuperview];
-//                });
-//
-//            }];
-//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-//        }
-//    }];
 }
 //启动清理大师
-- (IBAction)startHiTVAPK:(id)sender {
+- (IBAction)startHiTVAPK:(UIButton *)sender {
 
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
@@ -178,6 +161,7 @@
     }
 }
 
+
 -(void)gotoUserInfoCenter:(UITapGestureRecognizer *)tap{
 
         [HMDLinkView sharedInstance].hidden = YES;
@@ -185,9 +169,9 @@
         
         HMDNavigationController *nav = [[HMDNavigationController alloc]initWithRootViewController:userInfoCenter];
         [self presentViewController:nav animated:YES completion:nil];
-
-
 }
+
+
 #pragma mark - 其他
 //更新UI
 -(void)upUserInfoWithUserModel:(HMDUserModel *)userModel{

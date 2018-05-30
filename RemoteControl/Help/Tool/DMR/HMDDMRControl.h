@@ -22,7 +22,7 @@
  移除DMR
  */
 -(void)onDMRRemoved;
-
+-(void)onDMRRemovedUUID:(NSString *)uuid;
 /**
  无DMR被选中
  */

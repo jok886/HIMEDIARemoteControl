@@ -36,8 +36,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @property (weak, nonatomic) IBOutlet UITextView *summaryContentTextView;
-@property (weak, nonatomic) IBOutlet UIView *bottomView;        //渐变效果
+//@property (weak, nonatomic) IBOutlet UIView *bottomView;        //渐变效果
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIView *videoCoverView;
 
 @end
 
@@ -67,17 +68,18 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [self.view bringSubviewToFront:self.bottomView];
+//    [self.view bringSubviewToFront:self.bottomView];
 }
 #pragma mark - 初始化
 -(void)setupUI{
     //增加渐变层
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, 25);
-    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
-    gradientLayer.startPoint = CGPointMake(0.5, 0);
+    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, HMDScreenW*235/365.0);
+    gradientLayer.colors = @[(id)HMDColor(0, 0, 0, 0.6).CGColor,(id)HMDColor(0, 0, 0, 0).CGColor];  // 设置渐变颜色
+    gradientLayer.locations = @[@0.0,@1.0];
+    gradientLayer.startPoint = CGPointMake(0.5, 0.0);
     gradientLayer.endPoint = CGPointMake(0.5, 1);
-    [self.bottomView.layer addSublayer:gradientLayer];
+    [self.videoCoverView.layer addSublayer:gradientLayer];
     if (self.pushModel) {
         [self reSetupNavBarWithWhiteItem];
         [self setupNavigation];

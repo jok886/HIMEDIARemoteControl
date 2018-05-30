@@ -69,4 +69,14 @@
     }
     return _subtitleLab;
 }
+-(void)setHighlighted:(BOOL)highlighted{
+    [super setHighlighted:highlighted];
+    if (highlighted) {
+        self.layer.borderColor = HMDMAIN_COLOR.CGColor;
+        self.layer.borderWidth = 1;
+    }else{
+        self.layer.borderColor = [UIColor clearColor].CGColor;
+    }
+}
+
 @end

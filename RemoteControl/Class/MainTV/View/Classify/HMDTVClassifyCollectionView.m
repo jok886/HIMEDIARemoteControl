@@ -34,9 +34,9 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
         HMDTVClassifyModel *classifyModel = self.classifyArray[indexPath.row];
         NSString *title = classifyModel.title;
-        CGFloat width = [title calculateRowWidthWithHight:40 fontSize:13]+20;
+        CGFloat width = [title calculateRowWidthWithHight:34 fontSize:13]+20;
     
-        return CGSizeMake(width, 40);
+        return CGSizeMake(width, 34);
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,27 +81,5 @@
         self.selectClassifyBlock(classifyName,videoType);
     }
 }
-//#pragma mark - HMDWaterflowLayoutDelegate
-//
-///** 水平瀑布流 item等高不等宽 */
-//-(CGFloat)waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout widthForItemAtIndexPath:(NSIndexPath *)indexPath itemHeight:(CGFloat)itemHeight{
-//
-//    HMDTVClassifyModel *classifyModel = self.classifyArray[indexPath.row];
-//    NSString *title = classifyModel.title;
-//    CGFloat width = [title calculateRowWidthWithHight:40 fontSize:13]+20;
-//
-//    return width;
-//
-//}
-//
-///** itemSize */
-//-(CGSize)waterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return CGSizeMake(30, 40);
-//}
-//-(CGFloat)rowCountInWaterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout{
-//    return 1;
-//}
-//-(UIEdgeInsets)edgeInsetInWaterFlowLayout:(HMDWaterflowLayout *)waterFlowLayout{
-//    return UIEdgeInsetsMake(0, 10, 0, 10);
-//}
+
 @end

@@ -27,7 +27,7 @@
                         <constraint firstAttribute="width" constant="55" id="n0B-WJ-mSy"/>
                         <constraint firstAttribute="height" constant="55" id="n3f-td-jlK"/>
                     </constraints>
-                    <state key="normal" image="search_bar_icon"/>
+                    <state key="normal" image="search"/>
                     <connections>
                         <action selector="searchBtnClick:" destination="-1" eventType="touchUpInside" id="dMr-xk-P3f"/>
                     </connections>
@@ -58,7 +58,7 @@
         </view>
     </objects>
     <resources>
-        <image name="search_bar_icon" width="24" height="24"/>
+        <image name="search" width="24" height="24"/>
         <image name="user_default" width="24" height="24"/>
     </resources>
 </document>
