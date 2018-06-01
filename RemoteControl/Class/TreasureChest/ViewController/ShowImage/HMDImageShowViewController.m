@@ -8,6 +8,7 @@
 
 #import "HMDImageShowViewController.h"
 #import "HMDImageShowCollectionViewCell.h"
+#import "HMDPhotoBrowseViewController.h"
 #import "HMDSaveTool.h"
 @interface HMDImageShowViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong) NSMutableArray *shotImageArray;
@@ -108,7 +109,7 @@
         [self.showImageCollectionView reloadItemsAtIndexPaths:@[indexPath]];
         self.title = [NSString stringWithFormat:@"已选择%lu个文件",(unsigned long)self.choiceImageArray.count];
     }else{
-        
+        [self showImageAtIndexPath:indexPath];
     }
 }
 #pragma mark - 点击
@@ -136,7 +137,12 @@
     [self.choiceImageArray removeAllObjects];
     [self.showImageCollectionView reloadData];
 }
-
+#pragma mark - 其他
+-(void)showImageAtIndexPath:(NSIndexPath *)indexPath{
+    HMDPhotoBrowseViewController *photoBrowseViewController = [[HMDPhotoBrowseViewController alloc] init];
+    photoBrowseViewController.photoArray = [NSArray arrayWithArray:self.shotImageArray];
+    [self.navigationController pushViewController:photoBrowseViewController animated:YES];
+}
 #pragma mark - 懒加载
 -(NSMutableArray *)shotImageArray{
     if (_shotImageArray == nil) {
