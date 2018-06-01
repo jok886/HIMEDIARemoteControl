@@ -9,7 +9,7 @@
 #ifndef AppMacro_h
 #define AppMacro_h
 //普通常量
-
+#define HMDLanguage(key, comment) NSLocalizedStringFromTable(key, @"HMDLocalizable", comment)
 //解密的key
 #define HMDEncryptKey    @"564f5335f01448fea293929e418c75dd"
 //登录

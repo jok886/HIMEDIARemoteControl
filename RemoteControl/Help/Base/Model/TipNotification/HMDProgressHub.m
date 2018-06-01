@@ -14,7 +14,9 @@
     MBProgressHUD *hub =[MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hub.mode = MBProgressHUDModeText;
     hub.label.text = message;
+    hub.label.textColor = HMDColorFromValue(0xffffff);
     hub.userInteractionEnabled = NO;
+    hub.bezelView.backgroundColor = HMDColor(0, 0, 0, 0.5);
     [hub hideAnimated:YES afterDelay:time];
 }
 

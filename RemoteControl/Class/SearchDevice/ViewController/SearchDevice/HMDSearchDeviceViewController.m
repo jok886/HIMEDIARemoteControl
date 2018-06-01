@@ -143,11 +143,14 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
 -(void)reloadTableViewWithdeviceArray:(NSArray *)deviceArray{
     dispatch_async(dispatch_get_main_queue(), ^{
         //数据刷新的时候做个2s的动画
-        self.stopAnimationTime = [NSDate dateWithTimeIntervalSinceNow:2];
+        self.stopAnimationTime = [NSDate date];
         [self startScanAnimation];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if ([[NSDate date] laterDate:self.stopAnimationTime]) {
+            NSTimeInterval secondsInterval= [[NSDate date] timeIntervalSinceDate:self.stopAnimationTime];
+            if (secondsInterval > 2.0) {
                 [self stopScanAnimaton];
+            }else{
+                NSLog(@"停不下来");
             }
         });
         NSMutableArray *devices = [[NSMutableArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];

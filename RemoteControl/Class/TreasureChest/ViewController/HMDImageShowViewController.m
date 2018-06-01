@@ -45,7 +45,7 @@
     //返回按钮
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.frame = CGRectMake(0, 0, 60, 40);
-
+    rightButton.contentEdgeInsets = UIEdgeInsetsMake(0, 40, 0, 0);
     [rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [rightButton setTitle:@"选择" forState:UIControlStateNormal];
@@ -107,6 +107,8 @@
         }
         [self.showImageCollectionView reloadItemsAtIndexPaths:@[indexPath]];
         self.title = [NSString stringWithFormat:@"已选择%lu个文件",(unsigned long)self.choiceImageArray.count];
+    }else{
+        
     }
 }
 #pragma mark - 点击

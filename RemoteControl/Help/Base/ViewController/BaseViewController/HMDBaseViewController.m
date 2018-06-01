@@ -35,7 +35,8 @@
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(dismissAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
+    backButton.frame = CGRectMake(0, 0, 60, 40);
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
 }
@@ -46,7 +47,8 @@
     [backButton setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageNamed:@"back_white"] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
+    backButton.frame = CGRectMake(0, 0, 60, 40);
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 }
 -(void)dismissAction:(UIButton *)sender{

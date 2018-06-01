@@ -106,13 +106,13 @@
 #pragma mark - 按键/点击
 //是否打开侧键控制
 - (IBAction)switchVolumControl:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    [[NSUserDefaults standardUserDefaults] setBool:sender.selected forKey:OPENSIDEKEY];
+    self.sideKeyControlBtn.selected = !self.sideKeyControlBtn.selected;
+    [[NSUserDefaults standardUserDefaults] setBool:self.sideKeyControlBtn.selected forKey:OPENSIDEKEY];
 }
 //震动
 - (IBAction)changeShock:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    [[NSUserDefaults standardUserDefaults] setBool:sender.selected forKey:OPENSHOCK];
+    self.shockBtn.selected = !self.shockBtn.selected;
+    [[NSUserDefaults standardUserDefaults] setBool:self.shockBtn.selected forKey:OPENSHOCK];
 }
 //清理缓存
 -(void)clearMemory:(UITapGestureRecognizer *)tap{

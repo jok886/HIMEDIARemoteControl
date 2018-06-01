@@ -77,6 +77,7 @@ static NSString * const kOrder = @"order";
     HMDWeakSelf(self)
 
     self.showCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
         [weakSelf addMoreVideoList];
     }];
 
@@ -116,10 +117,12 @@ static NSString * const kOrder = @"order";
         }
     }];
 }
+
 //获取视频列表
 -(void)getVideoList{
     //数据刷新页面
     [self.showCollectionView.mj_footer resetNoMoreData];
+    self.showCollectionView.mj_footer.hidden = NO;
     [self.loadingView startLoading];
     HMDWeakSelf(self)
     [self.filterDict setObject:[NSString stringWithFormat:@"%ld",(long)self.curPage] forKey:@"page"];
@@ -147,6 +150,7 @@ static NSString * const kOrder = @"order";
 
 //获取视频列表
 -(void)addMoreVideoList{
+
     self.curPage++;
     HMDWeakSelf(self)
     [self.filterDict setObject:[NSString stringWithFormat:@"%ld",(long)self.curPage] forKey:@"page"];
@@ -160,11 +164,13 @@ static NSString * const kOrder = @"order";
                 [weakSelf.showCollectionView reloadData];
             }else{
                 [weakSelf.showCollectionView.mj_footer endRefreshingWithNoMoreData];
+                weakSelf.showCollectionView.mj_footer.hidden = YES;
             }
         }else{
             [weakSelf.showCollectionView.mj_footer endRefreshing];
             [HMDProgressHub showMessage:@"加载更多数据失败,请稍后再试" hideAfter:1.5];
         }
+        
     }];
 }
 #pragma mark - 点击

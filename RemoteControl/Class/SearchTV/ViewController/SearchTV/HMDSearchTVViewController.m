@@ -11,6 +11,7 @@
 
 #import "HMDSearchTVResultCollectionView.h"
 #import "HMDSearchTVTipsCollectionView.h"
+#import <MJRefresh/MJRefresh.h>
 
 #import "HMDSearchTVDao.h"
 #import "HMDVideoDataDao.h"
@@ -22,6 +23,7 @@
 
 @property (nonatomic,strong) HMDSearchTVDao *searchTVDao;
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
+@property (nonatomic,assign) NSInteger curPage;                                                         //当前页码
 @end
 
 @implementation HMDSearchTVViewController
@@ -47,7 +49,8 @@
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateNormal];
     [backButton setImage:[UIImage imageNamed:@"btn_back_wbg"] forState:UIControlStateHighlighted];
     [backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton sizeToFit];
+    backButton.frame = CGRectMake(0, 0, 60, 40);
+    backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     //搜索框
@@ -63,9 +66,11 @@
     [searchButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
     searchButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [searchButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [searchButton sizeToFit];
+    searchButton.frame = CGRectMake(0, 0, 40, 40);
+    searchButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     // 设置返回按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+
 }
 
 -(void)setupCollectionView{
@@ -142,6 +147,7 @@
             [searchWordHistoryArray insertObject:keyWord atIndex:0];
             [[NSUserDefaults standardUserDefaults] setObject:searchWordHistoryArray forKey:HMDSearchWordHistory];
         }
+        self.searchTVTipsCollectionView.recordArray = [NSMutableArray arrayWithArray:searchWordHistoryArray];
         [[NSUserDefaults standardUserDefaults] synchronize];
         self.searchTVResultCollectionView.tvModelArray = nil;
         [self.searchTVResultCollectionView reloadData];
@@ -149,14 +155,41 @@
         self.searchTVTipsCollectionView.hidden = YES;
         self.searchTVResultCollectionView.hidden = NO;
         HMDWeakSelf(self)
-        [self.searchTVDao searchTVWithKeyWord:keyWord page:1 FinishBlock:^(BOOL success, NSArray *searchArray) {
+        self.curPage = 1;
+        [self.searchTVDao searchTVWithKeyWord:keyWord page:self.curPage FinishBlock:^(BOOL success, NSArray *searchArray) {
             if (success) {
-                weakSelf.searchTVResultCollectionView.tvModelArray = [NSArray arrayWithArray:searchArray];
+                weakSelf.searchTVResultCollectionView.tvModelArray = [NSMutableArray arrayWithArray:searchArray];
                 [weakSelf.searchTVResultCollectionView reloadData];
+                if (searchArray.count<12) {
+                    weakSelf.searchTVResultCollectionView.mj_footer = nil;
+                }
             }
         }];
+        self.searchTVResultCollectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            
+            [weakSelf addMoreTVWithKeyWord:keyWord];
+        }];
     }
+}
 
+-(void)addMoreTVWithKeyWord:(NSString *)keyWord{
+    self.curPage++;
+    HMDWeakSelf(self)
+    [self.searchTVDao searchTVWithKeyWord:keyWord page:self.curPage FinishBlock:^(BOOL success, NSArray *searchArray) {
+        [weakSelf.searchTVResultCollectionView.mj_footer endRefreshing];
+        if (success) {
+            if (searchArray.count == 0) {
+                weakSelf.searchTVResultCollectionView.mj_footer= nil;
+                [HMDProgressHub showMessage:@"没有更多数据了" hideAfter:2.0];
+            }else{
+                [weakSelf.searchTVResultCollectionView.tvModelArray addObjectsFromArray:searchArray];
+                [weakSelf.searchTVResultCollectionView reloadData];
+            }
+
+        }else{
+            NSLog(@"");
+        }
+    }];
 }
 #pragma mark - UITextFieldDelegate
 //开始编辑
@@ -207,7 +240,10 @@
 }
 #pragma mark - 点击
 -(void)backAction:(UIButton *)sender{
-    if (self.searchTVTipsCollectionView.searchTVTipsType == HMDSearchTVRecommendTipsType){
+
+    if (self.searchTVTipsCollectionView.hidden){
+        self.searchTVTipsCollectionView.hidden = NO;
+        self.searchTVResultCollectionView.hidden = YES;
         self.searchTVTipsCollectionView.recommendArray = nil;
         self.searchTVTipsCollectionView.searchTVTipsType = HMDSearchTVRecordAndHotTipsType;
         [self.searchTVTipsCollectionView reloadData];
@@ -216,7 +252,6 @@
     }else{
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    
 }
 
 -(void)cancelAction:(UIButton *)sender{
@@ -238,16 +273,7 @@
 
 }
 
-#pragma mark - 其他
-//-(void)reloadSearchTVTipsCollectionViewData{
-//    if (self.searchTVTipsCollectionView.recommendArray.count >0) {
-//        self.searchTVTipsCollectionView.searchTVTipsType = HMDSearchTVRecommendTipsType;
-//    }else{
-//        self.searchTVTipsCollectionView.searchTVTipsType = HMDSearchTVRecordAndHotTipsType;
-//
-//    }
-//    [self.searchTVTipsCollectionView reloadData];
-//}
+
 #pragma mark - 懒加载
 
 -(HMDSearchTVDao *)searchTVDao{

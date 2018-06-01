@@ -79,11 +79,9 @@
 //        [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 //        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
         [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        [backButton sizeToFit];
-        
+        backButton.frame = CGRectMake(0, 0, 60, 40);
         // 注意:一定要在按钮内容有尺寸的时候,设置才有效果
-//        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -25, 0, 0);
-        
+        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -40, 0, 0);
         // 设置返回按钮
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
         

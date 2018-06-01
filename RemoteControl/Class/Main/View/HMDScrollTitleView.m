@@ -26,7 +26,7 @@
         self.autoLayoutBtn = YES;
     }
     if (self.selectColor == nil) {
-        self.selectColor = HMDMAIN_COLOR;
+        self.selectColor = HMDColor(59, 199, 151, 1);
     }
 }
 //基本UI

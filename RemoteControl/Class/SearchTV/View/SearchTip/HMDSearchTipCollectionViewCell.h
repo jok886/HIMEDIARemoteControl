@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol HMDSearchTipCollectionViewCellDelegate <NSObject>
--(void)searchTipCollectionViewCellDeleteAtIndexPath:(NSIndexPath *)indexPath;
-@end
 
 @interface HMDSearchTipCollectionViewCell : UICollectionViewCell
-@property (nonatomic,weak) id<HMDSearchTipCollectionViewCellDelegate> delegate;
+
 @property (nonatomic,strong) NSIndexPath *indexPath;
 -(void)setupCellWithTipSting:(NSString *)tip needCenter:(BOOL)needCenter deleteBtn:(BOOL)needDeleteBtn;
 @end

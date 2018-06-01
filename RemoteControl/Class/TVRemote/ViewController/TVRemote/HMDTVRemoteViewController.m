@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *centerKeyBoardView;        //中间键盘
 @property (weak, nonatomic) IBOutlet UIImageView *keyBoardBGImageView;
 @property (weak, nonatomic) IBOutlet UIView *gestureView;               //手势键盘
+@property (weak, nonatomic) IBOutlet UILabel *notiLab;
 @property (nonatomic,assign,getter=isOpenSideKey) BOOL openSideKey;     //开启侧键
 @property (nonatomic,assign,getter=isOpenShock) BOOL openShock;         //开启震动
 @property (nonatomic,assign,getter=isRegisterNotification) BOOL registerNotification;  //注册过通知了
@@ -110,14 +111,17 @@
     [setButton setImage:[UIImage imageNamed:@"remote_setting"] forState:UIControlStateNormal];
 
     [setButton addTarget:self action:@selector(setButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [setButton sizeToFit];
+    setButton.frame = CGRectMake(0, 0, 40, 40);
+
     UIBarButtonItem *setBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:setButton];
     //隐藏键盘
     UIButton *hideKeyBoardButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [hideKeyBoardButton setImage:[UIImage imageNamed:@"remote_model"] forState:UIControlStateNormal];
+    [hideKeyBoardButton setImage:[UIImage imageNamed:@"remote_hand"] forState:UIControlStateSelected];
 
     [hideKeyBoardButton addTarget:self action:@selector(hideKeyBoardButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [hideKeyBoardButton sizeToFit];
+    hideKeyBoardButton.frame = CGRectMake(0, 0, 40, 40);
+
     UIBarButtonItem *hideKeyBoardBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:hideKeyBoardButton];
     // 设置返回按钮
     self.navigationItem.rightBarButtonItems = @[setBarButtonItem,hideKeyBoardBarButtonItem];
@@ -137,7 +141,7 @@
 -(void)panGesture:(UIPanGestureRecognizer *)panGesture{
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:
-
+            self.notiLab.hidden = YES;
             //开启粒子动画
             [self startEmitterAnimaton];
             break;
@@ -335,6 +339,7 @@
 -(void)hideKeyBoardButtonClick:(UIButton *)sender{
     sender.selected = !sender.selected;
     self.centerKeyBoardView.hidden = sender.selected;
+    self.notiLab.hidden = !sender.selected;
     self.gestureView.hidden = !sender.selected;
     
     //限制区域
@@ -520,7 +525,7 @@
 //        CGFloat scale = (CGFloat)(35.0/cellImage.size.width);
         //缩放比例
         cell.scale = 0.5;
-        cell.scaleSpeed = -0.8;
+        cell.scaleSpeed = -0.5;
         //缩放比例范围
 //            cell.scaleRange = 0.02;
         

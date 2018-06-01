@@ -9,15 +9,15 @@
 #import "HMDSearchTVResultCollectionView.h"
 #import "HMDSearchTVResultCell.h"
 
-@interface HMDSearchTVResultCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface HMDSearchTVResultCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @end
 @implementation HMDSearchTVResultCollectionView
 static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
 +(instancetype)searchTVResultCollectionViewWithFrame:(CGRect)frame{
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    flowLayout.itemSize = CGSizeMake(frame.size.width, 100);
-    flowLayout.minimumLineSpacing = 1;
+    flowLayout.itemSize = CGSizeMake(100, 160);
+    flowLayout.minimumLineSpacing = 10;
     flowLayout.minimumInteritemSpacing = 10;
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     HMDSearchTVResultCollectionView *resultCollectionView = [[HMDSearchTVResultCollectionView alloc]initWithFrame:frame collectionViewLayout:flowLayout];
@@ -31,12 +31,7 @@ static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
 }
 -(void)awakeFromNib{
     [super awakeFromNib];
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-//    flowLayout.itemSize = CGSizeMake(frame.size.width, 100);
-//    flowLayout.minimumLineSpacing = 1;
-//    flowLayout.minimumInteritemSpacing = 10;
-//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//    HMDSearchTVResultCollectionView *resultCollectionView = [[HMDSearchTVResultCollectionView alloc]initWithFrame:frame collectionViewLayout:flowLayout];
+
     self.delegate = self;
     self.dataSource = self;
     //注册Item
@@ -48,13 +43,16 @@ static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
     return self.tvModelArray.count;
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGRect bounds = collectionView.bounds;
-    return CGSizeMake(bounds.size.width, 100);
+
+    return CGSizeMake(100, 160);
 
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 1;
+    return 10;
+}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDSearchTVResultCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -71,9 +69,9 @@ static NSString * const reuseIdentifier = @"HMDSearchTVResultCell";
 }
 
 #pragma mark - 懒加载
--(NSArray *)tvModelArray{
+-(NSMutableArray *)tvModelArray{
     if (_tvModelArray == nil) {
-        _tvModelArray = [NSArray array];
+        _tvModelArray = [NSMutableArray array];
     }
     return _tvModelArray;
 }

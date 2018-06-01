@@ -22,12 +22,4 @@
     self.tipLab.text = tip;
 }
 
-//点击删除按钮
-- (IBAction)deleteBtnClick:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(searchTipCollectionViewCellDeleteAtIndexPath:)]) {
-        [self.delegate searchTipCollectionViewCellDeleteAtIndexPath:self.indexPath];
-    }
-}
-
-
 @end

@@ -18,7 +18,6 @@
 <UICollectionViewDelegate,
 UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout,
-HMDSearchTipCollectionViewCellDelegate,
 HMDSearchTipHeadViewDelegate>
 
 @end
@@ -49,10 +48,18 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
     if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
         return self.recommendArray.count;
     }else{
-        if (section==0) {
-            return self.recordArray.count;
+        if (self.searchTVTipsType == HMDSearchTVRecordAndHotTipsType) {
+            if (section==0) {
+                return self.recordArray.count;
+            }else{
+                return self.hotArray.count;
+            }
         }else{
-            return self.hotArray.count;
+            if (self.searchTVTipsType == HMDSearchTVOnlyRecordTipsType) {
+                return self.recordArray.count;
+            }else{
+                return self.hotArray.count;
+            }
         }
     }
 }
@@ -61,7 +68,17 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
     if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
         return 1;
     }else{
-        return 2;
+        if (self.recordArray.count>0 && self.hotArray.count>0) {
+            return 2;
+        }else{
+            if (self.recordArray.count > 0) {
+                self.searchTVTipsType = HMDSearchTVOnlyRecordTipsType;
+            }else{
+                self.searchTVTipsType = HMDSearchTVOnleHotTipsType;
+            }
+            return 1;
+        }
+        
     }
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,35 +115,56 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
         [historyCell setHistoryText:tip keyWord:self.curKeyWord];
         return historyCell;
     }else{
-
-        if (indexPath.section == 0){
-            HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
-            NSString *tip = self.recordArray[indexPath.row];
-            [cell setupCellWithTipSting:tip needCenter:YES deleteBtn:NO];
-
-            return cell;
+        if (self.searchTVTipsType == HMDSearchTVRecordAndHotTipsType) {
+            if (indexPath.section == 0){
+                return [self getSearchTipCellAtCollectionView:collectionView IndexPath:indexPath];
+            }else{
+                return [self getHotTipCellAtCollectionView:collectionView IndexPath:indexPath];
+            }
         }else{
-            HMDHotTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell_Hot forIndexPath:indexPath];
-            NSString *tip = self.hotArray[indexPath.row];
-            [cell setHotTipWithName:tip level:indexPath.row+1];
-            return cell;
+            if (self.searchTVTipsType == HMDSearchTVOnlyRecordTipsType) {
+                return [self getSearchTipCellAtCollectionView:collectionView IndexPath:indexPath];
+            }else{
+                return [self getHotTipCellAtCollectionView:collectionView IndexPath:indexPath];
+            }
         }
-
-        
     }
 
 }
 
+
+-(HMDSearchTipCollectionViewCell *)getSearchTipCellAtCollectionView:(UICollectionView *)collectionView IndexPath:(NSIndexPath *)indexPath{
+    HMDSearchTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell forIndexPath:indexPath];
+    NSString *tip = self.recordArray[indexPath.row];
+    [cell setupCellWithTipSting:tip needCenter:YES deleteBtn:NO];
+    
+    return cell;
+}
+
+-(HMDHotTipCollectionViewCell *)getHotTipCellAtCollectionView:(UICollectionView *)collectionView IndexPath:(NSIndexPath *)indexPath{
+    HMDHotTipCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifierCell_Hot forIndexPath:indexPath];
+    NSString *tip = self.hotArray[indexPath.row];
+    [cell setHotTipWithName:tip level:indexPath.row+1];
+    return cell;
+}
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
     NSString *tip;
     if (self.searchTVTipsType == HMDSearchTVRecommendTipsType) {
         tip = self.recommendArray[indexPath.row];
     }else{
-        if (indexPath.section == 0){
-            tip = self.recordArray[indexPath.row];
+        if (self.searchTVTipsType == HMDSearchTVRecordAndHotTipsType) {
+            if (indexPath.section == 0){
+                tip = self.recordArray[indexPath.row];
+            }else{
+                tip = self.hotArray[indexPath.row];
+            }
         }else{
-            tip = self.hotArray[indexPath.row];
+            if (self.searchTVTipsType == HMDSearchTVOnlyRecordTipsType) {
+                tip = self.recordArray[indexPath.row];
+            }else{
+                tip = self.hotArray[indexPath.row];
+            }
         }
     }
     
@@ -145,10 +183,18 @@ static NSString * const reuseIdentifierHead = @"HMDSearchTipHeadView";
             return headerView;
         }else{
             headerView.hidden = NO;
-            if (indexPath.section == 0){
-                headerView.searchTipStyle = HMDSearchTipRecord;
+            if (self.searchTVTipsType == HMDSearchTVRecordAndHotTipsType) {
+                if (indexPath.section == 0){
+                    headerView.searchTipStyle = HMDSearchTipRecord;
+                }else{
+                    headerView.searchTipStyle = HMDSearchTipHot;
+                }
             }else{
-                headerView.searchTipStyle = HMDSearchTipHot;
+                if (self.searchTVTipsType == HMDSearchTVOnlyRecordTipsType) {
+                    headerView.searchTipStyle = HMDSearchTipRecord;
+                }else{
+                    headerView.searchTipStyle = HMDSearchTipHot;
+                }
             }
         }
         return headerView;

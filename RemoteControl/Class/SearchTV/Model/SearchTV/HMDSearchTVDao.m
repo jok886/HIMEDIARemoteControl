@@ -98,7 +98,7 @@
                                     HMDCURWECHAHID,@"hid",
                                     key,@"key",
                                     [NSString stringWithFormat:@"%ld",(long)page],@"page_number",
-                                    @"9",@"page_count",
+                                    @"12",@"page_count",
                                     nil];
     NSString *encryptParameters = [self encryptParameters:parametersDict];
     [session POST:HMD_HINAVI_SEARCH_TV parameters:encryptParameters progress:^(NSProgress * _Nonnull downloadProgress) {

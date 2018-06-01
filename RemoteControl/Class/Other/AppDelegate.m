@@ -41,7 +41,7 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
     [[HMDDLANNetTool sharedInstance] setupWebServer];
     [[HMDDLANNetTool sharedInstance] startNotificationWifi];
     //初始化根控制器
-
+    NSLocalizedString(@"",@"");
     NSString *userHasOnboardedKey = [[NSUserDefaults standardUserDefaults] objectForKey:kUserHasOnboardedKey];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

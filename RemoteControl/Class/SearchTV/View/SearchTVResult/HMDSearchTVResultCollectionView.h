@@ -14,7 +14,7 @@
 @end
 
 @interface HMDSearchTVResultCollectionView : UICollectionView
-@property (nonatomic,strong) NSArray *tvModelArray;
+@property (nonatomic,strong) NSMutableArray *tvModelArray;
 @property (nonatomic,weak) id<HMDSearchTVResultCollectionViewDelegate> searchDelegate;
 
 +(instancetype)searchTVResultCollectionViewWithFrame:(CGRect)frame;

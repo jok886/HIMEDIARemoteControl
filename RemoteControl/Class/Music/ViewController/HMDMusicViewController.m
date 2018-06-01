@@ -24,7 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self getMusicList];
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        
+        [self getMusicList];
+    }else{
+        self.nullPageView.hidden = NO;
+        [HMDProgressHub showMessage:@"请链接设备" hideAfter:2.0];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,14 +41,6 @@
 
 #pragma mark - 初始化
 -(void)setupUI{
-//    //增加渐变层
-//    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-//    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, 25);
-//    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
-//    gradientLayer.startPoint = CGPointMake(0.5, 0);
-//    gradientLayer.endPoint = CGPointMake(0.5, 1);
-//    [self.bottomView.layer addSublayer:gradientLayer];
-    
     [self.musicListTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDMusicListTableViewCell class]) bundle:nil] forCellReuseIdentifier:self.musicListTableView.restorationIdentifier];
 }
 
@@ -62,8 +61,13 @@
 #pragma mark - 点击
 //重新加载
 - (IBAction)reloadMusicListBtnClick:(id)sender {
-    self.nullPageView.hidden = YES;
-    [self getMusicList];
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        self.nullPageView.hidden = YES;
+        [self getMusicList];
+    }else{
+        [HMDProgressHub showMessage:@"请链接设备" hideAfter:2.0];
+    }
+
 }
 
 

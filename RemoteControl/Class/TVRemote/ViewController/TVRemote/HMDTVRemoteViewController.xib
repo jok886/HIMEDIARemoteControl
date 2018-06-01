@@ -15,6 +15,7 @@
                 <outlet property="centerKeyBoardView" destination="Epo-Ve-MoW" id="X6f-qp-9gi"/>
                 <outlet property="gestureView" destination="EgC-ZI-nv8" id="Zh8-0F-B7I"/>
                 <outlet property="keyBoardBGImageView" destination="Lin-TC-815" id="Goj-f5-Pab"/>
+                <outlet property="notiLab" destination="PGZ-95-uiM" id="7RY-Vf-V54"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +34,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="PGZ-95-uiM" firstAttribute="centerX" secondItem="EgC-ZI-nv8" secondAttribute="centerX" id="BPz-dO-dA0"/>
                         <constraint firstAttribute="bottom" secondItem="PGZ-95-uiM" secondAttribute="bottom" constant="40" id="dBL-SU-1a8"/>

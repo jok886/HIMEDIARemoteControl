@@ -1,0 +1,18 @@
+
+/* Class = "UIButton"; normalTitle = "注册/登录"; ObjectID = "GAg-y1-lLm"; */
+"GAg-y1-lLm.normalTitle" = "注册/登录";
+
+/* Class = "UILabel"; text = "登录海美迪会员，用手机玩转盒子"; ObjectID = "HoA-uf-HP8"; */
+"HoA-uf-HP8.text" = "登录海美迪会员，用手机玩转盒子";
+
+/* Class = "UIButton"; normalTitle = " 系统设置      "; ObjectID = "csJ-mf-4Bi"; */
+"csJ-mf-4Bi.normalTitle" = " 系统设置      ";
+
+/* Class = "UIButton"; normalTitle = " 电视截屏    "; ObjectID = "mnV-Jk-CEp"; */
+"mnV-Jk-CEp.normalTitle" = " 电视截屏    ";
+
+/* Class = "UIButton"; normalTitle = " 清理大师      "; ObjectID = "sbg-75-Bce"; */
+"sbg-75-Bce.normalTitle" = " 清理大师      ";
+
+/* Class = "UIButton"; normalTitle = " 我的应用     "; ObjectID = "y5R-ff-CL7"; */
+"y5R-ff-CL7.normalTitle" = " 我的应用     ";

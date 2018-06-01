@@ -11,7 +11,7 @@
 @interface HMDSearchTVResultCell()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
-@property (weak, nonatomic) IBOutlet UILabel *infoLab;
+
 
 @end
 @implementation HMDSearchTVResultCell
@@ -25,6 +25,6 @@
 -(void)setupCellWithVideoModel:(HMDVideoModel *)videoModel{
     [self.iconImageView setImageWithURLStr:videoModel.img_url placeholderImage:[UIImage imageNamed:@"video_pic_default"]];
     self.titleLab.text = videoModel.title;
-    self.infoLab.text = videoModel.info;
+
 }
 @end

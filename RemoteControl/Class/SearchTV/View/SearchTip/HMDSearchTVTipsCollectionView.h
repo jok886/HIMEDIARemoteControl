@@ -12,6 +12,8 @@
 typedef enum {
     HMDSearchTVRecordAndHotTipsType = 0,        //记录与热词
     HMDSearchTVRecommendTipsType = 1,           //推荐
+    HMDSearchTVOnleHotTipsType = 2,             //只有热词
+    HMDSearchTVOnlyRecordTipsType = 3,          //只有记录
 } HMDSearchTVTipsType;
 
 typedef void(^HMDSearchTVTipBlock)(NSString *keyWord);

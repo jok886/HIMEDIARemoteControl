@@ -80,6 +80,9 @@
 		B21BFAFF2092F21500ACFF4B /* HMDTVFilterCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFAFE2092F21500ACFF4B /* HMDTVFilterCollectionView.m */; };
 		B21BFB032092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B21BFB012092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m */; };
 		B21BFB042092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */; };
+		B23A211D20BF980000A9141B /* HMDLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B23A211F20BF980000A9141B /* HMDLocalizable.strings */; };
+		B23A212420BF9BF400A9141B /* HMDLanguageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B23A212320BF9BF400A9141B /* HMDLanguageTool.m */; };
+		B23A213220BFBFD800A9141B /* HMDPersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B23A213120BFBFD800A9141B /* HMDPersonCenterViewController.xib */; };
 		B24C6A52208984FE00B5227B /* EncryptionTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A51208984FD00B5227B /* EncryptionTools.m */; };
 		B24C6A8A208DB33500B5227B /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A89208DB33400B5227B /* NSString+Hash.m */; };
 		B24C6A8E208DCDA800B5227B /* HMDApplistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B24C6A8D208DCDA800B5227B /* HMDApplistViewController.m */; };
@@ -162,7 +165,6 @@
 		B2D73AE02084A86700B64E36 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73ADF2084A86700B64E36 /* CoreTelephony.framework */; };
 		B2D73AE22084A87900B64E36 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AE12084A87900B64E36 /* libz.tbd */; };
 		B2D73AE42084A88100B64E36 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D73AE32084A88100B64E36 /* Security.framework */; };
-		B2D73B262086EF4E00B64E36 /* HMDPersonCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */; };
 		B2D73B272086EF4E00B64E36 /* HMDPersonCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */; };
 		B2D73B282086EF4E00B64E36 /* HMDQRCodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D73B232086EF4E00B64E36 /* HMDQRCodeScanViewController.xib */; };
 		B2D73B292086EF4E00B64E36 /* HMDQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D73B242086EF4E00B64E36 /* HMDQRCodeScanViewController.m */; };
@@ -352,6 +354,13 @@
 		B21BFB002092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDTVFilterCollectionViewCell.h; sourceTree = "<group>"; };
 		B21BFB012092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDTVFilterCollectionViewCell.m; sourceTree = "<group>"; };
 		B21BFB022092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMDTVFilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		B23A211920BF976200A9141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B23A211A20BF976200A9141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B23A211E20BF980000A9141B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/HMDLocalizable.strings; sourceTree = "<group>"; };
+		B23A212020BF980400A9141B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HMDLocalizable.strings"; sourceTree = "<group>"; };
+		B23A212220BF9BF400A9141B /* HMDLanguageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMDLanguageTool.h; sourceTree = "<group>"; };
+		B23A212320BF9BF400A9141B /* HMDLanguageTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDLanguageTool.m; sourceTree = "<group>"; };
+		B23A213120BFBFD800A9141B /* HMDPersonCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDPersonCenterViewController.xib; sourceTree = "<group>"; };
 		B24C6A50208984FD00B5227B /* EncryptionTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptionTools.h; sourceTree = "<group>"; };
 		B24C6A51208984FD00B5227B /* EncryptionTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptionTools.m; sourceTree = "<group>"; };
 		B24C6A88208DB33400B5227B /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
@@ -485,7 +494,6 @@
 		B2D73AE32084A88100B64E36 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B2D73AE52084A90800B64E36 /* HPCastLink.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HPCastLink.bundle; sourceTree = "<group>"; };
 		B2D73B1F2086EF4E00B64E36 /* HMDPersonCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDPersonCenterViewController.h; sourceTree = "<group>"; };
-		B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDPersonCenterViewController.xib; sourceTree = "<group>"; };
 		B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDPersonCenterViewController.m; sourceTree = "<group>"; };
 		B2D73B232086EF4E00B64E36 /* HMDQRCodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDQRCodeScanViewController.xib; sourceTree = "<group>"; };
 		B2D73B242086EF4E00B64E36 /* HMDQRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDQRCodeScanViewController.m; sourceTree = "<group>"; };
@@ -637,6 +645,7 @@
 				3E03EEEA206E114D004DBB36 /* Assets.xcassets */,
 				3E03EEEC206E114D004DBB36 /* LaunchScreen.storyboard */,
 				3E03EEEF206E114D004DBB36 /* Info.plist */,
+				B23A211F20BF980000A9141B /* HMDLocalizable.strings */,
 			);
 			path = RemoteControl;
 			sourceTree = "<group>";
@@ -1034,6 +1043,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		B23A212120BF9BDD00A9141B /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				B23A212220BF9BF400A9141B /* HMDLanguageTool.h */,
+				B23A212320BF9BF400A9141B /* HMDLanguageTool.m */,
+			);
+			path = Language;
+			sourceTree = "<group>";
+		};
 		B24C6A4F208984FD00B5227B /* Cryptor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1392,7 +1410,7 @@
 			children = (
 				B2D73B1F2086EF4E00B64E36 /* HMDPersonCenterViewController.h */,
 				B2D73B212086EF4E00B64E36 /* HMDPersonCenterViewController.m */,
-				B2D73B202086EF4E00B64E36 /* HMDPersonCenterViewController.xib */,
+				B23A213120BFBFD800A9141B /* HMDPersonCenterViewController.xib */,
 			);
 			path = PersonCenter;
 			sourceTree = "<group>";
@@ -1536,6 +1554,7 @@
 		B2E175CE20732B78004629BE /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				B23A212120BF9BDD00A9141B /* Language */,
 				B20DA0DB20B53C1C00A8226D /* Save */,
 				B24C6A4F208984FD00B5227B /* Cryptor */,
 				B2D73ABE20848DA700B64E36 /* DMR */,
@@ -1815,6 +1834,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 3E03EED5206E114D004DBB36;
 			productRefGroup = 3E03EEDF206E114D004DBB36 /* Products */;
@@ -1866,6 +1886,7 @@
 				3E03EEE9206E114D004DBB36 /* Main.storyboard in Resources */,
 				3EDAD0AD206E2142007406FB /* HMD_RC_introductory_page_3@3x.png in Resources */,
 				B2D73B322086EFA800B64E36 /* HMDRemoteSettingViewController.xib in Resources */,
+				B23A211D20BF980000A9141B /* HMDLocalizable.strings in Resources */,
 				B21BFAE92092ECDA00ACFF4B /* HMDHistoryHeadView.xib in Resources */,
 				B21BFA9F2091A6E400ACFF4B /* HMDMainVideoViewController.xib in Resources */,
 				B20DA0F920BCE3B700A8226D /* HMDVideoChoiceViewController.xib in Resources */,
@@ -1880,12 +1901,12 @@
 				B21BFAF82092ED2200ACFF4B /* HMDAllVideoViewController.xib in Resources */,
 				B2D73B342086EFA800B64E36 /* HMDTVRemoteViewController.xib in Resources */,
 				B2AC3F0120AD4E5E0038B5CE /* HMDFavoriteVideoViewController.xib in Resources */,
+				B23A213220BFBFD800A9141B /* HMDPersonCenterViewController.xib in Resources */,
 				B21BFB042092F25A00ACFF4B /* HMDTVFilterCollectionViewCell.xib in Resources */,
 				B24C6A94208DD08600B5227B /* HMDAPPListTableViewCell.xib in Resources */,
 				B21BFA932091A04E00ACFF4B /* HMDTreasureChestCollectionViewCell.xib in Resources */,
 				B2AC3F0B20AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.xib in Resources */,
 				B21BFA752091A04700ACFF4B /* HMDVideoShowCollectionViewCell.xib in Resources */,
-				B2D73B262086EF4E00B64E36 /* HMDPersonCenterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2099,6 +2120,7 @@
 				B2A2DE9520A13A8C00615595 /* HMDLoadingView.m in Sources */,
 				B2D73AD42084943300B64E36 /* PltMicroMediaController.mm in Sources */,
 				B2AC3F0A20AD6ED20038B5CE /* HMDSearchHistoryCollectionViewCell.m in Sources */,
+				B23A212420BF9BF400A9141B /* HMDLanguageTool.m in Sources */,
 				B269CA6A20A598CB00948C52 /* HMDRegisterDao.m in Sources */,
 				B2E175E020736D80004629BE /* UIImage+Extend.m in Sources */,
 				B20DA0EE20B682DA00A8226D /* HMDImageShowCollectionViewCell.m in Sources */,
@@ -2146,6 +2168,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3E03EEE8206E114D004DBB36 /* Base */,
+				B23A211920BF976200A9141B /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2154,8 +2177,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				3E03EEED206E114D004DBB36 /* Base */,
+				B23A211A20BF976200A9141B /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B23A211F20BF980000A9141B /* HMDLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B23A211E20BF980000A9141B /* en */,
+				B23A212020BF980400A9141B /* zh-Hans */,
+			);
+			name = HMDLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2166,6 +2199,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2222,6 +2256,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

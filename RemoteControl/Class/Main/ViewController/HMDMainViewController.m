@@ -44,6 +44,7 @@ HMDDMRControlDelegate>
 @property (nonatomic,strong) NSString *searchIP;                                    //要搜索的ip
 @property (nonatomic,assign) BOOL autoLink;                                         //尝试自动重连
 @property (nonatomic,weak) HMDSearchDeviceViewController *searchVC;                 //搜索设备界面
+@property (nonatomic,strong) NSDate *curDMRDate;                                    //新设备发现的时间
 @end
 
 @implementation HMDMainViewController
@@ -88,13 +89,14 @@ HMDDMRControlDelegate>
 -(void)setupTitleViewController{
     HMDScrollTitleView *titleView = [[HMDScrollTitleView alloc]init];
 
-    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"宝箱",
-                          @"视频",
-                          @"音乐",
-                          nil];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:
+                                  HMDLanguage(@"HMD_TreasureBox",@"宝箱"),
+                                  HMDLanguage(@"HMD_video",@"视频"),
+                                  HMDLanguage(@"HMD_music",@"音乐"),
+                                  nil];
     titleView.delegate = self;
-    CGFloat viewY = CGRectGetMaxY([[UIApplication sharedApplication] statusBarFrame])+5;
-    titleView.frame = CGRectMake(60, viewY, HMDScreenW-120, 55);
+    CGFloat viewY = CGRectGetMaxY([[UIApplication sharedApplication] statusBarFrame]);
+    titleView.frame = CGRectMake(50, viewY, HMDScreenW-100, 44);
     [titleView setupUIWithTitleArray:titleArray];
     [self.view addSubview:titleView];
     self.titleView = titleView;
@@ -129,11 +131,11 @@ HMDDMRControlDelegate>
 
     }
     CGFloat viewW = HMDScreenW;
-    CGFloat viewH = HMDScreenH - 85-LINKVIEHIGHT;
-    CGFloat viewY = 85;
+    CGFloat viewH = HMDScreenH - 64-LINKVIEHIGHT;
+    CGFloat viewY = 64;
     if (iPhoneX) {
-        viewY = SafeAreaTop+65;
-        viewH = HMDScreenH -(SafeAreaTop + SafeAreaBottom)-LINKVIEHIGHT-65;
+        viewY = SafeAreaTop+44;
+        viewH = HMDScreenH -(SafeAreaTop + SafeAreaBottom)-LINKVIEHIGHT-44;
     }
     contentView.frame = CGRectMake(0, viewY, viewW, viewH);
     contentView.delegate = self;
@@ -364,48 +366,14 @@ HMDDMRControlDelegate>
 #pragma mark - ZM_DMRProtocolDelegate
 -(void)onDMRAdded
 {
-    if (self.searchIP) {
-        NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
-        for (HMDRenderDeviceModel *model in renders) {
-            HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:model.uuid];
-            if ([self.searchIP isEqualToString:deviceModel.localIP]) {
-                [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
-                HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
-                    [HMDProgressHub showMessage:@"连接成功" hideAfter:2.0];
-                });
+    [self upDMRWithTime];
+}
 
-                self.searchIP = nil;
-            }
-        }
-    }else if (self.autoLink){
-        if ([HMDLinkView sharedInstance].linkViewState != HMDLinkViewStateLinked) {
-            NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
-            NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
-            for (HMDRenderDeviceModel *model in renders) {
-                if ([lastUUID isEqualToString:model.uuid]) {
-                    [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
-                    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
-                    self.autoLink = NO;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
-                    });
-                }
-            }
-        }
-    }
-    if (self.searchVC) {
-        [self.searchVC reloadTableViewWithdeviceArray:[[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]]];
-    }
-    NSLog(@"%s",__FUNCTION__);
-}
 -(void)onDMRRemoved{
-    if (self.searchVC) {
-        [self.searchVC reloadTableViewWithdeviceArray:[[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]]];
-    }
+    [self upDMRWithTime];
     NSLog(@"%s",__FUNCTION__);
 }
+
 -(void)onDMRRemovedUUID:(NSString *)uuid{
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
         NSString *curUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
@@ -480,9 +448,69 @@ HMDDMRControlDelegate>
     myDelegate.userModel = userModel;
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HMDLoginState];
     [self.userIconImageView setImageWithURLStr:userModel.headimgurl placeholderImage:nil];
-    
 
 }
+//按时间判断是否现在刷新
+-(void)upDMRWithTime{
+    //第一次直接进来,如果1s内有新的数据进入,进行延迟判断后再更新数据
+    if (self.curDMRDate == nil) {
+        self.curDMRDate = [NSDate date];
+        [self upDMRDevices];
+    }else{
+        self.curDMRDate = [NSDate date];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSTimeInterval secondsInterval= [[NSDate date] timeIntervalSinceDate:self.curDMRDate];
+            NSLog(@"secondsInterval=  %lf",secondsInterval);
+            if (secondsInterval >1.0) {
+                self.curDMRDate = [NSDate date];
+                //1s内没有新数据了 刷新
+                [self upDMRDevices];
+                NSLog(@"-----刷新数据");
+            }else{
+                NSLog(@"-----太快了没有刷新数据");
+            }
+        });
+    }
+}
+
+-(void)upDMRDevices{
+    if (self.searchIP) {
+        NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+        for (HMDRenderDeviceModel *model in renders) {
+            HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getRenderWithUUID:model.uuid];
+            if ([self.searchIP isEqualToString:deviceModel.localIP]) {
+                [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
+                HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
+                    [HMDProgressHub showMessage:@"连接成功" hideAfter:2.0];
+                });
+                
+                self.searchIP = nil;
+            }
+        }
+    }else if (self.autoLink){
+        if ([HMDLinkView sharedInstance].linkViewState != HMDLinkViewStateLinked) {
+            NSString *lastUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DLANLastTimeLinkDeviceUUID];
+            NSArray *renders = [[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]];
+            for (HMDRenderDeviceModel *model in renders) {
+                if ([lastUUID isEqualToString:model.uuid]) {
+                    [[[HMDDHRCenter sharedInstance] DMRControl] chooseRenderWithUUID:model.uuid];
+                    HMDRenderDeviceModel *deviceModel = [[[HMDDHRCenter sharedInstance] DMRControl] getCurrentRender];
+                    self.autoLink = NO;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[HMDLinkView sharedInstance] switchLinkState:HMDLinkViewStateLinked ip:deviceModel.localIP uuid:model.uuid];
+                    });
+                }
+            }
+        }
+    }
+    if (self.searchVC) {
+        [self.searchVC reloadTableViewWithdeviceArray:[[NSArray alloc] initWithArray:[[[HMDDHRCenter sharedInstance] DMRControl] getActiveRenders]]];
+    }
+    NSLog(@"%s",__FUNCTION__);
+}
+
 #pragma mark - 懒加载
 -(HMDDeviceLinkDao *)linkDao{
     if (_linkDao == nil) {
