@@ -34,13 +34,13 @@
 //}
 
 -(void)setupUI{
-    //增加渐变层
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, -25, HMDScreenW, 25);
-    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
-    gradientLayer.startPoint = CGPointMake(0.5, 0);
-    gradientLayer.endPoint = CGPointMake(0.5, 1);
-    [self.layer addSublayer:gradientLayer];
+//    //增加渐变层
+//    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//    gradientLayer.frame = CGRectMake(0, -25, HMDScreenW, 25);
+//    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
+//    gradientLayer.startPoint = CGPointMake(0.5, 0);
+//    gradientLayer.endPoint = CGPointMake(0.5, 1);
+//    [self.layer addSublayer:gradientLayer];
     
     self.backgroundColor = [UIColor whiteColor];
     self.linkViewState = HMDLinkViewStateunLink;

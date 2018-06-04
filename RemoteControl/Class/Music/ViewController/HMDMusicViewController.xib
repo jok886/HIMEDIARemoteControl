@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMDMusicViewController">
             <connections>
+                <outlet property="buttomView" destination="XJn-Cu-mvr" id="FhY-b4-r7f"/>
                 <outlet property="loadingView" destination="cnO-fa-cR2" id="XVd-wv-ZaN"/>
                 <outlet property="musicListTableView" destination="6Mu-NT-1CV" id="QBa-dc-Zfj"/>
                 <outlet property="nullPageView" destination="2o3-XB-w1z" id="WI2-ry-7ll"/>
@@ -24,6 +25,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HMDMusicListTableViewCell" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Mu-NT-1CV">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="TQF-Ef-NT8"/>
+                        <outlet property="delegate" destination="-1" id="Q2u-yK-KL9"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJn-Cu-mvr">
+                    <rect key="frame" x="0.0" y="642" width="375" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="osI-Q5-n1S"/>
+                    </constraints>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2o3-XB-w1z">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
@@ -72,15 +89,6 @@
                         <constraint firstAttribute="trailing" secondItem="6Oh-AI-uhN" secondAttribute="trailing" id="tbQ-EY-8B7"/>
                     </constraints>
                 </view>
-                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HMDMusicListTableViewCell" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Mu-NT-1CV">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="TQF-Ef-NT8"/>
-                        <outlet property="delegate" destination="-1" id="Q2u-yK-KL9"/>
-                    </connections>
-                </tableView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnO-fa-cR2" customClass="HMDMainLoadingView">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,13 +96,16 @@
             </subviews>
             <color key="backgroundColor" red="0.94118285179138184" green="0.94116520881652832" blue="0.94117718935012817" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="XJn-Cu-mvr" secondAttribute="trailing" id="5IB-RP-TfO"/>
                 <constraint firstItem="cnO-fa-cR2" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="83I-eE-s6j"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="6Mu-NT-1CV" secondAttribute="trailing" id="BZx-NJ-y62"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="6Mu-NT-1CV" secondAttribute="bottom" id="BfF-gT-dzI"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="XJn-Cu-mvr" secondAttribute="bottom" id="COb-yG-gpk"/>
                 <constraint firstItem="cnO-fa-cR2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="NxA-ic-aK4"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="2o3-XB-w1z" secondAttribute="trailing" id="QTw-He-oEV"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cnO-fa-cR2" secondAttribute="trailing" id="U2B-04-fd4"/>
                 <constraint firstItem="2o3-XB-w1z" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Zes-Oy-zuO"/>
+                <constraint firstItem="XJn-Cu-mvr" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="aBN-4n-HiY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="cnO-fa-cR2" secondAttribute="bottom" id="hhv-7t-L6e"/>
                 <constraint firstItem="6Mu-NT-1CV" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="jgL-Ly-Maq"/>
                 <constraint firstItem="2o3-XB-w1z" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="oNx-5g-Rr8"/>

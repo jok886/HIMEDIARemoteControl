@@ -17,6 +17,7 @@
 #import "HMDAllVideoViewController.h"
 #import "HMDVideoDetailViewController.h"
 #import "HMDFavoriteVideoViewController.h"
+#import "HMDTVRemoteViewController.h"
 @interface HMDMainVideoViewController ()
 <
 UICollectionViewDelegate,
@@ -29,6 +30,7 @@ UICollectionViewDataSource
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;                //主界面图片
 @property (nonatomic,strong) HMDVideoModel *curVideoModel;                      //当前的video
 @property (weak, nonatomic) IBOutlet HMDMainLoadingView *loadingView;
+@property (weak, nonatomic) IBOutlet UIView *imageCoverView;
 
 @end
 
@@ -58,7 +60,6 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     layout.itemSize = CGSizeMake(width, width);
     layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
     layout.minimumLineSpacing = 0;
-//    layout.minimumInteritemSpacing = 20;
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     self.videoShowCollectionViewFrame = CGRectMake(0, HMDScreenH-(width+HMDSTATUSBARMAXY+65+LINKVIEHIGHT)-10, HMDScreenW, width);
     UICollectionView *videoShowCollectionView = [[UICollectionView alloc]initWithFrame:self.videoShowCollectionViewFrame collectionViewLayout:layout];
@@ -69,6 +70,15 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     videoShowCollectionView.dataSource = self;
     self.videoShowCollectionView = videoShowCollectionView;
     [self.view addSubview:videoShowCollectionView];
+    
+    
+    //增加渐变层
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = self.imageCoverView.bounds;
+    gradientLayer.colors = @[(id)HMDColor(0, 0, 0, 0.5).CGColor,(id)HMDColor(0, 0, 0, 0.8).CGColor];  // 设置渐变颜色
+    gradientLayer.startPoint = CGPointMake(0.5, 0);
+    gradientLayer.endPoint = CGPointMake(0.5, 1);
+    [self.imageCoverView.layer addSublayer:gradientLayer];
 }
 
 -(void)getRecommendVideoData{
@@ -182,7 +192,20 @@ static NSString * const reuseIdentifier = @"HMDVideoShowCollectionViewCell";
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
         if (self.curVideoModel) {
-            [self.videoDataDao PostPlayNetPosterOrder:self.curVideoModel finishBlock:nil];
+            HMDWeakSelf(self)
+            [self.videoDataDao PostPlayNetPosterOrder:self.curVideoModel finishBlock:^(BOOL success) {
+                if (success) {
+                    [HMDLinkView sharedInstance].hidden = YES;
+                    HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                    remoteViewController.showLinkViewWhenDismiss = YES;
+//                    remoteViewController.powerOffBlock = ^{
+//                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//                    };
+                    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:remoteViewController];
+                    [weakSelf.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+                }
+
+            }];
         }
     }else{
         [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];

@@ -10,6 +10,7 @@
 #import "HMDMainLoadingView.h"
 #import "HMDMusicListDao.h"
 #import "HMDMusicListTableViewCell.h"
+#import "HMDTVRemoteViewController.h"
 @interface HMDMusicViewController ()<UITableViewDelegate,UITableViewDataSource>
 //@property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UITableView *musicListTableView;
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet HMDMainLoadingView *loadingView;
 @property (nonatomic,strong) NSMutableArray *musicListArray;
 @property (nonatomic,strong) HMDMusicListDao *musicListDao;
+@property (weak, nonatomic) IBOutlet UIView *buttomView;
+
 @end
 
 @implementation HMDMusicViewController
@@ -42,6 +45,13 @@
 #pragma mark - 初始化
 -(void)setupUI{
     [self.musicListTableView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDMusicListTableViewCell class]) bundle:nil] forCellReuseIdentifier:self.musicListTableView.restorationIdentifier];
+    //增加渐变层
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, HMDScreenW, 25);
+    gradientLayer.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
+    gradientLayer.startPoint = CGPointMake(0.5, 0);
+    gradientLayer.endPoint = CGPointMake(0.5, 1);
+    [self.buttomView.layer addSublayer:gradientLayer];
 }
 
 -(void)getMusicList{
@@ -89,9 +99,24 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *filePath = self.musicListArray[indexPath.row];
-    [self.musicListDao playMusicWithFilePath:filePath finishBlock:^(BOOL success) {
-        
-    }];
+
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+
+            HMDWeakSelf(self)
+            [self.musicListDao playMusicWithFilePath:filePath finishBlock:^(BOOL success) {
+                if (success) {
+                    [HMDLinkView sharedInstance].hidden = YES;
+                    HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                    remoteViewController.showLinkViewWhenDismiss = YES;
+
+                    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:remoteViewController];
+                    [weakSelf.view.getCurActiveViewController presentViewController:nav animated:YES completion:nil];
+                }
+            }];
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
 }
 
 #pragma mark - 懒加载

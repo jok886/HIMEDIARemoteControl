@@ -14,6 +14,8 @@
 #import "HMDVideoDataDao.h"
 #import "NSString+HMDExtend.h"
 #import "HMDMainLoadingView.h"
+
+#import "HMDTVRemoteViewController.h"
 typedef enum : NSInteger{
     HMDHistoryListOnlyTodayType = (1<<0),
     HMDHistoryListOnlyBeforeType = (1<<1),
@@ -45,15 +47,14 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
     [self setupFirstNavBar];
     [self getHistoryData];
 }
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [HMDLinkView sharedInstance].hidden = NO;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc{
+    [HMDLinkView sharedInstance].hidden = NO;
+}
 #pragma mark - 初始化
 
 -(void)getHistoryData{
@@ -166,9 +167,23 @@ static NSString * const reuseIdentifier = @"HMDVideoHistoryTableViewCell";
     }else{
         model = self.historyListBeforeArray[indexPath.row];
     }
-    [self.videoDataDao playHistoryWithHistoryModel:model FinishBlock:^(BOOL success) {
+    
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        HMDWeakSelf(self)
+        [self.videoDataDao playHistoryWithHistoryModel:model FinishBlock:^(BOOL success) {
+            if (success) {
+                HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                remoteViewController.pushVC = YES;
+                [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
+            }
+        }];
+
         
-    }];
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
+
 }
 
 #pragma mark - 点击

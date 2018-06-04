@@ -9,6 +9,7 @@
 #import "HMDFavoriteVideoViewController.h"
 #import "HMDVideoDataDao.h"
 #import "HMDFavoriteVideoTableViewCell.h"
+#import "HMDTVRemoteViewController.h"
 @interface HMDFavoriteVideoViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *videoTableView;
 @property (nonatomic,strong) HMDVideoDataDao *videoDataDao;
@@ -75,9 +76,22 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     HMDFavoriteVideoModel *videoModel = self.favoriteVideoArray[indexPath.row];
-    [self.videoDataDao playCollectWithCollectModel:videoModel FinishBlock:^(BOOL success) {
-        
-    }];
+
+    
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        HMDWeakSelf(self)
+        [self.videoDataDao playCollectWithCollectModel:videoModel FinishBlock:^(BOOL success) {
+            if (success) {
+                HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                remoteViewController.pushVC = YES;
+                [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
+            }
+        }];
+
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
 }
 #pragma mark - 懒加载
 -(NSArray *)favoriteVideoArray{

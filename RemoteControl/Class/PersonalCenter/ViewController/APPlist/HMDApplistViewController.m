@@ -243,9 +243,9 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
         if (success) {
             HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
             remoteViewController.pushVC = YES;
-            remoteViewController.powerOffBlock = ^{
-                [weakSelf dismissViewControllerAnimated:YES completion:nil];
-            };
+//            remoteViewController.powerOffBlock = ^{
+//                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//            };
             [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
         }
 
@@ -273,9 +273,9 @@ static NSString * const reuseIdentifier = @"HMDAPPListTableViewCell";
             if (success) {
                 HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
                 remoteViewController.pushVC = YES;
-                remoteViewController.powerOffBlock = ^{
-                    [weakSelf dismissViewControllerAnimated:YES completion:nil];
-                };
+//                remoteViewController.powerOffBlock = ^{
+//                    [weakSelf dismissViewControllerAnimated:YES completion:nil];
+//                };
                 [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
             }
             

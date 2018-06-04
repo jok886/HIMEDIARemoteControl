@@ -320,19 +320,22 @@ HMDDMRControlDelegate>
                 [HMDLinkView sharedInstance].hidden = YES;
                 //停止自动搜索
                 self.autoLink = NO;
+               
                 //进入搜索设备
+                HMDWeakSelf(self)
                 HMDSearchDeviceViewController *searchVC = [[HMDSearchDeviceViewController alloc]init];
                 
                 self.searchVC = searchVC;
                 [viewController presentViewController:searchVC animated:YES completion:^{
- 
-                        //开启设备
-                        if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
-                            [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
-                            [[[HMDDHRCenter sharedInstance] DMRControl] start];
-                        }else{
-                            [[[HMDDHRCenter sharedInstance] DMRControl] restart];
-                        }
+
+                    //开启设备
+                    if (![[[HMDDHRCenter sharedInstance] DMRControl] isRunning]) {
+                        [[[HMDDHRCenter sharedInstance] DMRControl] setDelegate:self];
+                        [[[HMDDHRCenter sharedInstance] DMRControl] start];
+                    }else{
+                        [[[HMDDHRCenter sharedInstance] DMRControl] restart];
+                    }
+                    weakSelf.curDMRDate = nil;
 
                 }];
             }else{

@@ -11,6 +11,8 @@
 #import "HMDEpisodeCollectionViewCell.h"
 #import "UIImage+Color.h"
 #import "UIImageView+HMDDLANLoadImage.h"
+
+#import "HMDTVRemoteViewController.h"
 @interface HMDVideoDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic,strong) HMDVideoDataDao *videoDao;
 
@@ -39,6 +41,7 @@
 //@property (weak, nonatomic) IBOutlet UIView *bottomView;        //渐变效果
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UIView *videoCoverView;
+@property (weak, nonatomic) IBOutlet UIView *buttomView;
 
 @end
 
@@ -80,6 +83,15 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
     gradientLayer.startPoint = CGPointMake(0.5, 0.0);
     gradientLayer.endPoint = CGPointMake(0.5, 1);
     [self.videoCoverView.layer addSublayer:gradientLayer];
+    
+    //增加渐变层
+    CAGradientLayer *gradientLayer2 = [CAGradientLayer layer];
+    gradientLayer2.frame = CGRectMake(0, 0, HMDScreenW, 25);
+    gradientLayer2.colors = @[(id)HMDColor(240, 240, 240, 0).CGColor,(id)HMDColor(240, 240, 240, 1).CGColor];  // 设置渐变颜色
+    gradientLayer2.startPoint = CGPointMake(0.5, 0);
+    gradientLayer2.endPoint = CGPointMake(0.5, 1);
+    [self.buttomView.layer addSublayer:gradientLayer2];
+    
     if (self.pushModel) {
         [self reSetupNavBarWithWhiteItem];
         [self setupNavigation];
@@ -205,13 +217,22 @@ static NSString * const reuseIdentifier = @"HMDEpisodeCollectionViewCell";
 - (IBAction)playCurVideo:(id)sender {
     //判断当前是否链接
     if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+        HMDWeakSelf(self)
         if (self.netPoster) {
             [self.videoDao PostPlayNetPosterOrder:self.videoModel finishBlock:^(BOOL success) {
-                
+                if (success) {
+                    HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                    remoteViewController.pushVC = YES;
+                    [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
+                }
             }];
         }else{
             [self.videoDao PostPlayDLanPosterOrder:self.videoModel finishBlock:^(BOOL success) {
-                
+                if (success) {
+                    HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                    remoteViewController.pushVC = YES;
+                    [weakSelf.navigationController pushViewController:remoteViewController animated:YES];
+                }
             }];
         }
     }else{

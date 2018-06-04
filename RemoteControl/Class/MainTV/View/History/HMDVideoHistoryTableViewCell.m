@@ -29,6 +29,11 @@
 
 -(void)setupCellWithHistoryModel:(HMDVideoHistoryModel *)historyModel{
     self.nameLab.text = historyModel.videoName;
-    self.historyInfoLab.text = [NSString stringWithFormat:@"上次播放至:%@",historyModel.cmd.lastTime];
+    if (historyModel.cmd.lastTime == nil) {
+        self.historyInfoLab.text = @"上次播放至:00:00";
+    }else{
+         self.historyInfoLab.text = [NSString stringWithFormat:@"上次播放至:%@",historyModel.cmd.lastTime];
+    }
+   
 }
 @end

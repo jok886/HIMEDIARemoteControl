@@ -174,6 +174,7 @@ static NSString * const scanAnimationKey = @"scanAnimationKey";
         self.deviceListTableView.deviceArray = devices;
         self.curDevicesNumLab.text = [NSString stringWithFormat:@"找到%lu个设备",(unsigned long)self.deviceListTableView.deviceArray.count];
         [self.deviceListTableView reloadData];
+        NSLog(@"-----刷新UI");
         if (devices.count == 0) {
             self.unFoundDeviceLab.hidden = NO;
         }else{

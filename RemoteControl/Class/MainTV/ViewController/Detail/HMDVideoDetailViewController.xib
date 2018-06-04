@@ -15,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HMDVideoDetailViewController">
             <connections>
                 <outlet property="backBtn" destination="Hqz-vI-vh1" id="F4B-se-bsV"/>
+                <outlet property="buttomView" destination="Auk-E0-47a" id="Okk-n4-CMW"/>
                 <outlet property="episodeCollectionView" destination="2gV-s4-Uyx" id="9uJ-Uz-8KO"/>
                 <outlet property="episodeView" destination="EJM-mt-5Z0" id="mRy-6x-ua4"/>
                 <outlet property="playBtn" destination="MYW-Go-LLc" id="h2V-hM-52K"/>
@@ -199,6 +200,13 @@
                         <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="11e-ue-hSA"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Auk-E0-47a">
+                    <rect key="frame" x="0.0" y="592" width="375" height="25"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="NfC-fE-3Om"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -214,6 +222,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="5f0-2V-Rrh" secondAttribute="trailing" constant="10" id="E4r-wz-PN4"/>
                 <constraint firstItem="EJM-mt-5Z0" firstAttribute="top" secondItem="vcC-Pa-ipP" secondAttribute="bottom" constant="15" id="Fe0-yb-mEP"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="centerX" secondItem="xEV-pK-2nB" secondAttribute="trailing" id="G0S-UI-gF5"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Auk-E0-47a" secondAttribute="trailing" id="GUi-sM-dv7"/>
                 <constraint firstItem="xk0-Zs-Gb9" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="INp-SS-pfO"/>
                 <constraint firstItem="XWX-fE-rfX" firstAttribute="height" secondItem="khT-9o-FyG" secondAttribute="height" id="Kht-Rg-EEg"/>
                 <constraint firstItem="khT-9o-FyG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="Lz7-lj-Xlx"/>
@@ -222,12 +231,14 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="751-u8-tlk" secondAttribute="trailing" constant="10" id="NWs-zW-Mii"/>
                 <constraint firstItem="H4W-eD-KiS" firstAttribute="centerY" secondItem="xEV-pK-2nB" secondAttribute="centerY" id="NzK-MX-pMP"/>
                 <constraint firstItem="5f0-2V-Rrh" firstAttribute="top" secondItem="xEV-pK-2nB" secondAttribute="bottom" constant="10" id="Omb-Hj-K17"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Auk-E0-47a" secondAttribute="bottom" constant="50" id="SzW-a9-S6Q"/>
                 <constraint firstItem="XWX-fE-rfX" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="TNg-jX-H1l"/>
                 <constraint firstItem="Hqz-vI-vh1" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="Ufm-cR-dRr"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vcC-Pa-ipP" secondAttribute="trailing" constant="10" id="Uoz-kM-ZxN"/>
                 <constraint firstItem="vcC-Pa-ipP" firstAttribute="top" secondItem="5f0-2V-Rrh" secondAttribute="bottom" constant="8" id="Yj2-1d-aIL"/>
                 <constraint firstItem="H4W-eD-KiS" firstAttribute="leading" secondItem="xCe-y1-swM" secondAttribute="trailing" constant="10" id="bY5-xg-F8C"/>
                 <constraint firstItem="vcC-Pa-ipP" firstAttribute="leading" secondItem="5f0-2V-Rrh" secondAttribute="leading" id="bdz-nm-vY4"/>
+                <constraint firstItem="Auk-E0-47a" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="cnH-wO-RPd"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="H4W-eD-KiS" secondAttribute="trailing" constant="15" id="elq-n4-bv3"/>
                 <constraint firstItem="0Lu-rQ-tbJ" firstAttribute="leading" secondItem="gzY-ob-Yui" secondAttribute="trailing" constant="2" id="g71-sO-U0a"/>
                 <constraint firstItem="khT-9o-FyG" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="gRg-XP-wMu"/>

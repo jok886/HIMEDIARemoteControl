@@ -45,8 +45,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yk2-He-rCE">
-                        <rect key="frame" x="30" y="12.5" width="225" height="145"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="25" y="12.5" width="235" height="145"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video_banner_default_s" translatesAutoresizingMaskIntoConstraints="NO" id="b6A-ky-Dy9">
                         <rect key="frame" x="25" y="7.5" width="235" height="155"/>
@@ -73,7 +73,7 @@
                 <constraint firstItem="oAP-lh-Qte" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7ZV-6s-Sq4"/>
                 <constraint firstItem="Yk2-He-rCE" firstAttribute="bottom" secondItem="b6A-ky-Dy9" secondAttribute="bottom" constant="-5" id="7aU-mh-nvB"/>
                 <constraint firstItem="oW6-9r-VzS" firstAttribute="top" secondItem="Jm2-av-Wkn" secondAttribute="bottom" constant="14" id="8O9-t0-F0q"/>
-                <constraint firstItem="Yk2-He-rCE" firstAttribute="trailing" secondItem="b6A-ky-Dy9" secondAttribute="trailing" constant="-5" id="Bra-Xo-Ejc"/>
+                <constraint firstItem="Yk2-He-rCE" firstAttribute="trailing" secondItem="b6A-ky-Dy9" secondAttribute="trailing" id="Bra-Xo-Ejc"/>
                 <constraint firstItem="Jm2-av-Wkn" firstAttribute="top" secondItem="b6A-ky-Dy9" secondAttribute="bottom" constant="25" id="Cvp-2U-kx0"/>
                 <constraint firstAttribute="trailing" secondItem="oAP-lh-Qte" secondAttribute="trailing" id="Egx-RU-6bb"/>
                 <constraint firstItem="oW6-9r-VzS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="FY0-B6-IIe"/>
@@ -82,7 +82,7 @@
                 <constraint firstItem="b6A-ky-Dy9" firstAttribute="centerX" secondItem="SEy-5g-ep8" secondAttribute="centerX" id="hGb-bh-g63"/>
                 <constraint firstItem="Jm2-av-Wkn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="iM5-3C-gJT"/>
                 <constraint firstItem="Yk2-He-rCE" firstAttribute="top" secondItem="b6A-ky-Dy9" secondAttribute="top" constant="5" id="mjT-lE-wmA"/>
-                <constraint firstItem="Yk2-He-rCE" firstAttribute="leading" secondItem="b6A-ky-Dy9" secondAttribute="leading" constant="5" id="qpQ-BJ-KEc"/>
+                <constraint firstItem="Yk2-He-rCE" firstAttribute="leading" secondItem="b6A-ky-Dy9" secondAttribute="leading" id="qpQ-BJ-KEc"/>
                 <constraint firstAttribute="bottom" secondItem="oAP-lh-Qte" secondAttribute="bottom" id="rUy-1W-2Ie"/>
                 <constraint firstItem="b6A-ky-Dy9" firstAttribute="width" secondItem="oAP-lh-Qte" secondAttribute="width" multiplier="235:285" id="wUB-Sl-xnz"/>
             </constraints>

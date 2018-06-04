@@ -11,6 +11,7 @@
 
 #import "HMDSearchTVResultCollectionView.h"
 #import "HMDSearchTVTipsCollectionView.h"
+#import "HMDTVRemoteViewController.h"
 #import <MJRefresh/MJRefresh.h>
 
 #import "HMDSearchTVDao.h"
@@ -234,9 +235,24 @@
 
 #pragma mark - HMDSearchTVResultCollectionViewDelegate
 -(void)searchTVResultCollectionView:(HMDSearchTVResultCollectionView *)earchTVResultCollectionView didSelectItemWithModel:(HMDVideoModel *)videoModel{
-    [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:^(BOOL success) {
-        
-    }];
+    //判断当前是否链接
+    if ([HMDLinkView sharedInstance].linkViewState == HMDLinkViewStateLinked) {
+            HMDWeakSelf(self)
+            [self.videoDataDao PostPlayNetPosterOrder:videoModel finishBlock:^(BOOL success) {
+                if (success) {
+                    [HMDLinkView sharedInstance].hidden = YES;
+                    HMDTVRemoteViewController *remoteViewController = [[HMDTVRemoteViewController alloc] init];
+                    remoteViewController.showLinkViewWhenDismiss = YES;
+
+                    HMDNavigationController *nav = [[HMDNavigationController alloc] initWithRootViewController:remoteViewController];
+                    [weakSelf presentViewController:nav animated:YES completion:nil];
+                }
+            }];
+
+    }else{
+        [HMDProgressHub showMessage:@"请先链接设备" hideAfter:2.0];
+    }
+
 }
 #pragma mark - 点击
 -(void)backAction:(UIButton *)sender{

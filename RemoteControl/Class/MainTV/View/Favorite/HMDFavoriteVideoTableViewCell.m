@@ -11,7 +11,7 @@
 @interface HMDFavoriteVideoTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *videoNameLab;
-@property (weak, nonatomic) IBOutlet UILabel *videoTypeLab;
+//@property (weak, nonatomic) IBOutlet UILabel *videoTypeLab;
 @property (weak, nonatomic) IBOutlet UILabel *videoTimeLab;
 
 @end
