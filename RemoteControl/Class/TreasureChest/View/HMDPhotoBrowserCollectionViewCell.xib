@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,16 +21,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AO2-Fd-tRD">
-                        <rect key="frame" x="0.0" y="0.0" width="159" height="203"/>
+                        <rect key="frame" x="0.0" y="57" width="159" height="89"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="AO2-Fd-tRD" secondAttribute="height" multiplier="16:9" id="OK2-Cg-cGB"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.80000537630000002" green="0.79999023680000003" blue="0.80000060799999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AO2-Fd-tRD" secondAttribute="trailing" id="9rg-3t-ocD"/>
-                <constraint firstItem="AO2-Fd-tRD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BuW-My-iSc"/>
-                <constraint firstAttribute="bottom" secondItem="AO2-Fd-tRD" secondAttribute="bottom" id="J0v-Bk-GHF"/>
-                <constraint firstItem="AO2-Fd-tRD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kE8-m4-LFq"/>
+                <constraint firstItem="AO2-Fd-tRD" firstAttribute="centerY" secondItem="SEy-5g-ep8" secondAttribute="centerY" id="3nf-eG-T4W"/>
+                <constraint firstAttribute="trailing" secondItem="AO2-Fd-tRD" secondAttribute="trailing" id="KAw-aO-TqT"/>
+                <constraint firstItem="AO2-Fd-tRD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="MeS-JI-RCS"/>
+                <constraint firstItem="AO2-Fd-tRD" firstAttribute="centerX" secondItem="SEy-5g-ep8" secondAttribute="centerX" id="jse-N4-Qrr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="159" height="203"/>

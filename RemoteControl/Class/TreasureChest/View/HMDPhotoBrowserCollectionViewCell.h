@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HMDPhotoBrowserCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
+-(void)setCellWithImage:(UIImage *)image;
 
 @end

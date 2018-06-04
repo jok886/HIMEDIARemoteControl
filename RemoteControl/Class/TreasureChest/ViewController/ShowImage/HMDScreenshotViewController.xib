@@ -26,13 +26,14 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-3v-il8">
                     <rect key="frame" x="10" y="30" width="355" height="40"/>
-                    <color key="backgroundColor" red="0.36393660309999998" green="0.69185036420000001" blue="0.58038145299999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="qBT-MR-YdU"/>
                     </constraints>
-                    <state key="normal" title="截取电视屏幕">
+                    <state key="normal" title="截取电视屏幕" backgroundImage="greenbtn_default">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <state key="highlighted" backgroundImage="greenbtn_click"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="4"/>
@@ -45,13 +46,14 @@
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb6-te-Fjq">
                     <rect key="frame" x="10" y="80" width="355" height="40"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="XDp-SG-XPj"/>
                     </constraints>
-                    <state key="normal" title="截图相册">
+                    <state key="normal" title="截图相册" backgroundImage="whitebtn_default">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
+                    <state key="highlighted" backgroundImage="whitebtn_click"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="4"/>
@@ -105,4 +107,10 @@
             <point key="canvasLocation" x="32.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="greenbtn_click" width="8" height="40"/>
+        <image name="greenbtn_default" width="8" height="40"/>
+        <image name="whitebtn_click" width="8" height="40"/>
+        <image name="whitebtn_default" width="8" height="40"/>
+    </resources>
 </document>

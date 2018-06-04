@@ -5,7 +5,6 @@ target 'RemoteControl' do
     
 pod 'AFNetworking'
 pod 'YYCache'
-pod 'Masonry'
 pod 'pop'
 pod 'MJExtension'
 pod 'CocoaAsyncSocket'
@@ -18,6 +17,7 @@ pod 'GCDWebServer'
 pod 'MBProgressHUD'
 pod 'Onboard'
 pod 'TOCropViewController'
+pod 'Bugly'
 use_frameworks!
-pod 'AEXML'
+
 end

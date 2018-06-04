@@ -19,8 +19,8 @@
     [super viewDidLoad];
 
     [self.photoBrowseCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([HMDPhotoBrowserCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:self.photoBrowseCollectionView.restorationIdentifier];
-    self.photoBrowseCollectionView.maximumZoomScale = 3.0;
-    self.photoBrowseCollectionView.minimumZoomScale = 0.5;
+//    self.photoBrowseCollectionView.maximumZoomScale = 3.0;
+//    self.photoBrowseCollectionView.minimumZoomScale = 0.5;
 
 }
 
@@ -29,11 +29,16 @@
     // Dispose of any resources that can be recreated.
 }
 
--(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
-    HMDPhotoBrowserCollectionViewCell *cell = (HMDPhotoBrowserCollectionViewCell *)[self.photoBrowseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    return cell.photoImageView;
-}
-
+//-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+//    HMDPhotoBrowserCollectionViewCell *cell = (HMDPhotoBrowserCollectionViewCell *)[self.photoBrowseCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    return cell.photoImageView;
+//}
+//- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view NS_AVAILABLE_IOS(3_2){
+//    scrollView.scrollEnabled = NO;
+//}
+//- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale{
+//    scrollView.scrollEnabled = YES;
+//}
 #pragma mark - UICollectionViewDelegate/UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.photoArray.count;
@@ -45,21 +50,27 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
+    return 20;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
+    return 20;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HMDPhotoBrowserCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.photoBrowseCollectionView.restorationIdentifier forIndexPath:indexPath];
     NSString *filePath = self.photoArray[indexPath.row];
-    cell.photoImageView.image = [UIImage imageWithContentsOfFile:filePath];
+    [cell setCellWithImage:[UIImage imageWithContentsOfFile:filePath]];
+
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
 //    [collectionView setContentOffset:CGPointMake(collectionView.contentOffset.x+50, 0) animated:YES];
+}
+#pragma mark - 点击
+
+- (IBAction)backBtnClick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - 懒加载
 - (NSArray *)photoArray{

@@ -27,12 +27,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
-    [self getAllCurImage];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //判断页面展示类型
+    self.shotImageArray = nil;
+    [self reloadUI];
 }
 
 #pragma mark - 初始化
@@ -41,12 +47,7 @@
     self.title = @"电视截屏";
     [self setupFirstNavBar];
 }
--(void)getAllCurImage{
-    NSArray *fileArray = [HMDSaveTool getAllImageFile];
-    if (fileArray.count > 0) {
-        self.albumBtn.hidden = NO;
-    }
-}
+
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.shotImageArray.count;
@@ -55,8 +56,13 @@
     if (indexPath.row == 0) {
         return CGSizeMake(HMDScreenW-20, (HMDScreenW-20)/340.0*191.0);
     }else{
-        CGFloat width = (HMDScreenW-20 - 10)/3.0;
-        return CGSizeMake(width, width/100.0*62);
+        if (self.shotImageArray.count == 2 && indexPath.row == 1) {
+           return CGSizeMake(HMDScreenW-20, (HMDScreenW-20)/340.0*191.0);
+        }else{
+            CGFloat width = (HMDScreenW-20 - 10)/3.0;
+            return CGSizeMake(width, width/100.0*62);
+        }
+
     }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -111,10 +117,15 @@
         self.notiLab.hidden = YES;
         [self.showImageCollectionView reloadData];
     }else{
-        self.albumBtn.hidden = NO;
         self.showImageCollectionView.hidden = YES;
         self.notiLab.hidden = NO;
         [self.showImageCollectionView reloadData];
+            NSArray *fileArray = [HMDSaveTool getAllImageFile];
+            if (fileArray.count > 0) {
+                self.albumBtn.hidden = NO;
+            }else{
+                self.albumBtn.hidden = YES;
+            }
     }
 
 }

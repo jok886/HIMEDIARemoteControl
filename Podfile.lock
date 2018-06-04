@@ -1,5 +1,4 @@
 PODS:
-  - AEXML (4.2.2)
   - AFNetworking (3.2.0):
     - AFNetworking/NSURLSession (= 3.2.0)
     - AFNetworking/Reachability (= 3.2.0)
@@ -15,12 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - Bugly (2.5.0)
   - CocoaAsyncSocket (7.6.3)
   - GCDWebServer (3.4.2):
     - GCDWebServer/Core (= 3.4.2)
   - GCDWebServer/Core (3.4.2)
   - GDataXMLNode2 (2.0.1)
-  - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.15.3)
@@ -34,12 +33,11 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - AEXML
   - AFNetworking
+  - Bugly
   - CocoaAsyncSocket
   - GCDWebServer
   - GDataXMLNode2
-  - Masonry
   - MBProgressHUD
   - MJExtension
   - MJRefresh
@@ -51,12 +49,11 @@ DEPENDENCIES:
   - YYCache
 
 SPEC CHECKSUMS:
-  AEXML: 5ebafc1b75e0bcf0f1b09b8ca8fed2d5a199479b
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
   GDataXMLNode2: 90a3f2cd1f041aa5f43062eec884e0943704bf81
-  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
@@ -67,6 +64,6 @@ SPEC CHECKSUMS:
   WechatOpenSDK_NoPay: 27366a152202a6a7c8a15fad4d07261e87fb2389
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 3c3613d4fe5c49c94babafed5d6055fe4bb03722
+PODFILE CHECKSUM: 4a29e3831955a23daf269f0b2c18e39d5f82ae15
 
 COCOAPODS: 1.4.0

@@ -67,7 +67,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
 
     CGFloat width = (HMDScreenW -20 - 10)/3.0;
-    return CGSizeMake(width, width/100.0*62);
+    return CGSizeMake(width, width/16.0*9.0);
 
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -141,7 +141,8 @@
 -(void)showImageAtIndexPath:(NSIndexPath *)indexPath{
     HMDPhotoBrowseViewController *photoBrowseViewController = [[HMDPhotoBrowseViewController alloc] init];
     photoBrowseViewController.photoArray = [NSArray arrayWithArray:self.shotImageArray];
-    [self.navigationController pushViewController:photoBrowseViewController animated:YES];
+//    [self.navigationController pushViewController:photoBrowseViewController animated:YES];
+    [self presentViewController:photoBrowseViewController animated:YES completion:nil];
 }
 #pragma mark - 懒加载
 -(NSMutableArray *)shotImageArray{

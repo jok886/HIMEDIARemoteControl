@@ -11,7 +11,7 @@
 #import "OnboardingViewController.h"
 #import "OnboardingContentViewController.h"
 
-#import <HPCastLink/HPCastLink.h>
+#import <Bugly/Bugly.h>
 #import <WXApi.h>
 #import "HMDDLANNetTool.h"
 #import "HMDLoginDao.h"
@@ -30,13 +30,11 @@ static NSString * const kUserHasOnboardedKey = @"user_has_onboarded";
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:HMDLoginState];
     //微信登录
     [WXApi registerApp:@"wxed8c151bb3208370"];
-//乐播SDK
-//    if ([[HPCastLink sharedCastLink] appkeyVerify:@"29b77f20395691d76cc69fa9bd8e7971"]) {
-//         NSLog(@"appkeyVerify_enableDLNA");
-//        [HPCastLink sharedCastLink].enableDLNA = YES;
-//    }else{
-//        NSLog(@"appkeyVerify");
-//    }
+    //bugly
+    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
+    buglyConfig.blockMonitorEnable = YES;
+    buglyConfig.blockMonitorTimeout = 1;
+    [Bugly startWithAppId:@"9c9b07050c" config:buglyConfig];
     //开启httpweb
     [[HMDDLANNetTool sharedInstance] setupWebServer];
     [[HMDDLANNetTool sharedInstance] startNotificationWifi];

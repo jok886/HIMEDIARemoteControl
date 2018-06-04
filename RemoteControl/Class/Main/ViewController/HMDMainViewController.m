@@ -196,7 +196,7 @@ HMDDMRControlDelegate>
 }
 
 -(void)autoLogin{
-//    AppDelegate *myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+
     NSString *loginModel = [[NSUserDefaults standardUserDefaults] objectForKey:HMDLoginModel];
     if ([loginModel isEqualToString:HMDLoginWXModel]) {
         //上次是微信登录的
@@ -204,7 +204,6 @@ HMDDMRControlDelegate>
         if (refreshToken){
             NSString *decryptRefreshToken = [EncryptionTools decryptAESWithHINAVI:refreshToken];
             if (![[NSUserDefaults standardUserDefaults] boolForKey:HMDLoginState] && decryptRefreshToken) {
-//                HMDWeakSelf(self)
                 [self.loginDao getWechatInfoWithRefreshToken:decryptRefreshToken finishBlock:^(BOOL success, HMDUserModel *userModel) {
                     if (success) {
                         [[NSNotificationCenter defaultCenter] postNotificationName:HMDLogin object:userModel];;
